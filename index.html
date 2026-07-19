@@ -124,8 +124,8 @@
     background:
       linear-gradient(90deg,var(--bg),transparent) left/28px 100% no-repeat,
       linear-gradient(90deg,transparent,var(--bg)) right/28px 100% no-repeat,
-      radial-gradient(farthest-side at 0 50%,rgba(0,0,0,.55),transparent) left/16px 100% no-repeat,
-      radial-gradient(farthest-side at 100% 50%,rgba(0,0,0,.55),transparent) right/16px 100% no-repeat;
+      radial-gradient(farthest-side at 0 50%,rgba(0,0,0,.8),transparent) left/24px 100% no-repeat,
+      radial-gradient(farthest-side at 100% 50%,rgba(0,0,0,.8),transparent) right/24px 100% no-repeat;
     background-attachment:local,local,scroll,scroll}
   table{width:100%;border-collapse:collapse;font-size:.86rem;min-width:560px}
   th{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.1em;color:var(--gold);text-transform:uppercase;
@@ -253,6 +253,7 @@
     .bar nav.open{display:flex}
     .bar nav a{margin-left:0;padding:14px 28px;font-size:15px;border-bottom:1px solid var(--line)}
     .bar .back{margin:12px 28px 6px}
+    .tbl-h::after{content:"↔ 표를 좌우로 넘겨서 전체 보기";display:block;font-family:'Noto Sans KR',sans-serif;font-size:11.5px;font-weight:400;color:var(--gold);letter-spacing:.02em;margin-top:7px}
   }
   @media(prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
