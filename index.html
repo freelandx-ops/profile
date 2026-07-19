@@ -38,6 +38,8 @@
   .bar .who small{font-family:'IBM Plex Mono',monospace;color:var(--gold);font-weight:400;margin-left:10px;font-size:10.5px;letter-spacing:.12em}
   .bar nav a{color:var(--mut);text-decoration:none;font-size:12.5px;margin-left:18px;transition:.2s}
   .bar nav a:hover{color:var(--gold-hi)}
+  .bar nav{display:flex;align-items:center}
+  .bar .navtoggle{display:none;background:transparent;border:0;color:var(--ink-hi);font-size:22px;line-height:1;cursor:pointer;padding:4px 6px}
 
   .ph{border:1px dashed rgba(201,162,75,.45);color:var(--gold);font-size:.82em;padding:1px 7px;border-radius:2px;white-space:nowrap}
 
@@ -100,6 +102,7 @@
 
   /* services 3-col */
   .svc{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:44px}
+  .svc2{grid-template-columns:repeat(2,1fr)}
   .svc .card{border:1px solid var(--line2);border-radius:2px;padding:26px 24px;background:linear-gradient(180deg,rgba(255,255,255,.02),transparent);transition:.25s}
   .svc .card:hover{border-color:rgba(201,162,75,.55)}
   .svc .ic{font-size:25px}
@@ -236,8 +239,14 @@
 
   @media(max-width:860px){.svc{grid-template-columns:1fr 1fr}.team{grid-template-columns:repeat(2,1fr)}.hooks{grid-template-columns:1fr 1fr}}
   @media(max-width:640px){
-    .routes,.svc,.prec,.contact,.fgrid,.hooks,.stats,.team{grid-template-columns:1fr}
+    .routes,.svc,.svc2,.prec,.contact,.fgrid,.hooks,.stats,.team{grid-template-columns:1fr}
     .fgrid .full{grid-column:auto}
+    .bar .navtoggle{display:inline-block}
+    .bar nav{position:fixed;top:56px;left:0;right:0;flex-direction:column;align-items:stretch;
+      background:rgba(14,15,18,.98);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding:6px 0;display:none;z-index:29}
+    .bar nav.open{display:flex}
+    .bar nav a{margin-left:0;padding:14px 28px;font-size:15px;border-bottom:1px solid var(--line)}
+    .bar .back{margin:12px 28px 6px}
   }
   @media(prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
@@ -245,10 +254,11 @@
 <body>
 
 <div class="bar"><div class="in">
-  <span class="who" onclick="go('main')" style="cursor:pointer">유영곤<small>SAMSUNG LIFE · GFC</small></span>
-  <nav style="display:flex;align-items:center">
-    <a href="#services" onclick="go('main')">서비스</a><a href="#risk" onclick="go('main')">리스크·판례</a><a href="#cases" onclick="go('main')">사례</a><a href="#contact" onclick="go('main')">상담 문의</a>
-    <button class="back" id="backBtn" onclick="go('main')">← 처음으로</button>
+  <span class="who" onclick="go('main');closeNav()" style="cursor:pointer">유영곤<small>SAMSUNG LIFE · GFC</small></span>
+  <button class="navtoggle" id="navToggle" aria-label="메뉴" onclick="toggleNav()">☰</button>
+  <nav id="navMenu">
+    <a href="#services" onclick="go('main');closeNav()">서비스</a><a href="#risk" onclick="go('main');closeNav()">리스크·판례</a><a href="#cases" onclick="go('main');closeNav()">사례</a><a href="#contact" onclick="go('main');closeNav()">상담 문의</a>
+    <button class="back" id="backBtn" onclick="go('main');closeNav()">← 처음으로</button>
   </nav>
 </div></div>
 
@@ -296,7 +306,7 @@
   <p class="label">Profile</p>
   <h2 class="title">약력</h2>
   <ul class="bio">
-    <li>現 삼성생명 서초법인지역단 강남법인지점</li>
+    <li>現 삼성생명 강남법인지점 GFC</li>
     <li>WATT 사업부 파트장</li>
     <li>팩앤폴드 대표</li>
     <li>라우드커뮤니케이션 사업부 부장</li>
@@ -512,8 +522,7 @@
 </div>
 
 <footer>
-  유영곤 · 삼성생명 법인사업부 Group Financial Consultant<br>
-  <span class="q">"모든 리스크를 예측할 수는 없지만 대비는 할 수 있습니다."</span><br>
+  유영곤 · 삼성생명 법인사업부<br>Group Financial Consultant<br>
   © 2026 · 본 페이지는 개인 소개 및 비즈니스 목적으로 제작되었습니다.
 </footer>
 
@@ -732,7 +741,7 @@
     <p class="label">Pension Tax Credit</p>
     <h2 class="title">연금 세액공제,<br><span class="gold">이렇게 채우면 최대치</span></h2>
     <p class="lead">연금저축(보험·펀드)과 IRP를 합산해 연 900만원까지 세액공제 받을 수 있습니다. 상품은 보험사·증권사·은행 어디든 가능하며, 혜택은 동일합니다.</p>
-    <div class="svc" style="grid-template-columns:repeat(2,1fr)">
+    <div class="svc svc2">
       <div class="card"><span class="ic">🛡️</span><h4>연금저축보험</h4><p class="d">원리금 보장, 안정적인 노후소득 확보형</p>
         <ul><li>연 600만원까지 세액공제</li><li>원금 보장 중심 설계</li><li>안정성 최우선인 분께 적합</li></ul></div>
       <div class="card"><span class="ic">📈</span><h4>연금저축펀드 / IRP</h4><p class="d">펀드·ETF 등 투자형, 합산한도 활용</p>
@@ -761,7 +770,7 @@
     <p class="label">Personal Class</p>
     <h2 class="title">필요하면<br><span class="gold">1:1 교육도 해드립니다</span></h2>
     <p class="lead">상담에서 끝나지 않습니다. 스스로 판단할 수 있는 눈을 만드는 것까지가 제 역할입니다.</p>
-    <div class="svc" style="grid-template-columns:repeat(2,1fr)">
+    <div class="svc svc2">
       <div class="card"><span class="ic">📚</span><h4>실전 투자·재테크 원리</h4><p class="d">직접 해본 경험에 기반한 원칙 중심 교육</p>
         <ul><li>시장을 보는 기본 원리</li><li>흔한 실패 패턴과 원칙</li></ul></div>
       <div class="card"><span class="ic">🧾</span><h4>연말정산 &amp; 절세 실전 가이드</h4><p class="d">시즌 전에 준비하면 환급이 달라집니다</p>
@@ -854,6 +863,8 @@
     var c=document.getElementById('perContact');
     if(c){c.scrollIntoView({behavior:'smooth'})}
   }
+  function toggleNav(){var m=document.getElementById('navMenu');if(m){m.classList.toggle('open')}}
+  function closeNav(){var m=document.getElementById('navMenu');if(m){m.classList.remove('open')}}
 
   // 상담 폼 — AJAX 제출 + 인라인 성공/에러 (페이지 이동 없음)
   document.querySelectorAll('form.form').forEach(function(form){
