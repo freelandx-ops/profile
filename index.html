@@ -120,7 +120,13 @@
   .prec p{font-size:.87rem;color:var(--mut);font-weight:300;line-height:1.85}
 
   /* tables */
-  .tblwrap{overflow-x:auto;margin-top:26px;border:1px solid var(--line2);border-radius:2px}
+  .tblwrap{overflow-x:auto;margin-top:26px;border:1px solid var(--line2);border-radius:2px;
+    background:
+      linear-gradient(90deg,var(--bg),transparent) left/28px 100% no-repeat,
+      linear-gradient(90deg,transparent,var(--bg)) right/28px 100% no-repeat,
+      radial-gradient(farthest-side at 0 50%,rgba(0,0,0,.55),transparent) left/16px 100% no-repeat,
+      radial-gradient(farthest-side at 100% 50%,rgba(0,0,0,.55),transparent) right/16px 100% no-repeat;
+    background-attachment:local,local,scroll,scroll}
   table{width:100%;border-collapse:collapse;font-size:.86rem;min-width:560px}
   th{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.1em;color:var(--gold);text-transform:uppercase;
     text-align:left;padding:13px 16px;border-bottom:1px solid var(--line2);background:rgba(201,162,75,.05);font-weight:500;white-space:nowrap}
