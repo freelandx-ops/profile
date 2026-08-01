@@ -214,6 +214,23 @@
   footer{border-top:1px solid var(--line);padding:36px 28px;text-align:center;color:var(--mut2);font-size:.8rem;font-weight:300;line-height:2}
   footer .q{font-family:'Noto Serif KR',serif;color:var(--mut);font-size:.9rem}
 
+  /* 채널 아이콘 */
+  .social{display:flex;flex-wrap:wrap;justify-content:center;gap:16px}
+  .social a{display:flex;flex-direction:column;align-items:center;gap:9px;
+    text-decoration:none;color:var(--mut);transition:.22s}
+  .social a i{width:46px;height:46px;border:1px solid var(--line2);border-radius:50%;
+    display:flex;align-items:center;justify-content:center;transition:.22s}
+  .social a svg{width:20px;height:20px;display:block}
+  .social a b{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.16em;
+    font-weight:400;text-transform:uppercase;line-height:1}
+  .social a:hover{color:var(--gold-hi)}
+  .social a:hover i{border-color:var(--gold);transform:translateY(-2px)}
+  .social.compact{margin-top:30px;gap:13px}
+  .social.compact a b{display:none}
+  .social.compact a i{width:42px;height:42px}
+  footer .social{margin-bottom:26px}
+  @media(max-width:400px){.social.compact{gap:10px}.social.compact a i{width:38px;height:38px}}
+
   .view{display:none}
   .view.on{display:block}
   .bar .topback{display:none;align-items:center;gap:6px;background:transparent;border:1px solid var(--line2);color:var(--ink);
@@ -314,6 +331,13 @@
     <a class="btn p" href="#quickdiag">무료 진단 받기 →</a>
     <a class="btn s" href="#seminar">무료 세미나 신청 →</a>
     <a class="btn s" href="#route">서비스 알아보기 →</a>
+  </div>
+  <div class="social compact">
+    <a href="https://www.instagram.com/founders.magazine.kr/" target="_blank" rel="noopener" aria-label="인스타그램"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1.15" fill="currentColor" stroke="none"/></svg></i><b>Instagram</b></a>
+    <a href="https://www.threads.com/@founders.magazine.kr" target="_blank" rel="noopener" aria-label="스레드"><i><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.589 12c.027 3.086.718 5.496 2.057 7.164 1.43 1.783 3.631 2.698 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.75-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.361-.218-3.259-.801-1.063-.689-1.685-1.74-1.752-2.964-.065-1.19.408-2.285 1.33-3.082.88-.76 2.119-1.207 3.583-1.291a13.853 13.853 0 0 1 3.02.142c-.126-.742-.375-1.332-.75-1.757-.513-.586-1.308-.883-2.359-.89h-.029c-.844 0-1.992.232-2.721 1.32L7.734 7.847c.98-1.454 2.568-2.256 4.478-2.256h.044c3.194.02 5.097 1.975 5.287 5.388.108.046.216.094.321.142 1.49.7 2.58 1.761 3.154 3.07.797 1.82.871 4.79-1.548 7.158-1.85 1.81-4.094 2.628-7.277 2.65Zm1.003-11.69c-.242 0-.487.007-.739.021-1.836.103-2.98.946-2.916 2.143.067 1.256 1.452 1.839 2.784 1.767 1.224-.065 2.818-.543 3.086-3.71a10.5 10.5 0 0 0-2.215-.221Z"/></svg></i><b>Threads</b></a>
+    <a href="https://blog.naver.com/seceder_" target="_blank" rel="noopener" aria-label="네이버 블로그"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M9 16.5V7.5l6 9v-9"/></svg></i><b>Blog</b></a>
+    <a href="https://www.linkedin.com/in/yeonggon-yu-95054b4b/" target="_blank" rel="noopener" aria-label="링크드인"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3.5"/><path d="M7.6 10.6V17"/><circle cx="7.6" cy="7.4" r="1.15" fill="currentColor" stroke="none"/><path d="M11.6 17v-6.4M11.6 13.3c0-1.7 1-2.7 2.5-2.7s2.4 1 2.4 2.7V17"/></svg></i><b>LinkedIn</b></a>
+    <a href="https://open.kakao.com/o/sPSLDLEi" target="_blank" rel="noopener" aria-label="카카오톡 오픈채팅"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4.2c-4.8 0-8.7 3-8.7 6.7 0 2.3 1.5 4.4 3.8 5.6L6.3 20l3.7-2c.6.1 1.3.2 2 .2 4.8 0 8.7-3 8.7-6.7S16.8 4.2 12 4.2z"/></svg></i><b>KakaoTalk</b></a>
   </div>
 </header>
 
@@ -654,6 +678,13 @@
 </div>
 
 <footer>
+  <div class="social">
+    <a href="https://www.instagram.com/founders.magazine.kr/" target="_blank" rel="noopener" aria-label="인스타그램"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1.15" fill="currentColor" stroke="none"/></svg></i><b>Instagram</b></a>
+    <a href="https://www.threads.com/@founders.magazine.kr" target="_blank" rel="noopener" aria-label="스레드"><i><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.589 12c.027 3.086.718 5.496 2.057 7.164 1.43 1.783 3.631 2.698 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.75-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.361-.218-3.259-.801-1.063-.689-1.685-1.74-1.752-2.964-.065-1.19.408-2.285 1.33-3.082.88-.76 2.119-1.207 3.583-1.291a13.853 13.853 0 0 1 3.02.142c-.126-.742-.375-1.332-.75-1.757-.513-.586-1.308-.883-2.359-.89h-.029c-.844 0-1.992.232-2.721 1.32L7.734 7.847c.98-1.454 2.568-2.256 4.478-2.256h.044c3.194.02 5.097 1.975 5.287 5.388.108.046.216.094.321.142 1.49.7 2.58 1.761 3.154 3.07.797 1.82.871 4.79-1.548 7.158-1.85 1.81-4.094 2.628-7.277 2.65Zm1.003-11.69c-.242 0-.487.007-.739.021-1.836.103-2.98.946-2.916 2.143.067 1.256 1.452 1.839 2.784 1.767 1.224-.065 2.818-.543 3.086-3.71a10.5 10.5 0 0 0-2.215-.221Z"/></svg></i><b>Threads</b></a>
+    <a href="https://blog.naver.com/seceder_" target="_blank" rel="noopener" aria-label="네이버 블로그"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M9 16.5V7.5l6 9v-9"/></svg></i><b>Blog</b></a>
+    <a href="https://www.linkedin.com/in/yeonggon-yu-95054b4b/" target="_blank" rel="noopener" aria-label="링크드인"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3.5"/><path d="M7.6 10.6V17"/><circle cx="7.6" cy="7.4" r="1.15" fill="currentColor" stroke="none"/><path d="M11.6 17v-6.4M11.6 13.3c0-1.7 1-2.7 2.5-2.7s2.4 1 2.4 2.7V17"/></svg></i><b>LinkedIn</b></a>
+    <a href="https://open.kakao.com/o/sPSLDLEi" target="_blank" rel="noopener" aria-label="카카오톡 오픈채팅"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4.2c-4.8 0-8.7 3-8.7 6.7 0 2.3 1.5 4.4 3.8 5.6L6.3 20l3.7-2c.6.1 1.3.2 2 .2 4.8 0 8.7-3 8.7-6.7S16.8 4.2 12 4.2z"/></svg></i><b>KakaoTalk</b></a>
+  </div>
   유영곤 · 삼성생명 법인사업부<br>Group Financial Consultant<br>
   © 2026 · 본 페이지는 개인 소개 및 비즈니스 목적으로 제작되었습니다.
 </footer>
