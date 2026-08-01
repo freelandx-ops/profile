@@ -31,6 +31,8 @@
     font-size:15.5px;line-height:1.8;-webkit-font-smoothing:antialiased;word-break:keep-all}
   .container{max-width:1020px;margin:0 auto;padding:0 28px}
 
+  /* 앵커 점프 시 고정 네비(56px)가 섹션 머리를 덮지 않게 */
+  section[id],div[id]{scroll-margin-top:72px}
   .bar{position:fixed;top:0;left:0;right:0;z-index:30;height:56px;
     background:rgba(14,15,18,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
   .bar .in{max-width:1020px;margin:0 auto;padding:0 28px;height:100%;display:flex;align-items:center;justify-content:space-between}
