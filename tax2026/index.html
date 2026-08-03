@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>2026년 세제개편안 · 무엇이 어떻게 바뀌나</title>
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --ink:#1d1d1f; --muted:#7a7a7a; --faint:#a8a8ac; --hairline:#e0e0e0;
+    --accent:#1428A0; --accent-dark:#6E8CF2;
+    --parchment:#f5f5f7; --tile:#272729;
+  }
+  html,body{overflow-x:clip;max-width:100%}
+  html{background:#fff}
+  body{font-family:'Pretendard Variable',Pretendard,system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;text-rendering:geometricPrecision;word-break:keep-all;
+    background:#fff;color:var(--ink);font-size:17px;line-height:1.74;letter-spacing:-.02em}
+  .wrap{max-width:720px;margin:0 auto;padding:0 24px;min-width:0}
+  .n{color:var(--accent);font-weight:700}
+
+  /* ══════ 표지 ══════ */
+  .cover{background:var(--tile);padding:92px 0 72px}
+  .cover *{color:#fff}
+  .cover .kicker{color:var(--accent-dark);font-size:13px;font-weight:600;letter-spacing:.1em;margin-bottom:20px}
+  .cover h1{font-size:clamp(25px,6.4vw,44px);word-break:keep-all;overflow-wrap:break-word;font-weight:700;line-height:1.2;letter-spacing:-.036em}
+  .cover h1 em{font-style:normal;color:var(--accent-dark)}
+  .cover .lead{color:#c8c8cc;font-size:clamp(16px,3.9vw,19px);line-height:1.62;margin-top:22px}
+  .cover .flag{margin-top:40px;padding:21px 24px 23px;background:rgba(255,255,255,.08);border-radius:16px}
+  .cover .flag .h{font-size:17px;font-weight:600;line-height:1.45;margin-bottom:9px}
+  .cover .flag .d{color:#a8a8ae;font-size:15px;line-height:1.6}
+
+  /* ══════ 1층 · 섹션 ══════ */
+  .part{background:var(--parchment);padding:52px 0 46px;margin-bottom:80px}
+  .part .no{font-size:14px;font-weight:700;letter-spacing:.14em;color:var(--accent);margin-bottom:14px}
+  .part h2{font-size:clamp(31px,8vw,44px);font-weight:700;letter-spacing:-.04em;line-height:1.12}
+  .part .items{font-size:clamp(15px,3.6vw,17px);color:var(--muted);margin-top:16px;letter-spacing:-.022em}
+
+  /* ══════ 2층 · 항목 ══════ */
+  .topic + .topic{margin-top:96px;padding-top:72px;border-top:1px solid var(--hairline)}
+  .topic > h3{font-size:clamp(24px,5.8vw,32px);font-weight:700;letter-spacing:-.036em;line-height:1.22}
+  .topic > .oneline{font-size:clamp(16px,3.9vw,19px);line-height:1.62;color:var(--muted);margin-top:16px}
+  .topic > .oneline b{font-weight:600;color:var(--ink)}
+
+  /* 유리 · 불리 */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:36px;align-items:stretch}
+  @media(max-width:620px){.split{grid-template-columns:1fr}}
+  .side{border-radius:16px;padding:24px 22px;display:flex;flex-direction:column}
+  .side.up{background:var(--accent)}
+  .side.down{background:var(--parchment)}
+  .side .h{font-size:13px;font-weight:700;letter-spacing:.09em;margin-bottom:16px}
+  .side.up .h{color:rgba(255,255,255,.65)}
+  .side.down .h{color:var(--muted)}
+  .side ul{list-style:none;flex:1;display:flex;flex-direction:column}
+  .side li{font-size:17px;line-height:1.45;letter-spacing:-.028em;padding:13px 0;font-weight:500;
+    flex:1;display:flex;flex-direction:column;justify-content:center}
+  .side li + li{border-top:1px solid rgba(0,0,0,.08)}
+  .side li .w{display:block;font-size:14.5px;font-weight:400;line-height:1.4;
+    margin-top:5px;letter-spacing:-.022em}
+  .side.down li .w{color:var(--muted)}
+  .side.up li{color:#fff}
+  .side.up li .w{color:rgba(255,255,255,.66)}
+  .side.up li + li{border-top-color:rgba(255,255,255,.2)}
+
+  /* ══════ 3층 · 중제목 ══════ */
+  h4.mid{font-size:clamp(20px,4.8vw,24px);font-weight:700;letter-spacing:-.032em;line-height:1.34;
+    margin-top:64px;padding-bottom:14px;border-bottom:2px solid var(--ink)}
+
+  /* ══════ 4층 · 소제목 ══════ */
+  h5.sub{font-size:clamp(17px,4.2vw,19px);font-weight:700;letter-spacing:-.028em;line-height:1.44;margin-top:52px}
+  h4.mid + h5.sub{margin-top:34px}
+
+  /* 본문 */
+  p{margin-top:16px}
+  p + p{margin-top:11px}          /* 이어지는 문단은 붙인다 */
+  h4.mid + p{margin-top:22px}
+  h5.sub + p{margin-top:11px}
+  .tw + p{margin-top:18px}
+  p.note{color:var(--muted);font-size:16px}
+
+  /* 표 */
+  .tw{overflow-x:auto;margin-top:20px;-webkit-overflow-scrolling:touch;max-width:100%}
+  h5.sub + .tw{margin-top:16px}
+  table{border-collapse:collapse;width:100%;min-width:min(430px,100%);font-size:16px;letter-spacing:-.024em}
+  caption{caption-side:top;text-align:left;font-size:14.5px;color:var(--muted);
+    background:var(--parchment);padding:12px 14px;border-radius:10px 10px 0 0;letter-spacing:-.018em}
+  th,td{padding:15px 12px;text-align:right;white-space:nowrap;border-bottom:1px solid var(--hairline)}
+  thead th{font-size:13.5px;font-weight:600;color:var(--muted);
+    border-bottom:1.5px solid var(--ink);padding-top:14px;padding-bottom:11px}
+  th:first-child,td:first-child{text-align:left;padding-left:14px}
+  td:last-child,th:last-child{padding-right:14px}
+  tbody th{font-weight:500;font-size:16.5px;color:var(--ink)}
+  .g{color:var(--accent);font-weight:700}
+  .old{color:var(--faint)}
+
+  /* 강조 */
+  .punch{margin-top:26px;background:var(--parchment);border-radius:16px;padding:24px}
+  .punch .t{font-size:clamp(17px,4.2vw,19px);line-height:1.55;letter-spacing:-.03em;font-weight:700;margin:0}
+  .punch .s{font-size:16px;color:var(--muted);line-height:1.68;margin-top:10px}
+
+  /* 체크 */
+  .checks{margin-top:72px}
+  .checks h4{font-size:clamp(20px,4.8vw,24px);font-weight:700;letter-spacing:-.032em;
+    padding-bottom:14px;border-bottom:2px solid var(--ink)}
+  .checks .q{font-size:16px;color:var(--muted);margin-top:16px;margin-bottom:16px}
+  .chk{display:grid;grid-template-columns:32px 1fr;column-gap:14px;align-items:center;
+    padding:16px 18px;margin-bottom:8px;border:1.5px solid transparent;border-radius:13px;
+    background:var(--parchment);cursor:pointer;user-select:none;
+    transition:background .13s,border-color .13s,transform .08s}
+  .chk:hover{background:#eceef6;border-color:#d4d8e8}
+  .chk:active{transform:scale(.993)}
+  .chk.on{background:rgba(20,40,160,.06);border-color:var(--accent)}
+  .box{width:26px;height:26px;border:2px solid #b4b4bd;border-radius:8px;background:#fff;
+    display:flex;align-items:center;justify-content:center;
+    font-size:15px;font-weight:700;color:transparent;transition:.13s;
+    box-shadow:0 1px 2px rgba(0,0,0,.04)}
+  .chk:hover .box{border-color:var(--accent);color:rgba(20,40,160,.3)}
+  .chk.on .box{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:none}
+  .chk .t{font-size:17px;line-height:1.5;letter-spacing:-.024em;color:var(--muted)}
+  .chk.on .t{color:var(--ink);font-weight:600}
+
+  /* 좁은 화면 */
+  @media(max-width:480px){
+    .wrap{padding:0 18px}
+    .cover{padding:76px 0 58px}
+    .part{padding:42px 0 38px;margin-bottom:60px}
+    .topic + .topic{margin-top:72px;padding-top:56px}
+    h4.mid{margin-top:52px}
+    h5.sub{margin-top:42px}
+    .side{padding:20px 18px}
+    .chk{padding:15px 15px}
+    .cover h1 br{display:none}
+    table{min-width:0;font-size:15px}
+    th,td{padding:13px 9px}
+  }
+
+  /* 하단 바 · 폼 · 푸터 */
+  .tally{position:fixed;left:0;right:0;bottom:0;z-index:29;transform:translateY(105%);transition:.26s;
+    background:rgba(255,255,255,.97);backdrop-filter:blur(14px);border-top:1px solid var(--hairline)}
+  .tally.on{transform:translateY(0)}
+  .tally .in{max-width:720px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:14px}
+  .tally .cnt{font-size:15px;color:var(--muted);letter-spacing:-.022em}
+  .tally .cnt b{color:var(--accent);font-size:18px;font-weight:700}
+  .btn{display:inline-block;background:var(--accent);color:#fff;border:0;border-radius:100px;
+    font-family:inherit;font-size:15px;font-weight:600;letter-spacing:-.022em;
+    padding:12px 24px;text-decoration:none;cursor:pointer;white-space:nowrap}
+  .form{background:var(--parchment);border-radius:18px;padding:32px 26px;margin-top:24px}
+  .form label{display:block;font-size:14px;font-weight:600;color:var(--muted);margin:22px 0 8px;letter-spacing:-.022em}
+  .form label:first-of-type{margin-top:0}
+  .form input,.form textarea{width:100%;background:#fff;border:1px solid var(--hairline);border-radius:12px;
+    color:var(--ink);font-family:inherit;font-size:16.5px;letter-spacing:-.022em;padding:14px 15px}
+  .form textarea{min-height:88px;resize:vertical;line-height:1.7}
+  .form .picked{background:#fff;border:1px solid var(--hairline);border-radius:12px;padding:15px;
+    font-size:15px;color:var(--muted);line-height:1.8;min-height:54px;white-space:pre-line}
+  .form .fine{font-size:13.5px;color:var(--muted);margin-top:18px;line-height:1.7}
+  footer{border-top:1px solid var(--hairline);margin-top:96px;padding:40px 0 90px;
+    font-size:14.5px;color:var(--muted);line-height:1.78}
+  footer .who{margin-top:26px;padding-top:22px;border-top:1px solid var(--hairline);
+    display:flex;justify-content:space-between;align-items:flex-end}
+  footer .who b{display:block;font-weight:600;color:var(--ink)}
+</style>
+</head>
+<body>
+
+<div class="cover"><div class="wrap">
+  <p class="kicker">2026년 세제개편안</p>
+  <h1>무엇이, <em>얼마에서 얼마로</em>,<br>언제부터 바뀌나</h1>
+  <p class="lead">항목마다 유리한 쪽과 불리한 쪽을 먼저 적었습니다.</p>
+  <div class="flag">
+    <p class="h">아직 정부안입니다</p>
+    <p class="d">9월 국회 제출 후 12월에 확정됩니다. 심의 과정에서 바뀔 수 있으며, 확정되면 이 페이지를 갱신합니다.</p>
+  </div>
+</div></div>
+
+<div class="part"><div class="wrap"><p class="no">01</p><h2>부동산</h2><p class="items">종합부동산세 · 양도소득세 · 토지</p></div></div><div class="wrap"><article class="topic"><h3>종합부동산세</h3><p class="oneline">기준이 <b>주택 수</b>에서 <b>주택가액</b>으로 옮겨갑니다. 그리고 <b>실제로 사는지</b>를 봅니다.</p><div class="split"><div class="side up"><p class="h">유리</p><ul><li>공시가 14억 이하 실거주 1주택</li><li>시가 30억 이하 실거주 1주택</li><li>거주기간 짧은 실거주자<span class="w">기본공제 인상은 거주기간과 무관</span></li><li>65세 이상 10년 거주자<span class="w">납부유예 소득요건 면제</span></li><li>전근·취학·부모봉양 비거주<span class="w">최장 3년 거주로 인정</span></li><li>지방 2주택 이하<span class="w">공정시장가액 70%에서 멈춤</span></li></ul></div><div class="side down"><p class="h">불리</p><ul><li>비거주 1주택<span class="w">공제 9억 + 공제율 20%</span></li><li>보유만 오래 하고 안 산 사람<span class="w">보유공제 폐지</span></li><li>시가 50억 이상 주택</li><li>3주택 이상<span class="w">공정시장가액 ’28년 80%</span></li><li>법인 명의 주택<span class="w">’28년 5.0% 단일세율</span></li><li>고령·장기거주 고액 공제자<span class="w">세액공제 한도 신설</span></li></ul></div></div><h4 class="mid">무엇이 바뀌나</h4><div class="tw"><table><thead><tr><th>항목</th><th>현행</th><th>개정안</th></tr></thead><tbody><tr><th>기본공제 · 실거주 1주택</th><td class="old">12억</td><td class="g">14억</td></tr><tr><th>기본공제 · 비거주 1주택</th><td class="old">12억</td><td class="g">9억</td></tr><tr><th>세액공제 기준</th><td class="old">보유기간</td><td class="g">거주기간</td></tr><tr><th>공정시장가액비율</th><td class="old">60%</td><td class="g">70%</td></tr><tr><th>최고세율</th><td class="old">2.7%</td><td class="g">5.0%</td></tr><tr><th>세부담상한</th><td class="old">150%</td><td class="g">200%</td></tr><tr><th>과세 기준</th><td class="old">주택 수 + 가액</td><td class="g">가액</td></tr></tbody></table></div><p class="note">’27년부터 단계 시행됩니다. 세율 단일화는 <span class="n">’28년</span>부터이고, 아래 숫자는 모두 ’28년 기준입니다.</p><h4 class="mid">왜 그렇게 되나</h4><h5 class="sub">같은 집인데 살았느냐로 <span class="n">14배</span>가 갈립니다</h5><div class="tw"><table><caption>시가 20억 · 공시가 15억 · 60세 · 종부세 (만원)</caption><thead><tr><th>거주 여부</th><th>현행</th><th>개정안 ’28</th><th>변화</th></tr></thead><tbody><tr><th>10년 실거주</th><td class="old">27.6</td><td class="g">10.8</td><td>16.8 감소</td></tr><tr><th>10년 보유, 비거주</th><td class="old">27.6</td><td class="g">152.1</td><td>5.5배</td></tr></tbody></table></div><p>실거주 쪽은 기본공제가 <span class="n">14억</span>으로 올라 내려갔습니다. 비거주 쪽은 공제가 <span class="n">9억</span>으로 내려간 데다, 보유공제가 거주공제로 바뀌면서 공제율이 <span class="n">60%에서 20%</span>로 떨어졌습니다.</p><h5 class="sub">그런데 실거주라고 다 유리하지는 않습니다</h5><div class="tw"><table><caption>10년 실거주 1주택 · 종부세 (만원)</caption><thead><tr><th>주택 시가</th><th>현행</th><th>개정안 ’28</th><th>변화</th></tr></thead><tbody><tr><th>20억</th><td class="old">27.6</td><td class="g">10.8</td><td>감소</td></tr><tr><th>30억</th><td class="old">91.0</td><td class="g">76.0</td><td>감소</td></tr><tr><th>50억</th><td class="old">453.9</td><td class="g">978.5</td><td>2.2배</td></tr><tr><th>70억</th><td class="old">937.7</td><td class="g">3,295.7</td><td>3.5배</td></tr></tbody></table></div><div class="punch"><p class="t"><span class="n">30억</span>까지는 실거주하면 줄고, <span class="n">50억</span>부터는 실거주해도 늡니다.</p><p class="s">최고세율이 2.7에서 5.0%로 오르기 때문입니다. 그래서 이번 개편은 축이 하나가 아니라 둘입니다. 사는지, 그리고 얼마짜리인지.</p></div><h5 class="sub">지금 공제를 못 받던 사람이 제일 크게 줄어듭니다</h5><div class="tw"><table><caption>시가 20억 1주택 · 거주기간만 다름 · 종부세 (만원)</caption><thead><tr><th>나이 · 거주기간</th><th>현행</th><th>개정안 ’28</th><th>변화</th></tr></thead><tbody><tr><th>60세 · 10년 거주</th><td class="old">27.6</td><td class="g">10.8</td><td>16.8 감소</td></tr><tr><th>50세 · 2년 거주</th><td class="old">69.1</td><td class="g">26.9</td><td>42.2 감소</td></tr></tbody></table></div><p>2년밖에 안 살아서 지금은 세액공제를 한 푼도 못 받는 사람입니다. 그래서 현행 부담이 <span class="n">69.1만원</span>으로 오히려 더 컸는데, 개편 후에는 감소폭이 제일 큽니다.</p><p>기본공제 <span class="n">14억</span> 인상이 거주기간과 상관없이 적용되기 때문입니다. 오래 살아야 유리한 구조가 아닙니다.</p><div class="checks"><h4>체크</h4><p class="q">해당되는 것을 눌러 주세요. 방향이 갈리는 자리입니다.</p><div class="chk" data-t="[종합부동산세] 실제로 살지 않는 집이 있다"><span class="box">&#10003;</span><span class="t">실제로 살지 않는 집이 있다</span></div><div class="chk" data-t="[종합부동산세] 그 집을 10년 넘게 보유했다"><span class="box">&#10003;</span><span class="t">그 집을 10년 넘게 보유했다</span></div><div class="chk" data-t="[종합부동산세] 직장, 학교, 부모 봉양 때문에 집을 비운 적이 있다"><span class="box">&#10003;</span><span class="t">직장, 학교, 부모 봉양 때문에 집을 비운 적이 있다</span></div><div class="chk" data-t="[종합부동산세] 비운 기간이 3년을 넘는다"><span class="box">&#10003;</span><span class="t">비운 기간이 3년을 넘는다</span></div><div class="chk" data-t="[종합부동산세] 시가 50억이 넘는 집이 있다"><span class="box">&#10003;</span><span class="t">시가 50억이 넘는 집이 있다</span></div><div class="chk" data-t="[종합부동산세] 법인 명의로 보유한 주택이 있다"><span class="box">&#10003;</span><span class="t">법인 명의로 보유한 주택이 있다</span></div></div></article><article class="topic"><h3>양도소득세</h3><p class="oneline">보유만으로는 공제가 안 나옵니다. 그리고 다주택자에게 <b>’27~’28년은 창(窓)</b>입니다.</p><div class="split"><div class="side up"><p class="h">유리</p><ul><li>10년 이상 실거주 1주택<span class="w">거주 연 8%, 최대 80%</span></li><li>’27~’28년에 파는 조정지역 다주택<span class="w">중과 +20 → +5%p</span></li><li>10년 거주 + 30억 이하 1주택<span class="w">기본공제 250만 → 2,500만원</span></li><li>65세 이상 수도권 처분 후 지방 이주<span class="w">’27년 50% 감면, 한도 5억</span></li><li>비조정지역 다주택 실거주자<span class="w">거주 연 2% 유지</span></li><li>지방 세컨드홈 보유자<span class="w">대상지역 비수도권 전역으로 확대</span></li></ul></div><div class="side down"><p class="h">불리</p><ul><li>보유만 하고 안 산 1주택<span class="w">보유공제 40% → 0%</span></li><li>’29년 이후 파는 다주택<span class="w">중과 +20/+30%p 복귀</span></li><li>양도차익이 큰 1주택<span class="w">공제 한도 ’29년 10억 신설</span></li><li>일시적 2주택<span class="w">조정지역 3년 → 2년</span></li><li>조정지역 매입임대 아파트<span class="w">중과배제·장특공 우대 폐지</span></li><li>상생임대주택<span class="w">거주요건 면제 ’26.12.31. 종료</span></li></ul></div></div><h4 class="mid">무엇이 바뀌나</h4><div class="tw"><table><thead><tr><th>항목</th><th>현행</th><th>개정안</th></tr></thead><tbody><tr><th>1세대 1주택 공제</th><td class="old">보유 4% + 거주 4%</td><td class="g">거주 8%</td></tr><tr><th>1세대 1주택 최대</th><td class="old">80%</td><td class="g">80%</td></tr><tr><th>다주택 비조정</th><td class="old">보유 연 2%</td><td class="g">거주 연 2%</td></tr><tr><th>공제 한도</th><td class="old">없음</td><td class="g">’28년 20억 · ’29년 10억</td></tr><tr><th>다주택 중과 (2주택)</th><td class="old">+20%p</td><td class="g">’27년 +5%p · ’28년 +10%p</td></tr><tr><th>장기거주 1주택 기본공제</th><td class="old">250만원</td><td class="g">2,500만원</td></tr><tr><th>일시적 2주택 기간</th><td class="old">3년</td><td class="g">2년</td></tr></tbody></table></div><p class="note">공제 개편은 ’27년까지 현행과 같고 <span class="n">’29년</span>부터 거주 연 8%가 완성됩니다.</p><h4 class="mid">왜 그렇게 되나</h4><h5 class="sub">축이 「보유」에서 「거주」로 통째로 옮겨갑니다</h5><p>10년 보유하고 살지 않았다면 지금은 <span class="n">40%</span> 공제를 받습니다. 개정안에서는 <span class="n">0%</span>입니다.</p><p>보유 항목 자체가 없어지기 때문입니다. 반대로 10년을 실제로 살았다면 <span class="n">80%</span>입니다.</p><h5 class="sub">다주택 중과는 오히려 한시 완화입니다</h5><div class="tw"><table><caption>2주택자 · 기본세율에 더해지는 가산</caption><thead><tr><th>시기</th><th>현행</th><th>’27년</th><th>’28년</th><th>’29년~</th></tr></thead><tbody><tr><th>중과세율</th><td class="old">+20%p</td><td>+5%p</td><td class="g">+10%p</td><td>원래대로</td></tr></tbody></table></div><p>정부가 이유를 직접 적었습니다. 「종부세 정상화에 따른 <span class="n">매도기회 부여</span>」입니다. 2년 이상 보유한 조정대상지역 주택이 대상입니다.</p><div class="punch"><p class="t">지금 깎아주고 되돌리는 구조입니다.</p><p class="s">다만 종부세는 같은 기간에 오릅니다. 팔면 양도세를 덜 내지만 안 팔면 종부세를 더 냅니다. 어느 쪽이 큰지는 집마다 다릅니다.</p></div><div class="checks"><h4>체크</h4><p class="q">해당되는 것을 눌러 주세요. 방향이 갈리는 자리입니다.</p><div class="chk" data-t="[양도소득세] 오래 보유했지만 실제로 살지는 않은 집이 있다"><span class="box">&#10003;</span><span class="t">오래 보유했지만 실제로 살지는 않은 집이 있다</span></div><div class="chk" data-t="[양도소득세] 그 집을 파는 것을 생각해본 적이 있다"><span class="box">&#10003;</span><span class="t">그 집을 파는 것을 생각해본 적이 있다</span></div><div class="chk" data-t="[양도소득세] 조정대상지역에 집이 있고 2년 이상 보유했다"><span class="box">&#10003;</span><span class="t">조정대상지역에 집이 있고 2년 이상 보유했다</span></div><div class="chk" data-t="[양도소득세] 65세가 넘었고 수도권 집을 정리할 생각이 있다"><span class="box">&#10003;</span><span class="t">65세가 넘었고 수도권 집을 정리할 생각이 있다</span></div><div class="chk" data-t="[양도소득세] 일시적 2주택 상태이고 종전 주택을 아직 안 팔았다"><span class="box">&#10003;</span><span class="t">일시적 2주택 상태이고 종전 주택을 아직 안 팔았다</span></div></div></article><article class="topic"><h3>토지</h3><p class="oneline">비사업용 토지는 <b>세 가지가 동시에</b> 옵니다. 전부 「사업용이냐」 하나로 갈립니다.</p><div class="split"><div class="side up"><p class="h">영향 없음</p><ul><li>사업에 실제로 쓰는 토지<span class="w">판정 기준은 지목이 아니라 실제 사용</span></li><li>’27년 안에 정리하는 경우<span class="w">1년 유예 후 ’28년 시행</span></li><li>주택신축용 토지<span class="w">종부세 합산배제에 별도합산 토지 추가</span></li></ul></div><div class="side down"><p class="h">불리</p><ul><li>비사업용 토지를 파는 개인<span class="w">장기보유특별공제 30% 배제</span></li><li>비사업용 토지 양도차익<span class="w">중과세율 10 → 20%p</span></li><li>법인 명의 비사업용 토지<span class="w">추가과세 10 → 20%</span></li><li>종합합산 대상 토지<span class="w">종부세 최고세율 3 → 4%</span></li></ul></div></div><h4 class="mid">무엇이 바뀌나</h4><div class="tw"><table><thead><tr><th>항목</th><th>현행</th><th>개정안</th></tr></thead><tbody><tr><th>비사업용 토지 장특공</th><td class="old">최대 30%</td><td class="g">배제</td></tr><tr><th>비사업용 토지 중과</th><td class="old">10%p</td><td class="g">20%p</td></tr><tr><th>법인 추가과세</th><td class="old">10%</td><td class="g">20%</td></tr><tr><th>종합합산 토지 종부세</th><td class="old">3%</td><td class="g">4%</td></tr></tbody></table></div><p class="note">1년 유예를 두고 <span class="n">’28년</span>부터 시행됩니다. 유예 자체가 정리할 시간을 준다는 뜻입니다.</p><h4 class="mid">왜 그렇게 되나</h4><h5 class="sub">세 가지가 겹칩니다</h5><p>공제는 사라지고, 양도세 중과는 두 배가 되고, 종부세도 오릅니다. 법인이면 추가과세도 같이 올라갑니다. 판정은 지목이 아니라 <span class="n">실제로 무엇에 쓰고 있느냐</span>로 합니다.</p><div class="checks"><h4>체크</h4><p class="q">해당되는 것을 눌러 주세요. 방향이 갈리는 자리입니다.</p><div class="chk" data-t="[토지] 사업에 직접 쓰지 않는 땅이 있다"><span class="box">&#10003;</span><span class="t">사업에 직접 쓰지 않는 땅이 있다</span></div><div class="chk" data-t="[토지] 법인 명의로 보유한 땅이 있다"><span class="box">&#10003;</span><span class="t">법인 명의로 보유한 땅이 있다</span></div><div class="chk" data-t="[토지] 그 땅을 ’28년 전에 정리할 생각이 있다"><span class="box">&#10003;</span><span class="t">그 땅을 ’28년 전에 정리할 생각이 있다</span></div></div></article></div><div class="part"><div class="wrap"><p class="no">02</p><h2>상속 및 증여</h2><p class="items">가업상속공제 · 제3자 사업승계</p></div></div><div class="wrap"><article class="topic"><h3>가업상속공제</h3><p class="oneline">「최대 1,000억으로 늘었다」로 읽으면 반대입니다. 한도는 올랐지만 <b>들어가는 문이 좁아집니다</b>.</p><div class="split"><div class="side up"><p class="h">유리</p><ul><li>30년 이상 경영 + 대상 업종</li><li>45년 이상 경영<span class="w">한도 600 → 900억</span></li><li>50년 이상 경영<span class="w">한도 1,000억</span></li><li>백년소상공인·명문장수기업<span class="w">업종요건 충족으로 간주</span></li><li>특허·영업비밀·숙련기술 보유<span class="w">새 「가업」 정의에 부합</span></li><li>비수도권 사업장<span class="w">토지 공제 3배 유지</span></li></ul></div><div class="side down"><p class="h">불리</p><ul><li>경영 20년 미만<span class="w">대상에서 제외</span></li><li>경영 20~30년<span class="w">사후관리 최대 20년으로 연장</span></li><li>마트·병원·약국·창고·운송업<span class="w">727개 업종에서 제외</span></li><li>프랜차이즈·임대수입 주력<span class="w">「가업」 정의에서 제외</span></li><li>수도권 넓은 사업장 토지<span class="w">바닥면적 7배 → 2배</span></li><li>부업종 매출이 큰 회사<span class="w">안분해 주업종만 공제</span></li></ul></div></div><h4 class="mid">무엇이 바뀌나</h4><div class="tw"><table><thead><tr><th>항목</th><th>현행</th><th>개정안</th></tr></thead><tbody><tr><th>경영기간 요건</th><td class="old">10년</td><td class="g">30년</td></tr><tr><th>사후관리</th><td class="old">5년</td><td class="g">10년</td></tr><tr><th>공제한도</th><td class="old">10/20/30년 = 300/400/600억</td><td class="g">경영연수 × 20억</td></tr><tr><th>최대 한도</th><td class="old">600억</td><td class="g">1,000억</td></tr><tr><th>대상 업종</th><td class="old">시행령</td><td class="g">법률 727개</td></tr><tr><th>심사</th><td class="old">없음</td><td class="g">민·관 심사위원회 승인</td></tr><tr><th>토지 공제</th><td class="old">바닥면적 3~7배</td><td class="g">수도권 2배 · 기타 3배</td></tr><tr><th>공제방식</th><td class="old">전 사업용자산</td><td class="g">주업종 안분</td></tr></tbody></table></div><p class="note">적용은 <span class="n">’27.7.1.</span> 이후 상속개시분입니다. 발표일 기준 약 11개월 뒤입니다.</p><h4 class="mid">왜 그렇게 되나</h4><h5 class="sub">한도 자체는 나빠지지 않았습니다</h5><div class="tw"><table><caption>경영기간별 공제한도</caption><thead><tr><th>경영기간</th><th>현행</th><th>개정안</th></tr></thead><tbody><tr><th>20년</th><td class="old">400억</td><td class="g">400억</td></tr><tr><th>30년</th><td class="old">600억</td><td class="g">600억</td></tr><tr><th>45년</th><td class="old">600억</td><td class="g">900억</td></tr><tr><th>50년 이상</th><td class="old">600억</td><td class="g">1,000억</td></tr></tbody></table></div><p>정부가 붙인 개정이유도 「<span class="n">장수기업 지원 확대</span>」입니다. 20년과 30년 구간은 현행과 같고 30년을 넘긴 만큼만 늘어납니다.</p><div class="punch"><p class="t">이 개정의 무게는 한도가 아니라 문에 있습니다.</p><p class="s">기간, 업종, 심사위원회 셋이 동시에 좁아집니다.</p></div><h5 class="sub">20년 미만은 아예 대상이 아닙니다</h5><p>원칙은 30년입니다. 다만 <span class="n">20년 이상 30년 미만</span>이면 부족한 기간만큼 상속인의 사후관리기간이 늘어납니다. 25년 경영했다면 사후관리가 10년이 아니라 <span class="n">15년</span>입니다.</p><p>현행 10년 요건에 맞춰 준비해온 기업이 여기 걸립니다.</p><h5 class="sub">토지가 조용히 큰 항목입니다</h5><p>바닥면적의 <span class="n">7배</span>까지 인정받던 것이 수도권은 <span class="n">2배</span>가 됩니다. 1㎡당 1,000만원 한도도 새로 붙습니다.</p><p>얼마나 깎이는지는 정부가 사례를 내지 않았습니다. 토지 면적과 공시가를 넣어봐야 나옵니다.</p><div class="checks"><h4>체크</h4><p class="q">해당되는 것을 눌러 주세요. 방향이 갈리는 자리입니다.</p><div class="chk" data-t="[가업상속공제] 회사를 30년 넘게 경영했다"><span class="box">&#10003;</span><span class="t">회사를 30년 넘게 경영했다</span></div><div class="chk" data-t="[가업상속공제] 경영기간이 20년에서 30년 사이다"><span class="box">&#10003;</span><span class="t">경영기간이 20년에서 30년 사이다</span></div><div class="chk" data-t="[가업상속공제] 경영기간이 20년이 안 된다"><span class="box">&#10003;</span><span class="t">경영기간이 20년이 안 된다</span></div><div class="chk" data-t="[가업상속공제] 업종이 마트·병원·약국·창고업·운송업 중 하나다"><span class="box">&#10003;</span><span class="t">업종이 마트·병원·약국·창고업·운송업 중 하나다</span></div><div class="chk" data-t="[가업상속공제] 매출이 두 갈래 이상에서 나온다"><span class="box">&#10003;</span><span class="t">매출이 두 갈래 이상에서 나온다</span></div><div class="chk" data-t="[가업상속공제] 사업장이 수도권에 있고 토지가 넓다"><span class="box">&#10003;</span><span class="t">사업장이 수도권에 있고 토지가 넓다</span></div><div class="chk" data-t="[가업상속공제] 특허·영업비밀·숙련기술을 회사가 갖고 있다"><span class="box">&#10003;</span><span class="t">특허·영업비밀·숙련기술을 회사가 갖고 있다</span></div></div></article><article class="topic"><h3>제3자 사업승계 특례</h3><p class="oneline">자녀에게 물려주는 것만 지원하던 제도에 <b>「남에게 파는 길」</b>이 생깁니다. 신설입니다.</p><div class="split"><div class="side up"><p class="h">유리</p><ul><li>60세 이상 · 20년 이상 경영 최대주주<span class="w">양도세 20% 감면</span></li><li>자녀 승계 계획이 없는 오너</li><li>매출 5천억 미만 중소·중견</li><li>같은 업종 10년 경영한 매수자<span class="w">5년간 세액 10% 감면</span></li><li>매도기업 5년 이상 근무 임직원<span class="w">매수자 요건에 포함</span></li><li>가업상속공제 대상 업종</li></ul></div><div class="side down"><p class="h">조건에 못 미치면</p><ul><li>60세 미만이거나 경영 20년 미만<span class="w">매도자 요건 미달</span></li><li>’28년 이전 또는 ’31년 이후 거래<span class="w">3년 한시 적용기간 밖</span></li><li>5년 내 다시 사들이는 경우<span class="w">매도자 추징</span></li><li>승계 후 지분·자산·고용 미유지<span class="w">매수자 추징</span></li></ul></div></div><h4 class="mid">무엇이 바뀌나</h4><div class="tw"><table><thead><tr><th>대상</th><th>혜택</th><th>한도</th></tr></thead><tbody><tr><th>매도자</th><td>양도소득세 20% 감면</td><td>경영연수 × 연 5천만원</td></tr><tr><th>매수자</th><td>5년간 소득·법인세 10% 감면</td><td>연 5억원</td></tr></tbody></table></div><p class="note">적용기간은 <span class="n">’28.1.1. ~ ’30.12.31.</span> 3년 한시입니다.</p><h4 class="mid">왜 그렇게 되나</h4><h5 class="sub">가업상속공제가 좁아지는 것과 같이 봐야 합니다</h5><p>30년 요건이나 727개 업종에 못 들어가는 회사는 자녀 승계 쪽 길이 막힙니다. 그런 회사에 <span class="n">매각이라는 다른 출구</span>를 세제로 열어준 것입니다.</p><p>특히 「매도기업에서 <span class="n">5년 이상 근무한 임·직원</span>」이 매수자 요건에 들어갔습니다. 내부 직원에게 넘기는 경우를 정부가 승계 경로로 인정한 겁니다.</p><div class="checks"><h4>체크</h4><p class="q">해당되는 것을 눌러 주세요. 방향이 갈리는 자리입니다.</p><div class="chk" data-t="[제3자 사업승계 특례] 60세가 넘었고 최대주주다"><span class="box">&#10003;</span><span class="t">60세가 넘었고 최대주주다</span></div><div class="chk" data-t="[제3자 사업승계 특례] 20년 이상 경영했다"><span class="box">&#10003;</span><span class="t">20년 이상 경영했다</span></div><div class="chk" data-t="[제3자 사업승계 특례] 자녀가 회사를 이어받을 뜻이 없거나 정해지지 않았다"><span class="box">&#10003;</span><span class="t">자녀가 회사를 이어받을 뜻이 없거나 정해지지 않았다</span></div><div class="chk" data-t="[제3자 사업승계 특례] 회사를 오래 함께한 임·직원이 있다"><span class="box">&#10003;</span><span class="t">회사를 오래 함께한 임·직원이 있다</span></div><div class="chk" data-t="[제3자 사업승계 특례] 매출이 5천억원 미만이다"><span class="box">&#10003;</span><span class="t">매출이 5천억원 미만이다</span></div></div></article></div><div class="part"><div class="wrap"><p class="no">03</p><h2>법인</h2><p class="items">자기주식 · 상장주식 평가</p></div></div><div class="wrap"><article class="topic"><h3>자기주식 과세체계 정비</h3><p class="oneline"><b>법인은 가벼워지고 주주는 무거워집니다.</b> 같은 개정 안에서 방향이 반대로 갑니다.</p><div class="split"><div class="side up"><p class="h">유리</p><ul><li>자기주식을 처분하는 법인<span class="w">양도차익 과세대상에서 제외</span></li><li>지주회사 전환 후 자사주 소각<span class="w">과세이연 허용</span></li><li>거래소에서 자사주를 취득하는 경우<span class="w">양도차익 과세로 유지</span></li></ul></div><div class="side down"><p class="h">불리</p><ul><li>처분목적 자사주 취득 주주<span class="w">양도차익 → 의제배당</span></li><li>배당소득이 이미 많은 주주<span class="w">합산 여부에 따라 부담이 커짐</span></li><li>자사주로 지분을 정리하려던 오너<span class="w">3월 상법 개정과 겹침</span></li><li>소각목적 자사주 취득 주주<span class="w">과세 시점이 취득 시로 앞당겨짐</span></li></ul></div></div><h4 class="mid">무엇이 바뀌나</h4><div class="tw"><table><thead><tr><th>구분</th><th>현행</th><th>개정안</th></tr></thead><tbody><tr><th>법인 과세</th><td class="old">처분 시 양도차익 과세</td><td class="g">과세대상 제외</td></tr><tr><th>주주 · 소각목적</th><td class="old">취득·소각 시 의제배당</td><td class="g">취득 시 의제배당</td></tr><tr><th>주주 · 처분목적</th><td class="old">양도차익 과세</td><td class="g">의제배당</td></tr><tr><th>거래 성격</th><td class="old">자산거래 + 자본거래</td><td class="g">자본거래로 일원화</td></tr></tbody></table></div><p class="note"><span class="n">2026년 3월</span> 상법 개정을 세법이 따라간 것입니다. 원문에 「상법을 반영하여」라고 적혀 있습니다.</p><h4 class="mid">왜 그렇게 되나</h4><h5 class="sub">목적에 따라 갈리던 것이 하나로 합쳐집니다</h5><p>지금은 회사가 자사주를 <span class="n">왜 사는지</span>에 따라 주주 과세가 갈립니다. 소각 목적이면 의제배당, 처분 목적이면 양도차익입니다.</p><p>개정안은 목적을 따지지 않습니다. <span class="n">취득하는 순간 의제배당</span>입니다.</p><h5 class="sub">소득의 성격이 바뀝니다</h5><p>양도차익은 <span class="n">양도소득</span>이고 의제배당은 <span class="n">배당소득</span>입니다. 종류가 달라지면 세율 체계도, 다른 소득과 합산되는지도, 신고 방법도 달라집니다.</p><div class="punch"><p class="t">얼마나 달라지는지는 개인의 다른 소득에 따라 갈립니다.</p><p class="s">배당소득은 일정 금액을 넘으면 다른 소득과 합산되기 때문에, 같은 금액을 받아도 사람마다 결과가 다릅니다. 정부는 이 항목에 적용사례를 내지 않았습니다.</p></div><h5 class="sub">3월 상법 개정과 같이 봐야 합니다</h5><p>상법이 이미 자기주식 취득 후 <span class="n">1년 내 소각</span>을 원칙 의무화했습니다. 이사회가 계획을 세우고 매년 주주총회 특별결의를 받으면 예외가 되지만 허용 목적이 법으로 제한돼 있습니다.</p><p>자사주를 사서 오래 들고 있는 구조 자체가 3월에 어려워졌고, 이번 개정으로 그 거래의 세금 성격까지 바뀝니다.</p><div class="checks"><h4>체크</h4><p class="q">해당되는 것을 눌러 주세요. 방향이 갈리는 자리입니다.</p><div class="chk" data-t="[자기주식 과세체계 정비] 회사가 자기주식을 보유하고 있다"><span class="box">&#10003;</span><span class="t">회사가 자기주식을 보유하고 있다</span></div><div class="chk" data-t="[자기주식 과세체계 정비] 자기주식 취득을 검토한 적이 있다"><span class="box">&#10003;</span><span class="t">자기주식 취득을 검토한 적이 있다</span></div><div class="chk" data-t="[자기주식 과세체계 정비] 지분 정리나 승계 과정에서 자사주를 쓸 계획이었다"><span class="box">&#10003;</span><span class="t">지분 정리나 승계 과정에서 자사주를 쓸 계획이었다</span></div><div class="chk" data-t="[자기주식 과세체계 정비] 지주회사 전환을 검토했거나 진행 중이다"><span class="box">&#10003;</span><span class="t">지주회사 전환을 검토했거나 진행 중이다</span></div><div class="chk" data-t="[자기주식 과세체계 정비] 2026년 3월 이후에 자사주 관련 결정을 한 적이 있다"><span class="box">&#10003;</span><span class="t">2026년 3월 이후에 자사주 관련 결정을 한 적이 있다</span></div></div></article><article class="topic"><h3>「주가 누르기」 상장주식 평가</h3><p class="oneline"><b>상장회사 이야기입니다.</b> 비상장 법인이면 이 항목은 해당하지 않습니다.</p><div class="split"><div class="side up"><p class="h">해당 없음</p><ul><li>비상장 법인<span class="w">상장주식 평가 규정이다</span></li><li>PBR이 업종 평균 이상인 상장사</li><li>행위요건·주가하락요건에 안 걸리는 경우</li></ul></div><div class="side down"><p class="h">불리</p><ul><li>최근 6년 PBR 업종 하위 25% 코스피<span class="w">평가기간 확장 대상</span></li><li>최근 6년 PBR 업종 하위 10% 코스닥</li><li>행위요건 + 주가하락요건 동시 충족</li><li>상속·증여를 앞둔 저PBR 상장사 최대주주</li></ul></div></div><h4 class="mid">무엇이 바뀌나</h4><div class="tw"><table><thead><tr><th>항목</th><th>현행</th><th>개정안</th></tr></thead><tbody><tr><th>평가기간</th><td class="old">정해진 기간</td><td class="g">확장 가능</td></tr><tr><th>판단 주체</th><td class="old">-</td><td class="g">평가심의위원회 심의·의결</td></tr><tr><th>추정 요건</th><td class="old">-</td><td class="g">PBR 하위 또는 행위+주가하락</td></tr></tbody></table></div><p class="note">금융위·거래소가 추진 중인 「저PBR 기업 공표제도」 기준을 반영합니다.</p><h4 class="mid">왜 그렇게 되나</h4><h5 class="sub">평가 시점의 주가를 낮춰두는 것을 막는 규정입니다</h5><p>지금은 평가기간이 정해져 있어 그 기간의 주가로 평가됩니다. 요건에 걸리면 <span class="n">기간을 넓혀서</span> 다시 봅니다.</p><p>비상장주식 평가와는 다른 규정입니다.</p><div class="checks"><h4>체크</h4><p class="q">해당되는 것을 눌러 주세요. 방향이 갈리는 자리입니다.</p><div class="chk" data-t="[「주가 누르기」 상장주식 평가] 상장회사의 최대주주 또는 특수관계인이다"><span class="box">&#10003;</span><span class="t">상장회사의 최대주주 또는 특수관계인이다</span></div><div class="chk" data-t="[「주가 누르기」 상장주식 평가] 회사 PBR이 업종 평균보다 낮은 편이다"><span class="box">&#10003;</span><span class="t">회사 PBR이 업종 평균보다 낮은 편이다</span></div><div class="chk" data-t="[「주가 누르기」 상장주식 평가] 상속·증여를 앞두고 있다"><span class="box">&#10003;</span><span class="t">상속·증여를 앞두고 있다</span></div></div></article></div><div class="part"><div class="wrap"><p class="no">04</p><h2>근로 · 노후</h2><p class="items">공제 개편 · 청약저축 · ISA · 퇴직연금</p></div></div><div class="wrap"><article class="topic"><h3>세액공제가 현금으로 바뀝니다</h3><p class="oneline">세액공제가 사라지는 것과 <b>혜택이 사라지는 것은 다릅니다.</b></p><div class="split"><div class="side up"><p class="h">유리</p><ul><li>출산·입양 가구<span class="w">재정지원으로 전환</span></li><li>혼인 가구<span class="w">재정지원으로 전환</span></li><li>대중교통 이용자<span class="w">기본공제로 일원화 + 재정지원</span></li><li>’27년 전에 주택담보대출을 받은 사람<span class="w">’29년까지 유예</span></li></ul></div><div class="side down"><p class="h">불리</p><ul><li>대출받은 집에 살지 않는 사람<span class="w">거주 요건 신설</span></li><li>취학 전 아동 학원비 공제자<span class="w">예능학원 교육비로 축소</span></li><li>하이브리드차 구입 예정<span class="w">개별소비세 감면 종료</span></li><li>전기·수소차 구입 예정<span class="w">’29년 감면 종료</span></li><li>도서·공연비 공제자<span class="w">한도 100만원씩 하향</span></li></ul></div></div><h4 class="mid">무엇이 바뀌나</h4><div class="tw"><table><thead><tr><th>항목</th><th>현행</th><th>개정안</th></tr></thead><tbody><tr><th>출산·입양 세액공제</th><td class="old">세액공제</td><td class="g">폐지 후 재정지원</td></tr><tr><th>혼인 세액공제</th><td class="old">세액공제</td><td class="g">폐지 후 재정지원</td></tr><tr><th>주택저당 이자공제</th><td class="old">거주 무관</td><td class="g">거주하는 경우로 한정</td></tr><tr><th>취학전 학원비</th><td class="old">학원비</td><td class="g">예능학원 교육비</td></tr><tr><th>전기·수소차 개소세</th><td class="old">200/300만원</td><td class="g">’29년 종료</td></tr></tbody></table></div><p class="note">받는 총액이 어떻게 되는지는 <span class="n">세법이 아니라 예산</span>에서 정해집니다.</p><h4 class="mid">왜 그렇게 되나</h4><h5 class="sub">주택저당 이자공제는 방향이 종부세와 같습니다</h5><p>없어지는 게 아니라 <span class="n">거주 요건</span>이 붙습니다. 집을 사고 대출을 받았지만 그 집에 살지 않으면 공제가 빠집니다.</p><p>이번 개편의 축이 「실제로 사느냐」라는 게 여기서도 보입니다.</p><div class="checks"><h4>체크</h4><p class="q">해당되는 것을 눌러 주세요. 방향이 갈리는 자리입니다.</p><div class="chk" data-t="[세액공제가 현금으로 바뀝니다] 주택담보대출 이자로 소득공제를 받고 있다"><span class="box">&#10003;</span><span class="t">주택담보대출 이자로 소득공제를 받고 있다</span></div><div class="chk" data-t="[세액공제가 현금으로 바뀝니다] 그 집에 실제로 살고 있지 않다"><span class="box">&#10003;</span><span class="t">그 집에 실제로 살고 있지 않다</span></div><div class="chk" data-t="[세액공제가 현금으로 바뀝니다] 취학 전 아이의 학원비로 공제를 받아왔다"><span class="box">&#10003;</span><span class="t">취학 전 아이의 학원비로 공제를 받아왔다</span></div><div class="chk" data-t="[세액공제가 현금으로 바뀝니다] 하이브리드차나 전기·수소차 구입을 생각하고 있다"><span class="box">&#10003;</span><span class="t">하이브리드차나 전기·수소차 구입을 생각하고 있다</span></div></div></article><article class="topic"><h3>「없어진다」가 아니라 「올해까지」</h3><p class="oneline">기한이 <b>2년 앞당겨진</b> 항목들입니다. 이미 가입한 것은 그대로 갑니다.</p><div class="split"><div class="side up"><p class="h">유리</p><ul><li>이미 가입한 사람<span class="w">기존 계좌는 그대로 유지</span></li><li>올해 안에 가입하는 사람<span class="w">’26.12.31. 가입분까지 비과세</span></li><li>무주택 세대주 청년<span class="w">총급여 3,600만원 이하</span></li></ul></div><div class="side down"><p class="h">기한 후</p><ul><li>’27년 이후 새로 가입<span class="w">비과세 적용 안 됨</span></li><li>가입을 미루고 있던 사람<span class="w">원래 ’28년까지였던 기한이 앞당겨짐</span></li><li>농어업 종사자<span class="w">목돈마련저축도 같은 구조</span></li></ul></div></div><h4 class="mid">무엇이 바뀌나</h4><div class="tw"><table><thead><tr><th>항목</th><th>현행 기한</th><th>개정안</th></tr></thead><tbody><tr><th>청년 주택청약저축 비과세</th><td class="old">’28.12.31.</td><td class="g">’26.12.31. 가입분까지</td></tr><tr><th>농어가 목돈마련저축</th><td class="old">’28.12.31.</td><td class="g">’26.12.31. 가입분까지</td></tr></tbody></table></div><p class="note">청년 주택청약저축은 이자소득 <span class="n">500만원</span> 한도 비과세입니다.</p><h4 class="mid">왜 그렇게 되나</h4><h5 class="sub">「종료」라고만 들으면 이미 늦은 것으로 읽힙니다</h5><p>없어지는 것은 앞으로 새로 드는 길입니다. <span class="n">올해 안에는 아직 열려 있습니다.</span></p><div class="checks"><h4>체크</h4><p class="q">해당되는 것을 눌러 주세요. 방향이 갈리는 자리입니다.</p><div class="chk" data-t="[「없어진다」가 아니라 「올해까지」] 무주택이고 총급여가 3,600만원 이하다"><span class="box">&#10003;</span><span class="t">무주택이고 총급여가 3,600만원 이하다</span></div><div class="chk" data-t="[「없어진다」가 아니라 「올해까지」] 청년 주택청약저축에 아직 가입하지 않았다"><span class="box">&#10003;</span><span class="t">청년 주택청약저축에 아직 가입하지 않았다</span></div></div></article><article class="topic"><h3>늘어나는 것</h3><p class="oneline">조용하지만 <b>범위가 넓은 항목</b>이 몇 개 있습니다.</p><div class="split"><div class="side up"><p class="h">유리</p><ul><li>소득이 조금 있는 부모님을 부양<span class="w">소득요건 100 → 300만원</span></li><li>월세 사는 사람<span class="w">한도 1,200만원, 청년 공제율 17%</span></li><li>3.3% 원천징수 소득자<span class="w">원천징수 3 → 2%</span></li><li>근로장려금 대상<span class="w">소득요건·지급액 동시 확대</span></li><li>주거가 다른 무주택 부부<span class="w">각각 공제, 합산한도 400만원</span></li><li>장애인 신탁<span class="w">증여세 불산입 5 → 10억원</span></li></ul></div><div class="side down"><p class="h">해당 없음</p><ul><li>부모님 소득이 300만원을 넘는 경우</li><li>자가 거주자<span class="w">월세 공제 대상 아님</span></li></ul></div></div><h4 class="mid">무엇이 바뀌나</h4><div class="tw"><table><thead><tr><th>항목</th><th>현행</th><th>개정안</th></tr></thead><tbody><tr><th>부양가족 소득요건</th><td class="old">100만원</td><td class="g">300만원</td></tr><tr><th>월세 세액공제 한도</th><td class="old">1,000만원</td><td class="g">1,200만원</td></tr><tr><th>인적용역 원천징수</th><td class="old">3%</td><td class="g">2%</td></tr><tr><th>근로장려금 · 맞벌이</th><td class="old">4,400만원</td><td class="g">5,200만원</td></tr><tr><th>장애인 신탁 불산입</th><td class="old">5억원</td><td class="g">10억원</td></tr></tbody></table></div><p class="note">부양가족 소득요건은 근로소득만 있으면 총급여 <span class="n">750만원</span>까지입니다.</p><h4 class="mid">왜 그렇게 되나</h4><h5 class="sub">원천징수는 세금이 주는 게 아닙니다</h5><p><span class="n">미리 떼는 돈</span>이 줄어드는 것이라 연말정산이나 종합소득세 신고 때 정산됩니다. 매달 손에 쥐는 돈은 늘어납니다.</p><div class="checks"><h4>체크</h4><p class="q">해당되는 것을 눌러 주세요. 방향이 갈리는 자리입니다.</p><div class="chk" data-t="[늘어나는 것] 부모님이 소득이 조금 있어 부양가족 공제를 못 받아왔다"><span class="box">&#10003;</span><span class="t">부모님이 소득이 조금 있어 부양가족 공제를 못 받아왔다</span></div><div class="chk" data-t="[늘어나는 것] 월세를 내고 있다"><span class="box">&#10003;</span><span class="t">월세를 내고 있다</span></div><div class="chk" data-t="[늘어나는 것] 3.3%로 원천징수되는 소득이 있다"><span class="box">&#10003;</span><span class="t">3.3%로 원천징수되는 소득이 있다</span></div><div class="chk" data-t="[늘어나는 것] 부부가 직장 때문에 따로 살고 있다"><span class="box">&#10003;</span><span class="t">부부가 직장 때문에 따로 살고 있다</span></div></div></article><article class="topic"><h3>금융 · 노후</h3><p class="oneline">비과세 계좌가 새로 생깁니다. 다만 <b>들어갈 수 없는 사람이 정해져 있습니다.</b></p><div class="split"><div class="side up"><p class="h">유리</p><ul><li>국내주식·펀드 투자자<span class="w">이자·배당 전액 비과세</span></li><li>34세 이하 총급여 7,500만원 이하<span class="w">납입금 10% 소득공제 추가</span></li><li>장기 투자자<span class="w">총 10년까지 연장 가능</span></li><li>BDC 투자자<span class="w">배당소득 1억 한도 9% 분리과세</span></li><li>청년 퇴직연금 가입자<span class="w">세액공제율 12 → 15%</span></li></ul></div><div class="side down"><p class="h">가입 불가 · 미확정</p><ul><li>금융소득종합과세 대상이었던 사람<span class="w">직전 3개 과세기간 중 1회라도 해당하면 제외</span></li><li>예적금 위주 투자자<span class="w">생산적금융 ISA 투자대상에서 제외</span></li><li>저축성보험 가입자<span class="w">비과세가 「재설계」 명단에 올랐으나 내용 미공개</span></li></ul></div></div><h4 class="mid">무엇이 바뀌나</h4><div class="tw"><table><thead><tr><th>항목</th><th>일반 ISA</th><th>생산적금융 ISA</th></tr></thead><tbody><tr><th>세제혜택</th><td>한도 내 비과세, 초과분 9%</td><td>이자·배당 전액 비과세</td></tr><tr><th>납입한도</th><td>연 2천만 / 총 1억</td><td>연 2천만 / 총 2억</td></tr><tr><th>투자기간</th><td>3년 (총 5년)</td><td>3년 (총 10년)</td></tr><tr><th>투자대상</th><td>예적금·국내주식·펀드</td><td>국내주식·펀드·국민성장펀드·BDC</td></tr></tbody></table></div><p class="note">청년형은 34세 이하 총급여 7,500만원 이하가 대상이고 <span class="n">납입금 10% 소득공제</span>가 더해집니다. 적용기한은 모두 ~’29.12.31.입니다.</p><h4 class="mid">왜 그렇게 되나</h4><h5 class="sub">혜택이 큰 쪽일수록 문이 좁습니다</h5><p>생산적금융 ISA와 BDC에 같은 단서가 붙어 있습니다. 「직전 3개 과세기간 중 1회 이상 <span class="n">금융소득종합과세 대상인 자 제외</span>」입니다.</p><p>이자·배당이 일정 금액을 넘어 종합과세 대상이 된 적이 있으면 가입 자체가 안 됩니다.</p><h5 class="sub">아직 내용이 나오지 않은 항목이 하나 있습니다</h5><p><span class="n">장기저축성보험 보험차익의 이자소득 비과세</span>가 조세지출 정비의 「재설계」 명단에 올랐습니다. 정비 사유는 「제도 합리화 및 과세형평 제고」입니다.</p><div class="punch"><p class="t">그런데 개정 내용이 원문 어디에도 없습니다.</p><p class="s">확인된 것은 「명단에 올랐다」까지입니다. 무엇이 어떻게 바뀌는지는 아직 공개되지 않았습니다.</p></div><div class="checks"><h4>체크</h4><p class="q">해당되는 것을 눌러 주세요. 방향이 갈리는 자리입니다.</p><div class="chk" data-t="[금융 · 노후] 이자·배당 소득이 연 2천만원을 넘은 해가 최근에 있다"><span class="box">&#10003;</span><span class="t">이자·배당 소득이 연 2천만원을 넘은 해가 최근에 있다</span></div><div class="chk" data-t="[금융 · 노후] ISA 계좌를 이미 갖고 있다"><span class="box">&#10003;</span><span class="t">ISA 계좌를 이미 갖고 있다</span></div><div class="chk" data-t="[금융 · 노후] 34세 이하이고 총급여가 7,500만원 이하다"><span class="box">&#10003;</span><span class="t">34세 이하이고 총급여가 7,500만원 이하다</span></div><div class="chk" data-t="[금융 · 노후] 퇴직연금(IRP)에 납입하고 있다"><span class="box">&#10003;</span><span class="t">퇴직연금(IRP)에 납입하고 있다</span></div><div class="chk" data-t="[금융 · 노후] 저축성보험을 갖고 있거나 검토 중이다"><span class="box">&#10003;</span><span class="t">저축성보험을 갖고 있거나 검토 중이다</span></div></div></article></div>
+
+<div class="wrap">
+<section class="topic" style="margin-top:96px;padding-top:72px;border-top:1px solid var(--hairline)">
+  <h3>체크하신 항목이 있으신가요</h3>
+  <p class="oneline">체크하신 항목은 <b>본인 숫자나 이력을 봐야 방향이 정해지는 자리</b>입니다. 같은 개정이 조건에 따라 반대로 걸리기 때문입니다.</p>
+  <form class="form" action="https://api.web3forms.com/submit" method="POST">
+    <input type="hidden" name="access_key" value="56ba5ceb-1e23-4de6-b6ca-7016a3e1e8d7">
+    <input type="hidden" name="구분" value="세제개편안">
+    <input type="hidden" name="체크한항목" id="picked" value="">
+    <input type="hidden" name="subject" value="[세제개편안] 해설본 문의">
+    <input type="checkbox" name="botcheck" style="display:none">
+    <label>체크하신 항목</label>
+    <div class="picked" id="pickedView">아직 체크하신 항목이 없습니다.</div>
+    <label for="nm">성함</label><input type="text" id="nm" name="성함" required>
+    <label for="ph">연락처</label><input type="tel" id="ph" name="연락처" required>
+    <label for="ms">더 하실 말씀</label><textarea id="ms" name="메모"></textarea>
+    <p style="margin-top:26px"><button type="submit" class="btn">보내기</button></p>
+    <p class="fine">내용은 Web3Forms를 통해 담당자 이메일로 전달됩니다.<br>
+      특정 상품의 매수·매도를 권유하지 않습니다.</p>
+  </form>
+</section>
+
+<footer>
+  <p>전 수치는 기획재정부 「2026년 세제개편안」(2026.8.3. 발표) 원문에서 직접 확인했습니다.
+     종부세 숫자는 정부가 문답자료 별첨으로 낸 적용사례 표입니다.
+     작년 대조는 「2025년 세제개편안」(2025.7.31. 발표) 원문과 비교했습니다.</p>
+  <p>아직 정부안입니다. 9월 국회 제출 후 12월에 확정되며, 심의 과정에서 바뀔 수 있습니다.</p>
+  <div class="who"><span>2026년 세제개편안 해설</span>
+    <span style="text-align:right"><b>유영곤</b>삼성생명 GFC</span></div>
+</footer>
+</div>
+
+<div class="tally" id="tally"><div class="in">
+  <span class="cnt"><b id="cnt">0</b>개 체크하셨습니다</span>
+  <a href="#picked" class="btn" onclick="document.querySelector('.form').scrollIntoView({behavior:'smooth'});return false;">정리해서 받기</a>
+</div></div>
+
+<script>
+(function(){
+  var picked=[];
+  function refresh(){
+    document.getElementById('cnt').textContent=picked.length;
+    document.getElementById('picked').value=picked.join(' / ');
+    var v=document.getElementById('pickedView');
+    v.textContent=picked.length?picked.join('\n'):'아직 체크하신 항목이 없습니다.';
+    document.getElementById('tally').classList.toggle('on',picked.length>0);
+  }
+  document.querySelectorAll('.chk').forEach(function(el){
+    el.addEventListener('click',function(){
+      var k=el.getAttribute('data-t');
+      el.classList.toggle('on');
+      if(el.classList.contains('on')) picked.push(k);
+      else picked=picked.filter(function(x){return x!==k});
+      refresh();
+    });
+  });
+  refresh();
+})();
+</script>
+</body>
+</html>
