@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>상속 및 증여 케이스 · 재산은 그대로인데 세금이 달라지는 자리</title>
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --ink:#1d1d1f; --muted:#7a7a7a; --faint:#a8a8ac; --hairline:#e0e0e0;
+    --accent:#1428A0; --accent-dark:#6E8CF2;
+    --parchment:#f5f5f7; --tile:#272729;
+  }
+  html,body{overflow-x:clip;max-width:100%}
+  html{background:#fff}
+  body{font-family:'Pretendard Variable',Pretendard,system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;text-rendering:geometricPrecision;word-break:keep-all;
+    background:#fff;color:var(--ink);font-size:17px;line-height:1.74;letter-spacing:-.02em}
+  .wrap{max-width:720px;margin:0 auto;padding:0 24px;min-width:0}
+  .n{color:var(--accent);font-weight:700}
+
+  /* ══════ 표지 ══════ */
+  .cover{background:var(--tile);padding:92px 0 72px}
+  .cover *{color:#fff}
+  .cover .kicker{color:var(--accent-dark);font-size:13px;font-weight:600;letter-spacing:.1em;margin-bottom:20px}
+  .cover h1{font-size:clamp(25px,6.4vw,44px);word-break:keep-all;overflow-wrap:break-word;font-weight:700;line-height:1.2;letter-spacing:-.036em}
+  .cover h1 em{font-style:normal;color:var(--accent-dark)}
+  .cover .lead{color:#c8c8cc;font-size:clamp(16px,3.9vw,19px);line-height:1.62;margin-top:22px}
+  .cover .flag{margin-top:40px;padding:21px 24px 23px;background:rgba(255,255,255,.08);border-radius:16px}
+  .cover .flag .h{font-size:17px;font-weight:600;line-height:1.45;margin-bottom:9px}
+  .cover .flag .d{color:#a8a8ae;font-size:15px;line-height:1.6}
+
+  /* ══════ 1층 · 섹션 ══════ */
+  .part{background:var(--parchment);padding:52px 0 46px;margin-bottom:80px}
+  .part .no{font-size:14px;font-weight:700;letter-spacing:.14em;color:var(--accent);margin-bottom:14px}
+  .part h2{font-size:clamp(31px,8vw,44px);font-weight:700;letter-spacing:-.04em;line-height:1.12}
+  .part .items{font-size:clamp(15px,3.6vw,17px);color:var(--muted);margin-top:16px;letter-spacing:-.022em}
+
+  /* ══════ 2층 · 항목 ══════ */
+  .topic + .topic{margin-top:96px;padding-top:72px;border-top:1px solid var(--hairline)}
+  .topic > h3{font-size:clamp(24px,5.8vw,32px);font-weight:700;letter-spacing:-.036em;line-height:1.22}
+  .topic > .oneline{font-size:clamp(16px,3.9vw,19px);line-height:1.62;color:var(--muted);margin-top:16px}
+  .topic > .oneline b{font-weight:600;color:var(--ink)}
+
+  /* 유리 · 불리 */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:36px;align-items:stretch}
+  @media(max-width:620px){.split{grid-template-columns:1fr}}
+  .side{border-radius:16px;padding:24px 22px;display:flex;flex-direction:column}
+  .side.up{background:var(--accent)}
+  .side.down{background:var(--parchment)}
+  .side .h{font-size:13px;font-weight:700;letter-spacing:.09em;margin-bottom:16px}
+  .side.up .h{color:rgba(255,255,255,.65)}
+  .side.down .h{color:var(--muted)}
+  .side ul{list-style:none;flex:1;display:flex;flex-direction:column}
+  .side li{font-size:17px;line-height:1.45;letter-spacing:-.028em;padding:13px 0;font-weight:500;
+    flex:1;display:flex;flex-direction:column;justify-content:center}
+  .side li + li{border-top:1px solid rgba(0,0,0,.08)}
+  .side li .w{display:block;font-size:14.5px;font-weight:400;line-height:1.4;
+    margin-top:5px;letter-spacing:-.022em}
+  .side.down li .w{color:var(--muted)}
+  .side.up li{color:#fff}
+  .side.up li .w{color:rgba(255,255,255,.66)}
+  .side.up li + li{border-top-color:rgba(255,255,255,.2)}
+
+  /* ══════ 3층 · 중제목 ══════ */
+  h4.mid{font-size:clamp(20px,4.8vw,24px);font-weight:700;letter-spacing:-.032em;line-height:1.34;
+    margin-top:64px;padding-bottom:14px;border-bottom:2px solid var(--ink)}
+
+  /* ══════ 4층 · 소제목 ══════ */
+  h5.sub{font-size:clamp(17px,4.2vw,19px);font-weight:700;letter-spacing:-.028em;line-height:1.44;margin-top:52px}
+  h4.mid + h5.sub{margin-top:34px}
+
+  /* 본문 */
+  p{margin-top:16px}
+  p + p{margin-top:11px}          /* 이어지는 문단은 붙인다 */
+  h4.mid + p{margin-top:22px}
+  h5.sub + p{margin-top:11px}
+  .tw + p{margin-top:18px}
+  p.note{color:var(--muted);font-size:16px}
+
+  /* 표 */
+  .tw{overflow-x:auto;margin-top:20px;-webkit-overflow-scrolling:touch;max-width:100%}
+  h5.sub + .tw{margin-top:16px}
+  table{border-collapse:collapse;width:100%;min-width:min(430px,100%);font-size:16px;letter-spacing:-.024em}
+  caption{caption-side:top;text-align:left;font-size:14.5px;color:var(--muted);
+    background:var(--parchment);padding:12px 14px;border-radius:10px 10px 0 0;letter-spacing:-.018em}
+  th,td{padding:15px 12px;text-align:right;white-space:nowrap;border-bottom:1px solid var(--hairline)}
+  thead th{font-size:13.5px;font-weight:600;color:var(--muted);
+    border-bottom:1.5px solid var(--ink);padding-top:14px;padding-bottom:11px}
+  th:first-child,td:first-child{text-align:left;padding-left:14px}
+  td:last-child,th:last-child{padding-right:14px}
+  tbody th{font-weight:500;font-size:16.5px;color:var(--ink)}
+  .g{color:var(--accent);font-weight:700}
+  .old{color:var(--faint)}
+
+  /* 강조 */
+  .punch{margin-top:26px;background:var(--parchment);border-radius:16px;padding:24px}
+  .punch .t{font-size:clamp(17px,4.2vw,19px);line-height:1.55;letter-spacing:-.03em;font-weight:700;margin:0}
+  .punch .s{font-size:16px;color:var(--muted);line-height:1.68;margin-top:10px}
+
+  /* 체크 */
+  .checks{margin-top:72px}
+  .checks h4{font-size:clamp(20px,4.8vw,24px);font-weight:700;letter-spacing:-.032em;
+    padding-bottom:14px;border-bottom:2px solid var(--ink)}
+  .checks .q{font-size:16px;color:var(--muted);margin-top:16px;margin-bottom:16px}
+  .chk{display:grid;grid-template-columns:32px 1fr;column-gap:14px;align-items:center;
+    padding:16px 18px;margin-bottom:8px;border:1.5px solid transparent;border-radius:13px;
+    background:var(--parchment);cursor:pointer;user-select:none;
+    transition:background .13s,border-color .13s,transform .08s}
+  .chk:hover{background:#eceef6;border-color:#d4d8e8}
+  .chk:active{transform:scale(.993)}
+  .chk.on{background:rgba(20,40,160,.06);border-color:var(--accent)}
+  .box{width:26px;height:26px;border:2px solid #b4b4bd;border-radius:8px;background:#fff;
+    display:flex;align-items:center;justify-content:center;
+    font-size:15px;font-weight:700;color:transparent;transition:.13s;
+    box-shadow:0 1px 2px rgba(0,0,0,.04)}
+  .chk:hover .box{border-color:var(--accent);color:rgba(20,40,160,.3)}
+  .chk.on .box{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:none}
+  .chk .t{font-size:17px;line-height:1.5;letter-spacing:-.024em;color:var(--muted)}
+  .chk.on .t{color:var(--ink);font-weight:600}
+
+  /* 좁은 화면 */
+  @media(max-width:480px){
+    .wrap{padding:0 18px}
+    .cover{padding:76px 0 58px}
+    .part{padding:42px 0 38px;margin-bottom:60px}
+    .topic + .topic{margin-top:72px;padding-top:56px}
+    h4.mid{margin-top:52px}
+    h5.sub{margin-top:42px}
+    .side{padding:20px 18px}
+    .chk{padding:15px 15px}
+    .cover h1 br{display:none}
+    table{min-width:0;font-size:15px}
+    th,td{padding:13px 9px}
+  }
+
+  /* 기준 프로필 표 */
+  .base{margin-top:34px;background:rgba(255,255,255,.08);border-radius:16px;padding:22px 24px 24px}
+  .base .h{font-size:13px;font-weight:700;letter-spacing:.09em;color:var(--accent-dark);margin-bottom:14px}
+  .base ul{list-style:none}
+  .base li{display:flex;justify-content:space-between;gap:16px;font-size:16px;line-height:1.5;
+    padding:11px 0;color:#c8c8cc;letter-spacing:-.024em}
+  .base li + li{border-top:1px solid rgba(255,255,255,.14)}
+  .base li b{font-weight:600;color:#fff}
+  .base li.sum{border-top:1.5px solid rgba(255,255,255,.4);font-weight:600;color:#fff}
+  /* 하단 바 · 폼 · 푸터 */
+  .tally{position:fixed;left:0;right:0;bottom:0;z-index:29;transform:translateY(105%);transition:.26s;
+    background:rgba(255,255,255,.97);backdrop-filter:blur(14px);border-top:1px solid var(--hairline)}
+  .tally.on{transform:translateY(0)}
+  .tally .in{max-width:720px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:14px}
+  .tally .cnt{font-size:15px;color:var(--muted);letter-spacing:-.022em}
+  .tally .cnt b{color:var(--accent);font-size:18px;font-weight:700}
+  .btn{display:inline-block;background:var(--accent);color:#fff;border:0;border-radius:100px;
+    font-family:inherit;font-size:15px;font-weight:600;letter-spacing:-.022em;
+    padding:12px 24px;text-decoration:none;cursor:pointer;white-space:nowrap}
+  .form{background:var(--parchment);border-radius:18px;padding:32px 26px;margin-top:24px}
+  .form label{display:block;font-size:14px;font-weight:600;color:var(--muted);margin:22px 0 8px;letter-spacing:-.022em}
+  .form label:first-of-type{margin-top:0}
+  .form input,.form textarea{width:100%;background:#fff;border:1px solid var(--hairline);border-radius:12px;
+    color:var(--ink);font-family:inherit;font-size:16.5px;letter-spacing:-.022em;padding:14px 15px}
+  .form textarea{min-height:88px;resize:vertical;line-height:1.7}
+  .form .picked{background:#fff;border:1px solid var(--hairline);border-radius:12px;padding:15px;
+    font-size:15px;color:var(--muted);line-height:1.8;min-height:54px;white-space:pre-line}
+  .form .fine{font-size:13.5px;color:var(--muted);margin-top:18px;line-height:1.7}
+  footer{border-top:1px solid var(--hairline);margin-top:96px;padding:40px 0 90px;
+    font-size:14.5px;color:var(--muted);line-height:1.78}
+  footer p + p{margin-top:14px}
+  footer .who{margin-top:26px;padding-top:22px;border-top:1px solid var(--hairline);
+    display:flex;justify-content:space-between;align-items:flex-end}
+  footer .who b{display:block;font-weight:600;color:var(--ink)}
+</style>
+</head>
+<body>
+
+<div class="cover"><div class="wrap">
+  <p class="kicker">상속 및 증여 케이스</p>
+  <h1>재산은 그대로인데<br><em>세금이 달라지는 자리</em></h1>
+  <p class="lead">아홉 가지 방법을 한 사람에게 전부 대입했습니다. 기준을 하나로 묶어야 어느 쪽이 큰지 비교가 됩니다.</p>
+  <div class="base">
+    <p class="h">기준이 되는 한 사람</p>
+    <ul>
+      <li><span>비상장주식</span><b>50억</b></li>
+      <li><span>개인 금융자산</span><b>30억</b></li>
+      <li><span>개인 명의 부동산</span><b>20억</b></li>
+      <li class="sum"><span>합계</span><b>100억</b></li>
+    </ul>
+  </div>
+  <div class="flag">
+    <p class="h">아무것도 하지 않으면 상속세 약 27억입니다</p>
+    <p class="d">60대 대표, 배우자 생존, 자녀 두 명 기준입니다. 상속공제 35억을 빼면 과세표준이 65억이고 세금은 약 27억입니다. 아래 모든 숫자는 이 27억과 비교한 것입니다.</p>
+  </div>
+</div></div>
+
+<div class="part"><div class="wrap"><p class="no">01</p><h2>지금 옮긴다</h2><p class="items">가수금 · 개인부동산 증여</p></div></div><div class="wrap"><article class="topic"><h3>가수금 플랜</h3><p class="oneline">자녀 법인에 빌려주면 <b>이자가 붙지 않습니다.</b> 자녀 한 명당 21억까지입니다.</p><div class="split"><div class="side up"><p class="h">이 조건이면 됩니다</p><ul><li>현금성 자산이 많은 경우<span class="w">이 플랜의 전제</span></li><li>본인 사업을 하려는 자녀가 있다<span class="w">빌린 돈의 사용처가 분명해진다</span></li><li>자녀 명의 자산을 만들어주려는 경우<span class="w">부동산 법인으로도 쓴다</span></li><li>자녀가 여러 명<span class="w">한 명당 21억씩 늘어난다</span></li></ul></div><div class="side down"><p class="h">이럴 땐 막힙니다</p><ul><li>개인에게 직접 빌려주는 경우<span class="w">연 4.6% 이자가 발생</span></li><li>자녀 법인 지분이 30% 미만<span class="w">특정법인 요건 미달</span></li><li>한 명에게 21억을 넘겨 빌려주는 경우<span class="w">증여의제이익 1억 초과</span></li><li>물려줄 자산이나 의지가 없는 경우<span class="w">모든 플랜의 공통 전제</span></li></ul></div></div><h4 class="mid">얼마나 달라지나</h4><div class="tw"><table><thead><tr><th>항목</th><th>개인에게 대여</th><th>자녀 법인에 대여</th></tr></thead><tbody><tr><th>자녀 2명 42억 대여 시 이자</th><td class="old">연 1억 9,320만원</td><td class="g">0원</td></tr><tr><th>10년 뒤 늘어난 14억 4천만원</th><td class="old">부모 몫</td><td class="g">자녀 법인 몫</td></tr><tr><th>돌려받을 채권</th><td class="old">42억</td><td class="g">42억으로 고정</td></tr><tr><th>상속세</th><td class="old">기준</td><td class="g">약 7억 감소</td></tr></tbody></table></div><p class="note">무상 한도는 증여의제이익 <span class="n">1억원</span>을 당좌대출 이자율 4.6%로 나눈 값입니다. 이자율이 바뀌면 한도도 같이 바뀝니다.</p><h4 class="mid">왜 그렇게 되나</h4><h5 class="sub">빌려준 돈은 커지지 않습니다</h5><p>자산은 시간이 갈수록 커지지만, 돌려받을 채권은 <span class="n">42억</span>에서 멈춰 있습니다. 30년이 지나도 갚을 금액은 42억입니다.</p><p>그 사이 늘어난 <span class="n">14억 4천만원</span>은 자녀 법인 몫이 됩니다. 상속재산에 들어가지 않습니다.</p><div class="punch"><p class="t">빠를수록 유리한 유일한 플랜입니다.</p><p class="s">다른 플랜은 조건이 맞아야 시작되지만 이건 시간 자체가 효과입니다. 늦게 시작한 만큼 덜 옮겨집니다.</p></div><div class="checks"><h4>체크</h4><p class="q">해당되는 것을 눌러 주세요. 방향이 갈리는 자리입니다.</p><div class="chk" data-t="[가수금 플랜] 개인 명의 현금성 자산이 많다"><span class="box">&#10003;</span><span class="t">개인 명의 현금성 자산이 많다</span></div><div class="chk" data-t="[가수금 플랜] 자녀가 사업을 하고 있거나 할 생각이 있다"><span class="box">&#10003;</span><span class="t">자녀가 사업을 하고 있거나 할 생각이 있다</span></div><div class="chk" data-t="[가수금 플랜] 자녀 명의로 자산을 만들어주고 싶다"><span class="box">&#10003;</span><span class="t">자녀 명의로 자산을 만들어주고 싶다</span></div><div class="chk" data-t="[가수금 플랜] 자녀가 두 명 이상이다"><span class="box">&#10003;</span><span class="t">자녀가 두 명 이상이다</span></div><div class="chk" data-t="[가수금 플랜] 자녀에게 이미 돈을 빌려준 적이 있다"><span class="box">&#10003;</span><span class="t">자녀에게 이미 돈을 빌려준 적이 있다</span></div></div></article><article class="topic"><h3>개인 부동산 증여 플랜</h3><p class="oneline">자녀 개인이 아니라 <b>자녀 법인에</b> 넘깁니다. 법인세를 뺀 만큼만 개인이 냅니다.</p><div class="split"><div class="side up"><p class="h">이 조건이면 됩니다</p><ul><li>개인 명의 부동산을 보유<span class="w">이 플랜의 전제</span></li><li>법인을 운영 중이거나 계획이 있는 자녀<span class="w">받을 법인이 필요하다</span></li><li>앞으로 값이 오를 부동산<span class="w">오른 만큼이 자녀 쪽에 쌓인다</span></li><li>승계 계획이 잡혀 있는 경우</li></ul></div><div class="side down"><p class="h">이럴 땐 막힙니다</p><ul><li>자녀 개인에게 직접 증여<span class="w">증여세를 전액 부담</span></li><li>값이 오르지 않을 자산<span class="w">이전 효과가 작다</span></li><li>취득세를 감당하기 어려운 경우<span class="w">별도 비용이 발생한다</span></li><li>자녀 법인이 없는 경우<span class="w">먼저 설립해야 한다</span></li></ul></div></div><h4 class="mid">얼마나 달라지나</h4><div class="tw"><table><thead><tr><th>항목</th><th>자녀 개인에게</th><th>자녀 법인에</th></tr></thead><tbody><tr><th>개인이 낼 증여세</th><td class="old">10억</td><td class="g">6억</td></tr><tr><th>법인세</th><td class="old">없음</td><td class="g">4억</td></tr><tr><th>10년 뒤 오른 6억 9천만원의 주인</th><td class="old">부모</td><td class="g">자녀 법인</td></tr></tbody></table></div><p class="note">부동산 <span class="n">20억</span> 기준이고 증여세 50%, 법인세 20%를 단순 적용한 값입니다. 실제 세액은 누진구조와 공제에 따라 달라집니다.</p><h4 class="mid">왜 그렇게 되나</h4><h5 class="sub">자녀 주머니에서 나갈 현금이 줄어듭니다</h5><p>법인이 증여받은 재산은 법인세 대상입니다. 직접 증여받았을 때의 증여세에서 <span class="n">법인이 낸 법인세만큼</span>을 빼고 개인이 부담합니다.</p><p>총액이 크게 달라지는 게 아니라, 자녀가 당장 마련해야 할 현금이 <span class="n">10억에서 6억</span>으로 줄어드는 구조입니다. 나머지는 법인 안에 남습니다.</p><div class="checks"><h4>체크</h4><p class="q">해당되는 것을 눌러 주세요. 방향이 갈리는 자리입니다.</p><div class="chk" data-t="[개인 부동산 증여 플랜] 개인 명의 부동산이 있다"><span class="box">&#10003;</span><span class="t">개인 명의 부동산이 있다</span></div><div class="chk" data-t="[개인 부동산 증여 플랜] 자녀가 법인을 운영하고 있거나 세울 계획이 있다"><span class="box">&#10003;</span><span class="t">자녀가 법인을 운영하고 있거나 세울 계획이 있다</span></div><div class="chk" data-t="[개인 부동산 증여 플랜] 그 부동산이 앞으로 오를 것으로 본다"><span class="box">&#10003;</span><span class="t">그 부동산이 앞으로 오를 것으로 본다</span></div><div class="chk" data-t="[개인 부동산 증여 플랜] 자녀에게 증여를 검토한 적이 있다"><span class="box">&#10003;</span><span class="t">자녀에게 증여를 검토한 적이 있다</span></div></div></article></div><div class="part"><div class="wrap"><p class="no">02</p><h2>지분을 넘긴다</h2><p class="items">가업승계 증여특례 · 가족법인 유상양도</p></div></div><div class="wrap"><article class="topic"><h3>가업승계 증여세 과세특례</h3><p class="oneline">세율이 <b>10%로 내려갑니다.</b> 증여세 절감폭이 가장 큰 자리입니다.</p><div class="split"><div class="side up"><p class="h">이 조건이면 됩니다</p><ul><li>60세 이상 부모</li><li>10년 이상 경영한 중소기업</li><li>18세 이상 자녀가 승계 의사가 있다</li><li>특수관계자 포함 지분 40% 이상<span class="w">상장은 20%</span></li><li>사업용 자산 비중이 높은 법인<span class="w">이럴 때 특례가 유리하다</span></li></ul></div><div class="side down"><p class="h">이럴 땐 막힙니다</p><ul><li>비사업용 자산 비중이 높은 법인<span class="w">일반증여가 유리할 수 있다</span></li><li>3개월 안에 가업에 종사하지 않는 경우</li><li>3년 안에 대표로 취임하지 않는 경우</li><li>5년을 유지하지 못하는 경우<span class="w">증여세와 이자가 추징된다</span></li><li>가지급금이 남아 있는 경우<span class="w">먼저 정리해야 한다</span></li></ul></div></div><h4 class="mid">얼마나 달라지나</h4><div class="tw"><table><thead><tr><th>항목</th><th>일반 증여</th><th>가업승계 특례</th></tr></thead><tbody><tr><th>세율</th><td class="old">10~50%</td><td class="g">10%</td></tr><tr><th>비상장주식 50억 증여 시</th><td class="old">20억 1,500만원</td><td class="g">4억</td></tr><tr><th>연부연납</th><td class="old">가능</td><td class="g">가능</td></tr></tbody></table></div><p class="note">과세표준 <span class="n">120억</span>을 넘는 부분은 20%입니다. 한도는 경영 10년 300억, 20년 400억, 30년 600억입니다.</p><h4 class="mid">왜 그렇게 되나</h4><h5 class="sub">사업무관자산 비율을 먼저 봅니다</h5><p>특례가 항상 유리하지는 않습니다. 비사업용 토지, 임대용 부동산, 대여금, 과다보유 현금 같은 <span class="n">사업무관자산</span> 비중이 높으면 특례를 적용해도 실효 혜택이 낮습니다.</p><p>자산의 <span class="n">83%</span>가 비사업용이라 일반증여가 유리했던 상담 사례가 있습니다. 두 가지를 나란히 계산한 뒤 고릅니다.</p><div class="punch"><p class="t">증여는 쌀 때 합니다.</p><p class="s">실적이 오르기 직전, 수주가 확정되기 전, 잉여금을 덜어낸 직후가 평가액이 낮은 구간입니다.</p></div><div class="checks"><h4>체크</h4><p class="q">해당되는 것을 눌러 주세요. 방향이 갈리는 자리입니다.</p><div class="chk" data-t="[가업승계 증여세 과세특례] 60세가 넘었다"><span class="box">&#10003;</span><span class="t">60세가 넘었다</span></div><div class="chk" data-t="[가업승계 증여세 과세특례] 회사를 10년 이상 경영했다"><span class="box">&#10003;</span><span class="t">회사를 10년 이상 경영했다</span></div><div class="chk" data-t="[가업승계 증여세 과세특례] 자녀가 회사를 이어받을 뜻이 있다"><span class="box">&#10003;</span><span class="t">자녀가 회사를 이어받을 뜻이 있다</span></div><div class="chk" data-t="[가업승계 증여세 과세특례] 본인과 특수관계자 지분이 40%를 넘는다"><span class="box">&#10003;</span><span class="t">본인과 특수관계자 지분이 40%를 넘는다</span></div><div class="chk" data-t="[가업승계 증여세 과세특례] 회사에 임대용 부동산이나 대여금이 많다"><span class="box">&#10003;</span><span class="t">회사에 임대용 부동산이나 대여금이 많다</span></div><div class="chk" data-t="[가업승계 증여세 과세특례] 가지급금이 남아 있다"><span class="box">&#10003;</span><span class="t">가지급금이 남아 있다</span></div></div></article><article class="topic"><h3>가족법인 유상양도</h3><p class="oneline">주는 게 아니라 <b>파는 것으로</b> 바꿉니다. 현금은 한 푼도 움직이지 않습니다.</p><div class="split"><div class="side up"><p class="h">이 조건이면 됩니다</p><ul><li>앞으로 값이 크게 오를 자산<span class="w">상속가액이 그 자리에서 멈춘다</span></li><li>임대수입이 있는 부동산<span class="w">소득세가 법인세로 내려간다</span></li><li>유류분 다툼이 걱정되는 경우<span class="w">법인 소유가 되어 분할 대상에서 벗어난다</span></li><li>자녀 100% 법인을 세울 수 있는 경우</li></ul></div><div class="side down"><p class="h">이럴 땐 막힙니다</p><ul><li>양도세와 취득세를 감당하기 어려운 경우<span class="w">현금이 안 움직여도 발생한다</span></li><li>시가보다 낮게 넘기는 경우<span class="w">부당행위계산부인 대상</span></li><li>임대수입이 없어 갚을 재원이 없는 경우</li><li>상속이 임박한 경우<span class="w">생전 양도도 유류분 산정에 들어갈 수 있다</span></li></ul></div></div><h4 class="mid">얼마나 달라지나</h4><div class="tw"><table><thead><tr><th>항목</th><th>그대로 보유</th><th>가족법인에 양도</th></tr></thead><tbody><tr><th>10년 뒤 자산가치</th><td class="old">26억 9천만원</td><td class="g">26억 9천만원</td></tr><tr><th>상속재산으로 잡히는 금액</th><td class="old">26억 9천만원</td><td class="g">20억</td></tr><tr><th>임대소득 과세</th><td class="old">개인 최고 45%</td><td class="g">법인세율</td></tr></tbody></table></div><p class="note">개인 부동산 <span class="n">20억</span> 기준입니다. 양도소득세와 취득세가 따로 발생하므로 실제 효과는 그 비용을 뺀 뒤 계산합니다.</p><h4 class="mid">왜 그렇게 되나</h4><h5 class="sub">부동산이 채권으로 바뀝니다</h5><p>자녀 100% 법인이 사는 쪽으로 나섭니다. 법인에 현금이 없으니 대금은 <span class="n">미지급금</span>으로 장부에 남깁니다. 소유권만 넘어가고 돈은 움직이지 않습니다.</p><p>그 뒤 임대료와 배당으로 그 채무를 갚아나갑니다.</p><h5 class="sub">상속재산이 그 자리에서 멈춥니다</h5><p>자산이 아무리 올라도 부모의 상속재산은 처음 받은 채권 <span class="n">20억</span>입니다. 오르는 만큼은 전부 자녀 법인 몫입니다.</p><div class="punch"><p class="t">동결한 뒤에도 채권은 남습니다.</p><p class="s">20억 채권 자체는 그대로 상속재산이라, 그 세금을 낼 현금은 따로 준비합니다.</p></div><div class="checks"><h4>체크</h4><p class="q">해당되는 것을 눌러 주세요. 방향이 갈리는 자리입니다.</p><div class="chk" data-t="[가족법인 유상양도] 개인 명의로 임대 부동산을 갖고 있다"><span class="box">&#10003;</span><span class="t">개인 명의로 임대 부동산을 갖고 있다</span></div><div class="chk" data-t="[가족법인 유상양도] 그 자산이 앞으로 크게 오를 것으로 본다"><span class="box">&#10003;</span><span class="t">그 자산이 앞으로 크게 오를 것으로 본다</span></div><div class="chk" data-t="[가족법인 유상양도] 자녀가 여러 명이라 유류분이 걱정된다"><span class="box">&#10003;</span><span class="t">자녀가 여러 명이라 유류분이 걱정된다</span></div><div class="chk" data-t="[가족법인 유상양도] 임대소득에 붙는 소득세가 부담이다"><span class="box">&#10003;</span><span class="t">임대소득에 붙는 소득세가 부담이다</span></div></div></article></div><div class="part"><div class="wrap"><p class="no">03</p><h2>값을 낮춘다</h2><p class="items">임원퇴직금 규정 · 증여 시점</p></div></div><div class="wrap"><article class="topic"><h3>임원퇴직금 규정 정비</h3><p class="oneline">규정 하나로 <b>주식 평가액이 내려갑니다.</b> 드는 비용이 거의 없습니다.</p><div class="split"><div class="side up"><p class="h">이 조건이면 됩니다</p><ul><li>정관에 임원퇴직금 지급규정이 있다<span class="w">이게 전제다</span></li><li>비상장주식 평가액이 높은 법인</li><li>퇴직금 추계액이 큰 경우</li><li>승계나 증여를 앞둔 법인<span class="w">평가 전에 정비한다</span></li></ul></div><div class="side down"><p class="h">이럴 땐 막힙니다</p><ul><li>정관에 지급규정이 없는 경우<span class="w">추계액을 부채로 차감할 수 없다</span></li><li>정관 위임 없이 이사회 결의만 있는 경우</li><li>손금산입 한도를 넘는 설계<span class="w">초과분은 손금 부인</span></li></ul></div></div><h4 class="mid">얼마나 달라지나</h4><div class="tw"><table><thead><tr><th>항목</th><th>규정 없음</th><th>규정 정비 후</th></tr></thead><tbody><tr><th>퇴직금 추계액 10억</th><td class="old">부채 반영 불가</td><td class="g">부채로 차감</td></tr><tr><th>순자산</th><td class="old">그대로</td><td class="g">10억 감소</td></tr><tr><th>상속세</th><td class="old">기준</td><td class="g">약 5억 감소</td></tr></tbody></table></div><p class="note">정관에서 위임한 「임원퇴직금 지급규정」이 있어야 차감이 인정됩니다. 규정이 없으면 추계액을 부채로 넣을 수 없습니다.</p><h4 class="mid">왜 그렇게 되나</h4><h5 class="sub">순자산이 곧 주식 값입니다</h5><p>비상장주식은 순자산가액이 좌우합니다. 부채가 늘면 순자산이 줄고 주가가 내려갑니다.</p><p>퇴직금 추계액은 회사가 앞으로 지급할 돈이라 부채로 넣을 수 있는데, <span class="n">규정이 있어야</span> 인정됩니다. 규정 정비만으로 생기는 효과라 드는 비용이 거의 없습니다.</p><div class="checks"><h4>체크</h4><p class="q">해당되는 것을 눌러 주세요. 방향이 갈리는 자리입니다.</p><div class="chk" data-t="[임원퇴직금 규정 정비] 정관에 임원퇴직금 지급규정이 있는지 확인해본 적이 없다"><span class="box">&#10003;</span><span class="t">정관에 임원퇴직금 지급규정이 있는지 확인해본 적이 없다</span></div><div class="chk" data-t="[임원퇴직금 규정 정비] 비상장주식 평가액이 높다"><span class="box">&#10003;</span><span class="t">비상장주식 평가액이 높다</span></div><div class="chk" data-t="[임원퇴직금 규정 정비] 승계나 증여를 앞두고 있다"><span class="box">&#10003;</span><span class="t">승계나 증여를 앞두고 있다</span></div></div></article><article class="topic"><h3>증여 시점 선택</h3><p class="oneline">같은 지분이라도 <b>언제 넘기느냐</b>로 총액이 갈립니다.</p><div class="split"><div class="side up"><p class="h">이럴 때가 쌉니다</p><ul><li>실적이 오르기 직전</li><li>수주나 계약이 확정되기 전</li><li>잉여금을 배당으로 덜어낸 직후</li><li>적자 구간<span class="w">순손익가치가 낮아진다</span></li></ul></div><div class="side down"><p class="h">이럴 땐 늦습니다</p><ul><li>실적이 이미 반영된 뒤</li><li>상속이 임박한 시점<span class="w">10년 합산에 걸린다</span></li><li>적자라도 무한정 낮아지지는 않는다<span class="w">순자산가치의 80%가 하한선</span></li></ul></div></div><h4 class="mid">얼마나 달라지나</h4><div class="tw"><table><thead><tr><th>방식</th><th>상속 시점 일괄 이전</th><th>저평가 구간 사전 이전</th></tr></thead><tbody><tr><th>이전 규모</th><td class="old">100억</td><td class="g">50억 + 정기 배당</td></tr><tr><th>총 상속세</th><td class="old">25억</td><td class="g">7억</td></tr></tbody></table></div><p class="note">배당 재원이 그대로 납부 재원이 되는 것도 함께 얻는 효과입니다.</p><h4 class="mid">왜 그렇게 되나</h4><h5 class="sub">오르기 전에 넘깁니다</h5><p>주식은 넘기는 시점의 가치로 평가됩니다. 오른 뒤에 넘기면 오른 값으로 세금을 냅니다.</p><p>저평가 구간에 미리 이전하고 정기 배당을 함께 돌리면 총 상속세가 <span class="n">25억에서 7억</span>까지 내려갑니다.</p><div class="checks"><h4>체크</h4><p class="q">해당되는 것을 눌러 주세요. 방향이 갈리는 자리입니다.</p><div class="chk" data-t="[증여 시점 선택] 최근 실적이 크게 오를 예정이다"><span class="box">&#10003;</span><span class="t">최근 실적이 크게 오를 예정이다</span></div><div class="chk" data-t="[증여 시점 선택] 수주나 계약이 확정되기 직전이다"><span class="box">&#10003;</span><span class="t">수주나 계약이 확정되기 직전이다</span></div><div class="chk" data-t="[증여 시점 선택] 법인에 이익잉여금이 많이 쌓여 있다"><span class="box">&#10003;</span><span class="t">법인에 이익잉여금이 많이 쌓여 있다</span></div></div></article></div><div class="part"><div class="wrap"><p class="no">04</p><h2>남는 세금은 현금으로</h2><p class="items">가업상속공제 · 감자플랜 · 2차 상속세</p></div></div><div class="wrap"><article class="topic"><h3>가업상속공제</h3><p class="oneline">요건을 갖추면 <b>가업상속재산이 전액 공제됩니다.</b> 절감액이 가장 큽니다.</p><div class="split"><div class="side up"><p class="h">이 조건이면 됩니다</p><ul><li>10년 이상 경영</li><li>매출 5천억 미만 중소·중견기업</li><li>최대주주 지분 40% 이상을 10년 이상 보유<span class="w">상장은 20%</span></li><li>상속인이 2년 이상 종사</li><li>신고기한 후 6개월 안에 임원, 2년 안에 대표 취임</li></ul></div><div class="side down"><p class="h">이럴 땐 추징됩니다</p><ul><li>사후관리 5년을 못 지키는 경우</li><li>가업용 자산을 40% 넘게 처분<span class="w">사후관리 위반</span></li><li>고용을 90% 아래로 줄이는 경우</li><li>부동산임대업 등 제외 업종</li><li>요건 개정이 예고되어 있다<span class="w">적용 시점에 다시 확인한다</span></li></ul></div></div><h4 class="mid">얼마나 달라지나</h4><div class="tw"><table><thead><tr><th>항목</th><th>공제 없음</th><th>가업상속공제 적용</th></tr></thead><tbody><tr><th>과세표준</th><td class="old">65억</td><td class="g">15억</td></tr><tr><th>상속세</th><td class="old">27억 9천만원</td><td class="g">4억 4천만원</td></tr></tbody></table></div><p class="note">비상장주식 <span class="n">50억</span>이 전액 공제되는 경우입니다. 한도는 경영 10년 300억, 20년 400억, 30년 600억입니다.</p><h4 class="mid">왜 그렇게 되나</h4><h5 class="sub">크게 줄어드는 만큼 오래 묶입니다</h5><p>절감액은 가장 크지만 <span class="n">5년 사후관리</span>가 따라옵니다. 가업용 자산을 40% 넘게 처분하지 못하고, 종사와 지분을 유지해야 하며, 고용도 90%를 지켜야 합니다.</p><p>지키지 못하면 공제받은 세액을 다시 냅니다. 그래서 이 제도는 <span class="n">승계 의사가 확정된 경우</span>에 씁니다.</p><div class="punch"><p class="t">요건 개정이 예고되어 있습니다.</p><p class="s">경영기간, 업종, 사후관리 기간이 모두 조정 대상으로 올라 있습니다. 적용 시점 기준으로 다시 확인해야 합니다.</p></div><div class="checks"><h4>체크</h4><p class="q">해당되는 것을 눌러 주세요. 방향이 갈리는 자리입니다.</p><div class="chk" data-t="[가업상속공제] 회사를 10년 이상 경영했다"><span class="box">&#10003;</span><span class="t">회사를 10년 이상 경영했다</span></div><div class="chk" data-t="[가업상속공제] 자녀가 이미 회사에서 일하고 있다"><span class="box">&#10003;</span><span class="t">자녀가 이미 회사에서 일하고 있다</span></div><div class="chk" data-t="[가업상속공제] 앞으로 5년 이상 지분과 고용을 유지할 수 있다"><span class="box">&#10003;</span><span class="t">앞으로 5년 이상 지분과 고용을 유지할 수 있다</span></div><div class="chk" data-t="[가업상속공제] 매출이 5천억원 미만이다"><span class="box">&#10003;</span><span class="t">매출이 5천억원 미만이다</span></div><div class="chk" data-t="[가업상속공제] 사업용 자산을 처분할 계획이 있다"><span class="box">&#10003;</span><span class="t">사업용 자산을 처분할 계획이 있다</span></div></div></article><article class="topic"><h3>감자플랜</h3><p class="oneline">세금을 줄이는 게 아니라 <b>낼 현금을 만듭니다.</b> 지분을 팔지 않고 마련합니다.</p><div class="split"><div class="side up"><p class="h">이럴 때 필요합니다</p><ul><li>가업상속공제를 받기 어려운 법인<span class="w">비사업용 자산 비중이 높은 경우</span></li><li>부동산임대법인</li><li>상속세는 큰데 현금이 없는 경우</li><li>경영권을 지켜야 하는 경우</li></ul></div><div class="side down"><p class="h">이럴 땐 부인됩니다</p><ul><li>순서를 바꾸는 경우<span class="w">반드시 상속 이후여야 한다</span></li><li>감자대금이 다른 사람에게 흘러가는 경우<span class="w">실질과세로 부인된다</span></li><li>법인에 재원이 준비되지 않은 경우<span class="w">유고 시점에 만들 수 없다</span></li></ul></div></div><h4 class="mid">얼마나 달라지나</h4><div class="tw"><table><thead><tr><th>항목</th><th>준비 없음</th><th>감자플랜 적용</th></tr></thead><tbody><tr><th>27억을 마련하는 방법</th><td class="old">지분 매각 또는 급매</td><td class="g">법인이 감자대금 지급</td></tr><tr><th>의제배당소득세</th><td class="old">발생</td><td class="g">0원</td></tr><tr><th>경영권</th><td class="old">희석 위험</td><td class="g">유지</td></tr></tbody></table></div><p class="note">상속으로 취득한 가액과 감자 대가가 같아 감자차익이 <span class="n">0</span>이 되므로 의제배당소득세가 발생하지 않습니다.</p><h4 class="mid">왜 그렇게 되나</h4><h5 class="sub">순서가 전부입니다</h5><p>법인이 대표를 피보험자로 가입해 두고, 유고 시 법인이 보험금을 받습니다. 상속인은 물려받은 주식을 법인에 팔고, 법인은 그 보험금으로 대금을 냅니다. 상속인은 그 현금으로 상속세를 냅니다.</p><p>이 순서를 지켜야 합니다. 상속 전에 인위적으로 증여와 소각을 배치하면 <span class="n">실질과세원칙</span>으로 부인됩니다. 대법원이 그렇게 판단한 사례가 있습니다.</p><h5 class="sub">지분을 지키는 게 목적입니다</h5><p>27억을 마련하려고 지분을 밖에 넘기면 경영권이 흔들립니다. 회사 자금으로 상속인 주식을 되사는 구조라 지분이 밖으로 나가지 않습니다.</p><div class="checks"><h4>체크</h4><p class="q">해당되는 것을 눌러 주세요. 방향이 갈리는 자리입니다.</p><div class="chk" data-t="[감자플랜] 가업상속공제 요건을 갖추기 어렵다"><span class="box">&#10003;</span><span class="t">가업상속공제 요건을 갖추기 어렵다</span></div><div class="chk" data-t="[감자플랜] 회사 자산에 임대용 부동산 비중이 높다"><span class="box">&#10003;</span><span class="t">회사 자산에 임대용 부동산 비중이 높다</span></div><div class="chk" data-t="[감자플랜] 상속세를 낼 현금이 마땅치 않다"><span class="box">&#10003;</span><span class="t">상속세를 낼 현금이 마땅치 않다</span></div><div class="chk" data-t="[감자플랜] 상속이 발생하면 지분이 흩어질 것 같다"><span class="box">&#10003;</span><span class="t">상속이 발생하면 지분이 흩어질 것 같다</span></div></div></article><article class="topic"><h3>2차 상속세 플랜</h3><p class="oneline">1차만 준비하면 <b>절반만 준비한 것입니다.</b> 배우자공제가 사라지는 자리가 남습니다.</p><div class="split"><div class="side up"><p class="h">이 조건이면 됩니다</p><ul><li>배우자가 생존해 있는 경우</li><li>1차에서 배우자공제를 크게 받은 경우<span class="w">그만큼 2차가 커진다</span></li><li>법인 보험을 이미 유지 중인 경우<span class="w">퇴직 시점에 승계할 수 있다</span></li><li>배우자가 회사에 등재되어 있는 경우</li></ul></div><div class="side down"><p class="h">이럴 땐 인정되지 않습니다</p><ul><li>퇴직 절차 없이 명의만 바꾸는 경우</li><li>실제 보험료를 낸 사람이 다른 경우<span class="w">명의가 아니라 실질로 본다</span></li><li>1차만 계산하고 끝내는 경우<span class="w">2차가 그대로 남는다</span></li></ul></div></div><h4 class="mid">얼마나 달라지나</h4><div class="tw"><table><thead><tr><th>구분</th><th>1차 상속</th><th>2차 상속</th></tr></thead><tbody><tr><th>배우자공제</th><td>최대 30억</td><td>없음</td></tr><tr><th>같은 재산 기준 세금</th><td>7,410만원</td><td>5억 5,400만원</td></tr></tbody></table></div><p class="note">상속재산 <span class="n">23억 3천만원</span>, 자녀 한 명 기준입니다. 같은 재산인데 <span class="n">7.5배</span>가 됩니다.</p><h4 class="mid">왜 그렇게 되나</h4><h5 class="sub">두 번째가 더 큽니다</h5><p>1차는 배우자공제로 부담이 작습니다. 그런데 배우자가 사망하는 2차에는 그 공제가 통째로 사라지고 일괄공제 <span class="n">5억</span>만 남습니다.</p><h5 class="sub">재원을 미리 배우자 명의로 만들어 둡니다</h5><p>법인 보험을 배우자 퇴직 시점에 퇴직금으로 승계하면, 이후 대표 유고 시 배우자가 받는 보험금은 <span class="n">대표의 상속재산에 들어가지 않습니다</span>.</p><p>사망보험금은 민법상 수익자 고유재산이라 <span class="n">상속을 포기해도 전액 받을 수 있습니다</span>.</p><div class="checks"><h4>체크</h4><p class="q">해당되는 것을 눌러 주세요. 방향이 갈리는 자리입니다.</p><div class="chk" data-t="[2차 상속세 플랜] 배우자가 생존해 있다"><span class="box">&#10003;</span><span class="t">배우자가 생존해 있다</span></div><div class="chk" data-t="[2차 상속세 플랜] 1차 상속만 계산해본 적이 있다"><span class="box">&#10003;</span><span class="t">1차 상속만 계산해본 적이 있다</span></div><div class="chk" data-t="[2차 상속세 플랜] 법인 명의 보험을 유지하고 있다"><span class="box">&#10003;</span><span class="t">법인 명의 보험을 유지하고 있다</span></div><div class="chk" data-t="[2차 상속세 플랜] 배우자가 회사에 등재되어 있다"><span class="box">&#10003;</span><span class="t">배우자가 회사에 등재되어 있다</span></div></div></article></div>
+
+<div class="wrap">
+<section class="topic" style="margin-top:96px;padding-top:72px;border-top:1px solid var(--hairline)">
+  <h3>체크하신 항목이 있으신가요</h3>
+  <p class="oneline">체크하신 항목은 <b>회사 숫자와 가족 관계를 봐야 방향이 정해지는 자리</b>입니다. 같은 방법이 조건에 따라 반대로 걸리기 때문입니다.</p>
+  <form class="form" action="https://api.web3forms.com/submit" method="POST">
+    <input type="hidden" name="access_key" value="56ba5ceb-1e23-4de6-b6ca-7016a3e1e8d7">
+    <input type="hidden" name="구분" value="상속증여솔루션">
+    <input type="hidden" name="체크한항목" id="picked" value="">
+    <input type="hidden" name="subject" value="[상속증여] 솔루션 카탈로그 문의">
+    <input type="checkbox" name="botcheck" style="display:none">
+    <label>체크하신 항목</label>
+    <div class="picked" id="pickedView">아직 체크하신 항목이 없습니다.</div>
+    <label for="nm">성함</label><input type="text" id="nm" name="성함" required>
+    <label for="ph">연락처</label><input type="tel" id="ph" name="연락처" required>
+    <label for="ms">더 하실 말씀</label><textarea id="ms" name="메모"></textarea>
+    <p style="margin-top:26px"><button type="submit" class="btn">보내기</button></p>
+    <p class="fine">내용은 Web3Forms를 통해 담당자 이메일로 전달됩니다.<br>
+      특정 상품의 매수·매도를 권유하지 않습니다.</p>
+  </form>
+</section>
+
+<footer>
+  <p>이 자료의 숫자는 위 기준 프로필 한 사례에 세율을 적용해 계산한 예시입니다.
+     실제 세액은 재산 구성, 가족 관계, 적용 시점의 법령에 따라 달라집니다.</p>
+  <p>특정법인을 활용하는 방법의 증여세율과 법인세율은 단순 적용한 값입니다.
+     누진구조와 공제, 지방세를 반영하면 결과가 달라지므로 실행 전 세무 검토가 필요합니다.</p>
+  <p>가업상속공제와 가업승계 증여특례는 요건 개정이 예고되어 있어 적용 시점 기준으로 다시 확인해야 합니다.</p>
+  <div class="who"><span>상속 및 증여 케이스</span>
+    <span style="text-align:right"><b>유영곤</b>삼성생명 GFC</span></div>
+</footer>
+</div>
+
+<div class="tally" id="tally"><div class="in">
+  <span class="cnt"><b id="cnt">0</b>개 체크하셨습니다</span>
+  <a href="#picked" class="btn" onclick="document.querySelector('.form').scrollIntoView({behavior:'smooth'});return false;">정리해서 받기</a>
+</div></div>
+
+<script>
+(function(){
+  var picked=[];
+  function refresh(){
+    document.getElementById('cnt').textContent=picked.length;
+    document.getElementById('picked').value=picked.join(' / ');
+    var v=document.getElementById('pickedView');
+    v.textContent=picked.length?picked.join('\n'):'아직 체크하신 항목이 없습니다.';
+    document.getElementById('tally').classList.toggle('on',picked.length>0);
+  }
+  document.querySelectorAll('.chk').forEach(function(el){
+    el.addEventListener('click',function(){
+      var k=el.getAttribute('data-t');
+      el.classList.toggle('on');
+      if(el.classList.contains('on')) picked.push(k);
+      else picked=picked.filter(function(x){return x!==k});
+      refresh();
+    });
+  });
+  refresh();
+})();
+</script>
+</body>
+</html>
