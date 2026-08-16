@@ -127,7 +127,9 @@ h2 em{font-style:normal;color:var(--accent)}
 .form .fine{font-size:13.5px;color:var(--muted);margin-top:18px;line-height:1.7}
 .disc{font-size:14px;color:var(--muted);line-height:1.7;padding:44px 0 100px}
 
-@media(max-width:860px){
+/* ⛔ screen을 붙인다. 안 붙이면 크롬이 PDF를 뽑을 때 뷰포트를 좁게 잡아
+   이 규칙이 인쇄에도 걸리고, A4 왼쪽 위 62%에만 찍힌다 (2026-08-16 실측) */
+@media screen and (max-width:860px){
   body{background:#d9d9de}
   .pg{transform-origin:top center;zoom:.62}
   .tally .in{padding:12px 18px}
