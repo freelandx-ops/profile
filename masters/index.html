@@ -1,0 +1,617 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>투자 대가 10인의 철학과 포트폴리오</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+:root{--ink:#1d1d1f;--muted:#7a7a7a;--hairline:#e0e0e0;--accent:#1428A0;
+      --accent-dark:#6E8CF2;--parchment:#f5f5f7;--tile:#272729;--pad:88px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Pretendard",system-ui,sans-serif;color:var(--ink);background:#d9d9de;
+     -webkit-font-smoothing:antialiased;line-height:1.6}
+.wrap{max-width:820px;margin:0 auto;padding:0 40px}
+
+/* ── 한 장 = A4 한 쪽 (210x297mm). 인쇄하면 그대로 떨어진다 ── */
+.pg{width:794px;height:1123px;margin:0 auto 24px;padding:83px 76px;
+    display:flex;flex-direction:column;background:var(--parchment);
+    box-shadow:0 1px 3px rgba(0,0,0,.10);overflow:hidden}
+/* ⛔ margin:0 auto를 반드시 지운다. flex 안에서 auto 마진은 stretch를 죽여
+   본문 폭이 내용에 맞춰 줄어들고, 그러면 장마다 좌우폭이 달라진다 (2026-08-16) */
+.pg > .wrap{flex:1;display:flex;flex-direction:column;max-width:none;padding:0;
+    margin:0;width:100%;align-self:stretch}
+.pg .body{flex:1;min-height:0;display:flex;flex-direction:column}
+.pg.dark{background:var(--tile);color:#fff}
+
+/* ⛔ 남는 공백은 제목 아래에 모은다. 파란 박스 위는 붙인다 (2026-08-16 사용자) */
+.gap{flex:1 1 auto;min-height:22px}
+.gap + *{margin-top:0}
+
+.kicker{font-size:13px;font-weight:600;letter-spacing:.10em;color:var(--accent)}
+.dark .kicker{color:var(--accent-dark)}
+h1{font-size:34px;font-weight:700;line-height:1.16;letter-spacing:-.035em;margin-top:18px}
+h1 em{font-style:normal;color:var(--accent)}
+.dark h1{color:#fff} .dark h1 em{color:var(--accent-dark)}
+h2{font-size:30px;font-weight:700;line-height:1.16;letter-spacing:-.032em;margin-top:16px}
+h2 em{font-style:normal;color:var(--accent)}
+.dark h2{color:#fff} .dark h2 em{color:var(--accent-dark)}
+.lead{font-size:16px;color:#4a4a4c;margin-top:26px;line-height:1.68}
+.lead b{color:var(--ink);font-weight:600}
+.dark .lead{color:#ccc} .dark .lead b{color:#fff}
+
+.toc{display:grid;grid-template-columns:1fr 1fr;gap:0 40px}
+.toc a{display:flex;gap:14px;padding:11px 0;border-top:1px solid #3a3a3d;
+       font-size:17px;color:#ccc;text-decoration:none;letter-spacing:-.02em}
+.toc a i{font-style:normal;color:var(--accent-dark);font-weight:600;width:24px}
+
+.mapbox{background:#fff;border:1px solid var(--hairline);
+        border-radius:12px;padding:24px 14px}
+.axis-y{text-align:center;font-size:13px;font-weight:700;color:var(--muted);letter-spacing:.06em}
+.grid{display:grid;grid-template-columns:1fr 1px 1fr;margin:16px 0}
+.q{padding:18px 12px;min-height:96px}
+.q .nm{display:inline-block;font-size:14px;font-weight:600;padding:7px 14px;margin:5px 4px;
+       background:var(--parchment);border-radius:20px;letter-spacing:-.02em;color:var(--ink)}
+.q .nm.hi{background:var(--accent);color:#fff}
+.vline{background:var(--hairline)}
+.hline{height:1px;background:var(--hairline)}
+.axis-row{display:flex;align-items:center;gap:14px}
+.axis-row .hline{flex:1}
+.axis-row span{font-size:13px;font-weight:700;color:var(--muted);letter-spacing:.06em}
+
+.quote{border-left:4px solid var(--accent);padding:2px 0 2px 20px;margin:22px 0;
+       font-size:18px;line-height:1.55;color:#3a3a3c}
+.quote .src{display:block;margin-top:16px;font-size:15px;color:var(--muted)}
+
+.list{margin-top:24px}
+.li{padding:15px 0;border-top:1px solid var(--hairline)}
+.li:last-child{border-bottom:1px solid var(--hairline)}
+.li .t{font-size:19px;font-weight:700;color:var(--accent);letter-spacing:-.028em}
+.li .t small{font-size:16px;font-weight:400;color:var(--muted);margin-left:10px;letter-spacing:-.01em}
+.li .d{font-size:15px;color:#4a4a4c;line-height:1.66;margin-top:8px}
+.li .d b{color:var(--ink);font-weight:600}
+.tail{font-size:15px;color:#4a4a4c;line-height:1.72;margin-top:20px}
+.tail b{color:var(--accent);font-weight:700}
+
+.tipbox{padding-top:26px}
+.tipbox .in{background:var(--accent);border-radius:12px;padding:20px 22px}
+.tipbox .k{font-size:15px;font-weight:600;color:rgba(255,255,255,.72);letter-spacing:.04em}
+.tipbox .t{font-size:15px;line-height:1.62;color:#fff;margin-top:10px}
+.tipbox .t b{font-weight:700}
+
+.foot{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;
+      margin-top:22px;padding-top:18px;border-top:1px solid var(--hairline);
+      font-size:15px;color:var(--muted);line-height:1.55}
+.foot .who{text-align:right}
+.foot .who b{display:block;font-weight:600;color:var(--ink)}
+.dark .foot{border-top-color:#3a3a3d;color:#8b8b90}
+.dark .foot .who b{color:#fff}
+
+/* ── 체크 ── */
+.chk{display:grid;grid-template-columns:28px 1fr;column-gap:14px;align-items:center;
+     padding:9px 16px;margin-bottom:4px;border:1.5px solid transparent;border-radius:13px;
+     background:#fff;cursor:pointer;user-select:none;
+     transition:background .13s,border-color .13s,transform .08s}
+.chk:hover{background:#eceef6;border-color:#d4d8e8}
+.chk:active{transform:scale(.993)}
+.chk.on{background:rgba(20,40,160,.06);border-color:var(--accent)}
+.cbox{width:24px;height:24px;border:2px solid #b4b4bd;border-radius:8px;background:#fff;
+      display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;
+      color:transparent;transition:.13s;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.chk:hover .cbox{border-color:var(--accent);color:rgba(20,40,160,.3)}
+.chk.on .cbox{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:none}
+.chk .t{font-size:15px;line-height:1.5;letter-spacing:-.024em;color:var(--muted)}
+.chk.on .t{color:var(--ink);font-weight:600}
+
+/* ── 하단 집계 바 ── */
+.tally{position:fixed;left:0;right:0;bottom:0;z-index:29;transform:translateY(105%);transition:.26s;
+       background:rgba(255,255,255,.97);backdrop-filter:blur(14px);border-top:1px solid var(--hairline)}
+.tally.on{transform:translateY(0)}
+.tally .in{max-width:720px;margin:0 auto;padding:14px 24px;display:flex;
+           align-items:center;justify-content:space-between;gap:14px}
+.tally .cnt{font-size:15px;color:var(--muted);letter-spacing:-.022em}
+.tally .cnt b{color:var(--accent);font-size:18px;font-weight:700}
+
+.btn{display:inline-block;background:var(--accent);color:#fff;border:0;border-radius:100px;
+     font-family:inherit;font-size:15px;font-weight:600;letter-spacing:-.022em;
+     padding:13px 26px;text-decoration:none;cursor:pointer;white-space:nowrap}
+
+/* ── 폼 ── */
+.form{background:#fff;border-radius:14px;padding:22px 22px}
+.form label{display:block;font-size:13px;font-weight:600;color:var(--muted);
+            margin:14px 0 6px;letter-spacing:-.022em}
+.form label:first-of-type{margin-top:0}
+.form input,.form textarea{width:100%;background:var(--parchment);border:1px solid var(--hairline);
+     border-radius:10px;color:var(--ink);font-family:inherit;font-size:15px;
+     letter-spacing:-.022em;padding:11px 13px}
+.form textarea{min-height:64px;resize:vertical;line-height:1.7}
+.form .picked{background:var(--parchment);border:1px solid var(--hairline);border-radius:10px;
+     padding:12px;font-size:14px;color:var(--muted);line-height:1.7;min-height:44px;white-space:pre-line}
+.form .fine{font-size:13.5px;color:var(--muted);margin-top:18px;line-height:1.7}
+.disc{font-size:14px;color:var(--muted);line-height:1.7;padding:44px 0 100px}
+
+@media(max-width:860px){
+  body{background:#d9d9de}
+  .pg{transform-origin:top center;zoom:.62}
+  .tally .in{padding:12px 18px}
+}
+@media print{
+  @page{size:A4;margin:0}
+  body{background:#fff}
+  .pg{margin:0;box-shadow:none;page-break-after:always}
+  .pg:last-of-type{page-break-after:auto}   /* 없으면 뒤에 빈 페이지가 한 장 붙는다 */
+  .tally,.disc{display:none}
+}
+</style></head><body>
+
+<section class="pg dark"><div class="wrap">
+  <div class="body">
+    <div class="kicker">SEC 13F 공시 · 2026년 2분기</div>
+    <h1>증시에서 50년 넘게 살아남은<br>10인의 <em>철학과 포트폴리오</em></h1>
+    <p class="lead">방법은 해마다 바뀝니다.<br>
+      그런데 수십 년을 살아남은 투자자들은 원칙을 거의 바꾸지 않았습니다.<br>
+      열 사람이 무엇을 믿고, 그 믿음대로 지금 어떤 종목을 들고 있는지 한 자리에 모았습니다.</p>
+    <div class="gap"></div>
+    <div class="toc">
+      <a href="#g1"><i>01</i>워런 버핏</a><a href="#g6"><i>06</i>빌 애크먼</a>
+      <a href="#g2"><i>02</i>모니시 파브라이</a><a href="#g7"><i>07</i>리 루</a>
+      <a href="#g3"><i>03</i>하워드 막스</a><a href="#g8"><i>08</i>존 폴슨</a>
+      <a href="#g4"><i>04</i>레이 달리오</a><a href="#g9"><i>09</i>테리 스미스</a>
+      <a href="#g5"><i>05</i>트위디 브라운</a><a href="#g10"><i>10</i>캐시 우드</a>
+    </div>
+  </div>
+  <div class="tipbox"><div class="in">
+    <div class="k">먼저 알아두기</div>
+    <div class="t">숫자는 2026년 6월 30일 기준으로 미국 증권거래위원회에 제출된 13F 공시입니다.<br>
+      <b>13F에는 미국 상장 주식 보유분만 나옵니다.</b> 채권과 현금, 공매도 포지션, 해외 주식은<br>
+      공시 대상이 아니므로 여기 적힌 종목이 그 사람 자산의 전부는 아닙니다.</div></div></div>
+  <div class="foot"><div>2026년 8월 기준</div>
+    <div class="who"><b>유영곤</b>삼성생명 GFC · 010-3732-5234</div></div>
+</div></section>
+
+<section class="pg"><div class="wrap">
+  <div class="body">
+    <div class="kicker">먼저 볼 것</div>
+    <h2>열 사람은 <em>같은 방식으로 투자하지 않습니다</em></h2>
+    <p class="lead">갈리는 축은 둘입니다. 몇 종목에 집중하느냐, 그리고 싼 주식을 사느냐 성장할 회사를 사느냐.<br>
+      <b>본인이 어느 쪽에 가까운지 먼저 찾고 그 사람부터 보시면 열 명을 다 읽을 필요가 없습니다.</b></p>
+    <div class="gap"></div>
+    <div class="mapbox">
+      <div class="axis-y">집중 · 소수 종목</div>
+      <div class="grid">
+        <div class="q"><span class="nm hi">파브라이</span><span class="nm hi">버핏</span>
+          <span class="nm hi">애크먼</span><span class="nm hi">리 루</span></div>
+        <div class="vline"></div>
+        <div class="q"><span class="nm">캐시 우드</span><span class="nm">테리 스미스</span></div>
+      </div>
+      <div class="axis-row"><span>가치 · 싼 주식</span><div class="hline"></div><span>성장 · 커질 회사</span></div>
+      <div class="grid">
+        <div class="q"><span class="nm">트위디 브라운</span><span class="nm">하워드 막스</span>
+          <span class="nm">존 폴슨</span></div>
+        <div class="vline"></div>
+        <div class="q"><span class="nm">레이 달리오</span></div>
+      </div>
+      <div class="axis-y">분산 · 여러 종목</div>
+    </div>
+  </div>
+  <div class="tipbox"><div class="in">
+    <div class="k">읽는 법</div>
+    <div class="t">왼쪽 위에 있을수록 <b>적은 종목에 낮은 가격으로 집중 투자</b>하고,<br>
+      오른쪽 아래로 갈수록 <b>여러 종목에 나눠 성장에 투자</b>합니다.<br>
+      어느 쪽이 옳은 것이 아니라 어느 쪽이 본인 성향과 자금 사정에 맞느냐입니다.</div></div></div>
+  <div class="foot"><div>2026년 8월 기준</div>
+    <div class="who"><b>유영곤</b>삼성생명 GFC · 010-3732-5234</div></div>
+</div></section>
+
+<section class="pg" id="g1"><div class="wrap">
+  <div class="body">
+    <div class="kicker">01 · 아는 것에 집중</div>
+    <h2>워런 버핏 <em>·</em> 버크셔 해서웨이</h2>
+    <div class="quote">"위험은 자기가 무엇을 하는지 모르는 데서 온다."
+      <span class="src">1993년 컬럼비아대 경영대학원 강연</span></div>
+    <p class="lead">버핏은 자기가 이해할 수 있는 사업만 삽니다.<br>
+      그래서 보유 종목 수가 적고 한번 사면 오래 둡니다.
+      <b>1965년부터 60년간 연평균 19.9%</b>이고,<br>
+      같은 기간 S&amp;P 500은 10.4%였습니다.</p>
+    <div class="gap"></div>
+    <div class="list">
+      <div class="li"><div class="t">애플 <small>22.0%</small></div>
+        <div class="d">한 종목이 전체의 5분의 1을 넘습니다. 버핏은 애플을 기술주가 아니라 소비재 브랜드로 봤습니다</div></div>
+      <div class="li"><div class="t">아메리칸 익스프레스 · 코카콜라 <small>17.1% · 10.9%</small></div>
+        <div class="d">아멕스는 1964년 샐러드유 사태 때, 코카콜라는 1988년에 매수해 지금까지 들고 있습니다</div></div>
+      <div class="li"><div class="t">알파벳 <small>9.4%</small></div>
+        <div class="d">2026년 2분기에 366억 달러어치를 새로 매수했습니다. <b>14개 분기 만의 순매수 전환</b>입니다</div></div>
+      <div class="li"><div class="t">뱅크오브아메리카 <small>9.2%</small></div>
+        <div class="d">알파벳을 담은 같은 분기에 이 종목은 비중을 줄였습니다</div></div>
+    </div>
+  </div>
+  <div class="tipbox"><div class="in">
+    <div class="k">알아두기</div>
+    <div class="t">버크셔의 13F 보유는 스물아홉 종목 <b>2,993억 달러</b>이고 상위 다섯 종목이 68.7%입니다.<br>
+      버핏은 2026년 1월 최고경영자 자리를 그렉 아벨에게 넘겼고 회장직은 유지하고 있습니다.</div></div></div>
+  <div class="foot"><div>SEC 13F · 2026년 6월 30일 기준</div>
+    <div class="who"><b>유영곤</b>삼성생명 GFC · 010-3732-5234</div></div>
+</div></section>
+
+<section class="pg" id="g2"><div class="wrap">
+  <div class="body">
+    <div class="kicker">02 · 베끼고 더 좁힌다</div>
+    <h2>모니시 파브라이 <em>·</em> 1999년</h2>
+    <div class="quote">"나는 뻔뻔한 복제꾼이다. 내 삶의 모든 것이 복제다.
+      독창적인 아이디어는 하나도 없다."</div>
+    <p class="lead">파브라이는 버핏의 1950년대 파트너십 구조를 그대로 복제해 자기 펀드를 만들었습니다.<br>
+      그런데 <b>매수한 종목은 완전히 다릅니다.</b> 회전율이 2%라 한번 사면 거의 팔지 않습니다.</p>
+    <div class="gap"></div>
+    <div class="list">
+      <div class="li"><div class="t">워리어 멧 콜 <small>석탄</small></div>
+        <div class="d">사양산업으로 분류되어 시장의 관심이 거의 없는 업종입니다</div></div>
+      <div class="li"><div class="t">트랜스오션 <small>해양 시추</small></div>
+        <div class="d">유가에 따라 실적이 크게 흔들리는 업종입니다</div></div>
+      <div class="li"><div class="t">알파 메탈러지컬 <small>석탄</small></div>
+        <div class="d">미국 공시에 나오는 종목은 이 셋이 전부입니다</div></div>
+      <div class="li"><div class="t">레이사스 로지스틱 <small>터키 · 창고와 물류</small></div>
+        <div class="d"><b>실제로는 제일 큰 보유이고 공개된 포트폴리오의 약 40%</b>를 차지합니다.<br>
+          파브라이는 700만 달러로 지분 3분의 1을 샀고, 당시 청산가치의 2%에 거래되던 회사입니다</div></div>
+    </div>
+  </div>
+  <div class="tipbox"><div class="in">
+    <div class="k">알아두기</div>
+    <div class="t">터키 주식은 미국 공시 대상이 아닙니다.
+      <b>13F에 보이는 세 종목이 파브라이 자산의 전부가 아닙니다.</b><br>
+      버핏은 애플을 샀고 파브라이는 터키 물류회사를 샀습니다. 파브라이가 복제한 것은 종목이 아니라<br>
+      판단 기준입니다.</div></div></div>
+  <div class="foot"><div>SEC 13F · 2026년 6월 30일 기준</div>
+    <div class="who"><b>유영곤</b>삼성생명 GFC · 010-3732-5234</div></div>
+</div></section>
+
+<section class="pg" id="g3"><div class="wrap">
+  <div class="body">
+    <div class="kicker">03 · 가격이 위험을 만든다</div>
+    <h2>하워드 막스 <em>·</em> 오크트리 캐피털</h2>
+    <div class="quote">"좋은 자산도 위험할 수 있고 나쁜 자산도 안전할 수 있다.
+      지불한 가격의 문제일 뿐이다."<span class="src">『가장 중요한 것』</span></div>
+    <p class="lead">막스는 자산 자체에 좋고 나쁨이 있는 것이 아니라 <b>매수 가격에 있다</b>고 봅니다.<br>
+      시장이 사이클의 어디쯤에 있는지를 먼저 판단하고 나서 종목을 고릅니다.</p>
+    <div class="gap"></div>
+    <div class="list">
+      <div class="li"><div class="t">S&amp;P 500 ETF <small>약세 옵션 구조</small></div>
+        <div class="d">오크트리의 최대 보유 종목이고 10억 달러가 넘습니다. 지수 상승이 아니라 하락에 대비한 포지션입니다</div></div>
+      <div class="li"><div class="t">신규 편입</div>
+        <div class="d">우버, 알리바바, 클라우드플레어 세 종목을 이번 분기에 새로 담았습니다</div></div>
+      <div class="li"><div class="t">전량 매도</div>
+        <div class="d">코인베이스, 블록, 스트래티지. 가상자산과 엮인 종목을 한꺼번에 정리했습니다</div></div>
+    </div>
+    <p class="tail">오크트리의 13F 보유는 51종목 37.8억 달러입니다.</p>
+  </div>
+  <div class="tipbox"><div class="in">
+    <div class="k">알아두기</div>
+    <div class="t"><b>이 공시는 오크트리의 본업이 아닙니다.</b><br>
+      오크트리는 부실채권과 사모 크레딧이 주력인데 13F에는 거의 잡히지 않습니다.<br>
+      여기 보이는 것은 주식 부분뿐입니다.</div></div></div>
+  <div class="foot"><div>SEC 13F · 2026년 6월 30일 기준</div>
+    <div class="who"><b>유영곤</b>삼성생명 GFC · 010-3732-5234</div></div>
+</div></section>
+
+<section class="pg" id="g4"><div class="wrap">
+  <div class="body">
+    <div class="kicker">04 · 맞히지 않는다</div>
+    <h2>레이 달리오 <em>·</em> 브리지워터</h2>
+    <div class="quote">"수정구슬로 먹고사는 사람은 깨진 유리를 먹게 된다."</div>
+    <p class="lead">달리오는 미래를 맞히려 하지 않습니다.
+      대신 <b>어떤 경제 국면이 와도 견디도록 자산을 배분합니다.</b><br>
+      성장과 물가가 오르내리는 네 국면에 각각 강한 자산을 나눠 담는 것이 올웨더 전략입니다.</p>
+    <div class="gap"></div>
+    <div class="list">
+      <div class="li"><div class="t">엔비디아 <small>3.2%</small></div>
+        <div class="d">최대 보유 종목인데 비중이 3%대입니다. 버핏의 애플 22%와 정반대입니다</div></div>
+      <div class="li"><div class="t">브로드컴 · 아마존 <small>각 2.0%</small></div>
+        <div class="d">달리오는 특정 종목에 기대지 않습니다</div></div>
+      <div class="li"><div class="t">알파벳 A <small>1.9%</small></div>
+        <div class="d">보유 종목이 999개이고 11개 산업 전부에 걸쳐 있습니다</div></div>
+    </div>
+  </div>
+  <div class="tipbox"><div class="in">
+    <div class="k">알아두기</div>
+    <div class="t"><b>이 목록은 올웨더 전략 전체가 아닙니다.</b><br>
+      올웨더의 핵심 자산은 채권과 원자재인데 13F에는 미국 주식만 나옵니다.<br>
+      999종목은 그 전략의 주식 부분일 뿐입니다.</div></div></div>
+  <div class="foot"><div>SEC 13F · 2026년 6월 30일 기준</div>
+    <div class="who"><b>유영곤</b>삼성생명 GFC · 010-3732-5234</div></div>
+</div></section>
+
+<section class="pg" id="g5"><div class="wrap">
+  <div class="body">
+    <div class="kicker">05 · 모른다고 말한다</div>
+    <h2>트위디 브라운 <em>·</em> 1920년</h2>
+    <div class="quote">"투자업계에서 가장 어려운 세 마디는 「나는 모른다」이다."
+      <span class="src">크리스토퍼 브라운</span></div>
+    <p class="lead"><b>1920년에 설립된 회사입니다.</b>
+      벤저민 그레이엄과 같은 건물을 쓰며 그의 브로커가 됐고,<br>
+      1960년대에 버핏이 버크셔 주식을 모을 때 그 주식을 매수해 준 곳도 트위디 브라운입니다.</p>
+    <div class="gap"></div>
+    <div class="list">
+      <div class="li"><div class="t">CNH 인더스트리얼 <small>17.1%</small></div>
+        <div class="d">농기계와 건설장비를 만드는 회사입니다. 경기를 타는 업종이라 주가가 장부가 아래로 내려가는 구간이 반복됩니다</div></div>
+      <div class="li"><div class="t">아이오니스 파마슈티컬 <small>바이오</small></div>
+        <div class="d">핵심 보유로 두고 몇 년째 비중을 거의 조정하지 않은 종목입니다</div></div>
+      <div class="li"><div class="t">버크셔 해서웨이 · 코카콜라 펨사 · 존슨앤드존슨</div>
+        <div class="d">상위 다섯 종목이 전체의 약 56%를 차지합니다. 보유 종목은 91개, 운용 규모는 13.2억 달러입니다</div></div>
+    </div>
+    <p class="tail">트위디 브라운은 100년 동안 장부가보다 싼 주식을 찾는 일만 했습니다.</p>
+  </div>
+  <div class="tipbox"><div class="in">
+    <div class="k">알아두기</div>
+    <div class="t">트위디 브라운은 2026년 5월 펀드 전략을 일부 수정했습니다.<br>
+      <b>100년 된 회사도 원칙을 안 바꾸는 것이 아니라 무엇을 바꿔도 되는지를 압니다.</b></div></div></div>
+  <div class="foot"><div>SEC 13F · 2026년 6월 30일 기준</div>
+    <div class="who"><b>유영곤</b>삼성생명 GFC · 010-3732-5234</div></div>
+</div></section>
+
+<section class="pg" id="g6"><div class="wrap">
+  <div class="body">
+    <div class="kicker">06 · 소수에 집중하고 경영에 개입한다</div>
+    <h2>빌 애크먼 <em>·</em> 퍼싱스퀘어</h2>
+    <p class="lead">애크먼은 종목을 열 개 안팎으로만 들고 <b>상위 다섯 종목이 78%를 넘습니다.</b><br>
+      매수한 다음에는 이사회와 경영에 직접 개입해 회사를 바꾸려 합니다.</p>
+    <div class="gap"></div>
+    <div class="list">
+      <div class="li"><div class="t">브룩필드 <small>17.6%</small></div>
+        <div class="d">인프라와 부동산에 투자하는 자산운용사이고, 애크먼의 최대 보유 종목입니다</div></div>
+      <div class="li"><div class="t">아마존 <small>17.4%</small></div>
+        <div class="d">브룩필드와 아마존 두 종목만으로 전체의 3분의 1이 넘습니다. 나머지 열두 종목이 그 뒤를 나눠 갖습니다</div></div>
+      <div class="li"><div class="t">우버 · 마이크로소프트 <small>15.7% · 15.3%</small></div>
+        <div class="d">마이크로소프트는 이번에 새로 편입한 종목이고, 두 종목을 합치면 전체의 31%입니다</div></div>
+      <div class="li"><div class="t">레스토랑 브랜즈 <small>12.2%</small></div>
+        <div class="d">버거킹과 팀홀튼을 거느린 외식 기업입니다. 전체는 14종목 195억 달러이고 비중은 1분기 공시 기준입니다</div></div>
+    </div>
+  </div>
+  <div class="tipbox"><div class="in">
+    <div class="k">알아두기</div>
+    <div class="t">집중도가 높은 만큼 <b>한 종목이 틀리면 손실도 큽니다.</b><br>
+      그래서 애크먼은 매수한 뒤 회사를 직접 고치려 듭니다. 종목을 고르는 것보다<br>
+      회사를 바꾸는 쪽에 가깝습니다.</div></div></div>
+  <div class="foot"><div>SEC 13F · 2026년 6월 30일 기준</div>
+    <div class="who"><b>유영곤</b>삼성생명 GFC · 010-3732-5234</div></div>
+</div></section>
+
+<section class="pg" id="g7"><div class="wrap">
+  <div class="body">
+    <div class="kicker">07 · 아는 시장에만 있는다</div>
+    <h2>리 루 <em>·</em> 히말라야 캐피털</h2>
+    <p class="lead">리 루는 찰리 멍거가 자기 돈을 맡긴 <b>유일한 외부 운용자</b>입니다.<br>
+      보유 종목이 여덟 개뿐이고 상위 세 종목이 70%를 넘습니다.</p>
+    <div class="gap"></div>
+    <div class="list">
+      <div class="li"><div class="t">알파벳 A · C <small>24.6% · 23.4%</small></div>
+        <div class="d">같은 회사를 의결권이 다른 두 종류로 나눠 담았고, 둘을 합치면 전체의 48%입니다</div></div>
+      <div class="li"><div class="t">PDD 홀딩스 <small>22.2%</small></div>
+        <div class="d">중국 전자상거래 기업입니다. 미국 투자자 대부분이 피하는 종목이고, 리 루가 오래 봐온 시장입니다</div></div>
+      <div class="li"><div class="t">버크셔 해서웨이 B <small>15.0%</small></div>
+        <div class="d">찰리 멍거와의 관계가 보유 종목에 그대로 남아 있습니다</div></div>
+      <div class="li"><div class="t">이스트웨스트 뱅코프 <small>9.7%</small></div>
+        <div class="d">미국에서 중국계 기업을 상대하는 은행입니다. 전체는 8종목 37.0억 달러입니다</div></div>
+    </div>
+  </div>
+  <div class="tipbox"><div class="in">
+    <div class="k">알아두기</div>
+    <div class="t">리 루는 중국과 아시아를 오래 봐왔고 <b>아는 시장에만 큰 비중을 둡니다.</b><br>
+      모르는 시장에는 아예 들어가지 않습니다. 버핏의 「아는 것만 산다」를 지역으로 옮긴 형태입니다.</div></div></div>
+  <div class="foot"><div>SEC 13F · 2026년 6월 30일 기준</div>
+    <div class="who"><b>유영곤</b>삼성생명 GFC · 010-3732-5234</div></div>
+</div></section>
+
+<section class="pg" id="g8"><div class="wrap">
+  <div class="body">
+    <div class="kicker">08 · 사건이 가격을 만든다</div>
+    <h2>존 폴슨 <em>·</em> 폴슨앤코</h2>
+    <p class="lead">폴슨은 인수합병과 구조조정, 파산 절차를 밟는 회사처럼
+      <b>사건이 걸린 종목</b>을 삽니다.<br>
+      그래서 업종이 제각각이고, 남들이 거들떠보지 않는 이름이 상위 보유에 올라옵니다.</p>
+    <div class="gap"></div>
+    <div class="list">
+      <div class="li"><div class="t">톰 <small>9.9%</small></div>
+        <div class="d">해상운송 기업입니다. 운임 등락에 따라 실적이 크게 흔들리는 업종입니다</div></div>
+      <div class="li"><div class="t">익스팬드 에너지 <small>9.0%</small></div>
+        <div class="d">천연가스를 개발하는 기업입니다. 합병을 거쳐 지금의 회사가 됐습니다</div></div>
+      <div class="li"><div class="t">가렛 모션 <small>5.2%</small></div>
+        <div class="d"><b>파산 절차에서 나와 다시 상장한 회사</b>입니다. 폴슨이 사는 전형적인 종목입니다</div></div>
+      <div class="li"><div class="t">앵글로골드 아샨티 <small>4.8%</small></div>
+        <div class="d">금광 기업입니다. 폴슨은 금 관련 자산을 오래 보유하는 것으로 알려져 있습니다</div></div>
+      <div class="li"><div class="t">인디비어 <small>4.7%</small></div>
+        <div class="d">최대 보유 종목의 비중이 9%대에 그칩니다. 사건마다 자금을 나눠 담은 결과입니다</div></div>
+    </div>
+  </div>
+  <div class="tipbox"><div class="in">
+    <div class="k">알아두기</div>
+    <div class="t">앞의 사람들이 <b>회사를 보고</b> 산다면 폴슨은 <b>사건을 보고</b> 삽니다.<br>
+      그래서 한 종목에 몰지 않고 사건별로 나눠 투자합니다.</div></div></div>
+  <div class="foot"><div>SEC 13F · 2026년 6월 30일 기준</div>
+    <div class="who"><b>유영곤</b>삼성생명 GFC · 010-3732-5234</div></div>
+</div></section>
+
+<section class="pg" id="g9"><div class="wrap">
+  <div class="body">
+    <div class="kicker">09 · 좋은 회사를 사서 안 판다</div>
+    <h2>테리 스미스 <em>·</em> 펀드스미스</h2>
+    <div class="quote">"좋은 회사를 사라. 비싸게 사지 마라.
+      그리고 아무것도 하지 마라."</div>
+    <p class="lead">이 세 줄이 펀드스미스의 원칙이었습니다.<br>
+      그런데 스미스는 <b>2026년 반기 서한에서 세 번째를 바꾸겠다</b>고 밝혔습니다.<br>
+      실제로 이 펀드의 회전율은 51.8%로 펀드 역사상 가장 높았습니다.</p>
+    <div class="gap"></div>
+    <div class="list">
+      <div class="li"><div class="t">새로 산 종목</div>
+        <div class="d">GE 버노바, 마스터카드, TSMC, 넷플릭스. 2026년 상반기에만 열두 개를 새로 담았습니다</div></div>
+      <div class="li"><div class="t">판 종목</div>
+        <div class="d">유니레버, 노보노디스크, 나이키, 조에티스. <b>모두 오래 들고 있던 종목입니다</b></div></div>
+      <div class="li"><div class="t">그대로 둔 원칙</div>
+        <div class="d">좋은 회사를 산다, 비싸게 사지 않는다. 앞의 두 줄은 손대지 않았습니다</div></div>
+    </div>
+  </div>
+  <div class="tipbox"><div class="in">
+    <div class="k">알아두기</div>
+    <div class="t">스미스는 바꾼 이유로 <b>지수 추종 자금과 인공지능 쏠림이 기업 실적보다<br>
+      주가를 더 움직인다</b>는 점을 들었습니다.<br>
+      원칙 셋 중 하나만 정확히 바꿨고 앞의 둘은 그대로입니다. 기준이 있어야 무엇을 바꿀지도 압니다.</div></div></div>
+  <div class="foot"><div>펀드스미스 반기 서한 · 2026년</div>
+    <div class="who"><b>유영곤</b>삼성생명 GFC · 010-3732-5234</div></div>
+</div></section>
+
+<section class="pg" id="g10"><div class="wrap">
+  <div class="body">
+    <div class="kicker">10 · 아직 이익이 없는 미래를 산다</div>
+    <h2>캐시 우드 <em>·</em> ARK 인베스트</h2>
+    <p class="lead">캐시 우드는 지금 이익을 내는 회사가 아니라
+      <b>앞으로 세상을 바꿀 회사</b>를 삽니다.<br>
+      앞의 아홉 명과 정반대편에 있고 그만큼 주가 변동성도 큽니다.</p>
+    <div class="gap"></div>
+    <div class="list">
+      <div class="li"><div class="t">테슬라 <small>10.5%</small></div>
+        <div class="d">오랫동안 최대 보유 종목이었고 지금은 비중을 줄이고 있습니다</div></div>
+      <div class="li"><div class="t">AMD <small>5.7%</small></div>
+        <div class="d">인공지능 반도체를 만드는 기업입니다</div></div>
+      <div class="li"><div class="t">코인베이스 <small>4.2%</small></div>
+        <div class="d">테슬라를 줄인 자금이 가상자산 관련주로 옮겨갔습니다</div></div>
+      <div class="li"><div class="t">그 밖의 보유</div>
+        <div class="d">크리스퍼, 로쿠, 쇼피파이, 팔란티어. 전체 46종목이고 상위 열 종목이 약 51%입니다</div></div>
+    </div>
+  </div>
+  <div class="tipbox"><div class="in">
+    <div class="k">알아두기</div>
+    <div class="t"><b>같은 시장에서 이런 방식도 자리를 지키고 있다</b>는 것이 이 목록에 넣은 이유입니다.<br>
+      방식이 하나만 옳은 것은 아닙니다. 다만 변동성이 큰 만큼 감당할 수 있는 금액으로만 접근해야 합니다.</div></div></div>
+  <div class="foot"><div>ARKK 보유 현황 · 2026년</div>
+    <div class="who"><b>유영곤</b>삼성생명 GFC · 010-3732-5234</div></div>
+</div></section>
+
+<section class="pg"><div class="wrap">
+  <div class="body">
+    <div class="kicker">정리하면</div>
+    <h2>말은 다 다른데 <em>출발점은 같습니다</em></h2>
+    <div class="gap"></div>
+    <div class="quote" style="font-size:20px">
+      버핏은 모르는 사업을 피하고, 달리오는 못 맞힌다고 인정하고,<br>
+      막스는 매수 가격으로 방어하고, 크리스토퍼 브라운은 아예 모른다고 말합니다.<br><br>
+      <b style="color:#1428A0">열 사람 전부 「나는 틀릴 수 있다」에서 시작합니다.</b>
+      <span class="src">방법이 다른 것이지 태도가 다른 것이 아닙니다</span></div>
+    <div class="list">
+      <div class="li"><div class="t">무엇을 안 사는지가 먼저 정해져 있습니다</div>
+        <div class="d">버핏은 모르는 사업을, 리 루는 모르는 시장을 아예 뺍니다. 고를 대상을 좁히는 일이 먼저입니다</div></div>
+      <div class="li"><div class="t">틀렸을 때 무엇을 할지가 정해져 있습니다</div>
+        <div class="d">막스는 매수 가격으로 방어하고 달리오는 자산배분으로 방어합니다. 방법은 달라도 미리 정해둔 것은 같습니다</div></div>
+      <div class="li"><div class="t">그 기준을 몇십 년째 바꾸지 않았습니다</div>
+        <div class="d">테리 스미스가 원칙 셋 중 하나를 바꾼 것이 뉴스가 될 정도입니다</div></div>
+    </div>
+  </div>
+  <div class="tipbox"><div class="in">
+    <div class="k">그래서</div>
+    <div class="t">누구를 따라야 하는지가 답이 아닙니다.<br>
+      <b>내가 무엇을 기준으로 사고파는지</b>가 정해져야 방법이 따라옵니다.<br>
+      다음 장에서 지금 무엇이 비어 있는지 확인해 보십시오.</div></div></div>
+  <div class="foot"><div>2026년 8월 기준</div>
+    <div class="who"><b>유영곤</b>삼성생명 GFC · 010-3732-5234</div></div>
+</div></section>
+
+<section class="pg"><div class="wrap">
+  <div class="body">
+    <div class="kicker">확인해 보기</div>
+    <h2>그러면 나는 <em>지금 어디에 있나</em></h2>
+    <p class="lead">열 사람의 공통점은 <b>자기 기준이 있다</b>는 것입니다.<br>
+      해당되는 항목을 눌러 보십시오. 맞고 틀리고를 보는 것이 아니라<br>
+      지금 무엇이 비어 있는지를 보는 것입니다.</p>
+    <div class="gap"></div>
+    <div class="checks">
+      <div class="chk" data-t="살 때 얼마에 팔지 안 정한다"><span class="cbox">✓</span>
+        <span class="t">종목을 살 때 얼마에 팔지 미리 정해두지 않는다</span></div>
+      <div class="chk" data-t="손실 난 종목을 더 오래 들고 있다"><span class="cbox">✓</span>
+        <span class="t">손실이 난 종목을 이익이 난 종목보다 더 오래 들고 있다</span></div>
+      <div class="chk" data-t="추천받은 종목이 절반 이상"><span class="cbox">✓</span>
+        <span class="t">남이 추천한 종목이 내 계좌의 절반을 넘는다</span></div>
+      <div class="chk" data-t="보유 종목 수를 모른다"><span class="cbox">✓</span>
+        <span class="t">지금 내 계좌에 몇 개 종목이 있는지 바로 대답이 안 된다</span></div>
+      <div class="chk" data-t="산 이유가 기억나지 않는다"><span class="cbox">✓</span>
+        <span class="t">작년에 왜 그 종목을 샀는지 지금은 기억나지 않는다</span></div>
+      <div class="chk" data-t="뉴스 보고 당일 매매"><span class="cbox">✓</span>
+        <span class="t">뉴스를 보고 그날 안에 사거나 판 적이 있다</span></div>
+      <div class="chk" data-t="틀렸을 때 대응을 안 정했다"><span class="cbox">✓</span>
+        <span class="t">오를 이유는 말할 수 있는데 틀렸을 때 어떻게 할지는 안 정했다</span></div>
+      <div class="chk" data-t="세후 수익을 계산해본 적 없다"><span class="cbox">✓</span>
+        <span class="t">세금과 수수료를 뺀 실제 수익을 계산해본 적이 없다</span></div>
+      <div class="chk" data-t="자금 필요 시점과 연결 안 됨"><span class="cbox">✓</span>
+        <span class="t">이 돈이 언제 필요한지와 지금 투자 방식이 연결되어 있지 않다</span></div>
+      <div class="chk" data-t="30% 하락 대응이 없다"><span class="cbox">✓</span>
+        <span class="t">시장이 30% 하락하면 무엇을 할지 정해두지 않았다</span></div>
+    </div>
+  </div>
+  <div class="tipbox"><div class="in">
+    <div class="k">읽는 법</div>
+    <div class="t"><b>0~2개</b>면 기준이 서 있는 편입니다. 지금 방식을 글로 적어 두면 변동장에서 판단 기준이 됩니다.<br>
+      <b>3~5개</b>면 절반은 정해져 있고 절반은 비어 있는데, 비어 있는 쪽에서 하락장 손실이 먼저 납니다.<br>
+      <b>6개 이상</b>이면 종목을 바꾸기 전에 매매 원칙과 자금 계획을 먼저 세우는 편이 빠릅니다.</div></div></div>
+  <div class="foot"><div>2026년 8월 기준</div>
+    <div class="who"><b>유영곤</b>삼성생명 GFC · 010-3732-5234</div></div>
+</div></section>
+
+<section class="pg" id="ask"><div class="wrap">
+  <div class="body">
+    <div class="kicker">정리해서 받기</div>
+    <h2>체크하신 항목을 <em>기준으로 바꿔 드립니다</em></h2>
+    <p class="lead">누구를 따라야 하는지가 답이 아닙니다.
+      <b>지금 자산이 어떻게 배분되어 있고, 언제 얼마가 필요하고,<br>
+      시장이 하락할 때 무엇을 먼저 정리할지</b>가 정해지면 방법은 그다음에 따라옵니다.<br>
+      상품 이야기 없이 자산 구조만 보는 자리입니다.</p>
+    <div class="gap"></div>
+    <form class="form" action="https://api.web3forms.com/submit" method="POST">
+      <input type="hidden" name="access_key" value="56ba5ceb-1e23-4de6-b6ca-7016a3e1e8d7">
+      <input type="hidden" name="구분" value="투자대가포트폴리오">
+      <input type="hidden" name="체크한항목" id="picked" value="">
+      <input type="hidden" name="subject" value="[투자 대가 자료] 상담 신청">
+      <input type="checkbox" name="botcheck" style="display:none">
+
+      <label>체크하신 항목</label>
+      <div class="picked" id="pickedView">아직 체크하신 항목이 없습니다.</div>
+      <label for="nm">성함</label><input type="text" id="nm" name="성함" required>
+      <label for="ph">연락처</label><input type="tel" id="ph" name="연락처" required>
+      <label for="ms">더 하실 말씀</label><textarea id="ms" name="메모"
+        placeholder="지금 굴리시는 방식이나 걱정되는 부분을 적어주시면 그것부터 봅니다"></textarea>
+      <p style="margin-top:26px"><button type="submit" class="btn">보내기</button></p>
+      <p class="fine">보내주신 내용은 상담 목적으로만 사용하고 다른 곳에 제공하지 않습니다.
+        영업일 기준 하루 안에 연락드립니다.</p>
+    </form>
+  </div>
+  <div class="foot"><div>모든 리스크를 예측할 수는 없지만<br>대비는 할 수 있습니다</div>
+    <div class="who"><b>유영곤</b>삼성생명 GFC · 010-3732-5234</div></div>
+</div></section>
+
+<div class="tally" id="tally"><div class="in">
+  <div class="cnt">체크하신 항목 <b id="cnt">0</b>개</div>
+  <a href="#ask" class="btn">정리해서 받기</a>
+</div></div>
+
+<div class="wrap"><p class="disc">
+  본 자료는 2026년 8월 기준 미국 증권거래위원회(SEC)에 제출된 13F 공시와 각 인물의 공개 발언을
+  정리한 일반 정보입니다. 특정 종목이나 금융상품의 매수·매도를 권유하지 않으며 투자 자문이 아닙니다.
+  13F는 미국 상장 주식 보유분만 공시 대상이므로 실제 운용 자산과 다를 수 있고,
+  공시 시점과 현재 보유 현황도 다를 수 있습니다. 투자 판단과 그 결과는 투자자 본인에게 귀속됩니다.
+</p></div>
+
+<script>
+(function(){
+  var picked=[];
+  function refresh(){
+    document.getElementById("cnt").textContent=picked.length;
+    document.getElementById("picked").value=picked.join(" / ");
+    var v=document.getElementById("pickedView");
+    v.textContent=picked.length?picked.join("\n"):"아직 체크하신 항목이 없습니다.";
+    document.getElementById("tally").classList.toggle("on",picked.length>0);
+  }
+  document.querySelectorAll(".chk").forEach(function(el){
+    el.addEventListener("click",function(){
+      var k=el.getAttribute("data-t");
+      el.classList.toggle("on");
+      if(el.classList.contains("on")) picked.push(k);
+      else picked=picked.filter(function(x){return x!==k});
+      refresh();
+    });
+  });
+  refresh();
+})();
+</script>
+</body></html>
