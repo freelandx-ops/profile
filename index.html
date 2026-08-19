@@ -9,13 +9,13 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://freelandx-ops.github.io/profile/">
 <meta property="og:title" content="유영곤 | 버는 건 시장이 정하고, 지키는 건 구조가 정합니다">
-<meta property="og:description" content="자산 구조를 진단하는 컨설턴트. 투자·경영·부동산·세무·상속증여. 내 자산이 제대로 운영되고 있는지 30초 무료 진단.">
+<meta property="og:description" content="자산 구조를 진단하는 컨설턴트. 투자·경영·부동산·세무·상속증여. 내 자산이 지금 어떤 상태인지 30초 무료 진단.">
 <meta property="og:image" content="https://freelandx-ops.github.io/profile/og-image.jpg">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="유영곤 자산·법인 컨설팅">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="유영곤 | 버는 건 시장이 정하고, 지키는 건 구조가 정합니다">
-<meta name="twitter:description" content="자산 구조를 진단하는 컨설턴트. 투자·경영·부동산·세무·상속증여. 내 자산이 제대로 운영되고 있는지 30초 무료 진단.">
+<meta name="twitter:description" content="자산 구조를 진단하는 컨설턴트. 투자·경영·부동산·세무·상속증여. 내 자산이 지금 어떤 상태인지 30초 무료 진단.">
 <meta name="twitter:image" content="https://freelandx-ops.github.io/profile/og-image.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -318,6 +318,17 @@
     font-size:.87rem;color:var(--mut);text-align:center;line-height:1.7;transition:.25s}
   .diagcount b{color:var(--gold-hi);font-weight:600}
   .diagcount.hot{border-color:rgba(201,162,75,.55);background:rgba(201,162,75,.06)}
+  /* ⛔ .btn은 display:inline-flex라 hidden 속성을 이긴다. 결과 영역의 구독 버튼이
+     3~5개 구간에서 그대로 노출되던 것을 2026-08-19에 이 한 줄로 막았다. */
+  [hidden]{display:none!important}
+  .diagres{margin-top:20px;border:1px solid var(--line2);border-radius:2px;padding:18px;text-align:left;
+    opacity:0;transform:translateY(4px);transition:opacity .2s,transform .2s}
+  .diagres.show{opacity:1;transform:none}
+  .diagres.hot{border-color:rgba(201,162,75,.55);background:rgba(201,162,75,.06)}
+  .diagres .dr-v{color:var(--ink-hi);font-weight:600;font-size:1rem;margin:0 0 8px;line-height:1.55}
+  .diagres .dr-b{color:var(--mut);font-size:.87rem;line-height:1.75;margin:0}
+  .diagres .dr-b b{color:var(--gold-hi);font-weight:600}
+  .diagres .dr-cta{margin-top:14px}
 </style>
 </head>
 <body>
@@ -364,7 +375,7 @@
 <!-- 빠른 무료진단 (상단 옵트인) -->
 <section class="sec" id="quickdiag"><div class="container" style="text-align:center">
   <p class="label">30초 무료 진단</p>
-  <h2 class="title">내 자산이 제대로 운영되고 있는지<br><span class="gold">30초면 확인됩니다</span></h2>
+  <h2 class="title">내 자산이 지금 어떤 상태인지<br><span class="gold">30초면 나옵니다</span></h2>
   <div style="max-width:620px;margin:30px auto 0;text-align:left">
     <p style="color:var(--mut);font-size:14px;margin-bottom:12px">어떤 분이신가요? <span style="color:var(--mut2)">해당되는 걸 먼저 골라보세요.</span></p>
     <!-- ⛔⛔ 탭 순서는 법인 → 개인 → 개인사업자다 (2026-08-18 사용자 확정 — 「아무리 생각해도 법인이 먼저인 것 같아」).
@@ -379,47 +390,59 @@
 
     <!-- 개인 — 2026-08-17 개편. 「세법개정안이 내 자산에」·「증여 공제 주기마다」를 빼고
          부동산 보유·매각과 계좌 배분을 넣었다. 종전 10문항이 전부 세금 축이라
-         「자산이 제대로 운영되고 있는지」라는 제목이 약속한 것을 목록이 안 지키고 있었다. -->
+         「자산이 제대로 운영되고 있는지」라는 제목이 약속한 것을 목록이 안 지키고 있었다.
+         ⚠ 2026-08-19에 문항 30개를 전부 상태형(「~한 적이 없다」)으로 바꿨고 제목도 「지금 어떤 상태인지」로 갈았다.
+         ⛔ data-sol 값과 순서는 그대로다 - 아래 결과 판정의 되비춤과 폼 hidden 필드가 이 값을 읽는다. -->
     <div class="check diaglist on" data-seg="법인">
-      <div class="ck" onclick="toggleCk(this)" data-sol="부동산 명의 구조"><span class="box"></span><div><p class="s"><span class="nb"><b>부동산</b>을 개인 명의로 둘지</span> <span class="nb">법인에 담을지</span> <span class="nb">정하고 싶다</span></p></div></div>
-      <div class="ck" onclick="toggleCk(this)" data-sol="가지급금 정리"><span class="box"></span><div><p class="s"><span class="nb"><b>가지급금</b>을</span> <span class="nb">세부담을 키우지 않고</span> <span class="nb">정리하고 싶다</span></p></div></div>
-      <div class="ck" onclick="toggleCk(this)" data-sol="연금·퇴직금 설계"><span class="box"></span><div><p class="s"><span class="nb">법인 돈을 꺼낼 때</span> <span class="nb"><b>세금이 가장 적은 경로</b>를</span> <span class="nb">알고 싶다</span></p></div></div>
-      <div class="ck" onclick="toggleCk(this)" data-sol="비상장주식평가"><span class="box"></span><div><p class="s"><span class="nb">비상장인 <b>내 회사 주식</b>이</span> <span class="nb">지금 얼마짜리인지</span> <span class="nb">알고 싶다</span></p></div></div>
-      <div class="ck" onclick="toggleCk(this)" data-sol="법인보험 설계"><span class="box"></span><div><p class="s"><span class="nb"><b>임원 퇴직금 규정</b>이</span> <span class="nb">유효한지 점검받고 싶다</span></p></div></div>
-      <div class="ck" onclick="toggleCk(this)" data-sol="산재보험료 절감"><span class="box"></span><div><p class="s"><span class="nb">우리 업종 <b>산재보험료율</b>이</span> <span class="nb">제대로 잡혔는지</span> <span class="nb">확인하고 싶다</span></p></div></div>
-      <div class="ck" onclick="toggleCk(this)" data-sol="정부대출·정책자금"><span class="box"></span><div><p class="s"><span class="nb">우리가 받을 수 있는</span> <span class="nb"><b>정책자금</b>이 있는지</span> <span class="nb">알아보고 싶다</span></p></div></div>
-      <div class="ck" onclick="toggleCk(this)" data-sol="상속·증여 절세"><span class="box"></span><div><p class="s"><span class="nb">주식 가치가 더 오르기 전에</span> <span class="nb"><b>승계</b>를 시작하고 싶다</span></p></div></div>
-      <div class="ck" onclick="toggleCk(this)" data-sol="기업리스크 분석"><span class="box"></span><div><p class="s"><span class="nb">사고가 나도 <b>대표 형사책임</b>까지</span> <span class="nb">가지 않을 체계를</span> <span class="nb">갖추고 싶다</span></p></div></div>
-      <div class="ck" onclick="toggleCk(this)" data-sol="상속·증여 절세"><span class="box"></span><div><p class="s"><span class="nb">내가 없어도</span> <span class="nb"><b>연대보증과 상속세</b>가</span> <span class="nb">가족을 덮치지 않게 하고 싶다</span></p></div></div>
+      <div class="ck" onclick="toggleCk(this)" data-sol="부동산 명의 구조"><span class="box"></span><div><p class="s"><span class="nb"><b>부동산</b>을 개인 명의로 둘지</span> <span class="nb">법인에 담을지</span> <span class="nb">비교해본 적이 없다</span></p></div></div>
+      <div class="ck" onclick="toggleCk(this)" data-sol="가지급금 정리"><span class="box"></span><div><p class="s"><span class="nb"><b>가지급금</b>이 지금 얼마나 쌓였는지</span> <span class="nb">정확한 금액을 모른다</span></p></div></div>
+      <div class="ck" onclick="toggleCk(this)" data-sol="연금·퇴직금 설계"><span class="box"></span><div><p class="s"><span class="nb">법인 돈을 꺼내는 경로별로</span> <span class="nb"><b>세금이 얼마나 다른지</b></span> <span class="nb">비교해본 적이 없다</span></p></div></div>
+      <div class="ck" onclick="toggleCk(this)" data-sol="비상장주식평가"><span class="box"></span><div><p class="s"><span class="nb">비상장인 <b>내 회사 주식</b>이</span> <span class="nb">지금 얼마로 평가되는지</span> <span class="nb">모른다</span></p></div></div>
+      <div class="ck" onclick="toggleCk(this)" data-sol="법인보험 설계"><span class="box"></span><div><p class="s"><span class="nb"><b>임원 퇴직금 규정</b>을 만든 뒤로</span> <span class="nb">점검한 적이 없다</span></p></div></div>
+      <div class="ck" onclick="toggleCk(this)" data-sol="산재보험료 절감"><span class="box"></span><div><p class="s"><span class="nb">우리 업종 <b>산재보험료율</b>이</span> <span class="nb">맞게 적용됐는지</span> <span class="nb">확인해본 적이 없다</span></p></div></div>
+      <div class="ck" onclick="toggleCk(this)" data-sol="정부대출·정책자금"><span class="box"></span><div><p class="s"><span class="nb">우리가 받을 수 있는</span> <span class="nb"><b>정책자금</b>을</span> <span class="nb">확인해본 적이 없다</span></p></div></div>
+      <div class="ck" onclick="toggleCk(this)" data-sol="상속·증여 절세"><span class="box"></span><div><p class="s"><span class="nb"><b>승계</b>를 언제부터 시작할지</span> <span class="nb">시점을 정해두지 않았다</span></p></div></div>
+      <div class="ck" onclick="toggleCk(this)" data-sol="기업리스크 분석"><span class="box"></span><div><p class="s"><span class="nb">사고가 났을 때 <b>대표 책임</b>이</span> <span class="nb">어디까지인지</span> <span class="nb">확인해두지 않았다</span></p></div></div>
+      <div class="ck" onclick="toggleCk(this)" data-sol="상속·증여 절세"><span class="box"></span><div><p class="s"><span class="nb">내가 없을 때 <b>연대보증과 상속세</b>가</span> <span class="nb">어떻게 되는지</span> <span class="nb">계산해본 적이 없다</span></p></div></div>
     </div>
 
     <div class="check diaglist" data-seg="개인">
-      <div class="ck" onclick="toggleCk(this)" data-sol="부동산 보유·매각 판단"><span class="box"></span><div><p class="s"><span class="nb">가진 <b>부동산</b>을</span> <span class="nb">계속 보유할지 매각할지</span> <span class="nb">세금까지 따져서 정하고 싶다</span></p></div></div>
-      <div class="ck" onclick="toggleCk(this)" data-sol="계좌·과세 구조 점검"><span class="box"></span><div><p class="s"><span class="nb"><b>일반계좌 · ISA · 연금계좌</b> 중</span> <span class="nb">어디에 무엇을 담을지</span> <span class="nb">정리하고 싶다</span></p></div></div>
-      <div class="ck" onclick="toggleCk(this)" data-sol="실전 투자·재테크 원리"><span class="box"></span><div><p class="s"><span class="nb"><b>주식 투자</b>를 감이 아니라</span> <span class="nb">원리로 하고 싶다</span></p></div></div>
-      <div class="ck" onclick="toggleCk(this)" data-sol="자산·세무 점검"><span class="box"></span><div><p class="s"><span class="nb"><b>해외주식 양도세</b>를</span> <span class="nb">줄이는 방법을 알고 싶다</span></p></div></div>
-      <div class="ck" onclick="toggleCk(this)" data-sol="연금·퇴직금 설계"><span class="box"></span><div><p class="s"><span class="nb"><b>퇴직금</b>을 세금 덜 내고</span> <span class="nb">받는 방법을 알고 싶다</span></p></div></div>
-      <div class="ck" onclick="toggleCk(this)" data-sol="연금저축·IRP"><span class="box"></span><div><p class="s"><span class="nb"><b>연금저축과 IRP</b>에서</span> <span class="nb">돌려받을 최대치를 채우고 싶다</span></p></div></div>
-      <div class="ck" onclick="toggleCk(this)" data-sol="자산·세무 점검"><span class="box"></span><div><p class="s"><span class="nb">건강보험 <b>피부양자 자격</b>을</span> <span class="nb">유지하고 싶다</span></p></div></div>
-      <div class="ck" onclick="toggleCk(this)" data-sol="개인보험 리모델링"><span class="box"></span><div><p class="s"><span class="nb">내는 보험료 대비</span> <span class="nb"><b>보장이 적정한지</b></span> <span class="nb">검증받고 싶다</span></p></div></div>
-      <div class="ck" onclick="toggleCk(this)" data-sol="상속·증여 절세"><span class="box"></span><div><p class="s"><span class="nb"><b>배우자 상속공제</b>를</span> <span class="nb">최대로 끌어올린 설계를</span> <span class="nb">하고 싶다</span></p></div></div>
-      <div class="ck" onclick="toggleCk(this)" data-sol="상속·증여 절세"><span class="box"></span><div><p class="s"><span class="nb"><b>상속세 낼 현금</b>이 없어</span> <span class="nb">자산을 급히 파는 일은</span> <span class="nb">피하고 싶다</span></p></div></div>
+      <div class="ck" onclick="toggleCk(this)" data-sol="부동산 보유·매각 판단"><span class="box"></span><div><p class="s"><span class="nb">가진 <b>부동산</b>을</span> <span class="nb">보유할 때와 팔 때의 세금을</span> <span class="nb">비교해본 적이 없다</span></p></div></div>
+      <div class="ck" onclick="toggleCk(this)" data-sol="계좌·과세 구조 점검"><span class="box"></span><div><p class="s"><span class="nb"><b>일반계좌 · ISA · 연금계좌</b>에</span> <span class="nb">무엇을 담을지</span> <span class="nb">기준 없이 넣어뒀다</span></p></div></div>
+      <div class="ck" onclick="toggleCk(this)" data-sol="실전 투자·재테크 원리"><span class="box"></span><div><p class="s"><span class="nb">지금 가진 <b>종목</b>을</span> <span class="nb">왜 골랐는지</span> <span class="nb">설명하기 어렵다</span></p></div></div>
+      <div class="ck" onclick="toggleCk(this)" data-sol="자산·세무 점검"><span class="box"></span><div><p class="s"><span class="nb"><b>해외주식 양도세</b>를</span> <span class="nb">줄일 방법이 있는지</span> <span class="nb">확인해본 적이 없다</span></p></div></div>
+      <div class="ck" onclick="toggleCk(this)" data-sol="연금·퇴직금 설계"><span class="box"></span><div><p class="s"><span class="nb"><b>퇴직금</b>을 어떻게 받을 때</span> <span class="nb">세금이 적은지 모른다</span></p></div></div>
+      <div class="ck" onclick="toggleCk(this)" data-sol="연금저축·IRP"><span class="box"></span><div><p class="s"><span class="nb"><b>연금저축과 IRP</b> 한도를</span> <span class="nb">올해 얼마나 채웠는지</span> <span class="nb">모른다</span></p></div></div>
+      <div class="ck" onclick="toggleCk(this)" data-sol="자산·세무 점검"><span class="box"></span><div><p class="s"><span class="nb">소득이 늘면 건강보험 <b>피부양자 자격</b>이</span> <span class="nb">어떻게 되는지</span> <span class="nb">확인해본 적이 없다</span></p></div></div>
+      <div class="ck" onclick="toggleCk(this)" data-sol="개인보험 리모델링"><span class="box"></span><div><p class="s"><span class="nb">내는 보험료 대비</span> <span class="nb"><b>보장이 적정한지</b></span> <span class="nb">검증받은 적이 없다</span></p></div></div>
+      <div class="ck" onclick="toggleCk(this)" data-sol="상속·증여 절세"><span class="box"></span><div><p class="s"><span class="nb"><b>배우자 상속공제</b>를</span> <span class="nb">얼마나 쓸 수 있는지</span> <span class="nb">계산해본 적이 없다</span></p></div></div>
+      <div class="ck" onclick="toggleCk(this)" data-sol="상속·증여 절세"><span class="box"></span><div><p class="s"><span class="nb"><b>상속세 낼 현금</b>이</span> <span class="nb">어디서 나오는지</span> <span class="nb">정해두지 않았다</span></p></div></div>
     </div>
 
     <div class="check diaglist" data-seg="개인사업자·프리랜서">
-      <div class="ck" onclick="toggleCk(this)" data-sol="계좌·과세 구조 점검"><span class="box"></span><div><p class="s"><span class="nb">사업으로 번 돈이</span> <span class="nb"><b>예금에만</b> 있어서,</span> <span class="nb">어디에 나눠 담을지 정하고 싶다</span></p></div></div>
-      <div class="ck" onclick="toggleCk(this)" data-sol="소득·경비 구조 점검"><span class="box"></span><div><p class="s"><span class="nb">작년보다 <b>세금이 왜 늘었는지</b></span> <span class="nb">알고 싶다</span></p></div></div>
-      <div class="ck" onclick="toggleCk(this)" data-sol="소득·경비 구조 점검"><span class="box"></span><div><p class="s"><span class="nb"><b>경비로 인정되는 범위</b>를</span> <span class="nb">제대로 알고 싶다</span></p></div></div>
-      <div class="ck" onclick="toggleCk(this)" data-sol="소득·경비 구조 점검"><span class="box"></span><div><p class="s"><span class="nb">소득이 오를 때 <b>건강보험료</b>가</span> <span class="nb">얼마나 따라오는지</span> <span class="nb">알고 싶다</span></p></div></div>
-      <div class="ck" onclick="toggleCk(this)" data-sol="사업자 자산 점검"><span class="box"></span><div><p class="s"><span class="nb"><b>노란우산</b>에 넣기 전에</span> <span class="nb">해지 조건부터 확인하고 싶다</span></p></div></div>
-      <div class="ck" onclick="toggleCk(this)" data-sol="정부대출·정책자금"><span class="box"></span><div><p class="s"><span class="nb">내가 받을 수 있는</span> <span class="nb"><b>정책자금</b>이 있는지</span> <span class="nb">알아보고 싶다</span></p></div></div>
-      <div class="ck" onclick="toggleCk(this)" data-sol="개인연금·IRP"><span class="box"></span><div><p class="s"><span class="nb">직장인만 받는 줄 알았던</span> <span class="nb"><b>연금 세액공제</b>를 챙기고 싶다</span></p></div></div>
-      <div class="ck" onclick="toggleCk(this)" data-sol="법인전환 설계"><span class="box"></span><div><p class="s"><span class="nb"><b>성실신고 대상</b>까지</span> <span class="nb">얼마나 남았는지 알고 싶다</span></p></div></div>
-      <div class="ck" onclick="toggleCk(this)" data-sol="법인전환 설계"><span class="box"></span><div><p class="s"><span class="nb"><b>법인 전환</b>이 유리해지는</span> <span class="nb">소득 구간이 어디인지</span> <span class="nb">알고 싶다</span></p></div></div>
-      <div class="ck" onclick="toggleCk(this)" data-sol="사업자 보장 점검"><span class="box"></span><div><p class="s"><span class="nb">일을 못 하게 됐을 때</span> <span class="nb"><b>소득이 끊기지 않게</b></span> <span class="nb">해두고 싶다</span></p></div></div>
+      <div class="ck" onclick="toggleCk(this)" data-sol="계좌·과세 구조 점검"><span class="box"></span><div><p class="s"><span class="nb">사업으로 번 돈이</span> <span class="nb"><b>예금에만</b> 있고,</span> <span class="nb">나눠 담을 기준이 없다</span></p></div></div>
+      <div class="ck" onclick="toggleCk(this)" data-sol="소득·경비 구조 점검"><span class="box"></span><div><p class="s"><span class="nb">작년보다 <b>세금이 왜 늘었는지</b></span> <span class="nb">설명을 들은 적이 없다</span></p></div></div>
+      <div class="ck" onclick="toggleCk(this)" data-sol="소득·경비 구조 점검"><span class="box"></span><div><p class="s"><span class="nb"><b>경비로 인정되는 범위</b>를</span> <span class="nb">정확히 모른다</span></p></div></div>
+      <div class="ck" onclick="toggleCk(this)" data-sol="소득·경비 구조 점검"><span class="box"></span><div><p class="s"><span class="nb">소득이 오를 때 <b>건강보험료</b>가</span> <span class="nb">얼마나 따라오는지</span> <span class="nb">모른다</span></p></div></div>
+      <div class="ck" onclick="toggleCk(this)" data-sol="사업자 자산 점검"><span class="box"></span><div><p class="s"><span class="nb"><b>노란우산</b>의 해지 조건과</span> <span class="nb">세금 처리를 모른다</span></p></div></div>
+      <div class="ck" onclick="toggleCk(this)" data-sol="정부대출·정책자금"><span class="box"></span><div><p class="s"><span class="nb">내가 받을 수 있는</span> <span class="nb"><b>정책자금</b>을</span> <span class="nb">확인해본 적이 없다</span></p></div></div>
+      <div class="ck" onclick="toggleCk(this)" data-sol="개인연금·IRP"><span class="box"></span><div><p class="s"><span class="nb">사업소득자도 받는</span> <span class="nb"><b>연금 세액공제</b>를</span> <span class="nb">챙기고 있는지 모른다</span></p></div></div>
+      <div class="ck" onclick="toggleCk(this)" data-sol="법인전환 설계"><span class="box"></span><div><p class="s"><span class="nb"><b>성실신고 대상</b>까지</span> <span class="nb">얼마나 남았는지 모른다</span></p></div></div>
+      <div class="ck" onclick="toggleCk(this)" data-sol="법인전환 설계"><span class="box"></span><div><p class="s"><span class="nb"><b>법인 전환</b>이 유리해지는</span> <span class="nb">소득 구간을</span> <span class="nb">확인해본 적이 없다</span></p></div></div>
+      <div class="ck" onclick="toggleCk(this)" data-sol="사업자 보장 점검"><span class="box"></span><div><p class="s"><span class="nb">일을 못 하게 됐을 때</span> <span class="nb"><b>소득이 얼마나 끊기는지</b></span> <span class="nb">계산해본 적이 없다</span></p></div></div>
     </div>
 
     <p class="diagcount" id="diagCount">해당되는 항목을 눌러 보세요.</p>
+
+    <!-- 결과 판정 - 2026-08-19 신설. 지시서는 007. journal/진단결과화면_작업지시서.md
+         ⛔ 판정 문구는 지시서 확정본이다. 손실을 단정하는 말·수익률·절세액 단정을 더하지 않는다.
+         ⛔ 종전 diagCount의 「많은 게 아니라 보통입니다」 줄은 2026-08-19 사용자 확정으로 뻐다.
+            체크가 1개 이상이면 diagCount를 숨기고 이 영역이 그 자리를 대신한다. -->
+    <div class="diagres" id="diagResult" hidden>
+      <p class="dr-v" id="drV"></p>
+      <p class="dr-b" id="drB"></p>
+      <a class="btn s dr-cta" id="drCta" href="#briefing" hidden>브리핑 무료 구독 →</a>
+    </div>
 
     <form class="form" action="https://api.web3forms.com/submit" method="POST" style="margin-top:24px">
       <input type="hidden" name="access_key" value="56ba5ceb-1e23-4de6-b6ca-7016a3e1e8d7">
@@ -427,6 +450,9 @@
       <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
       <input type="hidden" name="구분" id="diagSeg" value="법인"><!-- 기본 탭과 같아야 한다 (2026-08-18 사용자 확정으로 법인 먼저) -->
       <input type="hidden" name="체크한항목" id="diagPicked" value="">
+      <input type="hidden" name="체크개수" id="diagCnt" value="0">
+      <input type="hidden" name="판정구간" id="diagBand" value="">
+      <input type="hidden" name="솔루션목록" id="diagSols" value="">
       <div class="fgrid">
         <div class="fld"><label>이름 <em>*</em></label><input name="이름" type="text" required placeholder="성함"></div>
         <div class="fld"><label>연락처 <em>*</em></label><input name="연락처" type="tel" required placeholder="010-0000-0000"></div>
@@ -1451,25 +1477,71 @@
     el.classList.toggle('on');
     updateDiagCount();
   }
+  // 결과 판정 - 2026-08-19 신설(지시서 007. journal/진단결과화면_작업지시서.md)
+  // ⚠ 되비춤 우선순위 - 시간이 지날수록 비용이 붙는 항목부터. 값은 data-sol과 정확히 같아야 한다
+  var DIAG_PRIOR = ['가지급금 정리','상속·증여 절세','비상장주식평가','법인전환 설계'];
+  function diagJosa(w){ // 받침이 있으면 「은」, 없으면 「는」
+    if(!w) return '는';
+    var c = w.charCodeAt(w.length-1) - 0xAC00;
+    if(c < 0 || c > 11171) return '는';
+    return (c % 28 === 0) ? '는' : '은';
+  }
+  function setDiagVal(id, v){ var el = document.getElementById(id); if(el){ el.value = v; } }
   function updateDiagCount(){
     var list = document.querySelector('#quickdiag .diaglist.on');
     var box = document.getElementById('diagCount');
-    var hidden = document.getElementById('diagPicked');
+    var res = document.getElementById('diagResult');
+    var cta = document.getElementById('drCta');
     if(!list) return;
-    var picked = [];
-    list.querySelectorAll('.ck.on .s').forEach(function(s){ picked.push(s.textContent.trim()); });
-    if(hidden){ hidden.value = picked.join(' / '); }
-    if(!box) return;
+    var picked = [], sols = [];
+    list.querySelectorAll('.ck.on').forEach(function(ck){
+      var s = ck.querySelector('.s');
+      if(s){ picked.push(s.textContent.trim()); }
+      var sol = ck.getAttribute('data-sol');
+      if(sol && sols.indexOf(sol) === -1){ sols.push(sol); } // 같은 data-sol은 하나로 합친다
+    });
     var n = picked.length;
-    if(n === 0){
-      box.classList.remove('hot');
-      box.innerHTML = '해당되는 항목을 눌러 보세요.';
-    } else if(n < 3){
-      box.classList.remove('hot');
-      box.innerHTML = '<b>' + n + '개</b> 체크하셨습니다.<br>성함과 연락처만 남겨 주시면 체크하신 항목부터 짚어 드립니다.';
+    var band = (n === 0) ? '' : (n < 3 ? '1~2개' : (n < 6 ? '3~5개' : '6개 이상'));
+    setDiagVal('diagPicked', picked.join(' / '));
+    setDiagVal('diagSols', sols.join(' / '));
+    setDiagVal('diagCnt', String(n));
+    setDiagVal('diagBand', band);
+
+    if(box){ box.hidden = (n > 0); box.classList.remove('hot'); }
+    if(!res) return;
+    if(n === 0){ // 지시서 1번 - 0개일 때는 종전과 똑같이 보여야 한다
+      res.hidden = true; res.classList.remove('show','hot');
+      if(cta){ cta.hidden = true; }
+      return;
+    }
+    var mirror = [];
+    DIAG_PRIOR.forEach(function(p){ if(sols.indexOf(p) > -1 && mirror.length < 2){ mirror.push(p); } });
+    sols.forEach(function(x){ if(mirror.length < 2 && mirror.indexOf(x) === -1){ mirror.push(x); } });
+    var m = mirror.join(', ');
+    var v, b;
+    if(n < 3){
+      v = '관리되고 있는 편입니다.';
+      b = '다만 자산 구조는 세법이 바뀔 때마다 다시 봐야 합니다.<br>매일 아침 그날 짚어야 할 것만 정리해 보내드립니다.';
+      res.classList.remove('hot');
+      if(cta){ cta.hidden = false; }
+    } else if(n < 6){
+      v = '점검이 필요한 상태입니다.';
+      b = '선택하신 것 중 <b>' + m + '</b>' + diagJosa(m) + ' 시간이 지날수록 비용이 붙는 항목입니다.<br>어디부터 정리할지 순서를 잡아드립니다.';
+      res.classList.remove('hot');
+      if(cta){ cta.hidden = true; }
     } else {
-      box.classList.add('hot');
-      box.innerHTML = '<b>' + n + '개</b> 체크하셨습니다. 많은 게 아니라 보통입니다. 이걸 한자리에 놓고 볼 일이 없으니까요.<br>성함과 연락처만 남겨 주시면 체크하신 항목부터 짚어 드립니다.';
+      v = '구조부터 다시 봐야 하는 상태입니다.';
+      b = '<b>' + m + '</b>까지 걸려 있으면, 항목별 대응보다 전체 구조를 한 번에 보는 게 빠릅니다.';
+      res.classList.add('hot');
+      if(cta){ cta.hidden = true; }
+    }
+    document.getElementById('drV').innerHTML = v;
+    document.getElementById('drB').innerHTML = b;
+    if(res.hidden){
+      res.hidden = false;
+      window.requestAnimationFrame(function(){ res.classList.add('show'); });
+    } else {
+      res.classList.add('show');
     }
   }
 
