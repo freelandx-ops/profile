@@ -95,6 +95,11 @@
   .title{font-family:'Noto Serif KR',serif;font-size:clamp(1.55rem,3.4vw,2.15rem);font-weight:600;color:var(--ink-hi);line-height:1.4;letter-spacing:-.01em}
   .title .gold{color:var(--gold-hi)}
   .title,.svc h4,.hooks h4,.prec h4,.case h4,.check .s,.stat .k{text-wrap:balance}
+  /* 2026-08-23 — 모바일에서 마지막 어절 하나만 다음 줄로 떨어지고 있었다(약력·히어로·리드).
+     word-break:keep-all은 어절을 안 쪼갤 뿐이고 어디서 끊길지는 정하지 않는다.
+     balance = 줄 길이를 고르게 나눈다(짧은 덩어리). pretty = 고아 단어만 막는다(본문). */
+  .hero .role,.hero .role-sub,.hero .areas,.bio li,.closing .sub,.lic .c{text-wrap:balance}
+  .lead,.band .lead{text-wrap:pretty}
   .lead{color:var(--mut);font-weight:300;max-width:680px;margin-top:18px;line-height:1.9}
   .lead b{color:var(--ink);font-weight:500}
   .center{text-align:center}
@@ -419,9 +424,9 @@
       <div class="ck" onclick="toggleCk(this)" data-sol="비상장주식평가"><span class="box"></span><div><p class="s"><span class="nb">비상장인 <b>내 회사 주식</b>이</span> <span class="nb">지금 얼마로 평가되는지</span> <span class="nb">모른다</span></p></div></div>
       <div class="ck" onclick="toggleCk(this)" data-sol="법인보험 설계"><span class="box"></span><div><p class="s"><span class="nb"><b>임원 퇴직금 규정</b>을 만든 뒤로</span> <span class="nb">점검한 적이 없다</span></p></div></div>
       <div class="ck" onclick="toggleCk(this)" data-sol="산재보험료 절감"><span class="box"></span><div><p class="s"><span class="nb">우리 업종 <b>산재보험료율</b>이</span> <span class="nb">맞게 적용됐는지</span> <span class="nb">확인해본 적이 없다</span></p></div></div>
-      <div class="ck" onclick="toggleCk(this)" data-sol="정부대출·정책자금"><span class="box"></span><div><p class="s"><span class="nb">우리가 받을 수 있는</span> <span class="nb"><b>정책자금</b>을</span> <span class="nb">확인해본 적이 없다</span></p></div></div>
+      <div class="ck" onclick="toggleCk(this)" data-sol="계좌·과세 구조 점검"><span class="box"></span><div><p class="s"><span class="nb"><b>법인 여유자금</b>이 예금에만 있고,</span> <span class="nb">나눠 담을 기준이 없다</span></p></div></div>
       <div class="ck" onclick="toggleCk(this)" data-sol="상속·증여 절세"><span class="box"></span><div><p class="s"><span class="nb"><b>승계</b>를 언제부터 시작할지</span> <span class="nb">시점을 정해두지 않았다</span></p></div></div>
-      <div class="ck" onclick="toggleCk(this)" data-sol="기업리스크 분석"><span class="box"></span><div><p class="s"><span class="nb">사고가 났을 때 <b>대표 책임</b>이</span> <span class="nb">어디까지인지</span> <span class="nb">확인해두지 않았다</span></p></div></div>
+      <div class="ck" onclick="toggleCk(this)" data-sol="기업리스크 분석"><span class="box"></span><div><p class="s"><span class="nb">사고가 났을 때 <b>회사 자산에서</b></span> <span class="nb">직접 나갈 금액을</span> <span class="nb">계산해본 적이 없다</span></p></div></div>
       <div class="ck" onclick="toggleCk(this)" data-sol="상속·증여 절세"><span class="box"></span><div><p class="s"><span class="nb">내가 없을 때 <b>연대보증과 상속세</b>가</span> <span class="nb">어떻게 되는지</span> <span class="nb">계산해본 적이 없다</span></p></div></div>
     </div>
 
@@ -432,7 +437,7 @@
       <div class="ck" onclick="toggleCk(this)" data-sol="자산·세무 점검"><span class="box"></span><div><p class="s"><span class="nb"><b>해외주식 양도세</b>를</span> <span class="nb">줄일 방법이 있는지</span> <span class="nb">확인해본 적이 없다</span></p></div></div>
       <div class="ck" onclick="toggleCk(this)" data-sol="연금·퇴직금 설계"><span class="box"></span><div><p class="s"><span class="nb"><b>퇴직금</b>을 어떻게 받을 때</span> <span class="nb">세금이 적은지 모른다</span></p></div></div>
       <div class="ck" onclick="toggleCk(this)" data-sol="연금저축·IRP"><span class="box"></span><div><p class="s"><span class="nb"><b>연금저축과 IRP</b> 한도를</span> <span class="nb">올해 얼마나 채웠는지</span> <span class="nb">모른다</span></p></div></div>
-      <div class="ck" onclick="toggleCk(this)" data-sol="자산·세무 점검"><span class="box"></span><div><p class="s"><span class="nb">소득이 늘면 건강보험 <b>피부양자 자격</b>이</span> <span class="nb">어떻게 되는지</span> <span class="nb">확인해본 적이 없다</span></p></div></div>
+      <div class="ck" onclick="toggleCk(this)" data-sol="개인보험 리모델링"><span class="box"></span><div><p class="s"><span class="nb">크게 아플 때 <b>자산에서 얼마가</b></span> <span class="nb">빠져나가는지</span> <span class="nb">계산해본 적이 없다</span></p></div></div>
       <div class="ck" onclick="toggleCk(this)" data-sol="개인보험 리모델링"><span class="box"></span><div><p class="s"><span class="nb">내는 보험료 대비</span> <span class="nb"><b>보장이 적정한지</b></span> <span class="nb">검증받은 적이 없다</span></p></div></div>
       <div class="ck" onclick="toggleCk(this)" data-sol="상속·증여 절세"><span class="box"></span><div><p class="s"><span class="nb"><b>배우자 상속공제</b>를</span> <span class="nb">얼마나 쓸 수 있는지</span> <span class="nb">계산해본 적이 없다</span></p></div></div>
       <div class="ck" onclick="toggleCk(this)" data-sol="상속·증여 절세"><span class="box"></span><div><p class="s"><span class="nb"><b>상속세 낼 현금</b>이</span> <span class="nb">어디서 나오는지</span> <span class="nb">정해두지 않았다</span></p></div></div>
@@ -440,11 +445,11 @@
 
     <div class="check diaglist" data-seg="개인사업자·프리랜서">
       <div class="ck" onclick="toggleCk(this)" data-sol="계좌·과세 구조 점검"><span class="box"></span><div><p class="s"><span class="nb">사업으로 번 돈이</span> <span class="nb"><b>예금에만</b> 있고,</span> <span class="nb">나눠 담을 기준이 없다</span></p></div></div>
-      <div class="ck" onclick="toggleCk(this)" data-sol="소득·경비 구조 점검"><span class="box"></span><div><p class="s"><span class="nb">작년보다 <b>세금이 왜 늘었는지</b></span> <span class="nb">설명을 들은 적이 없다</span></p></div></div>
+      <div class="ck" onclick="toggleCk(this)" data-sol="사업자 보장 점검"><span class="box"></span><div><p class="s"><span class="nb">일하다 <b>남에게 손해</b>를 입혔을 때</span> <span class="nb">자산에서 나갈 금액을</span> <span class="nb">모른다</span></p></div></div>
       <div class="ck" onclick="toggleCk(this)" data-sol="소득·경비 구조 점검"><span class="box"></span><div><p class="s"><span class="nb"><b>경비로 인정되는 범위</b>를</span> <span class="nb">정확히 모른다</span></p></div></div>
       <div class="ck" onclick="toggleCk(this)" data-sol="소득·경비 구조 점검"><span class="box"></span><div><p class="s"><span class="nb">소득이 오를 때 <b>건강보험료</b>가</span> <span class="nb">얼마나 따라오는지</span> <span class="nb">모른다</span></p></div></div>
       <div class="ck" onclick="toggleCk(this)" data-sol="사업자 자산 점검"><span class="box"></span><div><p class="s"><span class="nb"><b>노란우산</b>의 해지 조건과</span> <span class="nb">세금 처리를 모른다</span></p></div></div>
-      <div class="ck" onclick="toggleCk(this)" data-sol="정부대출·정책자금"><span class="box"></span><div><p class="s"><span class="nb">내가 받을 수 있는</span> <span class="nb"><b>정책자금</b>을</span> <span class="nb">확인해본 적이 없다</span></p></div></div>
+      <div class="ck" onclick="toggleCk(this)" data-sol="계좌·과세 구조 점검"><span class="box"></span><div><p class="s"><span class="nb"><b>사업 계좌와 개인 투자 계좌</b>가 섞여 있어</span> <span class="nb">세금이 어떻게 갈리는지</span> <span class="nb">모른다</span></p></div></div>
       <div class="ck" onclick="toggleCk(this)" data-sol="개인연금·IRP"><span class="box"></span><div><p class="s"><span class="nb">사업소득자도 받는</span> <span class="nb"><b>연금 세액공제</b>를</span> <span class="nb">챙기고 있는지 모른다</span></p></div></div>
       <div class="ck" onclick="toggleCk(this)" data-sol="법인전환 설계"><span class="box"></span><div><p class="s"><span class="nb"><b>성실신고 대상</b>까지</span> <span class="nb">얼마나 남았는지 모른다</span></p></div></div>
       <div class="ck" onclick="toggleCk(this)" data-sol="법인전환 설계"><span class="box"></span><div><p class="s"><span class="nb"><b>법인 전환</b>이 유리해지는</span> <span class="nb">소득 구간을</span> <span class="nb">확인해본 적이 없다</span></p></div></div>
@@ -694,6 +699,10 @@
   <div class="case"><span class="tag">CASE 04</span><h4>D대표 · 대표 유고 리스크 분리 설계</h4>
     <p class="meta">이슈: 회사 대출 연대보증과 상속세를 가족이 그대로 떠안는 구조</p>
     <p>법인 컨설팅 과정에서 대표 개인의 보장 구조를 함께 점검했습니다. 유고 시 가족 생활비와 상속세 재원이 <b>회사 채무와 분리되어 확보되는 설계</b>로 정리했습니다. 회사를 지키는 일과 가족을 지키는 일은 결국 하나의 설계입니다.</p></div>
+  <div class="case"><span class="tag">CASE 05</span><h4>J대표 · 사고 한 건이 회사 자산에서 나간 경우</h4>
+    <p class="meta">업종: 제조업 · 이슈: 현장 사고 뒤 배상과 복구 비용을 회사 현금으로 메우던 상황</p>
+    <p>보험은 들어 있었는데 담보가 실제 손해를 덮지 못했습니다. <b>회사가 자기 돈으로 메운 금액부터 세어보고</b>, 재물과 배상 담보를 지금 자산 규모에 맞춰 다시 잡았습니다. 업종 산재보험료율도 같이 봤습니다. 사고는 못 막아도 <b>자산에서 나가는 금액은 정할 수 있습니다.</b></p>
+  </div>
   <h3 class="casegroup">개인 자산</h3>
   <div class="case"><span class="tag">CASE 01</span><h4>은퇴를 앞둔 E님 · 부동산과 계좌를 같이 놓고 본 경우</h4>
     <p class="meta">이슈: 부동산은 계속 보유, 계좌는 자동이체로만 굴러가던 상태</p>
@@ -704,6 +713,10 @@
   <div class="case"><span class="tag">CASE 03</span><h4>H님 · 분산했다고 생각했는데 같은 것을 세 번 산 경우</h4>
     <p class="meta">이슈: 증권사 세 곳에 흩어진 펀드·ETF의 실제 구성</p>
     <p>앱마다 따로 보고 계셔서 전체가 한 장에 안 보였습니다. 펀드와 ETF를 풀어보면 그 안에 든 종목이 서로 겹칩니다. 셋을 한 표로 합쳐 업종·국가·환노출이 어디에 몰려 있는지 보고, 해외 배당과 양도 과세가 계좌마다 어떻게 갈리는지까지 같이 정리했습니다. <b>분산은 상품 개수가 아니라 안에 든 것으로 정해집니다.</b></p></div>
+  <div class="case"><span class="tag">CASE 04</span><h4>K님 · 치료비보다 멈춘 소득이 컸던 경우</h4>
+    <p class="meta">이슈: 치료비는 감당했으나 일을 쉬는 동안 계좌에서 생활비가 계속 빠져나가던 상태</p>
+    <p>실손이 있어 치료비는 해결됐는데, <b>정작 자산이 줄어든 것은 소득이 멈춘 기간이었습니다.</b> 보장을 늘리기 전에 <b>어느 계좌에서 얼마를 꺼내 버틸지를 먼저 정하고</b> 모자란 구간만 담보로 메웠습니다. 보험을 더 사는 것이 아니라 <b>자산에서 빠질 금액을 먼저 계산하는 순서</b>입니다.</p>
+  </div>
   <h3 class="casegroup">개인사업자 · 프리랜서</h3>
   <div class="case"><span class="tag">CASE 01</span><h4>프리랜서 G님 · 소득이 늘었는데 남는 게 줄던 경우</h4>
     <p class="meta">이슈: 소득세와 건강보험료가 같이 오르는 구간에 들어선 상태</p>
