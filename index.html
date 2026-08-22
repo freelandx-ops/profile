@@ -3,19 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>유영곤 | 삼성생명 법인사업부 컨설턴트</title>
-<meta name="description" content="자산 구조를 진단하는 컨설턴트. 투자, 경영, 부동산, 세무, 상속증여, 보험. 부동산 보유와 매각, 은퇴 현금흐름, 상속·증여, 절세, 계좌 배분까지 한 구조로 봅니다. 30초 무료 진단. 유영곤 · 삼성생명 법인사업부 컨설턴트">
+<title>유영곤 | 삼성파이낸셜네트웍스 자산구조 설계 총괄</title>
+<meta name="description" content="세금, 투자, 부동산, 보장을 한 구조로 설계합니다. 절세, 상속·증여, 부동산, 은퇴 현금흐름, 계좌 배분까지 따로 묻지 않아도 됩니다. 30초 무료 진단. 유영곤 · 삼성파이낸셜네트웍스 자산구조 설계 총괄">
 <!-- Open Graph (카톡·SNS 링크 미리보기) -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://freelandx-ops.github.io/profile/">
 <meta property="og:title" content="유영곤 | 버는 건 시장이 정하고, 지키는 건 구조가 정합니다">
-<meta property="og:description" content="자산 구조를 진단하는 컨설턴트. 투자·경영·부동산·세무·상속증여·보험. 내 자산이 지금 어떤 상태인지 30초 무료 진단.">
+<meta property="og:description" content="세금·투자·부동산·보장을 한 구조로 설계합니다. 내 자산이 지금 어떤 상태인지 30초 무료 진단.">
 <meta property="og:image" content="https://freelandx-ops.github.io/profile/og-image.jpg">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="유영곤 자산·법인 컨설팅">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="유영곤 | 버는 건 시장이 정하고, 지키는 건 구조가 정합니다">
-<meta name="twitter:description" content="자산 구조를 진단하는 컨설턴트. 투자·경영·부동산·세무·상속증여·보험. 내 자산이 지금 어떤 상태인지 30초 무료 진단.">
+<meta name="twitter:description" content="세금·투자·부동산·보장을 한 구조로 설계합니다. 내 자산이 지금 어떤 상태인지 30초 무료 진단.">
 <meta name="twitter:image" content="https://freelandx-ops.github.io/profile/og-image.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -53,6 +53,18 @@
   .badge{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.14em;color:var(--gold);
     border:1px solid rgba(201,162,75,.45);padding:9px 18px;border-radius:2px;white-space:nowrap}
   .badge.pub{color:var(--gold-hi);border-color:rgba(201,162,75,.75);background:rgba(201,162,75,.09)}
+  /* 계열 워드마크 — 2026-08-22. 「생명」만 보이면 첫 3초에 보험으로 읽히고 아래를 안 읽는다.
+     ⛔ 대외 소속 표기는 삼성파이낸셜네트웍스다(2026-08-22 사용자 확정. 생명·증권 둘 다 위촉).
+     정확한 위촉 관계(삼성생명 GFC · 삼성화재 · 삼성증권 투자권유대행인)는 약력에, 지점명은 문의 섹션에 남긴다 */
+  .wm{display:block;margin:0 auto 20px;height:46px;width:auto;opacity:.95}
+  /* 보유 자격 — 2026-08-22 신설. 종전 .src 한 줄은 출처 스타일이라 눈에 안 걸렸다 */
+  .lic{margin-top:26px}
+  .lic .lb{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.2em;color:var(--gold-hi);
+    text-transform:uppercase;margin-bottom:12px}
+  .lic .row{display:flex;flex-wrap:wrap;gap:8px}
+  .lic .c{display:inline-block;font-size:.84rem;font-weight:500;color:var(--ink);
+    border:1px solid var(--line2);border-radius:2px;padding:9px 15px;white-space:nowrap;
+    background:linear-gradient(180deg,rgba(255,255,255,.02),transparent)}
   .photo-wrap{width:200px;height:200px;margin:36px auto 30px;border-radius:50%;padding:5px;
     background:linear-gradient(160deg,var(--gold) 0%,rgba(201,162,75,.15) 55%,var(--gold) 100%)}
   .photo-wrap .rim{width:100%;height:100%;border-radius:50%;padding:5px;background:var(--bg);overflow:hidden}
@@ -336,7 +348,7 @@
 
 <div class="bar"><div class="in">
   <button class="topback" id="topBack" onclick="go('main');closeNav()">← 처음으로</button>
-  <span class="who" onclick="go('main');closeNav()" style="cursor:pointer">유영곤<small>SAMSUNG LIFE · 법인사업부</small></span>
+  <span class="who" onclick="go('main');closeNav()" style="cursor:pointer">유영곤<small>삼성파이낸셜네트웍스 · 자산구조 설계</small></span>
   <button class="navtoggle" id="navToggle" aria-label="메뉴" onclick="toggleNav()">☰</button>
   <nav id="navMenu">
     <a href="#services" onclick="go('main');closeNav()">서비스</a><!-- 2026-08-18 사용자 확정으로 법인이 다시 하는 일의 첫 면이 됐다. 8/17에 #personal로 돌렸던 것을 되돌린다 --><a href="#seminar" onclick="go('main');closeNav()">무료 세미나</a><a href="#risk" onclick="go('main');closeNav()">리스크·판례</a><a href="#cases" onclick="go('main');closeNav()">사례</a><a href="#briefing" onclick="go('main');closeNav()">브리핑 구독</a><a href="#contact" onclick="go('main');closeNav();resetDiagForm()">진단 신청</a>
@@ -347,19 +359,22 @@
 
 <!-- HERO -->
 <header class="hero">
+  <img class="wm" src="samsung-financial-networks.png" alt="Samsung Financial Networks">
   <div class="badges">
-    <span class="badge">🏆 삼성생명 법인사업부</span>
-    <span class="badge pub">📖 파운더스매거진 발행</span>
+    <span class="badge">자산구조 설계 총괄</span>
+    <span class="badge">삼성생명, 삼성화재, 삼성증권</span>
   </div>
   <div class="photo-wrap"><div class="rim">
-    <img class="photo" src="개인프로필 사진/개인 프로필 사진.jpg" alt="프로필 사진">
+    <img class="photo" src="개인프로필 사진/개인프로필_사진_로고제거.jpg" alt="프로필 사진">
   </div></div>
   <h1>유영곤</h1>
-  <p class="role">자산 구조를 진단하는 컨설턴트</p>
-  <!-- 2026-08-20 신설 — 인스타 바이오 2행(「직접 겪은 경험으로 컨설팅합니다」)과 맞췄다.
-       .role은 「무엇을 파는가」, 이 줄은 「왜 이 사람인가」다. 바이오는 150자라 하나만 고를 수 있었고 여기는 둘 다 선다. -->
-  <p class="role-sub">직접 겪은 경험으로 컨설팅합니다</p>
-  <p class="areas">투자 · 경영 · 부동산 · 세무 · 상속증여 · 보험</p>
+  <p class="role">세금·투자·부동산·보장을 한 구조로 설계합니다</p>
+  <!-- 2026-08-22 교체 — 인스타 바이오와 한 사슬이다. .role은 「무엇을 하는가」(바이오 2행), 이 줄은 「그래서 무엇이 달라지나」다.
+       바이오 1행(「본업에 쓸 시간을 자산 관리에 쓰고 계십니다」)은 훅이라 랜딩에 안 옮긴다. 여기 온 사람은 이미 그 문장을 보고 눌렀다. -->
+  <!-- 2026-08-23 — 「본업에 집중」만 있으면 알아서 해준다는 말로 읽힌다. 자기 돈을 직접 보는 층은 거기서 멈추므로
+       판단권을 돌려주는 절반을 앞에 붙였다. About 안쪽에만 있던 안전장치를 첫 화면으로 올린 것이다. -->
+  <p class="role-sub">보셔야 할 것만 정리해서 드립니다. 그래서 본업에 집중하실 수 있습니다</p>
+  <p class="areas">투자 포트폴리오 · 절세 · 부동산 · 상속증여 · 은퇴 현금흐름 · 보장 설계</p>
   <p class="decl">버는 건 <span class="gold">시장</span>이 정하고,<br>지키는 건 <span class="gold">구조</span>가 정합니다.</p>
   <div class="goldrule"></div>
   <div class="cta-row">
@@ -368,8 +383,8 @@
     <a class="btn s" href="#briefing">브리핑 구독하기 →</a><!-- 2026-08-17 사용자 지시로 「서비스 알아보기」(#route)에서 교체. 분기 카드는 바로 아래에 있어 입구가 따로 필요 없고, 진단·세미나만 있으면 셋 다 상담 온도다 -->
   </div>
   <div class="social compact">
-    <a href="https://www.instagram.com/founders.magazine.kr/" target="_blank" rel="noopener" aria-label="인스타그램"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1.15" fill="currentColor" stroke="none"/></svg></i><b>Instagram</b></a>
-    <a href="https://www.threads.com/@founders.magazine.kr" target="_blank" rel="noopener" aria-label="스레드"><i><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.589 12c.027 3.086.718 5.496 2.057 7.164 1.43 1.783 3.631 2.698 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.75-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.361-.218-3.259-.801-1.063-.689-1.685-1.74-1.752-2.964-.065-1.19.408-2.285 1.33-3.082.88-.76 2.119-1.207 3.583-1.291a13.853 13.853 0 0 1 3.02.142c-.126-.742-.375-1.332-.75-1.757-.513-.586-1.308-.883-2.359-.89h-.029c-.844 0-1.992.232-2.721 1.32L7.734 7.847c.98-1.454 2.568-2.256 4.478-2.256h.044c3.194.02 5.097 1.975 5.287 5.388.108.046.216.094.321.142 1.49.7 2.58 1.761 3.154 3.07.797 1.82.871 4.79-1.548 7.158-1.85 1.81-4.094 2.628-7.277 2.65Zm1.003-11.69c-.242 0-.487.007-.739.021-1.836.103-2.98.946-2.916 2.143.067 1.256 1.452 1.839 2.784 1.767 1.224-.065 2.818-.543 3.086-3.71a10.5 10.5 0 0 0-2.215-.221Z"/></svg></i><b>Threads</b></a>
+    <a href="https://www.instagram.com/wealthstructure.kr/" target="_blank" rel="noopener" aria-label="인스타그램"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1.15" fill="currentColor" stroke="none"/></svg></i><b>Instagram</b></a>
+    <a href="https://www.threads.com/@wealthstructure.kr" target="_blank" rel="noopener" aria-label="스레드"><i><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.589 12c.027 3.086.718 5.496 2.057 7.164 1.43 1.783 3.631 2.698 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.75-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.361-.218-3.259-.801-1.063-.689-1.685-1.74-1.752-2.964-.065-1.19.408-2.285 1.33-3.082.88-.76 2.119-1.207 3.583-1.291a13.853 13.853 0 0 1 3.02.142c-.126-.742-.375-1.332-.75-1.757-.513-.586-1.308-.883-2.359-.89h-.029c-.844 0-1.992.232-2.721 1.32L7.734 7.847c.98-1.454 2.568-2.256 4.478-2.256h.044c3.194.02 5.097 1.975 5.287 5.388.108.046.216.094.321.142 1.49.7 2.58 1.761 3.154 3.07.797 1.82.871 4.79-1.548 7.158-1.85 1.81-4.094 2.628-7.277 2.65Zm1.003-11.69c-.242 0-.487.007-.739.021-1.836.103-2.98.946-2.916 2.143.067 1.256 1.452 1.839 2.784 1.767 1.224-.065 2.818-.543 3.086-3.71a10.5 10.5 0 0 0-2.215-.221Z"/></svg></i><b>Threads</b></a>
     <a href="https://blog.naver.com/seceder_" target="_blank" rel="noopener" aria-label="네이버 블로그"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M9 16.5V7.5l6 9v-9"/></svg></i><b>Blog</b></a>
     <a href="https://www.linkedin.com/in/yeonggon-yu-95054b4b/" target="_blank" rel="noopener" aria-label="링크드인"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3.5"/><path d="M7.6 10.6V17"/><circle cx="7.6" cy="7.4" r="1.15" fill="currentColor" stroke="none"/><path d="M11.6 17v-6.4M11.6 13.3c0-1.7 1-2.7 2.5-2.7s2.4 1 2.4 2.7V17"/></svg></i><b>LinkedIn</b></a>
     <a href="https://open.kakao.com/o/sPSLDLEi" target="_blank" rel="noopener" aria-label="카카오톡 오픈채팅"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4.2c-4.8 0-8.7 3-8.7 6.7 0 2.3 1.5 4.4 3.8 5.6L6.3 20l3.7-2c.6.1 1.3.2 2 .2 4.8 0 8.7-3 8.7-6.7S16.8 4.2 12 4.2z"/></svg></i><b>KakaoTalk</b></a>
@@ -510,21 +525,30 @@
   <p class="label">Profile</p>
   <h2 class="title">약력</h2>
   <ul class="bio">
-    <li>現 삼성생명 법인사업부 컨설턴트</li>
-    <li>現 <b style="color:var(--gold-hi);font-weight:600">파운더스매거진</b> 발행인</li>
+    <li>現 삼성파이낸셜네트웍스 · 자산구조 설계 총괄</li>
+    <li>現 삼성생명 GFC · 삼성화재 · 삼성증권 투자권유대행인</li>
     <li>前 WATT 사업부 파트장</li>
     <li>前 팩앤폴드 대표</li>
     <li>前 라우드커뮤니케이션 사업부 부장</li>
     <li>前 GE엔터테인먼트 공동대표</li>
     <li>前 엔씨소프트 마케팅팀 대리</li>
   </ul>
-  <p class="src" style="margin-top:16px">보유 자격 · 변액보험 판매자격</p>
+  <div class="lic">
+    <div class="lb">Licenses</div>
+    <div class="row">
+      <span class="c">증권투자권유대행인</span>
+      <span class="c">변액보험판매관리사</span>
+      <span class="c">생명보험설계사</span>
+      <span class="c">손해보험설계사</span>
+      <span class="c">AFPK 재무설계사</span>
+    </div>
+  </div>
   <div class="stats">
     <div class="stat"><div class="v">4위</div><div class="k">키움증권 실전투자대회 국내정규전<br>참가자 4만 5천여명</div></div>
     <div class="stat"><div class="v">3회</div><div class="k">창업·엑싯 경험</div></div>
     <div class="stat"><div class="v">500억+</div><div class="k">누적 투자유치</div></div>
   </div>
-  <!-- 저서 슬롯: 파운더스매거진은 히어로 뱃지 + 약력 첫 줄로 올렸다(2026-08-01). 추가 출간물 생기면 약력 옆에 붙인다 -->
+  <!-- 저서 슬롯: 비어 있다. FOUNDERS BRIEFING 발행인 줄은 2026-08-23 사용자 지시로 뺐다 — 뉴스레터는 구독 섹션과 CTA가 이미 말하고 있어 약력에서 또 주장하면 이력을 부풀린 인상이 된다. 출간물이 생기면 여기 붙인다 -->
   <div class="quote">"스스로 무언가를 세워본 사람은 압니다.<br>계획대로 되는 일은 드물다는 것을.<br>그래서 예측 대신 대비를 봅니다."</div>
 </div></section>
 
@@ -695,7 +719,7 @@
   <h2 class="title">전문인력단이 함께하는<br><span class="gold">공동 컨설팅</span></h2>
   <p class="lead"><b style="color:var(--ink-hi);font-weight:600">삼성FP센터</b>의 공인회계사·감정평가사·공인노무사가 사안에 따라 함께 참여합니다. 외부 소개가 아니라 같은 조직 안에서 한 팀으로 움직입니다.</p>
   <div class="team">
-    <div class="m"><span class="av">🧑‍💼</span><h4>유영곤</h4><p>삼성생명 법인사업부 GFC<br>컨설팅 총괄</p></div>
+    <div class="m"><span class="av">🧑‍💼</span><h4>유영곤</h4><p>삼성파이낸셜네트웍스<br>자산 컨설팅 총괄</p></div>
     <div class="m"><span class="av">🧮</span><h4>공인회계사</h4><p>삼성FP센터<br>법인·개인 세무회계 전반<br>상속·증여 포함</p></div>
     <div class="m"><span class="av">📐</span><h4>감정평가사</h4><p>삼성FP센터<br>자산 가치 평가 전반<br>비상장주식·부동산·상속재산</p></div>
     <div class="m"><span class="av">⚖️</span><h4>공인노무사</h4><p>삼성FP센터<br>인사·노무 전반</p></div>
@@ -862,13 +886,13 @@
 
 <footer>
   <div class="social">
-    <a href="https://www.instagram.com/founders.magazine.kr/" target="_blank" rel="noopener" aria-label="인스타그램"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1.15" fill="currentColor" stroke="none"/></svg></i><b>Instagram</b></a>
-    <a href="https://www.threads.com/@founders.magazine.kr" target="_blank" rel="noopener" aria-label="스레드"><i><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.589 12c.027 3.086.718 5.496 2.057 7.164 1.43 1.783 3.631 2.698 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.75-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.361-.218-3.259-.801-1.063-.689-1.685-1.74-1.752-2.964-.065-1.19.408-2.285 1.33-3.082.88-.76 2.119-1.207 3.583-1.291a13.853 13.853 0 0 1 3.02.142c-.126-.742-.375-1.332-.75-1.757-.513-.586-1.308-.883-2.359-.89h-.029c-.844 0-1.992.232-2.721 1.32L7.734 7.847c.98-1.454 2.568-2.256 4.478-2.256h.044c3.194.02 5.097 1.975 5.287 5.388.108.046.216.094.321.142 1.49.7 2.58 1.761 3.154 3.07.797 1.82.871 4.79-1.548 7.158-1.85 1.81-4.094 2.628-7.277 2.65Zm1.003-11.69c-.242 0-.487.007-.739.021-1.836.103-2.98.946-2.916 2.143.067 1.256 1.452 1.839 2.784 1.767 1.224-.065 2.818-.543 3.086-3.71a10.5 10.5 0 0 0-2.215-.221Z"/></svg></i><b>Threads</b></a>
+    <a href="https://www.instagram.com/wealthstructure.kr/" target="_blank" rel="noopener" aria-label="인스타그램"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1.15" fill="currentColor" stroke="none"/></svg></i><b>Instagram</b></a>
+    <a href="https://www.threads.com/@wealthstructure.kr" target="_blank" rel="noopener" aria-label="스레드"><i><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.589 12c.027 3.086.718 5.496 2.057 7.164 1.43 1.783 3.631 2.698 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.75-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.361-.218-3.259-.801-1.063-.689-1.685-1.74-1.752-2.964-.065-1.19.408-2.285 1.33-3.082.88-.76 2.119-1.207 3.583-1.291a13.853 13.853 0 0 1 3.02.142c-.126-.742-.375-1.332-.75-1.757-.513-.586-1.308-.883-2.359-.89h-.029c-.844 0-1.992.232-2.721 1.32L7.734 7.847c.98-1.454 2.568-2.256 4.478-2.256h.044c3.194.02 5.097 1.975 5.287 5.388.108.046.216.094.321.142 1.49.7 2.58 1.761 3.154 3.07.797 1.82.871 4.79-1.548 7.158-1.85 1.81-4.094 2.628-7.277 2.65Zm1.003-11.69c-.242 0-.487.007-.739.021-1.836.103-2.98.946-2.916 2.143.067 1.256 1.452 1.839 2.784 1.767 1.224-.065 2.818-.543 3.086-3.71a10.5 10.5 0 0 0-2.215-.221Z"/></svg></i><b>Threads</b></a>
     <a href="https://blog.naver.com/seceder_" target="_blank" rel="noopener" aria-label="네이버 블로그"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M9 16.5V7.5l6 9v-9"/></svg></i><b>Blog</b></a>
     <a href="https://www.linkedin.com/in/yeonggon-yu-95054b4b/" target="_blank" rel="noopener" aria-label="링크드인"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3.5"/><path d="M7.6 10.6V17"/><circle cx="7.6" cy="7.4" r="1.15" fill="currentColor" stroke="none"/><path d="M11.6 17v-6.4M11.6 13.3c0-1.7 1-2.7 2.5-2.7s2.4 1 2.4 2.7V17"/></svg></i><b>LinkedIn</b></a>
     <a href="https://open.kakao.com/o/sPSLDLEi" target="_blank" rel="noopener" aria-label="카카오톡 오픈채팅"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4.2c-4.8 0-8.7 3-8.7 6.7 0 2.3 1.5 4.4 3.8 5.6L6.3 20l3.7-2c.6.1 1.3.2 2 .2 4.8 0 8.7-3 8.7-6.7S16.8 4.2 12 4.2z"/></svg></i><b>KakaoTalk</b></a>
   </div>
-  유영곤 · 삼성생명 법인사업부<br>Group Financial Consultant<br>
+  유영곤 · 삼성파이낸셜네트웍스 자산구조 설계 총괄<br>Group Financial Consultant<br>
   © 2026 · 본 페이지는 개인 소개 및 비즈니스 목적으로 제작되었습니다.
 </footer>
 
