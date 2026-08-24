@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>물려줄 준비, 2027년 7월에도 유효합니까</title>
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --ink:#1d1d1f; --muted:#7a7a7a; --faint:#a8a8ac; --hairline:#e0e0e0;
+    --accent:#1428A0; --accent-dark:#6E8CF2;
+    --parchment:#f5f5f7; --tile:#272729;
+  }
+  html,body{overflow-x:clip;max-width:100%}
+  html{background:#fff}
+  body{font-family:'Pretendard Variable',Pretendard,system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;text-rendering:geometricPrecision;word-break:keep-all;
+    background:#fff;color:var(--ink);font-size:17px;line-height:1.74;letter-spacing:-.02em}
+  .wrap{max-width:720px;margin:0 auto;padding:0 24px;min-width:0}
+  .n{color:var(--accent);font-weight:700}
+
+  .cover{background:var(--tile);padding:92px 0 72px}
+  .cover *{color:#fff}
+  .cover .kicker{color:var(--accent-dark);font-size:13px;font-weight:600;letter-spacing:.1em;margin-bottom:20px}
+  .cover h1{font-size:clamp(25px,6.4vw,44px);word-break:keep-all;overflow-wrap:break-word;font-weight:700;line-height:1.2;letter-spacing:-.036em}
+  .cover h1 em{font-style:normal;color:var(--accent-dark)}
+  .cover .lead{color:#c8c8cc;font-size:clamp(16px,3.9vw,19px);line-height:1.62;margin-top:22px}
+  .cover .flag{margin-top:40px;padding:21px 24px 23px;background:rgba(255,255,255,.08);border-radius:16px}
+  .cover .flag .h{font-size:17px;font-weight:600;line-height:1.45;margin-bottom:9px}
+  .cover .flag .d{color:#a8a8ae;font-size:15px;line-height:1.6}
+
+  .topic{margin-top:72px}
+  .topic + .topic{margin-top:96px;padding-top:72px;border-top:1px solid var(--hairline)}
+  .topic > h3{font-size:clamp(24px,5.8vw,32px);font-weight:700;letter-spacing:-.036em;line-height:1.22}
+  .topic > .oneline{font-size:clamp(16px,3.9vw,19px);line-height:1.62;color:var(--muted);margin-top:16px}
+  .topic > .oneline b{font-weight:600;color:var(--ink)}
+
+  p{margin-top:16px}
+  p.note{color:var(--muted);font-size:16px}
+
+  .tw{overflow-x:auto;margin-top:20px;-webkit-overflow-scrolling:touch;max-width:100%}
+  table{border-collapse:collapse;width:100%;min-width:min(430px,100%);font-size:16px;letter-spacing:-.024em}
+  th,td{padding:15px 12px;text-align:right;white-space:nowrap;border-bottom:1px solid var(--hairline)}
+  thead th{font-size:13.5px;font-weight:600;color:var(--muted);
+    border-bottom:1.5px solid var(--ink);padding-top:14px;padding-bottom:11px}
+  th:first-child,td:first-child{text-align:left;padding-left:14px}
+  td:last-child,th:last-child{padding-right:14px}
+  tbody th{font-weight:500;font-size:16.5px;color:var(--ink)}
+  .g{color:var(--accent);font-weight:700}
+  .old{color:var(--faint)}
+
+  .punch{margin-top:26px;background:var(--parchment);border-radius:16px;padding:24px}
+  .punch .t{font-size:clamp(17px,4.2vw,19px);line-height:1.55;letter-spacing:-.03em;font-weight:700;margin:0}
+  .punch .s{font-size:16px;color:var(--muted);line-height:1.68;margin-top:10px}
+
+  .checks{margin-top:34px}
+  .checks .q{font-size:16px;color:var(--muted);margin-top:16px;margin-bottom:16px}
+  .chk{display:grid;grid-template-columns:32px 1fr;column-gap:14px;align-items:center;
+    padding:16px 18px;margin-bottom:8px;border:1.5px solid transparent;border-radius:13px;
+    background:var(--parchment);cursor:pointer;user-select:none;
+    transition:background .13s,border-color .13s,transform .08s}
+  .chk:hover{background:#eceef6;border-color:#d4d8e8}
+  .chk:active{transform:scale(.993)}
+  .chk.on{background:rgba(20,40,160,.06);border-color:var(--accent)}
+  .box{width:26px;height:26px;border:2px solid #b4b4bd;border-radius:8px;background:#fff;
+    display:flex;align-items:center;justify-content:center;
+    font-size:15px;font-weight:700;color:transparent;transition:.13s;
+    box-shadow:0 1px 2px rgba(0,0,0,.04)}
+  .chk:hover .box{border-color:var(--accent);color:rgba(20,40,160,.3)}
+  .chk.on .box{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:none}
+  .chk .t{font-size:17px;line-height:1.5;letter-spacing:-.024em;color:var(--muted)}
+  .chk.on .t{color:var(--ink);font-weight:600}
+
+  @media(max-width:480px){
+    .wrap{padding:0 18px}
+    .cover{padding:76px 0 58px}
+    .topic{margin-top:56px}
+    .topic + .topic{margin-top:72px;padding-top:56px}
+    .chk{padding:15px 15px}
+    .cover h1 br{display:none}
+    table{min-width:0;font-size:15px}
+    th,td{padding:13px 9px}
+  }
+
+  .tally{position:fixed;left:0;right:0;bottom:0;z-index:29;transform:translateY(105%);transition:.26s;
+    background:rgba(255,255,255,.97);backdrop-filter:blur(14px);border-top:1px solid var(--hairline)}
+  .tally.on{transform:translateY(0)}
+  .tally .in{max-width:720px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:14px}
+  .tally .cnt{font-size:15px;color:var(--muted);letter-spacing:-.022em}
+  .tally .cnt b{color:var(--accent);font-size:18px;font-weight:700}
+  .btn{display:inline-block;background:var(--accent);color:#fff;border:0;border-radius:100px;
+    font-family:inherit;font-size:15px;font-weight:600;letter-spacing:-.022em;
+    padding:12px 24px;text-decoration:none;cursor:pointer;white-space:nowrap}
+  .form{background:var(--parchment);border-radius:18px;padding:32px 26px;margin-top:24px}
+  .form label{display:block;font-size:14px;font-weight:600;color:var(--muted);margin:22px 0 8px;letter-spacing:-.022em}
+  .form label:first-of-type{margin-top:0}
+  .form input,.form textarea{width:100%;background:#fff;border:1px solid var(--hairline);border-radius:12px;
+    color:var(--ink);font-family:inherit;font-size:16.5px;letter-spacing:-.022em;padding:14px 15px}
+  .form textarea{min-height:88px;resize:vertical;line-height:1.7}
+  .form .picked{background:#fff;border:1px solid var(--hairline);border-radius:12px;padding:15px;
+    font-size:15px;color:var(--muted);line-height:1.8;min-height:54px;white-space:pre-line}
+  .form .fine{font-size:13.5px;color:var(--muted);margin-top:18px;line-height:1.7}
+  footer{border-top:1px solid var(--hairline);margin-top:96px;padding:40px 0 90px;
+    font-size:14.5px;color:var(--muted);line-height:1.78}
+  footer .who{margin-top:26px;padding-top:22px;border-top:1px solid var(--hairline);
+    display:flex;justify-content:space-between;align-items:flex-end}
+  footer .who b{display:block;font-weight:600;color:var(--ink)}
+</style>
+</head>
+<body>
+
+<div class="cover"><div class="wrap">
+  <p class="kicker">상속 · 증여</p>
+  <h1>물려줄 준비,<br><em>2027년 7월</em>에도<br>유효합니까</h1>
+  <p class="lead">지금 준비가 「경영 10년」 요건 기준이라면, 아래 열 가지에서 확인하실 수 있습니다.</p>
+  <div class="flag">
+    <p class="h">아직 정부안입니다</p>
+    <p class="d">9월 정기국회 제출 후 확정됩니다. 심의 과정에서 바뀔 수 있으며, 확정되면 이 페이지를 갱신합니다.</p>
+  </div>
+</div></div>
+
+<div class="wrap">
+
+<article class="topic">
+  <h3>기준이 통째로 바뀝니다</h3>
+  <p class="oneline">공제가 없어지는 것이 아닙니다. <b>들어가는 요건이 전부 다시 정해집니다.</b> 법인만이 아니라 개인사업체도 같은 제도입니다.</p>
+  <div class="tw"><table>
+    <thead><tr><th>항목</th><th>현행</th><th>개정안</th></tr></thead>
+    <tbody>
+      <tr><th>경영기간 요건</th><td class="old">10년</td><td class="g">30년</td></tr>
+      <tr><th>대상 업종</th><td class="old">1,205개</td><td class="g">727개</td></tr>
+      <tr><th>심사</th><td class="old">없음</td><td class="g">심사위원회 승인</td></tr>
+      <tr><th>사업장 토지 인정</th><td class="old">바닥면적 3~7배</td><td class="g">수도권 2배 · 기타 3배</td></tr>
+      <tr><th>사후관리</th><td class="old">5년</td><td class="g">10년</td></tr>
+      <tr><th>생전 증여 특례 요건</th><td class="old">10년</td><td class="g">20년</td></tr>
+    </tbody>
+  </table></div>
+  <p class="note">적용은 <span class="n">2027.7.1.</span> 이후 상속·증여분입니다. 2027.6.30.까지는 현행 요건이 그대로 적용됩니다.</p>
+</article>
+
+<article class="topic">
+  <h3>열 가지만 확인해 보세요</h3>
+  <p class="oneline">해당되는 것을 눌러 주세요. <b>하나하나가 새 기준에서 방향이 갈리는 자리</b>입니다.</p>
+  <div class="checks">
+    <p class="q">채점이 아닙니다. 무엇이 걸리는지를 보는 것입니다.</p>
+    <div class="chk" data-t="[연수] 사업을 시작한 지 30년이 되지 않았다"><span class="box">&#10003;</span><span class="t">사업을 시작한 지 30년이 되지 않았다</span></div>
+    <div class="chk" data-t="[연수] 경영 기간이 20년이 되지 않는다"><span class="box">&#10003;</span><span class="t">그중에서도 경영 기간이 20년이 되지 않는다</span></div>
+    <div class="chk" data-t="[업종] 업종이 마트, 병원, 약국, 창고업, 운송업 중 하나다"><span class="box">&#10003;</span><span class="t">업종이 마트, 병원, 약국, 창고업, 운송업 중 하나다</span></div>
+    <div class="chk" data-t="[업종] 임대료나 프랜차이즈 수수료가 수입에서 큰 몫이다"><span class="box">&#10003;</span><span class="t">임대료나 프랜차이즈 수수료가 수입에서 큰 몫이다</span></div>
+    <div class="chk" data-t="[매출] 매출이 두 갈래 이상의 사업에서 나온다"><span class="box">&#10003;</span><span class="t">매출이 두 갈래 이상의 사업에서 나온다</span></div>
+    <div class="chk" data-t="[토지] 사업장이 수도권에 있고 사업장 명의의 땅이 넓다"><span class="box">&#10003;</span><span class="t">사업장이 수도권에 있고 사업장 명의의 땅이 넓다</span></div>
+    <div class="chk" data-t="[준비] 지금 승계 준비를 「경영 10년」 요건 기준으로 해뒀다"><span class="box">&#10003;</span><span class="t">지금 승계 준비를 「경영 10년」 요건 기준으로 해뒀다</span></div>
+    <div class="chk" data-t="[증여] 생전에 미리 넘기는 쪽을 검토한 적이 있다"><span class="box">&#10003;</span><span class="t">생전에 미리 넘기는 쪽을 검토한 적이 있다</span></div>
+    <div class="chk" data-t="[후계] 누가 이어받을지 아직 정해지지 않았다"><span class="box">&#10003;</span><span class="t">누가 이어받을지 아직 정해지지 않았다</span></div>
+    <div class="chk" data-t="[재원] 상속세로 낼 현금을 따로 마련해두지 않았다"><span class="box">&#10003;</span><span class="t">상속세로 낼 현금을 따로 마련해두지 않았다</span></div>
+  </div>
+  <div class="punch">
+    <p class="t">체크된 항목이 곧 2027년 7월 이후 기준에서 걸리는 자리입니다.</p>
+    <p class="s">같은 항목이라도 경영 연수, 업종 코드, 토지 면적과 공시가, 물려줄 재산의 크기에 따라 정리하는 방향이 반대로 갈립니다. 본인 숫자를 넣어야 나오는 계산이라, 이 페이지에 답을 적지 않았습니다.</p>
+  </div>
+</article>
+
+<section class="topic">
+  <h3>체크하신 항목이 있으신가요</h3>
+  <p class="oneline">체크하신 항목이 그대로 첨부됩니다. <b>무엇부터 확인해야 하는지 순서를 잡아 확인해 드립니다.</b></p>
+  <form class="form" action="https://api.web3forms.com/submit" method="POST">
+    <input type="hidden" name="access_key" value="56ba5ceb-1e23-4de6-b6ca-7016a3e1e8d7">
+    <input type="hidden" name="구분" value="가업승계 체크리스트">
+    <input type="hidden" name="체크한항목" id="picked" value="">
+    <input type="hidden" name="subject" value="[가업승계] 체크리스트 문의">
+    <input type="checkbox" name="botcheck" style="display:none">
+    <label>체크하신 항목</label>
+    <div class="picked" id="pickedView">아직 체크하신 항목이 없습니다.</div>
+    <label for="nm">성함</label><input type="text" id="nm" name="성함" required>
+    <label for="ph">연락처</label><input type="tel" id="ph" name="연락처" required>
+    <label for="ms">더 하실 말씀</label><textarea id="ms" name="메모"></textarea>
+    <p style="margin-top:26px"><button type="submit" class="btn">보내기</button></p>
+    <p class="fine">내용은 Web3Forms를 통해 담당자 이메일로 전달됩니다.<br>
+      특정 상품의 매수·매도를 권유하지 않습니다.</p>
+  </form>
+</section>
+
+<footer>
+  <p>버는 건 시장이 정하고, 지키는 건 구조가 정합니다.</p>
+  <p>전 수치는 기획재정부 「2026년 세제개편안」(2026.8.3. 발표) 원문과
+     현행 조세특례제한법·상속세 및 증여세법 조문에서 직접 확인했습니다.</p>
+  <p>아직 정부안입니다. 9월 정기국회 제출 후 심의 과정에서 바뀔 수 있으며, 확정되면 이 페이지를 갱신합니다.</p>
+  <div class="who"><span>가업승계 판정 체크리스트</span>
+    <span style="text-align:right"><b>유영곤</b>삼성생명 GFC</span></div>
+</footer>
+</div>
+
+<div class="tally" id="tally"><div class="in">
+  <span class="cnt"><b id="cnt">0</b>개 체크하셨습니다</span>
+  <a href="#picked" class="btn" onclick="document.querySelector('.form').scrollIntoView({behavior:'smooth'});return false;">정리해서 받기</a>
+</div></div>
+
+<script>
+(function(){
+  var picked=[];
+  function refresh(){
+    document.getElementById('cnt').textContent=picked.length;
+    document.getElementById('picked').value=picked.join(' / ');
+    var v=document.getElementById('pickedView');
+    v.textContent=picked.length?picked.join('\n'):'아직 체크하신 항목이 없습니다.';
+    document.getElementById('tally').classList.toggle('on',picked.length>0);
+  }
+  document.querySelectorAll('.chk').forEach(function(el){
+    el.addEventListener('click',function(){
+      var k=el.getAttribute('data-t');
+      el.classList.toggle('on');
+      if(el.classList.contains('on')) picked.push(k);
+      else picked=picked.filter(function(x){return x!==k});
+      refresh();
+    });
+  });
+  refresh();
+})();
+</script>
+</body>
+</html>
