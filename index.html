@@ -53,6 +53,16 @@
   .badge{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.14em;color:var(--gold);
     border:1px solid rgba(201,162,75,.45);padding:9px 18px;border-radius:2px;white-space:nowrap}
   .badge.pub{color:var(--gold-hi);border-color:rgba(201,162,75,.75);background:rgba(201,162,75,.09)}
+  /* 2026-08-26 사용자 지적 — 직함과 위촉 3사가 같은 배지라 같은 층위로 읽혔다. 3사는 「무엇을 하는 사람인가」가 아니라
+     그 답의 근거라서 직함 아래로 내린다. ⛔ 1차에 직함을 금색 채움 배지로 올렸다가 되돌렸다 — .btn.p(금색 채움 CTA)와
+     같은 모양이라 히어로 맨 위에 안 눌리는 버튼이 하나 생겼다. 박스를 버리고 서체·자간·색으로만 층을 만든다 */
+  .title-line{display:flex;align-items:center;justify-content:center;gap:14px}
+  .title-line::before,.title-line::after{content:'';width:34px;height:1px;
+    background:linear-gradient(90deg,transparent,rgba(201,162,75,.55))}
+  .title-line::after{background:linear-gradient(90deg,rgba(201,162,75,.55),transparent)}
+  .title-line span{font-size:13.5px;font-weight:600;letter-spacing:.22em;color:var(--gold-hi);white-space:nowrap}
+  .affil{margin:9px 0 0;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.18em;color:var(--mut)}
+  .affil .sep{color:var(--mut2);margin:0 7px}
   /* 계열 워드마크 — 2026-08-22. 「생명」만 보이면 첫 3초에 보험으로 읽히고 아래를 안 읽는다.
      ⛔ 대외 소속 표기는 삼성파이낸셜네트웍스다(2026-08-22 사용자 확정. 생명·증권 둘 다 위촉).
      정확한 위촉 관계(삼성생명 GFC · 삼성화재 · 삼성증권 투자권유대행인)는 약력에, 지점명은 문의 섹션에 남긴다 */
@@ -365,10 +375,8 @@
 <!-- HERO -->
 <header class="hero">
   <img class="wm" src="samsung-financial-networks.png" alt="Samsung Financial Networks">
-  <div class="badges">
-    <span class="badge">자산관리 컨설턴트</span>
-    <span class="badge">삼성생명, 삼성화재, 삼성증권</span>
-  </div>
+  <div class="title-line"><span>자산관리 컨설턴트</span></div>
+  <p class="affil">삼성생명<span class="sep">·</span>삼성화재<span class="sep">·</span>삼성증권</p>
   <div class="photo-wrap"><div class="rim">
     <img class="photo" src="개인프로필 사진/개인프로필_사진_로고제거.jpg" alt="프로필 사진">
   </div></div>
