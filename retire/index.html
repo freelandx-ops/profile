@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>은퇴 후 계산기 · 자산구조 설계</title>
-<meta name="description" content="지금 지출, 그만둘 나이, 국민연금 예상 수령액 세 값으로 은퇴 후 매달 부족한 금액을 계산합니다.">
+<title>포트폴리오 계산기 · 자산구조 설계</title>
+<meta name="description" content="은퇴 후 쓸 돈을 성격으로 나눕니다. 없으면 안 되는 구간과 그 위 구간이 각각 월 얼마인지 계산합니다.">
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <style>
@@ -57,6 +57,24 @@ input[type=range]{width:100%;margin-top:12px;accent-color:#D6B26A;background:tra
 .out .note{font-size:13.5px;color:var(--dim);margin-top:10px;word-break:keep-all}
 .out .msg{font-size:15px;color:var(--dim);word-break:keep-all;line-height:1.65}
 
+.sg{text-align:left;margin-top:14px;border:1px solid var(--line);border-radius:10px;padding:14px 14px 12px}
+.sg .st{display:flex;justify-content:space-between;align-items:baseline;gap:12px;
+  font-size:14.5px;color:var(--ink);font-weight:500}
+.sg .st b{color:var(--gold-hi);font-weight:700;font-size:17px;flex:0 0 auto}
+.sg .sd{display:flex;justify-content:space-between;align-items:baseline;gap:12px;
+  font-size:13px;color:var(--dim);margin-top:9px}
+.sg .sd b{font-weight:500;color:#b5b0a6;flex:0 0 auto}
+.sg .sd.hi{color:var(--ink);margin-top:11px;font-size:14px}
+.sg .sd.hi b{color:var(--gold-hi);font-weight:700;font-size:20px}
+.sw{font-size:12px;color:var(--dim2);margin-top:9px;line-height:1.55;word-break:keep-all}
+.sg .sw b{color:#b5b0a6;font-weight:600}
+.seg{display:flex;gap:8px;margin-top:9px}
+.seg label{flex:1 1 0;text-align:center;border:1px solid var(--line);border-radius:9px;
+  padding:11px 6px;font-size:15px;color:var(--dim);cursor:pointer}
+.seg input{display:none}
+.seg input:checked+span{color:var(--gold-hi);font-weight:600}
+.seg label:has(input:checked){border-color:var(--gold);background:#191b22}
+
 .detail{margin-top:22px;border-top:1px solid var(--line);padding-top:18px;text-align:left}
 .dr{display:flex;justify-content:space-between;align-items:baseline;padding:7px 0;
   font-size:14px;color:var(--dim);gap:12px}
@@ -95,7 +113,7 @@ input[type=range]{width:100%;margin-top:12px;accent-color:#D6B26A;background:tra
 
   <p class="mk">WEALTH · STRUCTURE</p>
   <h1>은퇴 후 월 얼마를<br>쓰실 <em>계획</em>입니까?</h1>
-  <p class="lede">지금 지출, 그만둘 나이, 국민연금 예상 수령액.<br>세 값이면 매달 부족한 금액이 나옵니다.</p>
+  <p class="lede">쓸 돈이 정해지면 나누는 방법도 정해집니다.<br>세 값을 넣으면 구간별 금액이 나옵니다.</p>
   <div class="rule"></div>
 
   <div class="card">
@@ -136,6 +154,15 @@ input[type=range]{width:100%;margin-top:12px;accent-color:#D6B26A;background:tra
     </div>
 
     <div class="f">
+      <label>가구 형태</label>
+      <div class="seg">
+        <label><input type="radio" name="hh" value="couple" checked><span>부부</span></label>
+        <label><input type="radio" name="hh" value="single"><span>1인</span></label>
+      </div>
+      <span class="hint">없으면 안 되는 구간을 가르는 기준이 갈립니다. 노후 최소생활비가 부부 217만원, 1인 139만원입니다. (국민연금연구원)</span>
+    </div>
+
+    <div class="f">
       <label for="pension">국민연금 예상 수령액</label>
       <div class="inrow"><input type="number" id="pension" inputmode="numeric" placeholder="예: 130"><span class="unit">만원</span></div>
       <span class="hint">추정하지 마시고 <a href="https://www.nps.or.kr" target="_blank" rel="noopener">국민연금공단</a>에서 조회한 값을 넣으십시오. 배우자분 것이 있으면 합쳐서 넣습니다.</span>
@@ -149,14 +176,33 @@ input[type=range]{width:100%;margin-top:12px;accent-color:#D6B26A;background:tra
   </div>
 
   <div class="out">
-    <p class="msg" id="msg">위 칸을 채우면 매달 부족한 금액이 여기 나옵니다.</p>
+    <p class="msg" id="msg">위 칸을 채우면 은퇴 후 쓸 돈을 어떻게 나누는지 여기 나옵니다.</p>
     <div id="result" hidden>
+
+      <p class="k" id="headline">ㅡ</p>
+
+      <div class="sg">
+        <div class="st"><span>없으면 안 되는 구간</span><b id="sFloor">ㅡ</b></div>
+        <div class="sd"><span>국민연금이 담당</span><b id="sPen">ㅡ</b></div>
+        <div class="sd hi"><span>확정으로 더 채울 몫</span><b id="sFix">ㅡ</b></div>
+        <p class="sw">노후 최소생활비 선입니다. 이 아래는 <b>받을 금액이 정해지는 것</b>으로 깝니다.</p>
+      </div>
+
+      <div class="sg">
+        <div class="st"><span>그 위 구간</span><b id="sUp">ㅡ</b></div>
+        <p class="sw">여기서만 변동을 감수합니다. 아래를 먼저 고정해야 이 구간에서 하락을 견딜 수 있습니다.</p>
+      </div>
+
+      <p class="sw" style="text-align:left;margin-top:14px">무엇으로 채울지는 이 화면에서 다루지 않습니다. 금액이 확정되는 것과 그렇지 않은 것을 가르는 선까지만 봅니다.</p>
+
+      <div class="sep"></div>
+
       <p class="k">은퇴 후 매달 모자라는 돈</p>
       <p class="big" id="gapMonth">ㅡ</p>
-      <div class="sep"></div>
-      <p class="k">그래서 지금부터 매달 모아야 하는 돈</p>
+      <p class="k" style="margin-top:20px">그래서 지금부터 매달 모아야 하는 돈</p>
       <p class="big sm" id="saveMonth">ㅡ</p>
       <p class="note" id="saveNote"></p>
+
       <div class="detail">
         <div class="dr"><span>노후 기간</span><b id="dYears">ㅡ</b></div>
         <div class="dr"><span>필요한 돈 전체</span><b id="dNeed">ㅡ</b></div>
@@ -183,8 +229,8 @@ input[type=range]{width:100%;margin-top:12px;accent-color:#D6B26A;background:tra
     <button class="btn" type="button" id="askToggle">점검 신청하기</button>
     <form id="askForm" style="display:none;margin-top:18px">
       <input type="hidden" name="access_key" value="56ba5ceb-1e23-4de6-b6ca-7016a3e1e8d7">
-      <input type="hidden" name="subject" value="[컨설팅문의] 은퇴 후 계산기">
-      <input type="hidden" name="유입경로" value="은퇴 후 계산기">
+      <input type="hidden" name="subject" value="[컨설팅문의] 포트폴리오 계산기">
+      <input type="hidden" name="유입경로" value="포트폴리오 계산기">
       <input type="hidden" name="계산결과" id="fCalc" value="">
       <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
       <div class="row2">
@@ -281,18 +327,37 @@ input[type=range]{width:100%;margin-top:12px;accent-color:#D6B26A;background:tra
     document.getElementById('dShort').textContent = won(shortfall);
     document.getElementById('dLeft').textContent  = (ageRet - ageNow) + '년';
 
+    var couple = document.querySelector('input[name=hh]:checked').value === 'couple';
+    var floorLine = couple ? 216.6 : 139.2;
+    var floor = Math.min(later, floorLine);
+    var fixNeed = Math.max(floor - pen, 0);
+    var upper = Math.max(later - floor, 0);
+
+    document.getElementById('headline').textContent =
+      '은퇴 후 매달 ' + won(later) + '을 이렇게 나눕니다';
+    document.getElementById('sFloor').textContent = won(floor);
+    document.getElementById('sPen').textContent   = won(Math.min(pen, floor));
+    document.getElementById('sFix').textContent   = (fixNeed > 0) ? won(fixNeed) : '없음';
+    document.getElementById('sUp').textContent    = (upper > 0) ? won(upper) : '없음';
+
     window.lastCalcSummary =
       ageNow + '세 → ' + ageRet + '세 은퇴, ' + ageEnd + '세까지'
       + ' / 지금 지출 ' + won(spend) + ' → 은퇴 후 ' + won(later) + '(' + ratio + '%)'
       + ' / 국민연금 ' + won(pen)
       + ' / 모은 노후자금 ' + won(saved)
       + ' / 매달 모자라는 돈 ' + ((gap > 0) ? won(gap) : '없음')
-      + ' / 지금부터 매달 ' + ((perMonth > 0) ? won(perMonth) : '없음');
+      + ' / 지금부터 매달 ' + ((perMonth > 0) ? won(perMonth) : '없음')
+      + ' / [' + (couple ? '부부' : '1인') + '] 없으면 안 되는 구간 ' + won(floor)
+      + ' (확정으로 더 채울 몫 ' + ((fixNeed > 0) ? won(fixNeed) : '없음') + ')'
+      + ' / 그 위 구간 ' + ((upper > 0) ? won(upper) : '없음');
   }
 
   ids.forEach(function(k){
     el[k].addEventListener('input', calc);
     el[k].addEventListener('change', calc);
+  });
+  Array.prototype.forEach.call(document.querySelectorAll('input[name=hh]'), function(r){
+    r.addEventListener('change', calc);
   });
   calc();
 
