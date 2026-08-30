@@ -57,6 +57,10 @@ input[type=range]{width:100%;margin-top:12px;accent-color:#D6B26A;background:tra
 .out .note{font-size:13.5px;color:var(--dim);margin-top:10px;word-break:keep-all}
 .out .msg{font-size:15px;color:var(--dim);word-break:keep-all;line-height:1.65}
 
+.type{text-align:left;border-left:3px solid var(--gold);padding:2px 0 2px 14px;margin-top:18px}
+.type .tt{font-weight:700;font-size:19px;color:var(--gold-hi);letter-spacing:-.02em;
+  word-break:keep-all;line-height:1.4}
+.type .tb{font-size:14px;color:var(--dim);margin-top:10px;line-height:1.7;word-break:keep-all}
 .sg{text-align:left;margin-top:14px;border:1px solid var(--line);border-radius:10px;padding:14px 14px 12px}
 .sg .st{display:flex;justify-content:space-between;align-items:baseline;gap:12px;
   font-size:14.5px;color:var(--ink);font-weight:500}
@@ -181,6 +185,11 @@ input[type=range]{width:100%;margin-top:12px;accent-color:#D6B26A;background:tra
 
       <p class="k" id="headline">ㅡ</p>
 
+      <div class="type" id="typeBox">
+        <p class="tt" id="tType">ㅡ</p>
+        <p class="tb" id="tBody">ㅡ</p>
+      </div>
+
       <div class="sg">
         <div class="st"><span>없으면 안 되는 구간</span><b id="sFloor">ㅡ</b></div>
         <div class="sd"><span>국민연금이 담당</span><b id="sPen">ㅡ</b></div>
@@ -193,7 +202,9 @@ input[type=range]{width:100%;margin-top:12px;accent-color:#D6B26A;background:tra
         <p class="sw">여기서만 변동을 감수합니다. 아래를 먼저 고정해야 이 구간에서 하락을 견딜 수 있습니다.</p>
       </div>
 
-      <p class="sw" style="text-align:left;margin-top:14px">무엇으로 채울지는 이 화면에서 다루지 않습니다. 금액이 확정되는 것과 그렇지 않은 것을 가르는 선까지만 봅니다.</p>
+      <p class="sw" style="text-align:left;margin-top:14px" id="phase">ㅡ</p>
+
+      <p class="sw" style="text-align:left;margin-top:12px">무엇으로 채울지는 이 화면에서 다루지 않습니다. 금액이 확정되는 것과 그렇지 않은 것을 가르는 선까지만 봅니다.</p>
 
       <div class="sep"></div>
 
@@ -340,6 +351,34 @@ input[type=range]{width:100%;margin-top:12px;accent-color:#D6B26A;background:tra
     document.getElementById('sFix').textContent   = (fixNeed > 0) ? won(fixNeed) : '없음';
     document.getElementById('sUp').textContent    = (upper > 0) ? won(upper) : '없음';
 
+    var accum = ageRet - ageNow;
+    var type, body;
+
+    if (perMonth > spend){
+      type = '나누기 전에 조건을 먼저 움직여야 합니다';
+      body = '지금 조건에서는 남은 ' + accum + '년에 채워야 할 돈이 지금 쓰시는 돈보다 큽니다. '
+           + '구간을 어떻게 나눌지보다 총량이 맞느냐가 먼저입니다. '
+           + '그만둘 나이를 뒤로 미루거나 은퇴 후 지출을 낮춰서 성립하는 지점을 찾은 다음에 이 아래를 보십시오.';
+    } else if (fixNeed <= 0){
+      type = '하한은 이미 서 있습니다';
+      body = '없으면 안 되는 구간을 국민연금이 이미 덮습니다. 받을 금액이 정해지는 자산을 새로 더 쌓을 이유가 크지 않습니다. '
+           + '남은 ' + won(upper) + '이 통째로 선택지라, 질문이 「얼마를 안전하게 둘까」가 아니라 「얼마까지 변동을 감수할까」로 바뀝니다.';
+    } else {
+      type = '하한부터 메우는 순서입니다';
+      body = '확정으로 더 채울 몫이 월 ' + won(fixNeed) + '입니다. 이 몫이 먼저 서야 그 위 ' + won(upper) + '에서 하락을 견딜 수 있습니다. '
+           + '순서를 바꾸면 하락장에 생활비를 팔게 됩니다. 남은 ' + accum + '년이 이 몫을 만들 기간입니다.';
+    }
+    document.getElementById('tType').textContent = type;
+    document.getElementById('tBody').textContent = body;
+
+    document.getElementById('phase').textContent =
+      '모으는 기간이 ' + accum + '년, 꺼내 쓰는 기간이 ' + years + '년입니다. '
+      + (accum > years
+          ? '모으는 기간이 더 길어 그 위 구간에서 하락을 기다릴 시간이 있습니다.'
+          : (accum === years
+              ? '두 기간이 같습니다. 그 위 구간에서 회복을 기다릴 시간이 쓰는 기간만큼밖에 없습니다.'
+              : '꺼내 쓰는 기간이 더 길어 그 위 구간에서 회복을 기다릴 시간이 그만큼 짧습니다.'));
+
     window.lastCalcSummary =
       ageNow + '세 → ' + ageRet + '세 은퇴, ' + ageEnd + '세까지'
       + ' / 지금 지출 ' + won(spend) + ' → 은퇴 후 ' + won(later) + '(' + ratio + '%)'
@@ -349,7 +388,9 @@ input[type=range]{width:100%;margin-top:12px;accent-color:#D6B26A;background:tra
       + ' / 지금부터 매달 ' + ((perMonth > 0) ? won(perMonth) : '없음')
       + ' / [' + (couple ? '부부' : '1인') + '] 없으면 안 되는 구간 ' + won(floor)
       + ' (확정으로 더 채울 몫 ' + ((fixNeed > 0) ? won(fixNeed) : '없음') + ')'
-      + ' / 그 위 구간 ' + ((upper > 0) ? won(upper) : '없음');
+      + ' / 그 위 구간 ' + ((upper > 0) ? won(upper) : '없음')
+      + ' / 유형: ' + type
+      + ' / 적립 ' + accum + '년 · 인출 ' + years + '년';
   }
 
   ids.forEach(function(k){
