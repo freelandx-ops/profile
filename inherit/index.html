@@ -93,6 +93,9 @@ li b{color:var(--txt)}
   color:var(--dim);padding:16px 12px;font-family:inherit;font-size:16px;font-weight:600;cursor:pointer;line-height:1.5}
 .tabs button small{display:block;font-size:12px;font-weight:400;margin-top:4px;opacity:.85}
 .tabs button.on{border-color:var(--gold);color:var(--gold-hi);background:#171308}
+.chk{background:#0E1015;border:1px solid var(--line);border-radius:8px;padding:14px 16px;margin:18px 0}
+.chk label{display:flex;align-items:flex-start;gap:9px;margin:0;font-size:14.5px;color:var(--txt);cursor:pointer;line-height:1.55}
+.chk input{width:17px;height:17px;margin:1px 0 0;accent-color:var(--gold);flex:none}
 </style></head>
 <body>
 <div class="wrap">
@@ -118,6 +121,11 @@ li b{color:var(--txt)}
       <button type="button" data-v="adult" class="on">성년 자녀</button>
       <button type="button" data-v="minor">미성년 자녀</button>
       <button type="button" data-v="spouse">배우자</button>
+    </div>
+
+    <div id="wedwrap" class="chk">
+      <label><input type="checkbox" id="g_wed"> 혼인신고 전후 2년 또는 출산·입양 후 2년 안입니다</label>
+      <p class="small" style="margin:6px 0 0">해당하면 1억원을 따로 더 공제합니다 (제53조의2). 혼인과 출산을 합쳐 평생 1억원까지입니다.</p>
     </div>
 
     <label>받으실 분이 지금 가진 현금</label>
@@ -247,6 +255,9 @@ li b{color:var(--txt)}
     b.addEventListener('click', function(){
       document.querySelectorAll('#g_to button').forEach(function(x){x.classList.remove('on')});
       b.classList.add('on'); toVal = b.dataset.v;
+      var wd = document.getElementById('wedwrap');
+      wd.style.display = (toVal === 'spouse') ? 'none' : 'block';
+      if(toVal === 'spouse') document.getElementById('g_wed').checked = false;
     });
   });
   document.querySelectorAll('#tabs button').forEach(function(b){
@@ -413,8 +424,9 @@ li b{color:var(--txt)}
 
     var map = {adult:[0.5*E,'성년 자녀'], minor:[0.2*E,'미성년 자녀'], spouse:[6*E,'배우자']};
     var ded = map[toVal][0], toNm = map[toVal][1];
+    var wed = (toVal !== 'spouse' && document.getElementById('g_wed').checked) ? 1*E : 0;
 
-    var base = Math.max(amt - ded, 0);
+    var base = Math.max(amt - ded - wed, 0);
     var raw  = tax(base);
     var cr   = raw * 0.03;
     var t    = raw - cr;
@@ -425,6 +437,7 @@ li b{color:var(--txt)}
       rows: ''
         + '<tr><td>증여재산</td><td>' + won(amt) + '</td></tr>'
         + '<tr><td>증여재산공제 (' + toNm + ')</td><td>− ' + won(ded) + '</td></tr>'
+        + (wed > 0 ? '<tr><td>혼인·출산 증여재산공제</td><td>− ' + won(wed) + '</td></tr>' : '')
         + '<tr><td>과세표준</td><td>' + won(base) + '</td></tr>'
         + '<tr><td>산출세액</td><td>' + won(raw) + '</td></tr>'
         + (cr > 0 ? '<tr><td>신고세액공제 (3%)</td><td>− ' + won(cr) + '</td></tr>' : '')
@@ -434,7 +447,8 @@ li b{color:var(--txt)}
       gapSub: '재산은 넘어가는데 세금 낼 현금은 같이 넘어가지 않습니다. 받으신 분이 이 금액을 따로 마련하셔야 합니다.',
       gapNote: '기한이 석 달입니다. 받은 부동산을 팔아서 내는 경우가 실제로 생기고, 그러면 물려준 의미가 없어집니다.',
       okSub: '다만 그 현금을 세금으로 쓰고 나면 받으신 분에게 남는 것은 재산뿐입니다.',
-      summary: '[증여] 재산 ' + won(amt) + ' / 대상 ' + toNm + ' / 공제 ' + won(ded)
+      summary: '[증여] 재산 ' + won(amt) + ' / 대상 ' + toNm + ' / 공제 ' + won(ded + wed)
+        + (wed > 0 ? ' (혼인·출산 1억 포함)' : '')
         + ' / 과세표준 ' + won(base) + ' / 증여세 ' + won(t) + ' / 보유 현금 ' + won(cash)
     });
   });
