@@ -88,18 +88,45 @@ li b{color:var(--txt)}
 .note{font-size:12.5px;color:#6f6a62;line-height:1.7;margin-top:34px;padding-top:20px;border-top:1px solid var(--line)}
 .slogan{text-align:center;color:var(--dim);font-size:15px;margin-top:44px}
 .msg{margin-top:14px;font-size:14px;display:none}
+.tabs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:26px 0 18px}
+.tabs button{background:#0E1015;border:1px solid var(--line);border-radius:10px;
+  color:var(--dim);padding:16px 12px;font-family:inherit;font-size:16px;font-weight:600;cursor:pointer;line-height:1.5}
+.tabs button small{display:block;font-size:12px;font-weight:400;margin-top:4px;opacity:.85}
+.tabs button.on{border-color:var(--gold);color:var(--gold-hi);background:#171308}
 </style></head>
 <body>
 <div class="wrap">
 
   <div class="mark">WEALTH · STRUCTURE</div>
   <h1>세금 낼 돈이<br><em>얼마나 모자라는지</em> 먼저 봅니다</h1>
-  <p class="sub">상속세는 여섯 달 안에 현금으로 냅니다</p>
+  <p class="sub" id="hsub">상속세는 여섯 달 안에 현금으로 냅니다</p>
   <div class="rule"></div>
 
   <h2><span>01</span>지금 상태를 넣어 보십시오</h2>
 
-  <div class="panel">
+  <div class="tabs" id="tabs">
+    <button type="button" data-m="in" class="on">물려줄 때<small>상속 · 여섯 달</small></button>
+    <button type="button" data-m="gf">미리 줄 때<small>증여 · 석 달</small></button>
+  </div>
+
+  <div class="panel" id="pn_gf" style="display:none">
+    <label>증여할 재산 (시가 기준)</label>
+    <div class="unit"><input type="number" id="g_amt" placeholder="10" inputmode="decimal"><span>억원</span></div>
+
+    <label>누구에게 주십니까</label>
+    <div class="radio" id="g_to">
+      <button type="button" data-v="adult" class="on">성년 자녀</button>
+      <button type="button" data-v="minor">미성년 자녀</button>
+      <button type="button" data-v="spouse">배우자</button>
+    </div>
+
+    <label>받으실 분이 지금 가진 현금</label>
+    <div class="unit"><input type="number" id="g_cash" placeholder="0" inputmode="decimal"><span>억원</span></div>
+
+    <button class="btn" id="go2">계산하기</button>
+  </div>
+
+  <div class="panel" id="pn_in">
     <label>부동산 (시가 기준)</label>
     <div class="unit"><input type="number" id="re" placeholder="20" inputmode="decimal"><span>억원</span></div>
 
@@ -133,7 +160,7 @@ li b{color:var(--txt)}
     </div>
 
     <div class="panel">
-      <p class="small" style="margin-top:0">여섯 달 안에 낼 수 있는 현금과 비교하면 이렇게 됩니다.</p>
+      <p class="small" style="margin-top:0" id="cashhead"></p>
       <div class="tblwrap">
       <table><tbody id="cash"></tbody></table>
       </div>
@@ -160,7 +187,10 @@ li b{color:var(--txt)}
 
   <details style="margin:28px 0">
     <summary style="cursor:pointer">계산 근거 보기</summary>
-    <p class="small">상속세 및 증여세법 제21조 제1항 일괄공제 5억원, 제19조 제4항 배우자공제 5억원, 제22조 제1항 금융재산 상속공제(순금융재산의 20퍼센트, 한도 2억원), 제26조 세율을 적용했습니다. 상속세는 상속이 개시된 달의 말일부터 여섯 달 안에 신고하고 납부합니다(제67조 제1항).</p>
+    <p class="small">상속세 및 증여세법 제21조 제1항 일괄공제 5억원, 제19조 제4항 배우자공제 5억원, 제22조 제1항 금융재산 상속공제(순금융재산의 20퍼센트, 한도 2억원), 제26조 세율을 적용했습니다. 상속세는 상속이 개시된 달의 말일부터 여섯 달 안에 신고하고 납부합니다(제67조 제1항).
+    증여는 증여재산공제(배우자 6억원, 직계존속으로부터 받는 성년 5천만원·미성년 2천만원, 제53조)를 뺀 금액에 같은 세율을 매기고,
+    증여받은 날이 속하는 달의 말일부터 석 달 안에 신고합니다(제68조 제1항).
+    상속과 증여 모두 기한 안에 신고하면 산출세액의 3퍼센트를 공제합니다(제69조). 계산에 반영했습니다.</p>
   </details>
 
   <h2><span>02</span>대표님 경우의 순서를 정리해 드립니다</h2>
@@ -206,11 +236,30 @@ li b{color:var(--txt)}
 
 <script>
 (function(){
-  var spVal = 1;
+  var spVal = 1, toVal = 'adult';
   document.querySelectorAll('#sp button').forEach(function(b){
     b.addEventListener('click', function(){
       document.querySelectorAll('#sp button').forEach(function(x){x.classList.remove('on')});
       b.classList.add('on'); spVal = +b.dataset.v;
+    });
+  });
+  document.querySelectorAll('#g_to button').forEach(function(b){
+    b.addEventListener('click', function(){
+      document.querySelectorAll('#g_to button').forEach(function(x){x.classList.remove('on')});
+      b.classList.add('on'); toVal = b.dataset.v;
+    });
+  });
+  document.querySelectorAll('#tabs button').forEach(function(b){
+    b.addEventListener('click', function(){
+      document.querySelectorAll('#tabs button').forEach(function(x){x.classList.remove('on')});
+      b.classList.add('on');
+      var gf = (b.dataset.m === 'gf');
+      document.getElementById('pn_gf').style.display = gf ? 'block' : 'none';
+      document.getElementById('pn_in').style.display = gf ? 'none'  : 'block';
+      document.getElementById('hsub').textContent = gf
+        ? '증여세는 석 달 안에 현금으로 냅니다'
+        : '상속세는 여섯 달 안에 현금으로 냅니다';
+      document.getElementById('out').style.display = 'none';
     });
   });
 
@@ -235,79 +284,47 @@ li b{color:var(--txt)}
     return 10.4*E + (base-30*E)*0.50;
   }
 
-  document.getElementById('go').addEventListener('click', function(){
-    var E = 100000000;
-    var re  = (parseFloat(document.getElementById('re').value)  || 0) * E;
-    var fin = (parseFloat(document.getElementById('fin').value) || 0) * E;
-    var etc = (parseFloat(document.getElementById('etc').value) || 0) * E;
-    var total = re + fin + etc;
+  var E = 100000000;
 
-    if(total <= 0){ alert('자산을 하나 이상 넣어 주십시오.'); return; }
+  // 결과 렌더 -- 상속/증여 공통. o는 계산이 끝난 값 묶음
+  function render(o){
+    document.getElementById('calc').innerHTML = o.rows;
 
-    var lump = 5*E;
-    var spouse = spVal ? 5*E : 0;
-
-    var finDed = 0;
-    if(fin > 0){
-      if(fin <= 0.2*E) finDed = fin;
-      else finDed = Math.min(Math.max(fin*0.20, 0.2*E), 2*E);
-    }
-
-    var ded = lump + spouse + finDed;
-    var base = Math.max(total - ded, 0);
-    var t = tax(base);
-
-    var rows = ''
-      + '<tr><td>상속재산 합계</td><td>' + won(total) + '</td></tr>'
-      + '<tr><td>일괄공제</td><td>− ' + won(lump) + '</td></tr>'
-      + (spVal ? '<tr><td>배우자공제 (최소)</td><td>− ' + won(spouse) + '</td></tr>' : '')
-      + (finDed > 0 ? '<tr><td>금융재산 상속공제</td><td>− ' + won(finDed) + '</td></tr>' : '')
-      + '<tr><td>과세표준</td><td>' + won(base) + '</td></tr>'
-      + '<tr class="sum"><td>상속세</td><td>' + won(t) + '</td></tr>';
-    document.getElementById('calc').innerHTML = rows;
-
-    var gap = t - fin;
     var cash = ''
-      + '<tr><td>내야 하는 세금</td><td>' + won(t) + '</td></tr>'
-      + '<tr><td>바로 쓸 수 있는 금융자산</td><td>' + won(fin) + '</td></tr>'
-      + (gap > 0
-          ? '<tr class="gap"><td>모자라는 금액</td><td>' + won(gap) + '</td></tr>'
-          : '<tr class="sum"><td>남는 금액</td><td>' + won(-gap) + '</td></tr>');
+      + '<tr><td>내야 하는 세금</td><td>' + won(o.t) + '</td></tr>'
+      + '<tr><td>' + o.cashLabel + '</td><td>' + won(o.cash) + '</td></tr>'
+      + (o.gap > 0
+          ? '<tr class="gap"><td>모자라는 금액</td><td>' + won(o.gap) + '</td></tr>'
+          : '<tr class="sum"><td>남는 금액</td><td>' + won(-o.gap) + '</td></tr>');
     document.getElementById('cash').innerHTML = cash;
 
     var vd = document.getElementById('vd');
     var vs = document.getElementById('vdsub');
     var cn = document.getElementById('cashnote');
+    document.getElementById('cashhead').textContent =
+      o.term + ' 안에 낼 수 있는 현금과 비교하면 이렇게 됩니다.';
 
-    if(t <= 0){
+    if(o.t <= 0){
       vd.className = 'verdict ok';
-      vd.textContent = '지금 자산으로는 상속세가 나오지 않습니다';
-      vs.textContent = '공제 합계가 상속재산보다 큽니다. 다만 자산이 늘면 달라지므로 다시 계산해 보시는 것이 좋습니다.';
+      vd.textContent = o.zeroTitle;
+      vs.textContent = o.zeroSub;
       cn.textContent = '';
-    } else if(gap > 0){
+    } else if(o.gap > 0){
       vd.className = 'verdict bad';
-      vd.textContent = '여섯 달 안에 ' + won(gap) + '이 모자랍니다';
-      vs.textContent = '금융자산을 전부 세금으로 내도 이 금액이 남습니다. 이 금액은 부동산을 처분하거나 빌려서 메우게 됩니다.';
-      cn.textContent = '부동산 처분으로 메우실 계획이라면 여섯 달이라는 기한을 같이 보셔야 합니다. 급매가 되면 그 손실이 세금보다 클 수 있습니다.';
+      vd.textContent = o.term + ' 안에 ' + won(o.gap) + '이 모자랍니다';
+      vs.textContent = o.gapSub;
+      cn.textContent = o.gapNote;
     } else {
       vd.className = 'verdict ok';
-      vd.textContent = '금융자산으로 세금을 낼 수 있습니다';
-      vs.textContent = '다만 그 금융자산을 세금으로 쓰고 나면 자녀에게 남는 것은 부동산뿐입니다. 물려주려던 금액이 그만큼 줄어듭니다.';
+      vd.textContent = '가진 현금으로 세금을 낼 수 있습니다';
+      vs.textContent = o.okSub;
       cn.textContent = '';
     }
 
-    document.getElementById('hidden_result').value =
-      '상속재산 ' + won(total) + ' / 공제 ' + won(ded) + ' / 과세표준 ' + won(base) +
-      ' / 상속세 ' + won(t) + ' / 금융자산 ' + won(fin) +
-      ' / ' + (gap > 0 ? '부족액 ' + won(gap) : '여유 ' + won(-gap)) +
-      ' / 배우자 ' + (spVal ? '있음' : '없음');
-
-    // 세 방법 비교 -- 리플렛 예시 비율(10억/10년/50세 남)을 필요액에 맞춰 환산
-    // 기준은 위 결과의 「모자라는 금액」. 모자라지 않으면 상속세 전액을 기준으로 둔다
-    var need = gap > 0 ? gap : t;
+    var need = o.gap > 0 ? o.gap : o.t;
     if(need > 0){
       var M = 120;
-      var needNm = (gap > 0) ? '모자라는 금액' : '상속세';
+      var needNm = (o.gap > 0) ? '모자라는 금액' : '세금';
       var ways = [
         ['대출', 1.214, '자녀에게 갚을 소득이 있어야 합니다'],
         ['적금', 0.864, '목표에 도달하기 전에는 모인 만큼만 있습니다'],
@@ -331,16 +348,95 @@ li b{color:var(--txt)}
           + '</div>';
       }
       document.getElementById('cmp').innerHTML = crows;
-      document.getElementById('cmphead').innerHTML = (gap > 0)
+      document.getElementById('cmphead').innerHTML = (o.gap > 0)
         ? '모자라는 ' + won(need) + ', 채우는 방법은 셋입니다'
-        : '상속세 ' + won(need) + ', 따로 만드는 방법은 셋입니다';
+        : '세금 ' + won(need) + ', 따로 만드는 방법은 셋입니다';
       document.getElementById('cmpbase').innerHTML =
         '10년에 걸쳐 만드는 경우입니다. 세 방법 모두 세금 낼 때 <b>쓰는 돈은 '
         + won(need) + '으로 같고</b>, 내 주머니에서 <b>나가는 돈만 다릅니다.</b>';
     }
 
+    document.getElementById('hidden_result').value = o.summary;
+
     document.getElementById('out').style.display = 'block';
     document.getElementById('out').scrollIntoView({behavior:'smooth'});
+  }
+
+  // 상속 -- 일괄공제·배우자공제·금융재산공제를 빼고 세율을 매긴 뒤 신고세액공제 3%를 뺀다
+  document.getElementById('go').addEventListener('click', function(){
+    var re  = (parseFloat(document.getElementById('re').value)  || 0) * E;
+    var fin = (parseFloat(document.getElementById('fin').value) || 0) * E;
+    var etc = (parseFloat(document.getElementById('etc').value) || 0) * E;
+    var total = re + fin + etc;
+    if(total <= 0){ alert('자산을 하나 이상 넣어 주십시오.'); return; }
+
+    var lump = 5*E;
+    var spouse = spVal ? 5*E : 0;
+    var finDed = 0;
+    if(fin > 0){
+      if(fin <= 0.2*E) finDed = fin;
+      else finDed = Math.min(Math.max(fin*0.20, 0.2*E), 2*E);
+    }
+    var ded  = lump + spouse + finDed;
+    var base = Math.max(total - ded, 0);
+    var raw  = tax(base);
+    var cr   = raw * 0.03;
+    var t    = raw - cr;
+
+    render({
+      t: t, cash: fin, gap: t - fin, term: '여섯 달',
+      cashLabel: '바로 쓸 수 있는 금융자산',
+      rows: ''
+        + '<tr><td>상속재산 합계</td><td>' + won(total) + '</td></tr>'
+        + '<tr><td>일괄공제</td><td>− ' + won(lump) + '</td></tr>'
+        + (spVal ? '<tr><td>배우자공제 (최소)</td><td>− ' + won(spouse) + '</td></tr>' : '')
+        + (finDed > 0 ? '<tr><td>금융재산 상속공제</td><td>− ' + won(finDed) + '</td></tr>' : '')
+        + '<tr><td>과세표준</td><td>' + won(base) + '</td></tr>'
+        + '<tr><td>산출세액</td><td>' + won(raw) + '</td></tr>'
+        + (cr > 0 ? '<tr><td>신고세액공제 (3%)</td><td>− ' + won(cr) + '</td></tr>' : '')
+        + '<tr class="sum"><td>상속세</td><td>' + won(t) + '</td></tr>',
+      zeroTitle: '지금 자산으로는 상속세가 나오지 않습니다',
+      zeroSub: '공제 합계가 상속재산보다 큽니다. 다만 자산이 늘면 달라지므로 다시 계산해 보시는 것이 좋습니다.',
+      gapSub: '금융자산을 전부 세금으로 내도 이 금액이 남습니다. 이 금액은 부동산을 처분하거나 빌려서 메우게 됩니다.',
+      gapNote: '부동산 처분으로 메우실 계획이라면 여섯 달이라는 기한을 같이 보셔야 합니다. 급매가 되면 그 손실이 세금보다 클 수 있습니다.',
+      okSub: '다만 그 금융자산을 세금으로 쓰고 나면 자녀에게 남는 것은 부동산뿐입니다. 물려주려던 금액이 그만큼 줄어듭니다.',
+      summary: '[상속] 재산 ' + won(total) + ' / 공제 ' + won(ded) + ' / 과세표준 ' + won(base)
+        + ' / 상속세 ' + won(t) + ' / 금융자산 ' + won(fin) + ' / 배우자 ' + (spVal ? '있음' : '없음')
+    });
+  });
+
+  // 증여 -- 증여재산공제만 빼고 세율을 매긴 뒤 신고세액공제 3%를 뺀다
+  document.getElementById('go2').addEventListener('click', function(){
+    var amt  = (parseFloat(document.getElementById('g_amt').value)  || 0) * E;
+    var cash = (parseFloat(document.getElementById('g_cash').value) || 0) * E;
+    if(amt <= 0){ alert('증여할 재산을 넣어 주십시오.'); return; }
+
+    var map = {adult:[0.5*E,'성년 자녀'], minor:[0.2*E,'미성년 자녀'], spouse:[6*E,'배우자']};
+    var ded = map[toVal][0], toNm = map[toVal][1];
+
+    var base = Math.max(amt - ded, 0);
+    var raw  = tax(base);
+    var cr   = raw * 0.03;
+    var t    = raw - cr;
+
+    render({
+      t: t, cash: cash, gap: t - cash, term: '석 달',
+      cashLabel: '받으실 분이 가진 현금',
+      rows: ''
+        + '<tr><td>증여재산</td><td>' + won(amt) + '</td></tr>'
+        + '<tr><td>증여재산공제 (' + toNm + ')</td><td>− ' + won(ded) + '</td></tr>'
+        + '<tr><td>과세표준</td><td>' + won(base) + '</td></tr>'
+        + '<tr><td>산출세액</td><td>' + won(raw) + '</td></tr>'
+        + (cr > 0 ? '<tr><td>신고세액공제 (3%)</td><td>− ' + won(cr) + '</td></tr>' : '')
+        + '<tr class="sum"><td>증여세</td><td>' + won(t) + '</td></tr>',
+      zeroTitle: '이 금액이면 증여세가 나오지 않습니다',
+      zeroSub: '증여재산공제 안에 들어갑니다. 다만 이 공제는 10년 동안 합산되므로 앞선 증여가 있으면 달라집니다.',
+      gapSub: '재산은 넘어가는데 세금 낼 현금은 같이 넘어가지 않습니다. 받으신 분이 이 금액을 따로 마련하셔야 합니다.',
+      gapNote: '기한이 석 달입니다. 받은 부동산을 팔아서 내는 경우가 실제로 생기고, 그러면 물려준 의미가 없어집니다.',
+      okSub: '다만 그 현금을 세금으로 쓰고 나면 받으신 분에게 남는 것은 재산뿐입니다.',
+      summary: '[증여] 재산 ' + won(amt) + ' / 대상 ' + toNm + ' / 공제 ' + won(ded)
+        + ' / 과세표준 ' + won(base) + ' / 증여세 ' + won(t) + ' / 보유 현금 ' + won(cash)
+    });
   });
 
   document.getElementById('f').addEventListener('submit', function(e){
