@@ -663,11 +663,15 @@
     <div class="card" style="grid-column:1/-1"><span class="ic">🔄</span><h4>법인전환 설계</h4><p class="d">개인사업자의 법인 전환 타이밍과 절세 구조 설계</p>
       <ul><li>법인 전환 타이밍 진단</li><li>전환 절세 구조 설계</li><li>전환 후 리스크 관리</li></ul></div>
   </div>
-  <!-- 2026-08-17 사용자 지적 — 개인·개인사업자 면에는 상세로 가는 버튼이 있는데 법인만 없었다. -->
-  <div class="cta-row"><a class="btn p" href="#" onclick="go('corp');return false">법인 컨설팅 보기 →</a></div>
+  <!-- ⛔⛔ 2026-09-01 사용자 지적으로 순서를 통일했다 — 「어떤거는 CTA 밑에 있고 어떤거는 위에 있는데
+       이거 어떻게 통일하면 안되냐」. 페이지 전체가 **툴스트립 먼저, CTA 나중**이다.
+       근거는 문턱이다 — 계산기는 이름·연락처 없이 바로 쓰고, 점검 신청은 개인정보를 준다.
+       낮은 것을 먼저 주고 높은 것으로 닫아야 그 섹션이 이야기가 된다. -->
   <div class="toolstrip">
     <a href="calc/"><b>비상장주식 가치 계산기</b><em>재무제표 두 줄로 우리 회사 값을 봅니다</em><i>→</i></a>
   </div>
+  <!-- 2026-08-17 사용자 지적 — 개인·개인사업자 면에는 상세로 가는 버튼이 있는데 법인만 없었다. -->
+  <div class="cta-row"><a class="btn p" href="#" onclick="go('corp');return false">법인 컨설팅 보기 →</a></div>
 </div></section>
 
 <!-- RISK & PRECEDENTS -->
@@ -711,10 +715,11 @@
       <div class="h"><h4>내 실손은 몇 세대?</h4><p>2017년 이후 가입이면 3세대, 2021년 7월 이후면 4세대, 최근엔 5세대까지. 세대마다 보장이 다릅니다.</p></div>
       <div class="h"><h4>보험료는 무거운데 진단비는 얇다?</h4><p>중복 보장에 새는 돈, 표 한 장으로 정리하면 바로 보입니다.</p></div>
     </div>
-    <div class="cta-row"><a class="btn p" href="#" onclick="go('per');return false">개인 자산 컨설팅 보기 →</a></div>
+    <!-- 2026-09-01 — 툴스트립 먼저, CTA 나중. 순서 근거는 법인 섹션 주석. -->
     <div class="toolstrip">
       <a href="estate/"><b>상속 및 증여 케이스</b><em>재산은 그대로인데 세금이 달라지는 자리</em><i>→</i></a>
     </div>
+    <div class="cta-row"><a class="btn p" href="#" onclick="go('per');return false">개인 자산 컨설팅 보기 →</a></div>
   </div>
 </div>
 
