@@ -1,0 +1,374 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>상속 재원 계산기 · 세금 낼 돈이 얼마나 모자라나</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<style>
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
+:root{
+  --bg:#0B0C0F; --panel:#13151B; --line:#252932;
+  --txt:#EDEBE5; --dim:#8b867c; --gold:#C9A227; --gold-hi:#E8C766;
+  --warn:#D9534F;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--txt);
+  font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Malgun Gothic',sans-serif;
+  line-height:1.7;word-break:keep-all;-webkit-text-size-adjust:100%}
+.wrap{max-width:720px;margin:0 auto;padding:48px 20px 80px}
+
+.mark{text-align:center;font-size:13px;letter-spacing:.22em;color:var(--dim);margin-bottom:28px}
+h1{font-size:30px;line-height:1.4;font-weight:800;letter-spacing:-.02em;text-align:center}
+h1 em{font-style:normal;color:var(--gold-hi)}
+.sub{text-align:center;color:var(--dim);font-size:15px;margin-top:14px}
+.rule{width:56px;height:3px;background:var(--gold);margin:30px auto}
+
+h2{font-size:20px;font-weight:700;margin:52px 0 16px;letter-spacing:-.01em}
+h2 span{color:var(--gold);margin-right:8px}
+p{font-size:15.5px;color:#cfcac0;margin:12px 0}
+.small{font-size:13.5px;color:var(--dim);line-height:1.65}
+
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:24px;margin:20px 0}
+
+label{display:block;font-size:14px;color:var(--dim);margin:18px 0 7px}
+label:first-child{margin-top:0}
+input[type=number],select,input[type=text],input[type=tel],input[type=email],textarea{
+  width:100%;background:#0E1015;border:1px solid var(--line);border-radius:8px;
+  color:var(--txt);font-size:16px;padding:12px 14px;font-family:inherit}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold)}
+.unit{display:flex;align-items:center;gap:10px}
+.unit span{color:var(--dim);font-size:14px;white-space:nowrap}
+.radio{display:flex;gap:10px;margin-top:4px}
+.radio button{flex:1;background:#0E1015;border:1px solid var(--line);border-radius:8px;
+  color:var(--dim);font-size:15px;padding:11px;cursor:pointer;font-family:inherit}
+.radio button.on{border-color:var(--gold);color:var(--gold-hi);background:#171308}
+
+.btn{width:100%;margin-top:24px;background:var(--gold);color:#0B0C0F;border:none;border-radius:8px;
+  font-size:17px;font-weight:700;padding:15px;cursor:pointer;font-family:inherit}
+.btn:hover{background:var(--gold-hi)}
+
+#out{display:none}
+.verdict{font-size:21px;font-weight:700;line-height:1.5;margin-bottom:6px}
+.verdict.bad{color:var(--warn)}
+.verdict.ok{color:var(--gold-hi)}
+
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:14.5px}
+th,td{padding:11px 8px;border-bottom:1px solid var(--line);text-align:right}
+th:first-child,td:first-child{text-align:left;color:var(--dim)}
+thead th{color:var(--dim);font-weight:500;font-size:13px;border-bottom:1px solid #333}
+tr.sum td{border-top:1px solid var(--gold);border-bottom:none;font-weight:700;color:var(--gold-hi);font-size:16px}
+tr.gap td{color:var(--warn);font-weight:700;font-size:16px}
+.tblwrap{overflow-x:auto}
+
+ul{margin:12px 0 12px 18px}
+li{font-size:15px;color:#cfcac0;margin:8px 0}
+li b{color:var(--txt)}
+
+.ways{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+@media(max-width:640px){.ways{grid-template-columns:1fr}}
+.way{background:#0E1015;border:1px solid var(--line);border-radius:10px;padding:18px 16px;position:relative}
+.way.best{border-color:var(--gold);background:#171308}
+.way .nm{font-size:14px;color:var(--dim);letter-spacing:.04em;margin-bottom:12px}
+.way.best .nm{color:var(--gold-hi)}
+.way .mo{font-size:26px;font-weight:700;line-height:1.2}
+.way.best .mo{color:var(--gold-hi)}
+.way .mol{font-size:12px;color:var(--dim);margin-top:2px}
+.way .tot{display:flex;justify-content:space-between;align-items:baseline;gap:8px;white-space:nowrap;
+  font-size:13px;color:var(--dim);margin-top:10px;padding-top:10px;border-top:1px solid var(--line)}
+.way .tot b{color:var(--txt);font-size:14.5px;font-weight:600;white-space:nowrap}
+.way .tot b.same{color:var(--gold-hi)}
+.way .mg{font-size:12.5px;color:var(--dim);line-height:1.6;margin-top:12px;padding-top:10px;border-top:1px dashed var(--line)}
+.way .pct{font-size:12.5px;color:var(--dim);margin-top:8px}
+.way:not(.best){opacity:.62}
+.way.best .pct{color:var(--gold-hi);font-weight:700;font-size:14.5px}
+.way.best .mo{font-size:32px}
+.way .bd{position:absolute;top:-9px;right:14px;background:var(--gold);color:#0B0C0F;
+  font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;letter-spacing:.02em}
+.banner{background:#171308;border-left:3px solid var(--gold);padding:18px 20px;margin:22px 0;border-radius:0 8px 8px 0}
+.banner p{margin:0;font-size:16px;color:var(--txt);font-weight:600}
+
+.note{font-size:12.5px;color:#6f6a62;line-height:1.7;margin-top:34px;padding-top:20px;border-top:1px solid var(--line)}
+.slogan{text-align:center;color:var(--dim);font-size:15px;margin-top:44px}
+.msg{margin-top:14px;font-size:14px;display:none}
+</style></head>
+<body>
+<div class="wrap">
+
+  <div class="mark">WEALTH · STRUCTURE</div>
+  <h1>세금 낼 돈이<br><em>얼마나 모자라는지</em> 먼저 봅니다</h1>
+  <p class="sub">상속세는 여섯 달 안에 현금으로 냅니다</p>
+  <div class="rule"></div>
+
+  <h2><span>01</span>지금 상태를 넣어 보십시오</h2>
+
+  <div class="panel">
+    <label>부동산 (시가 기준)</label>
+    <div class="unit"><input type="number" id="re" placeholder="20" inputmode="decimal"><span>억원</span></div>
+
+    <label>금융자산 (예금·주식·채권 합계)</label>
+    <div class="unit"><input type="number" id="fin" placeholder="2" inputmode="decimal"><span>억원</span></div>
+
+    <label>그 밖의 재산 (사업체 지분·차량·회원권 등)</label>
+    <div class="unit"><input type="number" id="etc" placeholder="0" inputmode="decimal"><span>억원</span></div>
+
+    <label>배우자가 계십니까</label>
+    <div class="radio" id="sp">
+      <button type="button" data-v="1" class="on">예</button>
+      <button type="button" data-v="0">아니오</button>
+    </div>
+
+    <button class="btn" id="go">계산하기</button>
+  </div>
+
+  <div id="out">
+    <h2>결과</h2>
+    <div class="panel">
+      <div class="verdict" id="vd"></div>
+      <p class="small" id="vdsub"></p>
+
+      <div class="tblwrap">
+      <table>
+        <thead><tr><th>계산 순서</th><th>금액</th></tr></thead>
+        <tbody id="calc"></tbody>
+      </table>
+      </div>
+    </div>
+
+    <div class="panel">
+      <p class="small" style="margin-top:0">여섯 달 안에 낼 수 있는 현금과 비교하면 이렇게 됩니다.</p>
+      <div class="tblwrap">
+      <table><tbody id="cash"></tbody></table>
+      </div>
+      <p class="small" id="cashnote"></p>
+    </div>
+
+    <div class="panel">
+      <div class="verdict" id="cmphead" style="margin-bottom:6px"></div>
+      <p class="small" id="cmpbase"></p>
+      <div class="ways" id="cmp"></div>
+      <p class="small">50세 남성이 10년간 준비하는 조건의 예시입니다. 나이와 기간, 건강 상태에 따라 달라집니다.</p>
+    </div>
+
+    <div class="panel">
+      <h3 style="margin-top:0">왜 보험인가</h3>
+      <ul>
+        <li><b>첫날부터 전액입니다.</b> 적금은 목표에 도달해야 완성되고 대출은 그때 빌릴 수 있어야 합니다. 보험은 계약한 날부터 금액이 정해집니다. 상속이 5년 뒤에 열려도 나오는 금액이 같습니다.</li>
+        <li><b>여섯 달 안에 현금으로 나옵니다.</b> 상속세는 현금으로 냅니다. 부동산을 급하게 팔지 않아도 되는 이유가 여기 있습니다.</li>
+        <li><b>계약을 자녀에게 넘길 수 있습니다.</b> 계약자와 수익자를 자녀로 두고 자녀가 직접 내면, 나오는 돈이 상속재산에 들어가지 않습니다. 적금과 대출에는 이 구조가 없습니다.</li>
+        <li><b>납입한 금액만 증여로 봅니다.</b> 자녀가 증여받은 자금으로 낸 경우, 나중에 받는 금액 전부가 아니라 낸 금액을 뺀 차액만 과세됩니다 (제34조 제1항 제2호).</li>
+      </ul>
+      <div class="banner"><p>다만 자녀 이름으로만 바꿔 두면 안 됩니다. 법은 명의가 아니라 실제로 그 돈을 낸 사람을 봅니다 (제8조 제2항). 순서가 있습니다.</p></div>
+  </div>
+
+  <details style="margin:28px 0">
+    <summary style="cursor:pointer">계산 근거 보기</summary>
+    <p class="small">상속세 및 증여세법 제21조 제1항 일괄공제 5억원, 제19조 제4항 배우자공제 5억원, 제22조 제1항 금융재산 상속공제(순금융재산의 20퍼센트, 한도 2억원), 제26조 세율을 적용했습니다. 상속세는 상속이 개시된 달의 말일부터 여섯 달 안에 신고하고 납부합니다(제67조 제1항).</p>
+  </details>
+
+  <h2><span>02</span>대표님 경우의 순서를 정리해 드립니다</h2>
+  <p class="small">자녀 나이와 소득, 자산 구성, 배우자 유무에 따라 필요한 금액과 순서가 달라집니다. 아래를 남겨주시면 위에서 계산하신 결과와 함께 정리해서 회신드리겠습니다.</p>
+
+  <div class="panel">
+    <form id="f">
+      <input type="hidden" name="access_key" value="56ba5ceb-1e23-4de6-b6ca-7016a3e1e8d7">
+      <input type="hidden" name="subject" value="[컨설팅문의] 상속 재원 계산기">
+      <input type="hidden" name="from_name" value="상속 재원 계산기">
+      <input type="hidden" name="계산결과" id="hidden_result">
+
+      <label>성함</label>
+      <input type="text" name="성함" required>
+
+      <label>연락처</label>
+      <input type="tel" name="연락처" placeholder="010-0000-0000" required>
+
+      <label>지금 준비해 두신 것이 있다면 누구 이름으로 되어 있습니까</label>
+      <input type="text" name="명의" placeholder="본인 / 자녀 / 아직 없음">
+
+      <label>더 알려주실 내용</label>
+      <textarea name="내용" rows="3" placeholder="자녀 나이, 사업체 보유 여부 등"></textarea>
+
+      <button class="btn" type="submit" id="sb">보내기</button>
+      <p class="msg" id="msg"></p>
+    </form>
+  </div>
+
+  <p class="slogan">버는 건 시장이 정하고, 지키는 건 구조가 정합니다.</p>
+
+  <p class="note">
+    2026년 9월 기준 상속세 및 증여세법 제8조, 제19조, 제21조, 제22조, 제26조, 제34조, 제56조, 제67조에 근거한 일반 정보입니다.
+    이 계산기는 일괄공제, 배우자공제 최소액, 금융재산 상속공제만 반영합니다.
+    동거주택 상속공제, 가업상속공제, 영농상속공제, 재해손실공제, 감정평가수수료, 신고세액공제 3%, 상속개시 전 10년 이내 사전증여 합산은 반영하지 않았습니다.
+    배우자공제는 실제 분할 방식에 따라 최대 30억원까지 늘어나므로 실제 세액은 이 계산보다 낮아질 수 있습니다.
+    부동산은 시가로 평가하며 공시가격과 다릅니다.
+    개인별 세액은 재산 평가와 공제 요건에 따라 달라지므로 실제 신고는 세무 전문가의 확인이 필요합니다.
+    특정 상품의 매수·매도를 권유하지 않습니다.
+  </p>
+
+</div>
+
+<script>
+(function(){
+  var spVal = 1;
+  document.querySelectorAll('#sp button').forEach(function(b){
+    b.addEventListener('click', function(){
+      document.querySelectorAll('#sp button').forEach(function(x){x.classList.remove('on')});
+      b.classList.add('on'); spVal = +b.dataset.v;
+    });
+  });
+
+  function won(n){ // 원 단위 정수 → 한국어 금액
+    if(n <= 0) return '0원';
+    var eok = Math.floor(n/100000000);
+    var man = Math.round((n - eok*100000000)/10000);
+    var s = '';
+    if(eok > 0) s += eok.toLocaleString() + '억 ';
+    if(man > 0) s += man.toLocaleString() + '만';
+    if(eok > 0 && man === 0) return eok.toLocaleString() + '억원';
+    return s.trim() + '원';
+  }
+
+  function tax(base){ // 과세표준(원) → 산출세액(원)
+    var E = 100000000;
+    if(base <= 0) return 0;
+    if(base <= 1*E)  return base*0.10;
+    if(base <= 5*E)  return 0.1*E  + (base-1*E)*0.20;
+    if(base <= 10*E) return 0.9*E  + (base-5*E)*0.30;
+    if(base <= 30*E) return 2.4*E  + (base-10*E)*0.40;
+    return 10.4*E + (base-30*E)*0.50;
+  }
+
+  document.getElementById('go').addEventListener('click', function(){
+    var E = 100000000;
+    var re  = (parseFloat(document.getElementById('re').value)  || 0) * E;
+    var fin = (parseFloat(document.getElementById('fin').value) || 0) * E;
+    var etc = (parseFloat(document.getElementById('etc').value) || 0) * E;
+    var total = re + fin + etc;
+
+    if(total <= 0){ alert('자산을 하나 이상 넣어 주십시오.'); return; }
+
+    var lump = 5*E;
+    var spouse = spVal ? 5*E : 0;
+
+    var finDed = 0;
+    if(fin > 0){
+      if(fin <= 0.2*E) finDed = fin;
+      else finDed = Math.min(Math.max(fin*0.20, 0.2*E), 2*E);
+    }
+
+    var ded = lump + spouse + finDed;
+    var base = Math.max(total - ded, 0);
+    var t = tax(base);
+
+    var rows = ''
+      + '<tr><td>상속재산 합계</td><td>' + won(total) + '</td></tr>'
+      + '<tr><td>일괄공제</td><td>− ' + won(lump) + '</td></tr>'
+      + (spVal ? '<tr><td>배우자공제 (최소)</td><td>− ' + won(spouse) + '</td></tr>' : '')
+      + (finDed > 0 ? '<tr><td>금융재산 상속공제</td><td>− ' + won(finDed) + '</td></tr>' : '')
+      + '<tr><td>과세표준</td><td>' + won(base) + '</td></tr>'
+      + '<tr class="sum"><td>상속세</td><td>' + won(t) + '</td></tr>';
+    document.getElementById('calc').innerHTML = rows;
+
+    var gap = t - fin;
+    var cash = ''
+      + '<tr><td>내야 하는 세금</td><td>' + won(t) + '</td></tr>'
+      + '<tr><td>바로 쓸 수 있는 금융자산</td><td>' + won(fin) + '</td></tr>'
+      + (gap > 0
+          ? '<tr class="gap"><td>모자라는 금액</td><td>' + won(gap) + '</td></tr>'
+          : '<tr class="sum"><td>남는 금액</td><td>' + won(-gap) + '</td></tr>');
+    document.getElementById('cash').innerHTML = cash;
+
+    var vd = document.getElementById('vd');
+    var vs = document.getElementById('vdsub');
+    var cn = document.getElementById('cashnote');
+
+    if(t <= 0){
+      vd.className = 'verdict ok';
+      vd.textContent = '지금 자산으로는 상속세가 나오지 않습니다';
+      vs.textContent = '공제 합계가 상속재산보다 큽니다. 다만 자산이 늘면 달라지므로 다시 계산해 보시는 것이 좋습니다.';
+      cn.textContent = '';
+    } else if(gap > 0){
+      vd.className = 'verdict bad';
+      vd.textContent = '여섯 달 안에 ' + won(gap) + '이 모자랍니다';
+      vs.textContent = '금융자산을 전부 세금으로 내도 이 금액이 남습니다. 이 금액은 부동산을 처분하거나 빌려서 메우게 됩니다.';
+      cn.textContent = '부동산 처분으로 메우실 계획이라면 여섯 달이라는 기한을 같이 보셔야 합니다. 급매가 되면 그 손실이 세금보다 클 수 있습니다.';
+    } else {
+      vd.className = 'verdict ok';
+      vd.textContent = '금융자산으로 세금을 낼 수 있습니다';
+      vs.textContent = '다만 그 금융자산을 세금으로 쓰고 나면 자녀에게 남는 것은 부동산뿐입니다. 물려주려던 금액이 그만큼 줄어듭니다.';
+      cn.textContent = '';
+    }
+
+    document.getElementById('hidden_result').value =
+      '상속재산 ' + won(total) + ' / 공제 ' + won(ded) + ' / 과세표준 ' + won(base) +
+      ' / 상속세 ' + won(t) + ' / 금융자산 ' + won(fin) +
+      ' / ' + (gap > 0 ? '부족액 ' + won(gap) : '여유 ' + won(-gap)) +
+      ' / 배우자 ' + (spVal ? '있음' : '없음');
+
+    // 세 방법 비교 -- 리플렛 예시 비율(10억/10년/50세 남)을 필요액에 맞춰 환산
+    // 기준은 위 결과의 「모자라는 금액」. 모자라지 않으면 상속세 전액을 기준으로 둔다
+    var need = gap > 0 ? gap : t;
+    if(need > 0){
+      var M = 120;
+      var needNm = (gap > 0) ? '모자라는 금액' : '상속세';
+      var ways = [
+        ['대출', 1.214, '자녀에게 갚을 소득이 있어야 합니다'],
+        ['적금', 0.864, '목표에 도달하기 전에는 모인 만큼만 있습니다'],
+        ['보험', 0.449, '계약자와 수익자를 자녀로 둘 수 있습니다']
+      ];
+      var crows = '';
+      for(var w=0; w<ways.length; w++){
+        var tot  = need * ways[w][1];
+        var best = (w === 2);
+        crows += '<div class="way' + (best ? ' best' : '') + '">'
+          + (best ? '<div class="bd">부담 최소</div>' : '')
+          + '<div class="nm">' + ways[w][0] + '</div>'
+          + '<div class="mo">' + won(Math.round(tot/M)) + '</div>'
+          + '<div class="mol">매달 내는 돈</div>'
+          + '<div class="tot"><span>내는 돈</span><b>' + won(Math.round(tot)) + '</b></div>'
+          + '<div class="tot"><span>쓰는 돈</span><b class="same">' + won(need) + '</b></div>'
+          + '<div class="pct">' + (ways[w][1] > 1
+              ? needNm + '보다 ' + won(Math.round(tot - need)) + ' 더 냅니다'
+              : needNm + '보다 ' + won(Math.round(need - tot)) + ' 덜 냅니다') + '</div>'
+          + '<div class="mg">' + ways[w][2] + '</div>'
+          + '</div>';
+      }
+      document.getElementById('cmp').innerHTML = crows;
+      document.getElementById('cmphead').innerHTML = (gap > 0)
+        ? '모자라는 ' + won(need) + ', 채우는 방법은 셋입니다'
+        : '상속세 ' + won(need) + ', 따로 만드는 방법은 셋입니다';
+      document.getElementById('cmpbase').innerHTML =
+        '10년에 걸쳐 만드는 경우입니다. 세 방법 모두 세금 낼 때 <b>쓰는 돈은 '
+        + won(need) + '으로 같고</b>, 내 주머니에서 <b>나가는 돈만 다릅니다.</b>';
+    }
+
+    document.getElementById('out').style.display = 'block';
+    document.getElementById('out').scrollIntoView({behavior:'smooth'});
+  });
+
+  document.getElementById('f').addEventListener('submit', function(e){
+    e.preventDefault();
+    var btn = document.getElementById('sb');
+    var msg = document.getElementById('msg');
+    btn.disabled = true; btn.textContent = '보내는 중';
+    fetch('https://api.web3forms.com/submit', {
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body: JSON.stringify(Object.fromEntries(new FormData(e.target)))
+    }).then(function(r){return r.json()}).then(function(d){
+      msg.style.display='block';
+      if(d.success){
+        msg.style.color='var(--gold-hi)';
+        msg.textContent = '보내졌습니다. 확인하고 회신드리겠습니다.';
+        e.target.reset(); btn.textContent = '보내기';
+      } else {
+        msg.style.color='var(--warn)';
+        msg.textContent = '전송에 실패했습니다. 잠시 후 다시 시도해 주십시오.';
+        btn.disabled=false; btn.textContent='보내기';
+      }
+    }).catch(function(){
+      msg.style.display='block'; msg.style.color='var(--warn)';
+      msg.textContent = '전송에 실패했습니다. 잠시 후 다시 시도해 주십시오.';
+      btn.disabled=false; btn.textContent='보내기';
+    });
+  });
+})();
+</script>
+</body></html>
