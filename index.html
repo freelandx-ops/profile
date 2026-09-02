@@ -86,11 +86,22 @@
   .hero .gfc{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.22em;color:var(--gold-hi);margin-top:16px;text-transform:uppercase}
   /* 2026-08-17 개편 — 이름 아래 첫 줄이 영문 직급명이라 「무슨 일을 하는 사람인지」가 없었다.
      .role이 하는 일, .areas가 다루는 영역을 맡는다. SNS 바이오 2·3행과 같은 문장이다. */
-  .hero .role{font-size:clamp(1.05rem,2.9vw,1.32rem);font-weight:600;color:var(--gold-hi);margin-top:18px;letter-spacing:-.01em;word-break:keep-all}
-  .hero .role-sub{font-size:clamp(.9rem,2.4vw,1.02rem);font-weight:400;color:var(--mut);margin-top:9px;letter-spacing:-.01em;word-break:keep-all}
-  .hero .areas{font-size:clamp(.82rem,2.2vw,.95rem);font-weight:300;color:var(--mut);margin-top:11px;letter-spacing:.02em;word-break:keep-all}
-  .hero .decl{font-family:'Noto Serif KR',serif;font-size:clamp(1.1rem,2.6vw,1.45rem);font-weight:500;color:var(--ink);margin-top:34px;line-height:1.7}
-  .hero .decl .gold{color:var(--gold-hi)}
+  /* 2026-09-02 재배치 — 「곁에 두는 자산관리센터입니다」를 소개 섹션 제목에서 이름 밑으로 올렸다.
+     이름 바로 밑이 정체를 말하는 자리다. 종전의 「세금·투자·부동산·상속증여·보험을 한 구조로 설계합니다」는
+     아래 여섯 칸이 실물로 보여주므로 뺐다. 「버는 건 시장이 정하고」는 선언 구역 맨 위로 옮겼다. */
+  .hero .role{font-family:'Noto Serif KR',serif;font-size:clamp(1.15rem,3.1vw,1.5rem);font-weight:600;color:var(--gold-hi);margin-top:18px;letter-spacing:-.01em;word-break:keep-all}
+  .hero .role-sub{font-size:clamp(.9rem,2.4vw,1.02rem);font-weight:400;color:var(--mut);margin-top:11px;letter-spacing:-.01em;word-break:keep-all}
+  /* ⛔ 여섯 칸이 「무엇을 하는가」다. 한 줄 나열이면 안 읽히고, 칸으로 서면 범위가 눈으로 들어온다. */
+  .areagrid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;max-width:880px;margin:30px auto 0}
+  .areagrid span{border:1px solid var(--line2);border-radius:12px;padding:15px 8px;font-size:clamp(.82rem,2.1vw,.94rem);
+    font-weight:400;color:var(--ink);letter-spacing:.01em;word-break:keep-all;
+    background:linear-gradient(180deg,rgba(255,255,255,.025),transparent)}
+  /* ⛔ 독자 반응 넷의 첫 칸이다. 여기서 「이거 내 얘긴데」가 나야 아래 여덟 칸이 서비스가 아니라 답으로 읽힌다. */
+  .hero .state{font-size:clamp(.95rem,2.5vw,1.1rem);font-weight:400;color:var(--ink);margin-top:26px;
+    line-height:1.8;max-width:620px;margin-left:auto;margin-right:auto;word-break:keep-all}
+  .hero .areanote{font-size:clamp(.92rem,2.4vw,1.06rem);font-weight:300;color:var(--mut);margin-top:14px;
+    line-height:1.8;max-width:620px;margin-left:auto;margin-right:auto;word-break:keep-all}
+  .hero .areanote b{color:var(--ink);font-weight:500}
   .goldrule{width:44px;height:1px;background:var(--gold);margin:34px auto}
   .motto{font-family:'Noto Serif KR',serif;font-size:clamp(1.05rem,2.3vw,1.3rem);font-weight:500;line-height:1.7;max-width:600px;margin:0 auto;color:var(--mut)}
   .motto b{color:var(--gold-hi);font-weight:600}
@@ -128,20 +139,34 @@
   .route p{font-size:.9rem;color:var(--mut);line-height:1.85;font-weight:300}
   .route .go{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--gold);margin-top:20px;display:inline-block;letter-spacing:.06em}
 
-  /* profile */
-  /* 2026-09-02 신설 — 포지셔닝 본문(「왜 이 사람인가」). 제목이 결론, 이 블록이 이유, 약력이 증거다.
+  /* stance — 포지셔닝 본문 (2026-09-02 신설 · 09-02 독립 구역으로 뺐다)
+     ⛔ 소개 섹션 안에 있으면 프로필의 일부로 읽혀 크고 굵은 것이 어색해진다. 히어로와 소개 사이의
+        독립 구역이라야 그 안에서 큰 글씨와 한 줄 조판이 의도로 읽힌다.
      ⛔ 문장 실물은 `_채널문안.md` 「포지셔닝 본문 — 전환용」이 단일 출처다. 여기서 고치지 않는다.
-     ⛔ 폰에서는 .l 을 inline 으로 풀어 흘린다 — 강제 줄바꿈을 두면 긴 두 줄의 끝이 화면 밖으로 나간다. */
-  .stance{margin-top:38px;max-width:660px}
+     ⛔ 폰에서는 .l 을 inline 으로 풀어 흘린다 — 강제 줄바꿈을 두면 긴 두 줄의 끝이 화면 밖으로 나간다.
+     ⛔ 002 근거 `_전략.md` 73행 — 이 글의 자리는 「랜딩 히어로 · 고정글 · 세무사 한 장 · 프로필 링크」다.
+        프로필 본문이 아니라 프로필 앞에 서는 글이다. */
+  /* ⛔ 히어로가 전부 가운데 정렬인데 이 구역만 왼쪽이면 내려올 때 시선 축이 튀어 글이 혼자 떠 보인다.
+        선언은 본문이 아니라 히어로의 연장이므로 정렬과 배경을 히어로에 맞춘다. 소개부터 왼쪽으로 내려간다. */
+  .stancesec{padding:20px 0 104px;text-align:center}
+  .stance{max-width:660px;margin:0 auto}
   .stance p{font-family:'Noto Serif KR',serif;font-weight:500;
-    font-size:clamp(1.06rem,2.5vw,1.28rem);line-height:1.95;color:var(--ink-hi);
+    font-size:clamp(.98rem,2.3vw,1.17rem);line-height:1.95;color:var(--ink-hi);
     letter-spacing:-.005em;margin-bottom:30px;word-break:keep-all}
+  /* ⛔ 결론 문장이라 이유보다 커야 한다. 같은 크기면 열두 줄이 평평해져 어디가 주장인지 안 보인다. */
+  .stance .thesis{font-size:clamp(1.22rem,3vw,1.58rem);font-weight:600;line-height:1.6;margin-bottom:0}
+  .stance .thesis .gold{color:var(--gold-hi)}
   .stance .l{display:block}
   .stance .me{color:var(--gold-hi);margin-bottom:0}
-  .stance .rule{width:34px;height:1px;background:var(--gold);opacity:.6;margin:34px 0}
-  .stance .go{display:inline-block;margin-top:30px;font-size:.95rem;font-weight:500;color:var(--gold-hi);
-    border-bottom:1px solid rgba(201,162,75,.45);padding-bottom:3px;transition:.2s}
-  .stance .go:hover{border-bottom-color:var(--gold-hi)}
+  /* ⛔ 이 구역만 라벨이 없어 「무슨 구역인지」가 안 잡혔다. 다른 섹션 라벨은 영문 장식이지만
+        이 줄은 읽혀야 뒤 열두 줄이 열리므로 한글로 둔다. */
+  .stance .slabel{font-size:12.5px;font-weight:400;color:var(--gold);letter-spacing:.14em;margin-bottom:20px}
+  .stance .rule{width:40px;height:1px;background:var(--gold);opacity:.6;margin:34px auto 40px}
+  /* ⛔ 설득의 온도가 제일 높은 자리다. 밑줄 링크가 아니라 히어로와 같은 급의 버튼을 둔다. */
+  .stance .go{display:inline-block;margin-top:40px;padding:15px 30px;
+    background:var(--gold);color:#14141a;font-size:.95rem;font-weight:700;
+    border:1px solid var(--gold);border-radius:2px;transition:.2s}
+  .stance .go:hover{background:var(--gold-hi);border-color:var(--gold-hi)}
   .bio{list-style:none;margin-top:34px;max-width:680px}
   .bio li{position:relative;padding:13px 0 13px 30px;border-bottom:1px solid var(--line);font-size:.95rem;color:var(--ink);word-break:keep-all}
   .bio li::before{content:'·';position:absolute;left:8px;color:var(--gold);font-weight:700;font-size:1.4em;line-height:1.2}
@@ -412,6 +437,11 @@
     .routes,.svc,.svc2,.prec,.contact,.fgrid,.hooks,.stats,.team{grid-template-columns:1fr}
     /* 2026-09-01 — 모바일 여백을 깎았다. 84px 그대로 두면 열두 구역에서 여백만 2,016px다. */
     .sec{padding:54px 0}
+    .areagrid{grid-template-columns:repeat(2,1fr);gap:8px}
+    /* ⛔ 폰에서는 한 줄씩 끊은 조판을 푼다. 긴 줄이 두 줄로 접히면서 짧은 줄과 섞여 계단처럼 어긋난다. */
+    .stance .l{display:inline}
+    .stance .thesis .l{display:block}
+    .stancesec{padding:8px 0 64px}
     .svcblock{margin-top:26px;padding-top:26px}
     .svcblock.who{padding:22px;margin-top:12px}
     .svcblock.who:first-of-type{margin-top:26px}
@@ -490,19 +520,28 @@
     <img class="photo" src="개인프로필 사진/개인프로필_사진_로고제거.jpg" alt="프로필 사진">
   </div></div>
   <h1>유영곤</h1>
-  <p class="role">세금·투자·부동산·상속증여·보험을 한 구조로 설계합니다</p>
-  <!-- 2026-08-22 교체 — 인스타 바이오와 한 사슬이다. .role은 「무엇을 하는가」(바이오 2행), 이 줄은 「그래서 무엇이 달라지나」다.
-       바이오 1행(「본업에 쓸 시간을 자산 관리에 쓰고 계십니다」)은 훅이라 랜딩에 안 옮긴다. 여기 온 사람은 이미 그 문장을 보고 눌렀다. -->
-  <!-- 2026-08-23 — 「본업에 집중」만 있으면 알아서 해준다는 말로 읽힌다. 자기 돈을 직접 보는 층은 거기서 멈추므로
-       판단권을 돌려주는 절반을 앞에 붙였다. About 안쪽에만 있던 안전장치를 첫 화면으로 올린 것이다. -->
-  <p class="role-sub">보셔야 할 것만 정리해서 드립니다. 그래서 본업에 집중하실 수 있습니다</p>
-  <p class="areas">투자 포트폴리오 · 절세 · 부동산 · 상속증여 · 은퇴 현금흐름 · 보장 설계</p>
-  <p class="decl">버는 건 <span class="gold">시장</span>이 정하고,<br>지키는 건 <span class="gold">구조</span>가 정합니다.</p>
+  <p class="role">곁에 두는 자산관리센터입니다</p>
+  <!-- 2026-09-02 사용자 지시 — 관점을 박스 위로 올렸다. 정체(곁에 두는) → 관점(하나로 봐야) → 실물(칸 여덟) 순서다.
+       박스 밑에 두면 왜 여덟인지를 뒤늦게 설명하는 모양이 된다. -->
+  <!-- 2026-09-02 신설 — 독자 반응 넷의 첫 칸(「이거 내 얘긴데」)이 첫 화면에 없었다.
+       이름 밑이 전부 우리 소개라 읽는 사람이 자기를 만나는 자리가 없었고, 자기 얘기를 만나기 전에
+       서비스 목록과 버튼을 먼저 보면 「영업이네」로 분류하고 나간다.
+       ⛔ 롤콜 여섯은 이 자리에 안 쓴다 — 랜딩 반려 이력이 있다(`개인프로필_변경이력.md` 44번). -->
+  <p class="state">세금은 세무사에게, 부동산은 중개사에게, 투자는 증권사에 물으셨을 겁니다.</p>
+  <p class="areanote"><b>자산 전체를 하나로</b> 봐야 문제가 보이고 답이 나옵니다.</p>
+  <!-- 2026-09-02 사용자 지시 — 「보셔야 할 것만 정리해서 드립니다」를 뺐다.
+       칸 여섯과 그 아래 한 줄이 같은 일을 하고 있어 셋이 겹쳤다. -->
+  <!-- 2026-09-02 사용자 지시 — 한 줄 나열을 칸 여섯으로 세웠다. 무엇을 하는 사람인지가 눈으로 들어온다.
+       아래 한 줄이 「왜 여섯이 한자리에 있나」를 받는다. -->
+  <div class="areagrid">
+    <span>투자 포트폴리오</span><span>절세</span><span>부동산</span><span>상속증여</span>
+    <span>법인 컨설팅</span><span>가업승계</span><span>은퇴 현금흐름</span><span>보장 설계</span>
+  </div>
   <div class="goldrule"></div>
   <div class="cta-row">
+    <!-- 2026-09-02 사용자 결정 — 첫 화면 버튼을 하나로 줄였다. 셋이면 고르는 것 자체가 일이 되어 그냥 스크롤한다.
+         ⛔ 세미나(#seminar)·브리핑(#briefing)은 없어진 게 아니라 각 구역에서 그대로 받는다. 입구를 하나로 모은 것이다. -->
     <a class="btn p" href="#quickdiag">무료 점검 받기 →</a>
-    <a class="btn s" href="#seminar">무료 세미나 신청 →</a>
-    <a class="btn s" href="#briefing">브리핑 구독하기 →</a><!-- 2026-08-17 사용자 지시로 「서비스 알아보기」(#route)에서 교체. 분기 카드는 바로 아래에 있어 입구가 따로 필요 없고, 진단·세미나만 있으면 셋 다 상담 온도다 -->
   </div>
   <div class="social compact">
     <a href="https://www.instagram.com/wealthstructure.kr/" target="_blank" rel="noopener" aria-label="인스타그램"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1.15" fill="currentColor" stroke="none"/></svg></i><b>Instagram</b></a>
@@ -513,25 +552,35 @@
   </div>
 </header>
 
+<!-- 2026-09-02 — 포지셔닝 본문을 소개 섹션 안에서 빼내 독립 구역으로 세웠다.
+     ⛔ 소개 안에 있으면 프로필의 일부로 읽혀 큰 글씨와 한 줄 조판이 어색해지고, 약력이 이 글의 부록이 된다.
+     ⛔ 히어로와 소개 사이에 두는 이유 — 002 `_전략.md` 73행이 이 글의 자리를 「랜딩 히어로」로 정했다.
+        히어로 안에 넣으면 「무료 점검 받기」가 첫 화면 밖으로 밀리므로 바로 아래에 둔다.
+     ⛔ 문장 실물은 `_채널문안.md` 「포지셔닝 본문 — 전환용」이 단일 출처다. 여기서 고치면 두 면이 갈린다. -->
+<section class="stancesec"><div class="container">
+  <div class="stance">
+    <!-- 2026-09-02 사용자 지시 — 히어로에 있던 이 두 줄을 선언 맨 위로 올렸다.
+         ⛔ 열두 줄이 전부 이유라 결론 문장이 없으면 어디로 가는 글인지 안 보인다.
+            이 줄이 결론이고 아래가 이유다 — 결론 → 이유 → 나 → 행동으로 닫힌다. -->
+    <p class="slabel">자산관리가 필요한 이유</p>
+    <p class="thesis"><span class="l">버는 건 <span class="gold">시장</span>이 정하고,</span><span class="l">지키는 건 <span class="gold">구조</span>가 정합니다.</span></p>
+    <div class="rule"></div>
+    <p><span class="l">연 100억 벌던 사람도 한 번에 무너집니다.</span><span class="l">투자 한 번, 세금 한 번, 상속 한 번, 소득이 멈춘 한 번입니다.</span></p>
+    <p><span class="l">버는 사람은 많습니다.</span><span class="l">끝까지 지킨 사람은 얼마 없습니다.</span><span class="l">실력 차이가 아닙니다. 구조 차이입니다.</span></p>
+    <p><span class="l">구조 없는 자산은 물 새는 배입니다.</span><span class="l">상승장에서는 새는 배도 뜹니다.</span><span class="l">새는 곳은 항상 바닥에 있어서, 위에서는 안 보입니다.</span></p>
+    <p class="me"><span class="l">저는 바닥을 보는 사람입니다.</span><span class="l">어디서 새는지부터 봅니다.</span></p>
+    <a class="go" href="#quickdiag">어디서 새는지 30초로 확인하기 →</a>
+  </div>
+</div></section>
+
 <!-- 2026-09-01 사용자 지시로 소개를 30초 점검 위로 올렸다.
      ⚠️ `_랜딩/_랜딩절차.md`의 「첫 화면에서 점검으로 내려가는 길이 보여야 한다」는 그대로 지켜진다 —
         히어로 첫 버튼이 「무료 점검 받기」이고, 이 구역은 넷 다 접혀 있어 한 화면을 크게 안 먹는다.
      ⛔ 이 구역의 접기를 펴 두면 점검이 화면 밖으로 밀린다. 펴려면 그때 순서를 다시 본다. -->
 <section class="sec" id="about"><div class="container">
+  <!-- 2026-09-02 — 「곁에 두는 자산관리센터입니다」는 히어로 이름 밑으로 올라갔다.
+       제목 없이 라벨에서 약력으로 바로 내려간다. -->
   <p class="label">Profile</p>
-  <h2 class="title">곁에 두는<br><span class="gold">자산관리센터입니다</span></h2>
-  <!-- 2026-09-02 신설 — 포지셔닝 본문. 제목이 결론이고 이 블록이 이유이고 아래 약력이 증거다.
-       ⛔ 문장은 `_채널문안.md` 「포지셔닝 본문 — 전환용」이 단일 출처다. 여기서 고치면 두 면이 갈린다.
-       ⛔ 끝의 점검 링크는 이 블록이 12줄이라 30초 점검이 그만큼 밀리는 것을 받는 장치다.
-          설득된 사람이 약력·자격·숫자를 안 지나고 바로 간다. 입구가 둘이 되는 것이지 아래 구역을 대체하지 않는다. -->
-  <div class="stance">
-    <p><span class="l">연 100억 벌던 사람도 한 번에 무너집니다.</span><span class="l">투자 한 번, 세금 한 번, 상속 한 번, 소득이 멈춘 한 번입니다.</span></p>
-    <p><span class="l">버는 사람은 많습니다.</span><span class="l">끝까지 지킨 사람은 얼마 없습니다.</span><span class="l">실력 차이가 아닙니다. 구조 차이입니다.</span></p>
-    <p><span class="l">구조 없는 자산은 물 새는 배입니다.</span><span class="l">상승장에서는 새는 배도 뜹니다.</span><span class="l">새는 곳은 항상 바닥에 있어서, 위에서는 안 보입니다.</span></p>
-    <div class="rule"></div>
-    <p class="me"><span class="l">저는 바닥을 보는 사람입니다.</span><span class="l">어디서 새는지부터 봅니다.</span></p>
-    <a class="go" href="#quickdiag">어디서 새는지 30초로 확인하기 →</a>
-  </div>
   <ul class="bio">
   <li>現 삼성금융네트웍스 · 자산관리 컨설턴트</li>
   <!-- 2026-09-01 사용자 지시로 회사마다 한 줄로 갈랐다.
