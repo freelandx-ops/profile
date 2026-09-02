@@ -166,13 +166,24 @@
         이 줄은 읽혀야 뒤 열두 줄이 열리므로 한글로 둔다. */
   .stance .slabel{font-size:12.5px;font-weight:400;color:var(--gold);letter-spacing:.14em;margin-bottom:20px}
   .stance .rule{width:40px;height:1px;background:var(--gold);opacity:.6;margin:34px auto 40px}
-  /* 접기 — 가운데 정렬 구역이라 기본 .fold(왼쪽 그리드)를 이 자리에 맞춘다 */
-  .stancefold{margin-top:34px;text-align:left}
-  .stancefold summary{padding:15px 20px;align-items:center}
-  .stancefold .fold-t{font-size:.96rem}
-  .stancefold .fold-i{padding-top:0}
-  .stancefold .fold-b{padding:24px 20px 20px}
-  .stancefold .fold-b p:last-child{margin-bottom:0}
+  /* 논증 아홉 줄 — ⛔ 접기 박스로 두지 않는다 (2026-09-02 사용자).
+     접혀 있으면 아무도 안 펴고, 테두리 박스는 FAQ 아코디언 부품이 글에 박힌 모양이 된다.
+     ⭐ 글은 그대로 두고 아래로 갈수록 흐려지게 한다 — 이미 읽고 있는 상태라 더 보고 싶어진다.
+     ⛔ 오버레이 div가 아니라 mask-image를 쓴다. 배경색을 몰라도 되고 배경이 바뀌어도 안 깨진다.
+     ⛔⛔ 클래스는 `sm-open` 이다. `on` 을 쓰면 페이지의 탭·진단 목록·스크롤 리빌이 같은 이름을 써서
+          로드하자마자 펼쳐진 상태가 된다(2026-09-02 실측). */
+  .stancemore{margin-top:30px}
+  .stancemore .sm-body{max-height:150px;overflow:hidden;transition:max-height .5s ease;
+    -webkit-mask-image:linear-gradient(180deg,#000 42%,transparent 100%);
+            mask-image:linear-gradient(180deg,#000 42%,transparent 100%)}
+  .stancemore.sm-open .sm-body{max-height:900px;-webkit-mask-image:none;mask-image:none}
+  .stancemore .sm-body p:last-child{margin-bottom:0}
+  .sm-btn{margin-top:6px;background:none;border:0;cursor:pointer;font-family:inherit;
+    font-size:.92rem;font-weight:400;color:var(--gold);letter-spacing:.01em;
+    border-bottom:1px solid rgba(201,162,75,.35);padding:0 0 3px;transition:.2s}
+  .sm-btn::after{content:' ▾';font-size:.82em;opacity:.75;margin-left:2px}
+  .sm-btn:hover{color:var(--gold-hi);border-bottom-color:var(--gold-hi)}
+  .stancemore.sm-open .sm-btn{display:none}
   /* ⛔ 설득의 온도가 제일 높은 자리다. 밑줄 링크가 아니라 히어로와 같은 급의 버튼을 둔다. */
   .stance .go{display:inline-block;margin-top:40px;padding:15px 30px;
     background:var(--gold);color:#14141a;font-size:.95rem;font-weight:700;
@@ -590,7 +601,6 @@
             이 줄이 결론이고 아래가 이유다 — 결론 → 이유 → 나 → 행동으로 닫힌다. -->
     <p class="slabel">자산관리가 필요한 이유</p>
     <p class="thesis"><span class="l">버는 건 <span class="gold">시장</span>이 정하고,</span><span class="l">지키는 건 <span class="gold">구조</span>가 정합니다.</span></p>
-    <div class="rule"></div>
     <!-- 2026-09-02 사용자 결정 — 논증 아홉 줄을 접었다.
          ⛔⛔ 히어로와 중복이라서가 아니다. 히어로는 내 역할의 정의이고 이 구역은 고객이 자산관리를
               선택해야 하는 이유다. 다른 일을 한다.
@@ -599,19 +609,20 @@
          ⛔ 접힘 라벨을 「더 보기」로 두지 않는다. 결론이 「구조가 정합니다」이니 그 이유를 묻는 문구여야 눌린다.
          ⛔ 문장은 `_채널문안.md` 「포지셔닝 본문 — 전환용」이 단일 출처다. 전문 열세 줄은 SNS 고정글·
             세무사 한 장에서 그대로 쓴다. 거기는 처음 만나는 자리라 길이가 맞다. -->
-    <details class="fold stancefold">
-      <summary>
-        <span><b class="fold-t">실력이 아니라 구조인 이유</b></span>
-        <span class="fold-i"></span>
-      </summary>
-      <div class="fold-b">
+    <div class="stancemore" id="stanceMore">
+      <div class="sm-body">
         <p><span class="l">연 100억 벌던 사람도 한 번에 무너집니다.</span><span class="l">투자 한 번, 세금 한 번, 상속 한 번, 소득이 멈춘 한 번입니다.</span></p>
         <p><span class="l">버는 사람은 많습니다.</span><span class="l">끝까지 지킨 사람은 얼마 없습니다.</span><span class="l">실력 차이가 아닙니다. 구조 차이입니다.</span></p>
         <p><span class="l">구조 없는 자산은 물 새는 배입니다.</span><span class="l">상승장에서는 새는 배도 뜹니다.</span><span class="l">새는 곳은 항상 바닥에 있어서, 위에서는 안 보입니다.</span></p>
+        <!-- ⛔ 2026-09-02 사용자 — 이 두 줄을 흐려지는 본문 안에 넣는다. 밖에 두면 앞 논증과 끊겨
+             뜬금없이 읽힌다. 「새는 곳은 바닥에 있다」 바로 뒤라야 「그래서 저는 바닥을 봅니다」가 이어진다. -->
+        <div class="rule"></div>
+        <p class="me"><span class="l">저는 바닥을 보는 사람입니다.</span><span class="l">어디서 새는지부터 봅니다.</span></p>
       </div>
-    </details>
-    <p class="me"><span class="l">저는 바닥을 보는 사람입니다.</span><span class="l">어디서 새는지부터 봅니다.</span></p>
-    <a class="go" href="#quickdiag">어디서 새는지 30초로 확인하기 →</a>
+      <button type="button" class="sm-btn" onclick="openStance()">더 보기</button>
+    </div>
+    <!-- 2026-09-02 사용자 결정 — 이 버튼을 뺐다. 히어로에 이미 「무료 점검 받기」와 「자산 체크리스트」
+         둘이 있어 같은 곳으로 가는 세 번째 입구였다. -->
   </div>
 </div></section>
 
@@ -2065,5 +2076,6 @@
   },true);
 })();
 </script>
+<script>function openStance(){document.getElementById('stanceMore').classList.add('sm-open');}</script>
 </body>
 </html>
