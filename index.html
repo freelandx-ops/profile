@@ -34,6 +34,12 @@
     font-size:15.5px;line-height:1.8;-webkit-font-smoothing:antialiased;word-break:keep-all}
   .container{max-width:1020px;margin:0 auto;padding:0 28px}
 
+  /* 2026-09-03 — 폰에서 마지막 줄에 단어 하나만 떨어지는 고아 줄이 18곳이었다.
+     ⛔ 한 단어짜리 꼬리 줄이 페이지를 「대충 만든 것」으로 보이게 한다. word-break:keep-all 만으로는 안 잡힌다.
+     ⛔ 제목은 balance(줄 길이를 고르게), 본문은 pretty(꼬리 줄 방지)다. 지원 안 하는 브라우저는 그냥 무시한다. */
+  h1,h2,h3,h4,.title,.fold-t,.hero .role,.stance .thesis{text-wrap:balance}
+  p,li,.s,.sub,em,.areanote,.state,.ctanote,.fold-s,.stance p{text-wrap:pretty}
+
   /* 앵커 점프 시 고정 네비(56px)가 섹션 머리를 덮지 않게 */
   section[id],div[id]{scroll-margin-top:72px}
   .bar{position:fixed;top:0;left:0;right:0;z-index:30;height:56px;
@@ -460,6 +466,13 @@
     /* 2026-09-01 — 모바일 여백을 깎았다. 84px 그대로 두면 열두 구역에서 여백만 2,016px다. */
     .sec{padding:54px 0}
     .areagrid{grid-template-columns:repeat(2,1fr);gap:8px}
+    /* 2026-09-03 — 폰에서 히어로가 두 화면이었다. 사진 266px + 상단 126px 때문에
+       독자를 지목하는 줄과 버튼이 첫 화면 밖으로 밀렸다. 소속만 보고 분류하는 사람에게
+       첫 화면이 워드마크·3사 이름·사진·이름뿐이면 분류가 끝난 뒤에 문장이 온다. */
+    .hero{padding:92px 20px 56px}
+    .photo-wrap{width:150px;height:150px;margin:20px auto 16px}
+    .wm{height:38px;margin-bottom:14px}
+    .hero h1{font-size:2rem}
     /* ⛔ 폰에서는 한 줄씩 끊은 조판을 푼다. 긴 줄이 두 줄로 접히면서 짧은 줄과 섞여 계단처럼 어긋난다. */
     .stance .l{display:inline}
     .stance .thesis .l{display:block}
