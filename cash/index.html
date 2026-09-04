@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>지금 자산가들이 어떻게 준비하고 있는지</title>
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --ink:#1d1d1f; --muted:#7a7a7a; --faint:#a8a8ac; --hairline:#e0e0e0;
+    --accent:#1428A0; --accent-dark:#6E8CF2;
+    --parchment:#f5f5f7; --tile:#272729;
+  }
+  html,body{overflow-x:clip;max-width:100%}
+  html{background:#fff}
+  body{font-family:'Pretendard Variable',Pretendard,system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;text-rendering:geometricPrecision;word-break:keep-all;
+    background:#fff;color:var(--ink);font-size:17px;line-height:1.74;letter-spacing:-.02em}
+  .wrap{max-width:720px;margin:0 auto;padding:0 24px;min-width:0}
+  .n{color:var(--accent);font-weight:700}
+
+  .cover{background:var(--tile);padding:92px 0 72px}
+  .cover *{color:#fff}
+  .cover .kicker{color:var(--accent-dark);font-size:13px;font-weight:600;letter-spacing:.1em;margin-bottom:20px}
+  .cover h1{font-size:clamp(25px,6.4vw,44px);word-break:keep-all;overflow-wrap:break-word;font-weight:700;line-height:1.2;letter-spacing:-.036em}
+  .cover h1 em{font-style:normal;color:var(--accent-dark)}
+  .cover .lead{color:#c8c8cc;font-size:clamp(16px,3.9vw,19px);line-height:1.62;margin-top:22px}
+  .cover .flag{margin-top:40px;padding:21px 24px 23px;background:rgba(255,255,255,.08);border-radius:16px}
+  .cover .flag .h{font-size:17px;font-weight:600;line-height:1.45;margin-bottom:9px}
+  .cover .flag .d{color:#a8a8ae;font-size:15px;line-height:1.6}
+
+  .topic{margin-top:72px}
+  .topic + .topic{margin-top:96px;padding-top:72px;border-top:1px solid var(--hairline)}
+  .topic > h3{font-size:clamp(24px,5.8vw,32px);font-weight:700;letter-spacing:-.036em;line-height:1.22}
+  .topic > .oneline{font-size:clamp(16px,3.9vw,19px);line-height:1.62;color:var(--muted);margin-top:16px}
+  .topic > .oneline b{font-weight:600;color:var(--ink)}
+
+  p{margin-top:16px}
+  p.note{color:var(--muted);font-size:16px}
+
+  .tw{overflow-x:auto;margin-top:20px;-webkit-overflow-scrolling:touch;max-width:100%}
+  table{border-collapse:collapse;width:100%;min-width:min(430px,100%);font-size:16px;letter-spacing:-.024em}
+  th,td{padding:15px 12px;text-align:right;white-space:nowrap;border-bottom:1px solid var(--hairline)}
+  thead th{font-size:13.5px;font-weight:600;color:var(--muted);
+    border-bottom:1.5px solid var(--ink);padding-top:14px;padding-bottom:11px}
+  th:first-child,td:first-child{text-align:left;padding-left:14px}
+  td:last-child,th:last-child{padding-right:14px}
+  tbody th{font-weight:500;font-size:16.5px;color:var(--ink)}
+  .g{color:var(--accent);font-weight:700}
+  .old{color:var(--faint)}
+
+  .punch{margin-top:26px;background:var(--parchment);border-radius:16px;padding:24px}
+  .punch .t{font-size:clamp(17px,4.2vw,19px);line-height:1.55;letter-spacing:-.03em;font-weight:700;margin:0}
+  .punch .s{font-size:16px;color:var(--muted);line-height:1.68;margin-top:10px}
+
+  .req{margin-top:22px;counter-reset:r}
+  .req li{list-style:none;counter-increment:r;position:relative;padding:15px 0 15px 42px;
+    border-bottom:1px solid var(--hairline);font-size:16.5px;line-height:1.6;letter-spacing:-.024em}
+  .req li:last-child{border-bottom:0}
+  .req li::before{content:counter(r);position:absolute;left:0;top:15px;
+    width:26px;height:26px;border-radius:9px;background:var(--accent);color:#fff;
+    font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center}
+  .req li b{font-weight:600}
+
+  .checks{margin-top:34px}
+  .checks .q{font-size:16px;color:var(--muted);margin-top:16px;margin-bottom:16px}
+  .chk{display:grid;grid-template-columns:32px 1fr;column-gap:14px;align-items:center;
+    padding:16px 18px;margin-bottom:8px;border:1.5px solid transparent;border-radius:13px;
+    background:var(--parchment);cursor:pointer;user-select:none;
+    transition:background .13s,border-color .13s,transform .08s}
+  .chk:hover{background:#eceef6;border-color:#d4d8e8}
+  .chk:active{transform:scale(.993)}
+  .chk.on{background:rgba(20,40,160,.06);border-color:var(--accent)}
+  .box{width:26px;height:26px;border:2px solid #b4b4bd;border-radius:8px;background:#fff;
+    display:flex;align-items:center;justify-content:center;
+    font-size:15px;font-weight:700;color:transparent;transition:.13s;
+    box-shadow:0 1px 2px rgba(0,0,0,.04)}
+  .chk:hover .box{border-color:var(--accent);color:rgba(20,40,160,.3)}
+  .chk.on .box{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:none}
+  .chk .t{font-size:17px;line-height:1.5;letter-spacing:-.024em;color:var(--muted)}
+  .chk.on .t{color:var(--ink);font-weight:600}
+
+  @media(max-width:480px){
+    .wrap{padding:0 18px}
+    .cover{padding:76px 0 58px}
+    .topic{margin-top:56px}
+    .topic + .topic{margin-top:72px;padding-top:56px}
+    .chk{padding:15px 15px}
+    .cover h1 br{display:none}
+    table{min-width:0;font-size:15px}
+    th,td{padding:13px 9px}
+  }
+
+  .tally{position:fixed;left:0;right:0;bottom:0;z-index:29;transform:translateY(105%);transition:.26s;
+    background:rgba(255,255,255,.97);backdrop-filter:blur(14px);border-top:1px solid var(--hairline)}
+  .tally.on{transform:translateY(0)}
+  .tally .in{max-width:720px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:14px}
+  .tally .cnt{font-size:15px;color:var(--muted);letter-spacing:-.022em}
+  .tally .cnt b{color:var(--accent);font-size:18px;font-weight:700}
+  .btn{display:inline-block;background:var(--accent);color:#fff;border:0;border-radius:100px;
+    font-family:inherit;font-size:15px;font-weight:600;letter-spacing:-.022em;
+    padding:12px 24px;text-decoration:none;cursor:pointer;white-space:nowrap}
+  .form{background:var(--parchment);border-radius:18px;padding:32px 26px;margin-top:24px}
+  .form label{display:block;font-size:14px;font-weight:600;color:var(--muted);margin:22px 0 8px;letter-spacing:-.022em}
+  .form label:first-of-type{margin-top:0}
+  .form input,.form textarea{width:100%;background:#fff;border:1px solid var(--hairline);border-radius:12px;
+    color:var(--ink);font-family:inherit;font-size:16.5px;letter-spacing:-.022em;padding:14px 15px}
+  .form textarea{min-height:88px;resize:vertical;line-height:1.7}
+  .form .picked{background:#fff;border:1px solid var(--hairline);border-radius:12px;padding:15px;
+    font-size:15px;color:var(--muted);line-height:1.8;min-height:54px;white-space:pre-line}
+  .form .fine{font-size:13.5px;color:var(--muted);margin-top:18px;line-height:1.7}
+  footer{border-top:1px solid var(--hairline);margin-top:96px;padding:40px 0 90px;
+    font-size:14.5px;color:var(--muted);line-height:1.78}
+  footer .who{margin-top:26px;padding-top:22px;border-top:1px solid var(--hairline);
+    display:flex;justify-content:space-between;align-items:flex-end}
+  footer .who b{display:block;font-weight:600;color:var(--ink)}
+</style>
+</head>
+<body>
+
+<div class="cover"><div class="wrap">
+  <p class="kicker">상속 · 증여 · 법인</p>
+  <h1>지금 자산가들이 <br><em>어떻게 준비하고</em> 있는지</h1>
+  <p class="lead">자산가는 다섯 가지를 미리 해둡니다. 다섯 다 「돈이 필요해진 날, 이 자산이 현금이 되나」에서 나옵니다.</p>
+  <div class="flag">
+    <p class="h">근거는 법 조문입니다</p>
+    <p class="d">왜 그렇게 준비하는지의 근거를 상속세 및 증여세법 제71조와 제73조에서 확인했습니다. 2026년 9월 4일 원문 기준입니다.</p>
+  </div>
+</div></div>
+
+<div class="wrap">
+
+<article class="topic">
+  <h3>하나. 여섯 달 안에 현금이 되는 금액을 따로 셉니다</h3>
+  <p class="oneline">자산가는 총자산을 세지 않습니다. <b>기한이 정해진 돈이 필요할 때 여섯 달 안에 현금으로 바꿀 수 있는 금액</b>만 셉니다.</p>
+  <p>목돈이 필요해지는 상황에는 대개 기한이 정해져 있습니다. 병으로 입원했을 때, 상속세를 낼 때, 대출 만기가 왔을 때. 세 상황 모두 기한이 여섯 달 안쪽입니다.</p>
+  <div class="tw"><table>
+    <thead><tr><th>구분</th><th>걸리는 시간</th><th>값을 누가 정하나</th></tr></thead>
+    <tbody>
+      <tr><th>예금 · 상장주식</th><td class="g">며칠</td><td>파는 날의 시세</td></tr>
+      <tr><th>부동산 · 비상장주식</th><td>몇 달</td><td class="g">매수자</td></tr>
+      <tr><th>담보로 잡힌 것 · 지분</th><td class="old">안 됨</td><td class="old">해당 없음</td></tr>
+    </tbody>
+  </table></div>
+  <div class="punch">
+    <p class="t">부동산은 파는 데 몇 달이 걸리는 것이 아니라, 그 몇 달 동안 매수자가 값을 부릅니다.</p>
+    <p class="s">대출 만기가 두 달 남았다는 것도, 상속세 낼 날이 여섯 달 뒤라는 것도 매수자가 압니다. 파는 사람이 언제까지 팔아야 하는지 알려진 거래에서는 파는 사람이 값을 정하지 못합니다. 며칠 안에 현금이 되는 금액이 클수록 그 거래를 안 하게 됩니다.</p>
+  </div>
+</article>
+
+<article class="topic">
+  <h3>둘. 담보 여력을 남겨둡니다</h3>
+  <p class="oneline">자산가는 대출을 한도까지 쓰지 않습니다. <b>빌릴 수 있는 금액이 남아 있어야 급할 때 부동산을 안 팝니다.</b></p>
+  <p>세금을 한 번에 못 낼 때 나눠 내는 제도가 법에 있습니다. 연부연납이라고 하고, 납부세액이 2천만원을 넘으면 신청할 수 있습니다. 상속세와 증여세 둘 다 됩니다.</p>
+  <p>그런데 조문에 조건이 하나 붙어 있습니다. <b>담보를 제공하여야 합니다.</b></p>
+  <div class="punch">
+    <p class="t">팔리지 않아서 나눠 내려는 상황인데, 팔리지 않는 이유와 담보가 없는 이유가 같은 경우가 있습니다.</p>
+    <p class="s">가진 부동산에 이미 근저당이 잡혀 있으면 담보로 내놓을 부동산이 남지 않습니다. 자산가가 대출을 한도까지 쓰지 않는 것은 이자를 아끼려는 것만이 아닙니다. 세금 낼 날에 담보로 내놓을 부동산을 남겨두는 것입니다.</p>
+  </div>
+  <p class="note">기간은 일반 상속재산의 경우 허가일부터 <span class="n">10년</span>, 증여세는 <span class="n">5년</span>입니다. 가업상속공제를 받았거나 중소·중견기업을 상속받은 경우 20년, 또는 허가 후 10년이 되는 날부터 10년입니다.</p>
+  <p class="note">기간을 마음대로 정하지도 못합니다. 조문은 각 회분의 분할납부 세액이 <span class="n">1천만원을 초과</span>하도록 기간을 정하라고 합니다. 세액이 크지 않을수록 기간이 짧아집니다. 그리고 한 회분을 놓치면 허가가 취소되고 세액 전액을 징수할 수 있습니다.</p>
+</article>
+
+<article class="topic">
+  <h3>셋. 금융재산을 세금 낼 돈으로 떼어둡니다</h3>
+  <p class="oneline">「부동산이 있으니 그것으로 내면 된다」가 <b>조문에서는 반대로 되어 있습니다.</b></p>
+  <p>재산 그대로 내는 제도도 법에 있습니다. 물납이라고 합니다. 다만 요건 셋을 모두 갖춰야 합니다.</p>
+  <ol class="req">
+    <li>상속재산 중 <b>부동산과 유가증권의 가액이 상속재산가액의 2분의 1을 초과</b>할 것</li>
+    <li>상속세 납부세액이 <b>2천만원을 초과</b>할 것</li>
+    <li>상속세 납부세액이 <b>상속재산 중 금융재산의 가액을 초과</b>할 것</li>
+  </ol>
+  <div class="punch">
+    <p class="t">세 번째는 「예금과 주식으로 낼 수 있는 만큼은 그것으로 내라」는 뜻입니다.</p>
+    <p class="s">계좌에 돈이 남아 있으면 그만큼은 물납 대상이 아닙니다. 그래서 자산가는 물납을 기대하지 않고, 세금 낼 금액만큼의 예금과 상장주식을 처음부터 따로 떼어둡니다. 그 예금이 있으면 부동산을 안 팔아도 되고, 없으면 여섯 달 안에 팔아야 해서 매수자가 값을 부릅니다.</p>
+  </div>
+  <p class="note">요건을 다 갖춰도, 신청한 재산의 관리·처분이 적당하지 아니하다고 인정되면 허가하지 않을 수 있습니다. 무엇이 그에 해당하는지는 시행령이 정합니다. 그리고 물납 조문은 상속재산과 상속세만 규정합니다. 증여세는 그 조문에 없습니다.</p>
+</article>
+
+<article class="topic">
+  <h3>넷. 꺼내는 순서를 미리 정합니다</h3>
+  <p class="oneline">법인 자금을 꺼내는 방법 중에는 <b>규정을 미리 만들어 두어야 쓸 수 있는 것</b>이 있습니다.</p>
+  <p>대표가 회사에 쌓인 돈을 개인 돈으로 쓰려면 다섯 가지 중 하나를 거칩니다. 급여, 상여, 배당, 퇴직금, 이익소각. 다섯 가지마다 세금이 다르고 건강보험료에 반영되는지도 다릅니다.</p>
+  <div class="punch">
+    <p class="t">퇴직금은 규정이 있어야 하고, 이익소각은 절차와 요건이 있습니다.</p>
+    <p class="s">퇴직금 규정을 미리 만들어 두지 않으면 대표가 급할 때 퇴직금으로 꺼낼 수가 없습니다. 그러면 남는 것은 급여와 상여인데, 그 둘이 세금과 건강보험료가 가장 무겁습니다. 순서를 정해둔다는 것은 퇴직금 규정과 이익소각 요건을 미리 갖춰두는 것입니다.</p>
+  </div>
+  <p class="note">경로별 세율과 인정이자율은 회사 상태에 따라 갈리는 항목이라 이 페이지에 숫자를 넣지 않았습니다.</p>
+</article>
+
+<article class="topic">
+  <h3>다섯. 모자라는 금액을 미리 확정합니다</h3>
+  <p class="oneline">앞의 넷을 다 해도 <b>세금과 목돈에 모자라는 금액</b>이 남습니다. 그 금액을 어디서 만들지는 따로 정합니다.</p>
+  <div class="tw"><table>
+    <thead><tr><th>방법</th><th>금액이 정해지는 때</th><th>쓸 수 있는 조건</th></tr></thead>
+    <tbody>
+      <tr><th>빌린다</th><td>빌리는 날의 금리와 담보 가치</td><td class="g">담보가 남아 있어야 함</td></tr>
+      <tr><th>판다</th><td>파는 날의 시세</td><td class="g">매수자가 있어야 함</td></tr>
+      <tr><th>미리 정해둔다</th><td class="g">정해두는 날</td><td class="g">미리 해두어야 함</td></tr>
+    </tbody>
+  </table></div>
+  <p>빌리기와 팔기는 돈이 필요해진 날의 금리와 시세가 금액을 정합니다. 미리 정해두기는 정해두는 날에 금액이 확정되고, 그 뒤로는 언제 필요해지든 같은 금액입니다.</p>
+  <div class="punch">
+    <p class="t">그리고 빌리기와 팔기는 같은 시기에 같이 막힙니다.</p>
+    <p class="s">담보 가치가 떨어져 은행이 대출 연장을 안 해주는 시기와, 부동산이 안 팔리는 시기는 같은 시기입니다. 두 방법을 나란히 두고 계셨다면 실제로는 한 가지를 두 번 세신 것일 수 있습니다. 어느 방법이 맞는지는 자산 구성과 나이, 물려줄 자녀 수에 따라 갈립니다. 이 페이지에 답을 적지 않은 이유입니다.</p>
+  </div>
+</article>
+
+<article class="topic">
+  <h3>열 가지만 확인해 보세요</h3>
+  <p class="oneline">위 다섯 가지를 지금 하고 계신지 보는 것입니다. <b>숫자를 내실 필요는 없습니다.</b></p>
+  <div class="checks">
+    <p class="q">채점이 아닙니다. 무엇이 비어 있는지를 보는 것입니다.</p>
+    <div class="chk" data-t="[하나] 여섯 달 안에 현금이 되는 금액을 대략도 모른다"><span class="box">&#10003;</span><span class="t">여섯 달 안에 현금이 되는 금액을 대략도 모른다</span></div>
+    <div class="chk" data-t="[하나] 목돈이 급히 필요해졌을 때 투자자산을 건드리지 않고 쓸 돈이 따로 없다"><span class="box">&#10003;</span><span class="t">목돈이 급히 필요해졌을 때, 투자자산을 건드리지 않고 쓸 돈이 따로 없다</span></div>
+    <div class="chk" data-t="[둘] 대출을 한도까지 쓰고 있어 급할 때 빌릴 여지가 없다"><span class="box">&#10003;</span><span class="t">대출을 한도까지 쓰고 있어, 급할 때 빌릴 여지가 없다</span></div>
+    <div class="chk" data-t="[둘] 나눠 내려면 담보가 필요하다는 것을 몰랐다"><span class="box">&#10003;</span><span class="t">나눠 내려면 담보가 필요하다는 것을 몰랐다</span></div>
+    <div class="chk" data-t="[둘] 어느 부동산에 무엇이 얼마나 잡혀 있는지 등기부로 확인한 적이 없다"><span class="box">&#10003;</span><span class="t">어느 부동산에 무엇이 얼마나 잡혀 있는지 등기부로 확인한 적이 없다</span></div>
+    <div class="chk" data-t="[셋] 상속이나 증여로 낼 세액을 계산해본 적이 없다"><span class="box">&#10003;</span><span class="t">상속이나 증여로 낼 세액을 계산해본 적이 없다</span></div>
+    <div class="chk" data-t="[셋] 계산은 해봤지만 그 돈을 어디서 낼지는 정하지 않았다"><span class="box">&#10003;</span><span class="t">계산은 해봤지만 그 돈을 어디서 낼지는 정하지 않았다</span></div>
+    <div class="chk" data-t="[셋] 부동산이 전체 자산의 절반을 넘는다"><span class="box">&#10003;</span><span class="t">부동산이 전체 자산의 절반을 넘는다</span></div>
+    <div class="chk" data-t="[넷] 법인 자금을 꺼내는 순서를 정해두지 않았다"><span class="box">&#10003;</span><span class="t">법인 자금을 꺼내는 순서를 정해두지 않았다</span></div>
+    <div class="chk" data-t="[다섯] 세금 낼 돈이 모자랄 때 무엇으로 채울지 정하지 않았다"><span class="box">&#10003;</span><span class="t">세금 낼 돈이 모자랄 때 무엇으로 채울지 정하지 않았다</span></div>
+  </div>
+  <div class="punch">
+    <p class="t">체크된 항목이 곧 아직 준비되지 않은 항목입니다.</p>
+    <p class="s">같은 항목이라도 자산 구성과 담보 상태, 물려줄 자녀 수에 따라 무엇부터 하는지가 반대로 갈립니다. 대표님 자산 금액과 등기부를 넣어야 나오는 계산이라, 이 페이지에 순서를 적지 않았습니다.</p>
+  </div>
+</article>
+
+<section class="topic">
+  <h3>체크하신 항목이 있으신가요</h3>
+  <p class="oneline">체크하신 항목이 그대로 첨부됩니다. <b>무엇부터 준비해야 하는지 순서를 잡아 알려 드립니다.</b></p>
+  <p class="note">등기부 항목은 본인이 확인하기 어렵습니다. 그 항목이 체크되셨다면 대상 부동산 소재지를 아래에 적어 주시면 확인해서 정리해 드립니다.</p>
+  <form class="form" action="https://api.web3forms.com/submit" method="POST">
+    <input type="hidden" name="access_key" value="56ba5ceb-1e23-4de6-b6ca-7016a3e1e8d7">
+    <input type="hidden" name="구분" value="자산가 준비 다섯 체크리스트">
+    <input type="hidden" name="체크한항목" id="picked" value="">
+    <input type="hidden" name="subject" value="[시점] 체크리스트 문의">
+    <input type="checkbox" name="botcheck" style="display:none">
+    <label>체크하신 항목</label>
+    <div class="picked" id="pickedView">아직 체크하신 항목이 없습니다.</div>
+    <label for="nm">성함</label><input type="text" id="nm" name="성함" required>
+    <label for="ph">연락처</label><input type="tel" id="ph" name="연락처" required>
+    <label for="ms">더 하실 말씀</label><textarea id="ms" name="메모" placeholder="부동산 소재지나 궁금하신 점을 적어 주셔도 됩니다."></textarea>
+    <p style="margin-top:26px"><button type="submit" class="btn">보내기</button></p>
+    <p class="fine">내용은 Web3Forms를 통해 담당자 이메일로 전달됩니다.<br>
+      특정 상품의 매수·매도를 권유하지 않습니다.</p>
+  </form>
+</section>
+
+<footer>
+  <p>버는 건 시장이 정하고, 지키는 건 구조가 정합니다.</p>
+  <p>연부연납은 상속세 및 증여세법 제71조, 물납은 같은 법 제73조 원문을 2026년 9월 4일에 직접 확인했습니다.</p>
+  <p>「관리·처분이 적당하지 아니한 재산」의 범위, 법인 자금 경로별 세율과 인정이자율은 이 페이지에서 확인하지 않았습니다. 개인별 세액과 요건 충족 여부는 재산 구성과 공제 요건에 따라 달라집니다.</p>
+  <div class="who"><span>자산가 준비 다섯 체크리스트</span>
+    <span style="text-align:right"><b>유영곤</b>삼성생명 GFC</span></div>
+</footer>
+</div>
+
+<div class="tally" id="tally"><div class="in">
+  <span class="cnt"><b id="cnt">0</b>개 체크하셨습니다</span>
+  <a href="#picked" class="btn" onclick="document.querySelector('.form').scrollIntoView({behavior:'smooth'});return false;">정리해서 받기</a>
+</div></div>
+
+<script>
+(function(){
+  var picked=[];
+  function refresh(){
+    document.getElementById('cnt').textContent=picked.length;
+    document.getElementById('picked').value=picked.join(' / ');
+    var v=document.getElementById('pickedView');
+    v.textContent=picked.length?picked.join('\n'):'아직 체크하신 항목이 없습니다.';
+    document.getElementById('tally').classList.toggle('on',picked.length>0);
+  }
+  document.querySelectorAll('.chk').forEach(function(el){
+    el.addEventListener('click',function(){
+      var k=el.getAttribute('data-t');
+      el.classList.toggle('on');
+      if(el.classList.contains('on')) picked.push(k);
+      else picked=picked.filter(function(x){return x!==k});
+      refresh();
+    });
+  });
+  refresh();
+})();
+</script>
+</body>
+</html>
