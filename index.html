@@ -546,21 +546,24 @@
 
 /* ===== 2026-09-05 구조 개편 ===== */
 /* 분기 셋 — 칩 여덟이 있던 자리. 첫 화면 안에서 CTA를 안 밀어내는 높이로 잡는다 */
-/* 2026-09-05 사용자 지시 — ① 세 줄을 한 덩어리로 ② 문장과 분기 사이 살짝 간격 ③ 분기가 「읽는 칸」이 아니라 「누르는 것」으로 보이게 */
-.hero .state{line-height:1.7;margin-top:22px}
+/* 2026-09-05 사용자 「왜 안 예뻐 보이지」 — 카드 셋(골드 박스)이 버튼과 같은 사각형 넷이 돼 단조로웠다.
+   한 묶음 목록으로 — 테두리 하나, 행 구분선, 행 끝 →. 소제목은 그 자리 그대로(사용자 「있었으면 좋겠는데」). */
+.hero .state{line-height:1.7;margin-top:24px}
 .hero .state b{color:var(--ink,#ece6da);font-weight:600}
-.segpick{display:flex;flex-direction:column;gap:8px;max-width:420px;margin:24px auto 0}
-.segpick a{display:flex;flex-direction:column;gap:2px;padding:10px 38px 10px 14px;position:relative;border:1px solid rgba(201,162,39,.45);
-  background:linear-gradient(180deg,rgba(201,162,39,.09),rgba(255,255,255,.02));box-shadow:0 2px 10px rgba(0,0,0,.28);
-  border-radius:10px;text-decoration:none;background:rgba(255,255,255,.02);transition:border-color .2s,background .2s}
-.segpick a::after{content:'→';position:absolute;right:14px;top:50%;transform:translateY(-50%);color:var(--gold-hi,#c9a227);font-size:17px;font-weight:600}
-.segpick a:hover,.segpick a:focus-visible{border-color:var(--gold-hi,#c9a227);background:rgba(201,162,39,.14)}
-.segpick a:active{transform:translateY(1px);box-shadow:0 1px 4px rgba(0,0,0,.3)}
+.segpick{display:flex;flex-direction:column;max-width:420px;margin:26px auto 0;border:1px solid rgba(201,162,39,.4);border-radius:12px;overflow:hidden;background:rgba(255,255,255,.025)}
+.segpick a{display:flex;flex-direction:column;gap:3px;padding:12px 42px 12px 16px;position:relative;text-decoration:none;text-align:left;border-top:1px solid rgba(255,255,255,.08);transition:background .15s}
+.segpick a:first-child{border-top:0}
+.segpick a::after{content:'→';position:absolute;right:16px;top:50%;transform:translateY(-50%);color:var(--gold-hi,#c9a227);font-size:16px}
+.segpick a:hover,.segpick a:focus-visible{background:rgba(201,162,39,.10)}
+.segpick a:active{background:rgba(201,162,39,.16)}
+.segpick b{font-size:15px;color:var(--gold-hi,#c9a227);font-weight:600}
+.segpick em{font-style:normal;font-size:12px;color:var(--mut2,#8b8377);line-height:1.45}
 .segpick b{font-size:15px;color:var(--gold-hi,#c9a227);font-weight:600}
 .segpick em{font-style:normal;font-size:12px;color:var(--mut2,#8b8377)}
 @media (min-width:640px){
-  .segpick{flex-direction:row;max-width:760px;gap:10px}
-  .segpick a{flex:1;align-items:center;text-align:center;padding:14px 34px 14px 12px}  /* 화살표 자리 — 데스크톱에서 소제목과 겹치던 것 */
+  .segpick{flex-direction:row;max-width:820px}
+  .segpick a{flex:1;align-items:flex-start;text-align:left;padding:16px 40px 16px 18px;border-top:0;border-left:1px solid rgba(255,255,255,.08)}
+  .segpick a:first-child{border-left:0}
 }
 .diagslot:empty{display:none}
 /* 스크롤 리빌 — 메인에서만 애니메이션한다. 세그먼트 뷰는 전환 즉시 보이게 한다 */
@@ -572,14 +575,15 @@
    ⛔⛔ 근거는 390x844 실측이다 — 조정 전 CTA 하단이 937px로 화면(844px) 밖이었다.
    ⛔ 데스크톱은 안 건드린다. 첫 화면 문제는 모바일에서만 났다. */
 @media (max-width:520px){
-  .hero{padding-top:58px;padding-bottom:36px}
-  /* ⛔ max-width만 주면 세로가 안 따라와 타원이 된다. 원본이 width/height 동일값이라 둘 다 준다 */
-  .hero .photo-wrap{width:120px;height:120px;margin-top:14px;margin-bottom:12px}
-  .segpick{margin-top:18px;gap:7px}
-  .segpick a{padding:7px 36px 7px 13px}
-  .segpick b{font-size:14px}
-  .segpick em{font-size:11px}
-  .hero .cta-row{margin-top:18px}
+  /* 2026-09-05 — 사진 120·여백 압축을 푼다. 첫 화면 기준을 664px(사파리 툴바 포함)로 잡으면 CTA는 어차피 폴드 밖이고
+     첫 화면의 일은 분기 셋이다. 누르던 값을 풀어 숨 쉴 공간을 돌려준다. (⛔ 사진은 width/height 둘 다 — max-width만 주면 타원) */
+  .hero{padding-top:72px;padding-bottom:40px}
+  .hero .photo-wrap{width:150px;height:150px;margin-top:18px;margin-bottom:14px}
+  .segpick{margin-top:22px}
+  .segpick a{padding:11px 40px 11px 15px}
+  .segpick b{font-size:14.5px}
+  .segpick em{font-size:11.5px}
+  .hero .cta-row{margin-top:24px}
 }
 
 /* 2026-09-05 — 축 블록 · 「왜 지금」 접기 */
