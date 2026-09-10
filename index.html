@@ -671,11 +671,13 @@
     <!-- 2026-09-05 사용자 지적 — 항목명(가지급금·퇴직금·건강보험료)을 쓰니 「그 셋만 하는 사람」으로 읽혀
          업무 범위가 오히려 좁아 보였다. CLAUDE.md 0절 「스스로 범위를 좁히면 서포트할 수 있는 범위까지 닫힌다」.
          ⛔ 할 일의 이름이 아니라 다루는 영역을 적는다. 목록이 아니라 범위로 읽혀야 한다. -->
-    <a href="#corp" onclick="go('corp');return false"><b>법인 대표</b><em>회사 세무 · 노무 · 자금부터 대표님 개인 재산까지</em></a>
+    <!-- 2026-09-11 사용자 승인 — 세 칸 영역 끝에 「보험」을 넣었다. 소속이 생명·화재인데 첫 화면에 보험이 한 번도 없어
+         보험을 물으려던 사람이 고를 칸이 없었다. 맨 뒤에 두는 것은 세금·투자에서 출발해 보험이 해법으로 나오는 순서라서다. -->
+    <a href="#corp" onclick="go('corp');return false"><b>법인 대표</b><em>회사 세무 · 노무 · 자금 · 보험부터 대표님 개인 재산까지</em></a>
     <!-- 2026-09-05 — 「개인 자산」은 물건 이름이라 이 칸만 사람이 안 보였다(CLAUDE.md 「보유 자산은 WHO가 아니라 배경」).
          「개인 · 가족」 — 내 돈과 가족 돈, 상속·증여까지 자연히 덮인다. -->
-    <a href="#per" onclick="go('per');return false"><b>개인 · 가족</b><em>투자 · 부동산 · 세금 · 상속을 하나로 놓고</em></a>
-    <a href="#biz" onclick="go('biz');return false"><b>개인사업자 · 프리랜서</b><em>사업 소득 · 세금부터 개인 자산까지</em></a>
+    <a href="#per" onclick="go('per');return false"><b>개인 · 가족</b><em>투자 · 부동산 · 세금 · 상속 · 보험을 하나로 놓고</em></a>
+    <a href="#biz" onclick="go('biz');return false"><b>개인사업자 · 프리랜서</b><em>사업 소득 · 세금 · 보험부터 개인 자산까지</em></a>
   </div>
   <!-- 2026-09-02 — 히어로 골드선을 뺐다. 칸 여덟이 이미 구획을 만들고 있어 선이 하나 더 있으면
        구획이 둘이 되고, 선언 구역에도 같은 장식이 있어 한 화면에 둘이 된다. -->
@@ -901,7 +903,7 @@
           </optgroup>
           <optgroup label="개인">
             <option>부동산 보유·매각 판단</option><option>상속·증여 설계</option>
-            <option>투자 자산과 세금</option><option>투자 포트폴리오 점검</option><option>은퇴 현금흐름 설계</option><option>보장 구조 점검</option>
+            <option>투자 자산과 세금</option><option>투자 포트폴리오 점검</option><option>은퇴 현금흐름 설계</option><option>보험 점검</option>
           </optgroup>
           <optgroup label="개인사업자·프리랜서">
             <option>소득·경비 구조 설계</option><option>법인 전환 판단</option><option>건강보험료 점검</option>
@@ -965,7 +967,7 @@
         <span style="border:1px solid var(--line2);border-radius:999px;padding:8px 10px;font-size:.84rem;color:var(--ink);text-align:center;word-break:keep-all">퇴직연금 DB·DC·IRP</span>
         <span style="border:1px solid var(--line2);border-radius:999px;padding:8px 10px;font-size:.84rem;color:var(--ink);text-align:center;word-break:keep-all">대표 보수·배당 설계</span>
         <span style="border:1px solid var(--line2);border-radius:999px;padding:8px 10px;font-size:.84rem;color:var(--ink);text-align:center;word-break:keep-all">임직원 자산관리 교육</span>
-        <span style="border:1px solid var(--line2);border-radius:999px;padding:8px 10px;font-size:.84rem;color:var(--ink);text-align:center;word-break:keep-all">임직원 보장분석</span>
+        <span style="border:1px solid var(--line2);border-radius:999px;padding:8px 10px;font-size:.84rem;color:var(--ink);text-align:center;word-break:keep-all">임직원 보험 점검</span>
       </div>
       <p style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.2em;color:var(--gold);text-transform:uppercase;margin:22px 0 11px">개인 · 프리랜서 · 사업자 대상</p>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px">
@@ -1038,7 +1040,7 @@
     <div class="fb">
       <p class="t1">Free 법인 자산구조 분석</p>
       <h3>대표님 회사의 돈과 지분,<br>지금 어디에 놓여 있습니까?</h3>
-      <p>가지급금·임원 퇴직금 규정·비상장주식 가치·여유자금 배분을 한 번에 무료로 짚어드립니다. 임직원 보장 상태도 같이 봐드립니다</p>
+      <p>가지급금·임원 퇴직금 규정·비상장주식 가치·여유자금 배분을 한 번에 무료로 짚어드립니다. 임직원 보험도 같이 봐드립니다</p>
       <div class="cta-row"><a class="btn p" href="https://open.kakao.com/o/sPSLDLEi" target="_blank" rel="noopener">카톡으로 간단히 물어보기 →</a></div>
     </div>
   </div></section>
@@ -1106,10 +1108,10 @@
         <ul><li>급여 실수령액·4대보험 이해</li><li>첫 월급부터 잡는 저축 습관</li><li>퇴직연금 기초</li></ul></div>
       <div class="card"><span class="ic">🏠</span><h4>부동산·청약·전세대출 기초</h4><p class="d">내집마련을 준비하는 직원들을 위한 과정</p>
         <ul><li>청약 제도의 구조</li><li>전세대출 기초</li><li>내집마련 로드맵</li></ul></div>
-      <div class="card"><span class="ic">🤝</span><h4>임직원 1:1 재무 상담·보장분석</h4><p class="d">교육에서 끝나지 않는 개별 케어</p>
-        <ul><li>1:1 재무 상담</li><li>기존 보험 점검(보장분석)</li><li>중복·공백 정리</li></ul></div>
+      <div class="card"><span class="ic">🤝</span><h4>임직원 1:1 재무 상담·보험 점검</h4><p class="d">교육에서 끝나지 않는 개별 케어</p>
+        <ul><li>1:1 재무 상담</li><li>기존 보험 점검</li><li>중복·공백 정리</li></ul></div>
       <div class="card"><span class="ic">🌱</span><h4>생애주기별 재무 설계</h4><p class="d">결혼·출산·내집마련, 이벤트마다 설계가 달라집니다</p>
-        <ul><li>이벤트별 자금 계획</li><li>보장 재설계</li><li>장기 저축 구조</li></ul></div>
+        <ul><li>이벤트별 자금 계획</li><li>보험 재설계</li><li>장기 저축 구조</li></ul></div>
     </div>
   </div></section>
 
@@ -1123,7 +1125,7 @@
     <div class="case"><span class="tag">승계</span><h4>가족법인 C대표 · 2세 승계 로드맵</h4>
       <p>비상장주식 가치평가에서 출발해 증여 시기와 방법별 세부담을 비교하고, <b>가치가 오르기 전에 단계적으로 이전하는 로드맵</b>을 설계했습니다.</p></div>
     <div class="case"><span class="tag">유고 리스크</span><h4>D대표 · 가족과 회사의 분리 설계</h4>
-      <p>회사 대출의 연대보증과 상속세를 가족이 그대로 떠안는 구조였습니다. 대표 개인의 보장 구조를 함께 점검해 <b>유고 시 가족 생활비와 상속세 재원이 회사 채무와 분리되어 확보되는 설계</b>로 정리했습니다.</p></div>
+      <p>회사 대출의 연대보증과 상속세를 가족이 그대로 떠안는 구조였습니다. 대표 개인 보험을 함께 점검해 <b>유고 시 가족 생활비와 상속세 재원이 회사 채무와 분리되어 확보되는 설계</b>로 정리했습니다.</p></div>
     <!-- 2026-09-01 — 메인에만 있던 사례를 옮겨 왔다. -->
     <div class="case"><span class="tag">현장 사고</span><h4>제조업 J대표 · 사고 한 건이 회사 자산에서 나간 경우</h4>
       <p>보험은 들어 있었는데 담보가 실제 손해를 덮지 못했습니다. <b>회사가 자기 돈으로 메운 금액부터 세어보고</b>, 재물과 배상 담보를 지금 자산 규모에 맞춰 다시 잡았습니다. 업종 산재보험료율도 같이 봤습니다. 사고는 못 막아도 <b>자산에서 나가는 금액은 정할 수 있습니다.</b></p></div>
@@ -1318,7 +1320,7 @@
     <p class="label">Services</p>
     <h2 class="title">자산 전체를 놓고 보는<br><span class="gold">핵심 솔루션</span></h2>
     <!-- 2026-09-03 두 번째 수정 — 라벨과 제목만 갈고 이 lead를 안 봐서 연금 세액공제 문장이 남아 있었다. -->
-    <p class="lead">투자·부동산·상속·보장을 <b>한 장에 놓고</b> 봅니다. 따로 보면 어디서 새는지 안 보입니다.</p>
+    <p class="lead">투자·부동산·상속·보험을 <b>한 장에 놓고</b> 봅니다. 따로 보면 어디서 새는지 안 보입니다.</p>
     <div class="svc svc2">
       <!-- 2026-09-03 세 번째 수정 — 사용자 「개인은 그냥 상속세랑 증여로만 퉁칠꺼야 전체 내용을?」
                                      「계좌라는 말을 왜 쓰는거야? 투자라는 말을 쓰는게 어려워?」
@@ -1337,7 +1339,7 @@
         <ul><li>사전증여 시점과 순서, 공제 활용</li><li>명의·지분 구조 점검</li><li>세금 낼 현금을 어디서 만들지까지</li></ul></div>
       <div class="card"><span class="ic">📊</span><h4>은퇴 현금흐름 설계</h4><p class="d">소득이 멈춘 뒤 어느 계좌에서 얼마를 꺼낼지</p>
         <ul><li>구간별 필요액 산출</li><li>인출 순서와 세금 비교</li><li>건강보험료 영향 점검</li></ul></div>
-      <div class="card"><span class="ic">🩺</span><h4>보장 구조 점검</h4><p class="d">보험을 더 사기 전에 자산에서 빠질 금액부터 계산합니다</p>
+      <div class="card"><span class="ic">🩺</span><h4>보험 점검</h4><p class="d">보험을 더 사기 전에 자산에서 빠질 금액부터 계산합니다</p>
         <ul><li>소득이 멈춘 기간의 손실 산출</li><li>중복·공백 정리</li><li>모자란 구간만 담보로</li></ul></div>
     </div>
   </div></section>
@@ -1528,7 +1530,7 @@
             <option value="">선택하세요</option>
             <option>부동산 보유·매각 판단</option><option>상속·증여 설계</option>
             <option>투자 자산과 세금</option><option>은퇴 현금흐름 설계</option><option>대출·자금조달 구조</option>
-            <option>보장 구조 점검</option><option>재테크(주식)·투자와 세금</option><option>기타</option>
+            <option>보험 점검</option><option>재테크(주식)·투자와 세금</option><option>기타</option>
           </select></div>
         <div class="fld full"><label>문의 내용 <em>*</em></label><textarea name="문의내용" required placeholder="궁금하신 내용을 편하게 적어 주세요"></textarea></div>
       </div>
@@ -1614,7 +1616,7 @@
       <div class="card"><span class="ic">📊</span><h4>사업·개인 자산 분리</h4><p class="d">사업이 흔들려도 개인 자산은 남아야 합니다</p>
         <ul><li>명의와 계좌 구조 점검</li><li>사업 자금과 생활 자금 분리</li><li>은퇴·폐업 시 현금흐름 설계</li></ul></div>
       <div class="card"><span class="ic">🛡️</span><h4>소득 단절 대비</h4><p class="d">일이 멈추면 소득도 같이 멈춥니다</p>
-        <ul><li>멈춘 기간의 손실 산출</li><li>기존 보장 중복·공백 정리</li><li>사업과 가정을 같이 보는 설계</li></ul></div>
+        <ul><li>멈춘 기간의 손실 산출</li><li>기존 보험 중복·공백 정리</li><li>사업과 가정을 같이 보는 설계</li></ul></div>
     </div>
   </div></section>
 
@@ -2078,7 +2080,7 @@
 
     <div class="check diaglist" data-seg="개인사업자·프리랜서">
       <div class="ck" onclick="toggleCk(this)" data-sol="투자 자산과 세금"><span class="box"></span><div><p class="s"><span class="nb">사업으로 번 돈이</span> <span class="nb"><b>예금에만</b> 있고,</span> <span class="nb">나눠 담을 기준이 없다</span></p><p class="why">담는 계좌에 따라 과세 방식이 갈립니다</p></div></div>
-      <div class="ck" onclick="toggleCk(this)" data-sol="사업자 보장 점검"><span class="box"></span><div><p class="s"><span class="nb">일하다 <b>남에게 손해</b>를 입혔을 때</span> <span class="nb">자산에서 나갈 금액을</span> <span class="nb">모른다</span></p><p class="why">개인사업자는 사업 손해가 개인 자산까지 닿습니다</p></div></div>
+      <div class="ck" onclick="toggleCk(this)" data-sol="사업자 보험 점검"><span class="box"></span><div><p class="s"><span class="nb">일하다 <b>남에게 손해</b>를 입혔을 때</span> <span class="nb">자산에서 나갈 금액을</span> <span class="nb">모른다</span></p><p class="why">개인사업자는 사업 손해가 개인 자산까지 닿습니다</p></div></div>
       <div class="ck" onclick="toggleCk(this)" data-sol="소득·경비 구조 점검"><span class="box"></span><div><p class="s"><span class="nb"><b>경비로 인정되는 범위</b>를</span> <span class="nb">정확히 모른다</span></p><p class="why">쓴 돈이라고 다 경비가 되지는 않습니다</p></div></div>
       <div class="ck" onclick="toggleCk(this)" data-sol="소득·경비 구조 점검"><span class="box"></span><div><p class="s"><span class="nb">소득이 오를 때 <b>건강보험료</b>가</span> <span class="nb">얼마나 따라오는지</span> <span class="nb">모른다</span></p><p class="why">소득·재산 구조에 따라 조정 여지가 있습니다</p></div></div>
       <!-- 2026-09-03 — 「노란우산 해지 조건」을 대출 한도로 갈았다. 문의로 실제 들어온 것이 이쪽이다. -->
@@ -2087,7 +2089,7 @@
       <div class="ck" onclick="toggleCk(this)" data-sol="개인연금·IRP"><span class="box"></span><div><p class="s"><span class="nb">사업소득자도 받는</span> <span class="nb"><b>연금 세액공제</b>를</span> <span class="nb">챙기고 있는지 모른다</span></p><p class="why">사업자도 연금계좌로 공제를 받습니다</p></div></div>
       <div class="ck" onclick="toggleCk(this)" data-sol="법인전환 설계"><span class="box"></span><div><p class="s"><span class="nb"><b>성실신고 대상</b>까지</span> <span class="nb">얼마나 남았는지 모른다</span></p><p class="why">대상이 되면 신고 방식과 부담이 달라집니다</p></div></div>
       <div class="ck" onclick="toggleCk(this)" data-sol="법인전환 설계"><span class="box"></span><div><p class="s"><span class="nb"><b>법인 전환</b>이 유리해지는</span> <span class="nb">소득 구간을</span> <span class="nb">확인해본 적이 없다</span></p><p class="why">소득이 일정 수준을 넘으면 전환이 답일 수 있습니다</p></div></div>
-      <div class="ck" onclick="toggleCk(this)" data-sol="사업자 보장 점검"><span class="box"></span><div><p class="s"><span class="nb">일을 못 하게 됐을 때</span> <span class="nb"><b>소득이 얼마나 끊기는지</b></span> <span class="nb">계산해본 적이 없다</span></p><p class="why">일이 멈추면 소득도 같이 멈춥니다</p></div></div>
+      <div class="ck" onclick="toggleCk(this)" data-sol="사업자 보험 점검"><span class="box"></span><div><p class="s"><span class="nb">일을 못 하게 됐을 때</span> <span class="nb"><b>소득이 얼마나 끊기는지</b></span> <span class="nb">계산해본 적이 없다</span></p><p class="why">일이 멈추면 소득도 같이 멈춥니다</p></div></div>
     </div>
 
     <p class="diagcount" id="diagCount">해당되는 항목을 눌러 보세요.</p>
