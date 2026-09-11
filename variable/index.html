@@ -110,6 +110,14 @@
 
   .feat .it .n{margin:0 0 6px;font-size:13px;font-weight:700;letter-spacing:.08em;color:var(--accent-dark)}
   a.ext{color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+  .ret td,.ret th{text-align:right}
+  .ret td:not(:first-child),.ret th:not(:first-child){white-space:nowrap}
+  .ret td:first-child,.ret th:first-child{text-align:left;width:auto}
+  .ret td:last-child{color:var(--ink)}
+  .ret thead th:last-child{color:var(--accent)}
+  .ret tr.all td{font-weight:700}
+  .ret td.neg{color:var(--muted)}
+  @media(max-width:480px){.ret th,.ret td{padding:13px 6px}}
 
   @media(max-width:480px){
     .wrap{padding:0 18px}
@@ -276,12 +284,25 @@
 </article>
 
 <article class="topic">
-  <h3>수익률은<br>직접 확인하실 수 있습니다</h3>
-  <p class="oneline">변액보험 펀드의 과거 수익률은 <b>생명보험협회 공시실에서 누구나 조회할 수 있습니다.</b></p>
+  <h3>수익률은<br>어느 펀드에 두느냐로 갈립니다</h3>
+  <p class="oneline">생명보험협회가 분기마다 내는 펀드 유형별 평균입니다. <b>같은 변액보험 안에서도 5년 수익률이 마이너스부터 200%대까지 벌어집니다.</b></p>
+  <div class="tw"><table class="ret">
+    <thead><tr><th>펀드 유형</th><th>직전 1년</th><th>직전 3년</th><th>직전 5년</th></tr></thead>
+    <tbody>
+      <tr class="all"><td>전체 평균</td><td>86.12%</td><td>127.51%</td><td>98.28%</td></tr>
+      <tr><td>국내 주식형</td><td>197.50%</td><td>271.23%</td><td>205.33%</td></tr>
+      <tr><td>해외 주식형</td><td>39.04%</td><td>88.12%</td><td>71.83%</td></tr>
+      <tr><td>국내 채권혼합형</td><td>34.25%</td><td>56.24%</td><td>45.96%</td></tr>
+      <tr><td>국내 채권형</td><td class="neg">-4.41%</td><td>7.05%</td><td>5.00%</td></tr>
+      <tr><td>국내외 채권형</td><td class="neg">-6.01%</td><td>5.60%</td><td class="neg">-1.03%</td></tr>
+    </tbody>
+  </table></div>
+  <p class="note">2026년 2분기 말 기준 순자산액 가중평균입니다. 각 기간 동안 쌓인 수익률이며 1년 단위로 나눈 연 환산 값이 아닙니다. 설정 후 그 기간이 지나지 않은 펀드는 빠져 있습니다. 출처 생명보험협회 「2026년 2분기 펀드유형별 통계」.</p>
+  <p>2026년 1분기 말 기준으로는 전체 평균 1년 수익률이 39.75%, 국내 주식형이 109.21%였습니다. <b>기준 시점이 한 분기만 달라져도 이만큼 차이가 납니다.</b> 그리고 이 숫자는 펀드 기준이라 사업비가 빠지기 전의 값입니다.</p>
   <div class="feat">
     <div class="it">
       <h4>어디서 보나</h4>
-      <p><a class="ext" href="https://pub.insure.or.kr" target="_blank" rel="noopener">생명보험협회 공시실</a>에 들어가 「변액보험」 메뉴의 「상품별 과거수익률」을 누르시면 됩니다. 상품마다 들어 있는 펀드와 기간별 수익률이 나옵니다.</p>
+      <p><a class="ext" href="https://pub.insure.or.kr" target="_blank" rel="noopener">생명보험협회 공시실</a>의 「변액보험」 메뉴에서 펀드별 수익률은 「펀드현황」, 상품별은 「상품별 과거수익률」에서 보실 수 있습니다. 위 표도 협회가 이 자료로 낸 것입니다.</p>
     </div>
     <div class="it">
       <h4>공시 수익률과 내 적립금이 다른 이유</h4>
