@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>큰 돈을 쫓는 체크리스트</title>
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --ink:#1d1d1f; --muted:#7a7a7a; --faint:#a8a8ac; --hairline:#e0e0e0;
+    --accent:#1428A0; --accent-dark:#6E8CF2;
+    --parchment:#f5f5f7; --tile:#272729;
+  }
+  html,body{overflow-x:clip;max-width:100%}
+  html{background:#fff}
+  body{font-family:'Pretendard Variable',Pretendard,system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;text-rendering:geometricPrecision;word-break:keep-all;
+    background:#fff;color:var(--ink);font-size:19px;line-height:1.76;letter-spacing:-.02em}
+  .wrap{max-width:720px;margin:0 auto;padding:0 24px;min-width:0}
+
+  .cover{background:var(--tile);padding:92px 0 72px}
+  .cover *{color:#fff}
+  .cover .kicker{color:var(--accent-dark);font-size:13px;font-weight:600;letter-spacing:.1em;margin-bottom:20px}
+  .cover h1{font-size:clamp(28px,7vw,48px);word-break:keep-all;overflow-wrap:break-word;font-weight:700;line-height:1.2;letter-spacing:-.036em}
+  .cover h1 em{font-style:normal;color:var(--accent-dark)}
+  .cover .lead{color:#c8c8cc;font-size:clamp(17px,4.2vw,20px);line-height:1.62;margin-top:22px}
+  .cover .flag{margin-top:40px;padding:21px 24px 23px;background:rgba(255,255,255,.08);border-radius:16px}
+  .cover .flag .h{font-size:18px;font-weight:600;line-height:1.45;margin-bottom:9px}
+  .cover .flag .d{color:#a8a8ae;font-size:16.5px;line-height:1.6}
+
+  .topic{margin-top:72px}
+  .topic + .topic{margin-top:96px;padding-top:72px;border-top:1px solid var(--hairline)}
+  .topic > .tag{font-size:13px;font-weight:700;letter-spacing:.08em;color:var(--accent-dark);margin-bottom:10px}
+  .topic > h3{font-size:clamp(24px,5.8vw,32px);font-weight:700;letter-spacing:-.036em;line-height:1.22}
+  .topic > .oneline{font-size:clamp(17.5px,4.3vw,21px);line-height:1.62;color:var(--muted);margin-top:16px}
+  .topic > .oneline b{font-weight:600;color:var(--ink)}
+
+  p{margin-top:16px}
+  p.note{color:var(--muted);font-size:16px}
+
+  .feat{margin-top:26px}
+  .feat .it{padding:22px 0;border-bottom:1px solid var(--hairline)}
+  .feat .it:last-child{border-bottom:0}
+  .feat .it .n{margin:0 0 6px;font-size:13px;font-weight:700;letter-spacing:.08em;color:var(--accent-dark)}
+  .feat .it h4{font-size:19px;font-weight:700;letter-spacing:-.03em;line-height:1.4}
+  .feat .it p{margin-top:8px;font-size:16.5px;line-height:1.72;color:var(--muted)}
+
+  .punch{margin-top:26px;background:var(--parchment);border-radius:16px;padding:24px}
+  .punch .t{font-size:clamp(17px,4.2vw,19px);line-height:1.55;letter-spacing:-.03em;font-weight:700;margin:0}
+  .punch .s{font-size:17.5px;color:var(--muted);line-height:1.68;margin-top:10px}
+
+  .tw{overflow-x:auto;margin-top:18px;-webkit-overflow-scrolling:touch;max-width:100%}
+  table{border-collapse:collapse;width:100%;font-size:16px;letter-spacing:-.024em}
+  th,td{padding:14px 12px;text-align:left;vertical-align:top;border-bottom:1px solid var(--hairline);line-height:1.6}
+  thead th{font-size:13.5px;font-weight:700;color:var(--accent);
+    border-bottom:1.5px solid var(--ink);padding-top:12px;padding-bottom:11px}
+  thead th:last-child{color:var(--muted)}
+  td:first-child,th:first-child{padding-left:0;width:50%}
+  td:last-child,th:last-child{padding-right:0}
+  td:last-child{color:var(--muted)}
+  @media(max-width:480px){th,td{padding:12px 8px;font-size:15px}}
+
+  .checks{margin-top:30px}
+  .chk{display:grid;grid-template-columns:32px 1fr;column-gap:14px;align-items:start;
+    padding:16px 18px;margin-bottom:8px;border:1.5px solid transparent;border-radius:13px;
+    background:var(--parchment);cursor:pointer;user-select:none;
+    transition:background .13s,border-color .13s,transform .08s}
+  .chk:hover{background:#eceef6;border-color:#d4d8e8}
+  .chk:active{transform:scale(.993)}
+  .chk.on{background:rgba(20,40,160,.06);border-color:var(--accent)}
+  .box{width:26px;height:26px;margin-top:1px;border:2px solid #b4b4bd;border-radius:8px;background:#fff;
+    display:flex;align-items:center;justify-content:center;
+    font-size:15px;font-weight:700;color:transparent;transition:.13s;
+    box-shadow:0 1px 2px rgba(0,0,0,.04)}
+  .chk:hover .box{border-color:var(--accent);color:rgba(20,40,160,.3)}
+  .chk.on .box{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:none}
+  .chk .t{font-size:18px;line-height:1.5;letter-spacing:-.024em;color:var(--ink)}
+  .chk.on .t{font-weight:600}
+  .chk .t small{display:block;font-size:14.5px;line-height:1.55;color:var(--muted);font-weight:400;margin-top:6px;letter-spacing:-.02em}
+  .chk .t small b{font-weight:600;color:var(--accent)}
+
+  .srcs{margin-top:22px}
+  .srcs li{list-style:none;padding:16px 0;border-bottom:1px solid var(--hairline);font-size:17px;line-height:1.6}
+  .srcs li:last-child{border-bottom:0}
+  .srcs li span{display:block;font-size:15px;color:var(--muted);margin-top:4px}
+  a.ext{color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+
+  .ex{margin-top:26px;border:1px solid var(--hairline);border-radius:20px;padding:26px 24px;
+    box-shadow:0 1px 3px rgba(0,0,0,.04)}
+  .ex .row{display:grid;grid-template-columns:26px 1fr;column-gap:12px;padding:12px 0;border-bottom:1px solid var(--hairline)}
+  .ex .row:last-of-type{border-bottom:0}
+  .ex .mk{width:22px;height:22px;margin-top:3px;border-radius:7px;background:var(--accent);color:#fff;
+    font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}
+  .ex .mk.off{background:#fff;border:2px solid #c8c8cf;color:transparent}
+  .ex .row h4{font-size:17px;font-weight:700;letter-spacing:-.03em;line-height:1.45}
+  .ex .row p{margin-top:4px;font-size:16px;color:var(--muted);line-height:1.65}
+
+  @media(max-width:480px){
+    .wrap{padding:0 18px}
+    .cover{padding:76px 0 58px}
+    .topic{margin-top:56px}
+    .topic + .topic{margin-top:72px;padding-top:56px}
+    .chk{padding:15px 15px}
+    .cover h1 br{display:none}
+    .ex{padding:22px 18px}
+  }
+
+  .tally{position:fixed;left:0;right:0;bottom:0;z-index:29;transform:translateY(105%);transition:.26s;
+    background:rgba(255,255,255,.97);backdrop-filter:blur(14px);border-top:1px solid var(--hairline)}
+  .tally.on{transform:translateY(0)}
+  .tally .in{max-width:720px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:14px}
+  .tally .cnt{font-size:16px;color:var(--muted);letter-spacing:-.022em}
+  .tally .cnt b{color:var(--accent);font-size:18px;font-weight:700}
+  .btn{display:inline-block;background:var(--accent);color:#fff;border:0;border-radius:100px;
+    font-family:inherit;font-size:16px;font-weight:600;letter-spacing:-.022em;
+    padding:13px 26px;text-decoration:none;cursor:pointer;white-space:nowrap}
+  .form{background:var(--parchment);border-radius:18px;padding:32px 26px;margin-top:24px}
+  .form label{display:block;font-size:15px;font-weight:600;color:var(--muted);margin:22px 0 8px;letter-spacing:-.022em}
+  .form label:first-of-type{margin-top:0}
+  .form input,.form textarea{width:100%;background:#fff;border:1px solid var(--hairline);border-radius:12px;
+    color:var(--ink);font-family:inherit;font-size:18px;letter-spacing:-.022em;padding:15px 16px}
+  .form textarea{min-height:88px;resize:vertical;line-height:1.7}
+  .form .picked{background:#fff;border:1px solid var(--hairline);border-radius:12px;padding:16px;
+    font-size:16px;color:var(--muted);line-height:1.8;min-height:54px;white-space:pre-line}
+  .form .fine{font-size:14.5px;color:var(--muted);margin-top:18px;line-height:1.7}
+  footer{border-top:1px solid var(--hairline);margin-top:96px;padding:40px 0 90px;
+    font-size:15.5px;color:var(--muted);line-height:1.78}
+  footer .who{margin-top:26px;padding-top:22px;border-top:1px solid var(--hairline);
+    display:flex;justify-content:space-between;align-items:flex-end}
+  footer .who b{display:block;font-weight:600;color:var(--ink)}
+</style>
+</head>
+<body>
+
+<div class="cover"><div class="wrap">
+  <p class="kicker">실패를 줄이는 체크리스트 · 사업 · 투자 · 부동산</p>
+  <h1>큰 돈을 쫓는 <br><em>체크리스트</em></h1>
+  <p class="lead">시장을 키우려고 하지 않습니다. 이미 검증된 수요가 커지는 것을 먼저 알아보고, 반 발자국만 먼저 움직입니다. 큰 돈이 이미 내린 결정을 돈에서 거꾸로 따라가 봅니다.</p>
+  <div class="flag">
+    <p class="h">특정 종목이나 기업, 지역의 추천이 아닙니다</p>
+    <p class="d">결정하기 전에 무엇을 어디서 확인하는지 정리한 것입니다. 확인처는 기관과 기업이 공개한 공시와 통계입니다.</p>
+  </div>
+</div></div>
+
+<div class="wrap">
+
+<article class="topic">
+  <h3>먼저 결정 하나를<br>적어 두십시오</h3>
+  <p class="oneline">체크는 <b>확인처에서 직접 본 것만</b> 합니다. 느낌으로 체크하면 다시 예측이 됩니다.</p>
+  <div class="feat">
+    <div class="it">
+      <p class="n">하나</p>
+      <h4>지금 검토 중인 결정을 한 줄로 적습니다</h4>
+      <p>들어가려는 시장, 넣으려는 돈, 기다릴 수 있는 기간까지 적습니다.</p>
+    </div>
+    <div class="it">
+      <p class="n">둘</p>
+      <h4>해당하는 칸만 봅니다</h4>
+      <p>새 사업이나 확장이면 사업, 주식이면 투자, 매입이면 부동산입니다.</p>
+    </div>
+    <div class="it">
+      <p class="n">셋</p>
+      <h4>마지막 공통 칸은 누구나 봅니다</h4>
+      <p>큰 돈을 따라가도 틀릴 수 있기 때문입니다.</p>
+    </div>
+  </div>
+  <div class="punch">
+    <p class="t">큰 돈은 쉽게 움직이지 않습니다.</p>
+    <p class="s">정보와 지식과 노하우로 따지고, 치열하게 토론하고, 결정한 결과가 돈입니다. 전망은 틀려도 잃는 것이 없지만 돈은 틀리면 잃습니다. 그래서 큰 돈이 움직였다면 그것이 가장 정직한 신호입니다.</p>
+  </div>
+</article>
+
+<article class="topic">
+  <p class="tag">사업</p>
+  <h3>미국에서 검증된 수요가<br>한국에서 커지는지 봅니다</h3>
+  <p class="oneline">내가 시장을 키우는 것이 아니라 <b>이미 검증된 수요가 커지는 것</b>을 기다립니다.</p>
+  <div class="checks">
+    <div class="chk" data-g="사업" data-t="[사업] 미국에서 새 수요를 찾아 매출을 내는 모델이 있다"><span class="box">&#10003;</span><span class="t">미국에서 새로운 수요를 찾아 매출을 내고 있는 비즈니스 모델이 있다<small>국내에도 그대로 적용할 수 있어야 합니다.<br><b>확인</b> · 미국 상장사면 SEC 공시(EDGAR)의 매출, 비상장이면 크런치베이스</small></span></div>
+    <div class="chk" data-g="사업" data-t="[사업] 그 해외 모델이 받은 투자를 확인했다"><span class="box">&#10003;</span><span class="t">그 해외 모델이 투자를 얼마나 받았는지 확인했다<small><b>확인</b> · 크런치베이스의 투자 라운드와 금액</small></span></div>
+    <div class="chk" data-g="사업" data-t="[사업] 국내에 실행할 만한 크기의 잠재고객이 있다"><span class="box">&#10003;</span><span class="t">국내에서 실행할 만한 크기의 잠재고객이 있다<small><b>확인</b> · 국가통계포털(KOSIS)의 대상 인구와 사업체 수</small></span></div>
+    <div class="chk" data-g="사업" data-t="[사업] 국내 경쟁자가 없거나 이길 수 있다"><span class="box">&#10003;</span><span class="t">국내에 비슷한 경쟁자가 없거나, 있어도 이길 수 있다<small><b>확인</b> · 더브이씨(THE VC)에서 같은 분야 스타트업과 투자 이력</small></span></div>
+    <div class="chk" data-g="사업" data-t="[사업] 키웠을 때 사줄 곳이 관심을 보인다"><span class="box">&#10003;</span><span class="t">키웠을 때 사줄 곳(대기업, 사모펀드)이 이 분야에 관심을 보이고 있다<small><b>확인</b> · DART의 「타법인 주식 취득」 공시, 대기업 벤처투자 자회사의 투자 이력</small></span></div>
+    <div class="chk" data-g="사업" data-t="[사업] 대통령이나 관련 장관이 직접 발표했다"><span class="box">&#10003;</span><span class="t">대통령이나 관련 부처 장관이 이 분야를 직접 발표했다<small>정부지원금은 근거로 보지 않습니다.<br><b>확인</b> · 대한민국 정책브리핑, 부처 보도자료</small></span></div>
+    <div class="chk" data-g="사업" data-t="[사업] 금융기관 리포트가 나오고 있다"><span class="box">&#10003;</span><span class="t">금융기관에서 이 분야 리포트가 나오고 있다<small><b>확인</b> · 증권사 리서치의 산업 리포트</small></span></div>
+  </div>
+  <p class="note">「사줄 곳」은 키운 뒤에 누가 사 갈지에서 거꾸로 계산하는 칸입니다. 사 갈 곳이 관심을 보이는 분야는 이미 큰 돈이 방향을 정한 분야입니다.</p>
+</article>
+
+<article class="topic">
+  <p class="tag">투자</p>
+  <h3>큰 자본이 실제로<br>사고 있는지 봅니다</h3>
+  <p class="oneline">여기서 투자는 주식입니다. 기대감이 아니라 <b>자본이 실제로 들어오고 있는지</b>를 봅니다.</p>
+  <div class="checks">
+    <div class="chk" data-g="투자" data-t="[투자] 큰 자본의 매수가 이미 시작됐다"><span class="box">&#10003;</span><span class="t">큰 자본의 투자(주식 매수)가 이미 시작됐다<small><b>확인</b> · 한국거래소 정보데이터시스템의 투자자별 순매수(외국인, 기관), DART의 「주식등의 대량보유상황보고서」(한 종목을 5% 이상 사들이면 공시됩니다)</small></span></div>
+    <div class="chk" data-g="투자" data-t="[투자] 그 자본이 해외에서 들어왔다"><span class="box">&#10003;</span><span class="t">그 자본이 해외에서 들어왔다<small>지금의 AI처럼 해외발이 가장 강합니다.<br><b>확인</b> · 한국거래소 정보데이터시스템의 외국인 순매수</small></span></div>
+    <div class="chk" data-g="투자" data-t="[투자] 그 자본이 다른 자본보다 크다"><span class="box">&#10003;</span><span class="t">그 자본이 시장의 다른 자본보다 크다<small><b>확인</b> · 같은 곳의 투자자별 순매수 규모</small></span></div>
+    <div class="chk" data-g="투자" data-t="[투자] 재료가 실제 투자나 매출로 연결될 수 있다"><span class="box">&#10003;</span><span class="t">재료가 단순 기대감이 아니라, 실제 투자나 매출로 연결될 수 있는 기대감이다<small><b>확인</b> · 공급계약 체결 공시, 설비 투자 공시, 분기 실적</small></span></div>
+    <div class="chk" data-g="투자" data-t="[투자] 섹터 전체로 자본이 모이고 지수도 오른다"><span class="box">&#10003;</span><span class="t">한 기업이 아니라 섹터 전체로 자본이 모이고, 지수도 같이 오르고 있다<small><b>확인</b> · 한국거래소 업종 지수</small></span></div>
+  </div>
+</article>
+
+<article class="topic">
+  <p class="tag">부동산</p>
+  <h3>자본가와 기업이<br>사는 곳을 봅니다</h3>
+  <p class="oneline">원리는 같습니다. 다만 <b>시간이 가장 길게</b> 걸립니다.</p>
+  <div class="checks">
+    <div class="chk" data-g="부동산" data-t="[부동산] 자본가들이 사는 곳이다"><span class="box">&#10003;</span><span class="t">자본가들이 사는 곳이다<small>자본가는 자기가 손해 볼 투자를 하지 않습니다.</small></span></div>
+    <div class="chk" data-g="부동산" data-t="[부동산] 기업 투자가 이어지는 곳이다"><span class="box">&#10003;</span><span class="t">기업들의 투자가 이어지는 곳이다<small><b>확인</b> · 그 지역에 공장, 사옥, 연구소를 짓는 기업의 신규시설투자 공시</small></span></div>
+    <div class="chk" data-g="부동산" data-t="[부동산] 거래량이 충분하다"><span class="box">&#10003;</span><span class="t">거래량이 충분하다<small><b>확인</b> · 국토교통부 실거래가 공개시스템, 한국부동산원 부동산통계(R-ONE)</small></span></div>
+    <div class="chk" data-g="부동산" data-t="[부동산] 기업들이 이 지역 부동산을 사고 있다"><span class="box">&#10003;</span><span class="t">기업들이 이 지역 부동산을 사고 있다<small><b>확인</b> · DART의 「유형자산 취득」 공시(소재지가 적혀 있습니다)</small></span></div>
+  </div>
+</article>
+
+<article class="topic">
+  <p class="tag">공통</p>
+  <h3>마지막으로<br>모두 보셔야 할 것</h3>
+  <p class="oneline">큰 돈을 따라가도 <b>틀릴 수 있습니다.</b> 그래서 마지막까지 보수적이어야 합니다.</p>
+  <div class="checks">
+    <div class="chk" data-g="공통" data-t="[공통] 실패하면 큰 돈을 투자한 곳도 같이 손실을 본다"><span class="box">&#10003;</span><span class="t">실패했을 때 큰 돈을 투자한 곳도 같이 손실을 본다<small>큰 돈이 투자되었다고 무조건 성공하지는 않습니다. 그들에게 빠져나갈 구멍이 있으면 쉽게 무너질 수 있습니다.<br><b>확인</b> · DART에서 그 돈이 유상증자로 들어왔는지, 전환사채로 들어왔는지</small></span></div>
+  </div>
+  <div class="tw"><table>
+    <thead><tr><th>같이 잃는 돈</th><th>빠져나갈 구멍이 있는 돈</th></tr></thead>
+    <tbody>
+      <tr><td>보통주로 들어온 지분 투자(유상증자)</td><td>상환권이나 풋옵션이 붙은 투자(전환사채, 상환전환우선주)</td></tr>
+      <tr><td>자기 돈으로 짓는 공장과 설비</td><td>담보나 보증이 붙은 대출</td></tr>
+    </tbody>
+  </table></div>
+  <p class="note">왼쪽은 실패하면 그들도 같이 잃습니다. 오른쪽은 실패해도 원금을 먼저 돌려받을 길이 있습니다. 뒤가 있는 투자를 믿고 따라 들어가기에는 리스크가 큽니다.</p>
+
+  <div class="checks">
+    <div class="chk" data-g="공통" data-t="[공통] 지금 한 템포만 빠르게 들어가고 있다"><span class="box">&#10003;</span><span class="t">지금 한 템포만 빠르게 들어가고 있다<small>늦으면 고점이고, 너무 빠르면 시간을 버려야 합니다. 사업이라면 시간이 돈이라 돈도 같이 버립니다.</small></span></div>
+  </div>
+  <div class="punch">
+    <p class="t">이 칸은 숫자로 정할 수 없습니다.</p>
+    <p class="s">큰 돈이 들어가도 시장에 반영되기까지 시간이 걸릴 때가 있고, 너무 빨리 반영되어 버린 때도 있습니다. 같은 신호를 보고도 늦었는지 이른지는 감각으로 가립니다. 판단이 서지 않으면 이 칸을 들고 오십시오.</p>
+  </div>
+
+  <div class="checks">
+    <div class="chk" data-g="공통" data-t="[공통] 틀렸을 때 잃는 돈을 적어 봤다"><span class="box">&#10003;</span><span class="t">틀렸을 때 잃는 돈을 적어 봤다</span></div>
+    <div class="chk" data-g="공통" data-t="[공통] 틀렸을 때 잃는 시간을 적어 봤다"><span class="box">&#10003;</span><span class="t">틀렸을 때 잃는 시간을 적어 봤다<small>돈은 다시 벌 수 있어도 시간은 다시 벌 수 없습니다. 크게 한 번 맞히려다 잃는 몇 년은 되돌릴 수 없습니다.</small></span></div>
+  </div>
+
+  <div class="punch">
+    <p class="t">비어 있는 칸이 아직 예측에 기대고 있는 부분입니다.</p>
+    <p class="s">빈칸이 있다고 그 결정이 틀린 것은 아닙니다. 아직 확인하지 않았다는 뜻이고, 확인하기 전까지는 예측입니다.</p>
+  </div>
+</article>
+
+<article class="topic">
+  <h3>확인처 모음</h3>
+  <p class="oneline">위에 적은 곳들입니다. <b>모두 공개되어 있어</b> 직접 들어가 보실 수 있습니다.</p>
+  <ul class="srcs">
+    <li><a class="ext" href="https://dart.fss.or.kr" target="_blank" rel="noopener">DART 전자공시시스템</a><span>대량보유 보고, 타법인 주식 취득, 유형자산 취득, 신규시설투자, 공급계약, 유상증자와 전환사채</span></li>
+    <li><a class="ext" href="http://data.krx.co.kr" target="_blank" rel="noopener">한국거래소 정보데이터시스템</a><span>투자자별 순매수(외국인, 기관), 업종 지수</span></li>
+    <li><a class="ext" href="https://rt.molit.go.kr" target="_blank" rel="noopener">국토교통부 실거래가 공개시스템</a><span>지역별 거래량과 거래 가격</span></li>
+    <li>한국부동산원 부동산통계(R-ONE)<span>지역별 거래량 통계</span></li>
+    <li><a class="ext" href="https://kosis.kr" target="_blank" rel="noopener">국가통계포털(KOSIS)</a><span>대상 인구, 업종별 사업체 수</span></li>
+    <li><a class="ext" href="https://www.korea.kr" target="_blank" rel="noopener">대한민국 정책브리핑</a><span>대통령과 부처 장관의 발표, 부처 보도자료</span></li>
+    <li><a class="ext" href="https://www.sec.gov/edgar" target="_blank" rel="noopener">미국 SEC 공시(EDGAR)</a><span>미국 상장사의 매출</span></li>
+    <li><a class="ext" href="https://www.crunchbase.com" target="_blank" rel="noopener">크런치베이스</a><span>해외 기업의 투자 라운드와 금액</span></li>
+    <li><a class="ext" href="https://thevc.kr" target="_blank" rel="noopener">더브이씨(THE VC)</a><span>국내 스타트업과 투자 이력</span></li>
+  </ul>
+</article>
+
+<article class="topic">
+  <h3>채워 본 예<br>패스트파이브</h3>
+  <p class="oneline">사업 칸에 대 보면 이렇습니다. <b>공개 보도로 확인되는 것만</b> 채웠습니다.</p>
+  <div class="ex">
+    <div class="row"><span class="mk">&#10003;</span><div><h4>미국에서 먼저 매출을 낸 모델</h4><p>위워크의 공유오피스</p></div></div>
+    <div class="row"><span class="mk">&#10003;</span><div><h4>해외 모델이 받은 투자</h4><p>위워크는 2019년 기업가치 470억 달러로 평가받았습니다.</p></div></div>
+    <div class="row"><span class="mk off">&#10003;</span><div><h4>나머지 다섯 칸</h4><p>비워 두었습니다. 당시 자료로 확인한 것만 채운다는 원칙은 예시에도 같습니다.</p></div></div>
+  </div>
+  <p>패스트파이브는 2015년 공유오피스를 한국에 들였고, 2024년 매출 1,300억원, 영업이익 54억원으로 첫 연간 흑자를 냈습니다. 같은 모델을 키운 위워크는 2023년 파산 보호를 신청했습니다.</p>
+  <div class="punch">
+    <p class="t">시장을 만든 쪽이 늘 이기지는 않습니다.</p>
+    <p class="s">커질 시장을 먼저 알아본 쪽도 이깁니다.</p>
+  </div>
+</article>
+
+<section class="topic">
+  <h3>빈칸을 들고 오십시오</h3>
+  <p class="oneline">체크하신 항목과 <b>보신 칸의 빈칸</b>이 그대로 첨부됩니다.</p>
+  <p>특히 한 템포 칸은 숫자로 정할 수 없어서, 같은 결정을 놓고 같이 보는 것이 가장 빠릅니다. 검토 중인 결정을 한 줄로 적어 주시면 그 결정에서 무엇부터 확인하실지 정리해 드리겠습니다.</p>
+  <form class="form" action="https://api.web3forms.com/submit" method="POST">
+    <input type="hidden" name="access_key" value="56ba5ceb-1e23-4de6-b6ca-7016a3e1e8d7">
+    <input type="hidden" name="구분" value="큰 돈을 쫓는 체크리스트">
+    <input type="hidden" name="체크한항목" id="picked" value="">
+    <input type="hidden" name="빈칸" id="empty" value="">
+    <input type="hidden" name="subject" value="[상담신청] 큰 돈 체크리스트">
+    <input type="checkbox" name="botcheck" style="display:none">
+    <label>체크하신 항목</label>
+    <div class="picked" id="pickedView">아직 체크하신 항목이 없습니다.</div>
+    <label>보신 칸의 빈칸</label>
+    <div class="picked" id="emptyView">체크를 시작하시면 보신 칸의 빈칸이 여기에 모입니다.</div>
+    <label for="dc">검토 중인 결정</label><textarea id="dc" name="검토중인결정" placeholder="들어가려는 시장, 넣으려는 돈과 기간을 한 줄로 적어 주십시오."></textarea>
+    <label for="nm">성함</label><input type="text" id="nm" name="성함" required>
+    <label for="ph">연락처</label><input type="tel" id="ph" name="연락처" required>
+    <label for="ms">더 하실 말씀</label><textarea id="ms" name="메모"></textarea>
+    <p style="margin-top:26px"><button type="submit" class="btn">보내기</button></p>
+    <p class="fine">내용은 Web3Forms를 통해 담당자 이메일로 전달됩니다.<br>
+      특정 종목이나 기업, 지역의 매수·매도나 투자를 권유하지 않습니다.</p>
+  </form>
+</section>
+
+<footer>
+  <p>버는 건 시장이 정하고, 지키는 건 구조가 정합니다.</p>
+  <p>이 페이지는 결정하기 전에 확인할 것을 정리한 일반 정보이며, 특정 종목이나 기업, 지역의 매수·매도나 투자를 권유하지 않습니다. 투자 판단과 그 결과는 투자하시는 분께 있습니다.</p>
+  <p>기업 사례는 공개 보도에 근거했습니다. 과거 사례가 미래의 결과를 보장하지 않습니다.</p>
+  <div class="who"><span>큰 돈을 쫓는 체크리스트</span>
+    <span style="text-align:right"><b>유영곤</b>삼성생명 GFC</span></div>
+</footer>
+</div>
+
+<div class="tally" id="tally"><div class="in">
+  <span class="cnt"><b id="cnt">0</b>개 체크하셨습니다</span>
+  <a href="#picked" class="btn" onclick="document.querySelector('.form').scrollIntoView({behavior:'smooth'});return false;">빈칸 보내기</a>
+</div></div>
+
+<script>
+(function(){
+  var all=[].slice.call(document.querySelectorAll('.chk'));
+  function refresh(){
+    var on=all.filter(function(e){return e.classList.contains('on')});
+    var groups={'공통':1};
+    on.forEach(function(e){groups[e.getAttribute('data-g')]=1});
+    var picked=on.map(function(e){return e.getAttribute('data-t')});
+    var empty=on.length?all.filter(function(e){return !e.classList.contains('on')&&groups[e.getAttribute('data-g')]}).map(function(e){return e.getAttribute('data-t')}):[];
+    document.getElementById('cnt').textContent=picked.length;
+    document.getElementById('picked').value=picked.join(' / ');
+    document.getElementById('empty').value=empty.join(' / ');
+    document.getElementById('pickedView').textContent=picked.length?picked.join('\n'):'아직 체크하신 항목이 없습니다.';
+    document.getElementById('emptyView').textContent=on.length?(empty.length?empty.join('\n'):'보신 칸에는 빈칸이 없습니다.'):'체크를 시작하시면 보신 칸의 빈칸이 여기에 모입니다.';
+    document.getElementById('tally').classList.toggle('on',picked.length>0);
+  }
+  all.forEach(function(el){
+    el.addEventListener('click',function(){el.classList.toggle('on');refresh();});
+  });
+  refresh();
+})();
+</script>
+</body>
+</html>
