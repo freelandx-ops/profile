@@ -139,13 +139,30 @@ button{font-family:inherit}
 /* 물어보실 것 */
 .qcols{display:grid;gap:14px}
 @media(min-width:780px){.qcols{grid-template-columns:1fr 1fr}}
-.qg{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 18px 14px}
+.qg{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 14px 12px;display:flex;flex-direction:column}
+.topic{display:flex;align-items:center;gap:10px;width:100%;text-align:left;background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:12px 14px;cursor:pointer;font-size:16.5px;font-weight:700;color:var(--ink);line-height:1.4;transition:background .15s,border-color .15s}
+.topic:hover{border-color:var(--blue-l)}
+.topic .tg{flex:0 0 auto;font-size:11.5px;font-weight:700;color:var(--blue);background:var(--blue-s);border-radius:5px;padding:2px 7px}
+.topic .tt{flex:1}
+.ck{flex:0 0 20px;width:20px;height:20px;border:1.8px solid var(--blue-m);border-radius:5px;background:#fff;display:grid;place-items:center}
+.ck::after{content:"";width:5px;height:10px;border:solid var(--blue);border-width:0 2.2px 2.2px 0;transform:translateY(-1px) rotate(45deg);opacity:0}
+.topic.on{background:var(--blue);border-color:var(--blue);color:#fff}
+.topic.on .tg{background:rgba(255,255,255,.18);color:#fff}
+.topic.on .ck{border-color:#fff}
+.topic.on .ck::after{opacity:1}
+.topic.part{background:var(--blue-s);border-color:var(--blue-m)}
+.topic.part .ck{background:var(--blue);border-color:var(--blue)}
+.topic.part .ck::after{opacity:1;width:10px;height:0;border-width:0 0 2.2px 0;border-color:#fff;transform:none}
+.moreb{align-self:flex-start;background:none;border:0;padding:10px 4px 2px;font-size:13.5px;font-weight:700;color:var(--blue);cursor:pointer}
+.qg .qs{display:none;padding:0 2px}
+.qg.open .qs{display:block}
 .qg h3{font-size:16.5px;font-weight:700;margin:0 0 4px}
 .q{display:flex;gap:10px;align-items:flex-start;width:100%;text-align:left;background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin-top:8px;font-size:14.5px;color:var(--ink);cursor:pointer;line-height:1.55;transition:background .15s,border-color .15s}
 .q:hover{border-color:var(--blue-l)}
-.q .pl{flex:0 0 20px;height:20px;border-radius:50%;border:1.5px solid var(--blue);display:grid;place-items:center;color:var(--blue);font-size:13px;line-height:1;margin-top:2px;font-weight:700}
-.q.on{background:var(--blue);border-color:var(--blue);color:#fff}
-.q.on .pl{background:#fff;border-color:#fff;color:var(--blue)}
+.q .ck{margin-top:2px}
+.q.on{background:var(--blue-s);border-color:var(--blue-m)}
+.q.on .ck{background:var(--blue);border-color:var(--blue)}
+.q.on .ck::after{opacity:1;border-color:#fff}
 .qg.free{background:var(--blue);border-color:var(--blue);color:#fff;display:flex;flex-direction:column;justify-content:center;padding:22px}
 .qg.free .btn{align-self:flex-start}
 .qg.free p{margin:0 0 14px;color:#D6DCF8;font-size:14.5px}
@@ -246,6 +263,13 @@ button{font-family:inherit}
 .about{display:grid;gap:28px}
 @media(min-width:900px){.about{grid-template-columns:1fr 1fr;gap:40px;align-items:start}}
 .col{display:grid;gap:24px}
+.invest{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px;margin:0 0 28px}
+.invest .ih{margin:0 0 14px;font-size:16.5px;font-weight:600;color:var(--ink)}
+.invest .ih b{color:var(--blue)}
+.invest .ip{display:grid;gap:14px}
+@media(min-width:900px){.invest .ip{grid-template-columns:repeat(3,1fr);gap:20px}}
+.invest .ip b{display:block;font-size:15px;margin-bottom:4px}
+.invest .ip span{display:block;font-size:14px;color:var(--ink2);line-height:1.65}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:0 0 28px}
 .stat{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 8px;text-align:center}
 .stat .v{font-size:22px;font-weight:800;color:var(--blue);letter-spacing:-.03em}
@@ -282,6 +306,8 @@ button{font-family:inherit}
 .seg input:checked + span{background:var(--blue);color:#fff;border-color:var(--blue)}
 .picked{background:var(--bg2);border-radius:10px;padding:12px 14px;font-size:14px;color:var(--ink2)}
 .picked ul{margin:4px 0 0;padding-left:18px}
+.picked .pk{margin:8px 0 0;font-size:12.5px;font-weight:700;color:var(--mut)}
+.picked .pk:first-child{margin-top:0}
 .picked a{color:var(--blue);font-weight:600}
 .consent{font-size:13.5px;color:var(--ink2)}
 .consent label{display:flex;gap:8px;align-items:flex-start;cursor:pointer}
@@ -314,10 +340,14 @@ footer .sns a{text-decoration:none;color:var(--ink2);font-weight:600}
 .stick small{display:block;font-size:12px;color:#D6DCF8}
 .stick a{background:#fff;color:var(--blue);padding:11px 16px;border-radius:10px;font-weight:700;font-size:14px;text-decoration:none;white-space:nowrap}
 @media(min-width:900px){.stick{left:auto;right:24px;bottom:24px;min-width:340px}}
+.toast{position:fixed;left:50%;bottom:86px;z-index:70;display:flex;gap:14px;align-items:center;white-space:nowrap;background:var(--ink);color:#fff;border-radius:999px;padding:11px 18px;font-size:13.5px;font-weight:600;box-shadow:0 12px 30px -10px rgba(17,24,39,.5);opacity:0;pointer-events:none;transform:translate(-50%,12px);transition:opacity .2s,transform .2s}
+.toast.show{opacity:1;pointer-events:auto;transform:translate(-50%,0)}
+.toast a{color:var(--blue-l);font-weight:700;text-decoration:none}
+@media(min-width:900px){.toast{bottom:32px}}
 </style>
 <!-- GA4 카운터. 측정 ID는 A안과 같다(계정 YLIB · 속성 프로필 · 스트림 profile). 녹화 없음, 숫자만.
      이벤트 이름은 A안과 맞췄다: page_view · section_view · form_view · form_start · form_submit · contact_click.
-     B안에서 새로 센 것: question_pick · case_filter · case_open · basis_tab · cta_click · legacy_hash -->
+     B안에서 새로 센 것: topic_pick · qgroup_open · question_pick · case_filter · case_open · basis_tab · cta_click · legacy_hash -->
 <script>
   window.GA_ID = 'G-T6XKFHRGKC';
   window.dataLayer = window.dataLayer || [];
@@ -394,7 +424,7 @@ footer .sns a{text-decoration:none;color:var(--ink2);font-weight:600}
   <div class="get">
     <div class="items">
       <div class="item"><div class="n">1</div><h3>자산 전체를 한눈에</h3>
-        <p><span class="nb">부동산, 금융자산,</span> <span class="nb">회사 지분, 보험을</span> <span class="nb">한자리에 모읍니다.</span> <span class="nb">어디에 얼마가 있고,</span> <span class="nb">세금이 어디서 걸리고,</span> <span class="nb">현금이 언제 모자라는지 보입니다.</span></p></div>
+        <p><span class="nb">부동산, 주식과 금융자산,</span> <span class="nb">회사 지분, 보험을</span> <span class="nb">한자리에 모읍니다.</span> <span class="nb">어디에 얼마가 있고,</span> <span class="nb">세금이 어디서 걸리고,</span> <span class="nb">현금이 언제 모자라는지 보입니다.</span></p></div>
       <div class="item"><div class="n">2</div><h3>무엇부터 할지</h3>
         <p><span class="nb">할 일을 1, 2, 3으로 정합니다.</span> <span class="nb">회계사, 감정평가사, 노무사가</span> <span class="nb">맡을 일은</span> <span class="nb">삼성FP센터 전문가와 같이 갑니다.</span></p></div>
       <div class="item"><div class="n">3</div><h3>필요한 곳에만 보험</h3>
@@ -408,6 +438,10 @@ footer .sns a{text-decoration:none;color:var(--ink2);font-weight:600}
       <div class="row"><div class="k">어디에 있나</div>
         <div class="stack"><i style="width:46%;background:var(--blue)"></i><i style="width:24%;background:var(--blue-m)"></i><i style="width:20%;background:var(--blue-l)"></i><i style="width:10%;background:#D9DEEA"></i></div>
         <div class="legend"><span style="--c:var(--blue)">부동산</span><span style="--c:var(--blue-m)">금융자산</span><span style="--c:var(--blue-l)">회사 지분</span><span style="--c:#D9DEEA">보험</span></div></div>
+      <div class="row"><div class="k">투자는 어떻게 담겨 있나</div>
+        <div class="stack"><i style="width:34%;background:var(--blue)"></i><i style="width:30%;background:var(--blue-m)"></i><i style="width:22%;background:var(--blue-l)"></i><i style="width:14%;background:#D9DEEA"></i></div>
+        <div class="legend"><span style="--c:var(--blue)">국내주식</span><span style="--c:var(--blue-m)">해외주식</span><span style="--c:var(--blue-l)">채권·예금</span><span style="--c:#D9DEEA">현금</span></div>
+        <div class="tchips" style="margin-top:10px"><span>업종 쏠림</span><span>환 노출</span><span>겹친 종목</span></div></div>
       <div class="row"><div class="k">세금이 걸리는 곳</div>
         <div class="tchips"><span>양도소득세</span><span>상속세</span><span>종합소득세</span><span>건강보험료</span></div></div>
       <div class="row"><div class="k">현금이 모자라는 때</div>
@@ -453,45 +487,121 @@ footer .sns a{text-decoration:none;color:var(--ink2);font-weight:600}
 <!-- 물어보실 것 -->
 <section class="sec" id="qs"><div class="wrap">
   <h2>이런 것을<br>물어보시면 됩니다.</h2>
-  <p class="sub">누르시면 아래 문의서에 담깁니다.</p>
+  <p class="sub"><span class="nb">주제를 고르시면 세부 질문까지 담깁니다.</span> <span class="nb">필요 없는 질문은 빼시면 됩니다.</span></p>
+  <!-- 칸 제목은 약관 「전체 동의」처럼 세부 질문 전체를 체크하고 칸을 펼친다. 하나라도 빼면 제목은 「일부」(—)가 된다.
+       문의서에는 다 고른 칸은 「주제 (전체)」 한 줄로, 일부만 고른 칸은 남은 질문만 간다. 모바일은 접힌 채, 데스크톱은 펼친 채로 연다.
+       칸 목록은 002 서비스영역과보험연결.md 법인 11·개인 7에서 뽑았다. 가지급금·잉여금·급여배당은 넣지 않는다(포지셔닝_통합관점.md 「이 칸은 안 판다」). -->
   <div class="qcols">
-    <div class="qg"><h3>회사를 키우고 넘기는 일</h3>
-      <button type="button" class="q"><span class="pl">+</span><span class="t">비상장인 우리 회사 주식이 지금 얼마로 평가되는지</span></button>
-      <button type="button" class="q"><span class="pl">+</span><span class="t">승계를 언제부터 시작해야 하는지</span></button>
-      <button type="button" class="q"><span class="pl">+</span><span class="t">임원 퇴직금 규정이 지금 쓸 수 있는 상태인지</span></button>
-      <button type="button" class="q"><span class="pl">+</span><span class="t">우리 업종과 업력으로 받을 수 있는 정책자금이 있는지</span></button>
-      <button type="button" class="q"><span class="pl">+</span><span class="t">사고가 나면 회사 자산에서 얼마가 나가는지</span></button>
+    <div class="qg" data-n="5">
+      <button type="button" class="topic" role="checkbox" aria-checked="false"><span class="ck" aria-hidden="true"></span><span class="tg">법인</span><span class="tt">회사를 키우고 넘기는 일</span></button>
+      <button type="button" class="moreb">세부 질문 5개 보기 ▾</button>
+      <div class="qs">
+        <button type="button" class="q" role="checkbox" aria-checked="false"><span class="ck" aria-hidden="true"></span><span class="t">비상장인 우리 회사 주식이 지금 얼마로 평가되는지</span></button>
+        <button type="button" class="q" role="checkbox" aria-checked="false"><span class="ck" aria-hidden="true"></span><span class="t">승계를 언제부터 시작해야 하는지</span></button>
+        <button type="button" class="q" role="checkbox" aria-checked="false"><span class="ck" aria-hidden="true"></span><span class="t">가족법인을 만들어 두는 게 맞는지</span></button>
+        <button type="button" class="q" role="checkbox" aria-checked="false"><span class="ck" aria-hidden="true"></span><span class="t">회사를 물려줄지, 팔고 현금으로 줄지</span></button>
+        <button type="button" class="q" role="checkbox" aria-checked="false"><span class="ck" aria-hidden="true"></span><span class="t">차명으로 둔 주식을 어떻게 되돌릴지</span></button>
+      </div>
     </div>
-    <div class="qg"><h3>사업 소득이 커질 때</h3>
-      <button type="button" class="q"><span class="pl">+</span><span class="t">법인 전환이 유리해지는 시점이 언제인지</span></button>
-      <button type="button" class="q"><span class="pl">+</span><span class="t">소득이 오르면 건강보험료가 얼마나 따라오는지</span></button>
-      <button type="button" class="q"><span class="pl">+</span><span class="t">사업 돈과 개인 돈을 어떻게 나눌지</span></button>
-      <button type="button" class="q"><span class="pl">+</span><span class="t">대출 한도가 왜 그만큼만 나오는지</span></button>
-      <button type="button" class="q"><span class="pl">+</span><span class="t">노란우산공제에 넣기 전에 해지 조건이 어떻게 되는지</span></button>
+    <div class="qg" data-n="5">
+      <button type="button" class="topic" role="checkbox" aria-checked="false"><span class="ck" aria-hidden="true"></span><span class="tg">법인</span><span class="tt">회사 규정과 사람</span></button>
+      <button type="button" class="moreb">세부 질문 5개 보기 ▾</button>
+      <div class="qs">
+        <button type="button" class="q" role="checkbox" aria-checked="false"><span class="ck" aria-hidden="true"></span><span class="t">정관이 지금 회사에 맞게 되어 있는지</span></button>
+        <button type="button" class="q" role="checkbox" aria-checked="false"><span class="ck" aria-hidden="true"></span><span class="t">임원 퇴직금 규정이 지금 쓸 수 있는 상태인지</span></button>
+        <button type="button" class="q" role="checkbox" aria-checked="false"><span class="ck" aria-hidden="true"></span><span class="t">취업규칙과 근로계약서가 법에 맞는지</span></button>
+        <button type="button" class="q" role="checkbox" aria-checked="false"><span class="ck" aria-hidden="true"></span><span class="t">4대보험과 임금 체계를 어떻게 짤지</span></button>
+        <button type="button" class="q" role="checkbox" aria-checked="false"><span class="ck" aria-hidden="true"></span><span class="t">중대재해 대비 체계가 갖춰져 있는지</span></button>
+      </div>
     </div>
-    <div class="qg"><h3>부동산을 들고 갈지, 팔지</h3>
-      <button type="button" class="q"><span class="pl">+</span><span class="t">보유할 때와 팔 때 세금을 나란히 놓으면 어느 쪽이 나은지</span></button>
-      <button type="button" class="q"><span class="pl">+</span><span class="t">개인 명의로 둘지, 법인에 담을지</span></button>
-      <button type="button" class="q"><span class="pl">+</span><span class="t">판 돈을 다음에 어디에 둘지</span></button>
+    <div class="qg" data-n="3">
+      <button type="button" class="topic" role="checkbox" aria-checked="false"><span class="ck" aria-hidden="true"></span><span class="tg">법인</span><span class="tt">받을 수 있는 지원</span></button>
+      <button type="button" class="moreb">세부 질문 3개 보기 ▾</button>
+      <div class="qs">
+        <button type="button" class="q" role="checkbox" aria-checked="false"><span class="ck" aria-hidden="true"></span><span class="t">우리 업종과 업력으로 받을 수 있는 정책자금이 있는지</span></button>
+        <button type="button" class="q" role="checkbox" aria-checked="false"><span class="ck" aria-hidden="true"></span><span class="t">기업부설연구소, 벤처 같은 인증을 받을 수 있는지</span></button>
+        <button type="button" class="q" role="checkbox" aria-checked="false"><span class="ck" aria-hidden="true"></span><span class="t">특허를 회사 자산으로 만드는 방법이 있는지</span></button>
+      </div>
     </div>
-    <div class="qg"><h3>다음 세대로 넘기는 일</h3>
-      <button type="button" class="q"><span class="pl">+</span><span class="t">상속세 낼 현금이 어디서 나오는지</span></button>
-      <button type="button" class="q"><span class="pl">+</span><span class="t">증여를 언제, 무엇부터 할지</span></button>
-      <button type="button" class="q"><span class="pl">+</span><span class="t">배우자 상속공제를 얼마나 쓸 수 있는지</span></button>
+    <div class="qg" data-n="3">
+      <button type="button" class="topic" role="checkbox" aria-checked="false"><span class="ck" aria-hidden="true"></span><span class="tg">법인</span><span class="tt">회사를 지키는 보험</span></button>
+      <button type="button" class="moreb">세부 질문 3개 보기 ▾</button>
+      <div class="qs">
+        <button type="button" class="q" role="checkbox" aria-checked="false"><span class="ck" aria-hidden="true"></span><span class="t">사고가 나면 회사 자산에서 얼마가 나가는지</span></button>
+        <button type="button" class="q" role="checkbox" aria-checked="false"><span class="ck" aria-hidden="true"></span><span class="t">대표에게 일이 생기면 회사와 가족은 어떻게 되는지</span></button>
+        <button type="button" class="q" role="checkbox" aria-checked="false"><span class="ck" aria-hidden="true"></span><span class="t">임직원 단체보험이 실제로 효력이 있는지</span></button>
+      </div>
     </div>
-    <div class="qg"><h3>투자와 세금</h3>
-      <button type="button" class="q"><span class="pl">+</span><span class="t">여러 증권사에 흩어진 것을 한 표로 보고 싶다</span></button>
-      <button type="button" class="q"><span class="pl">+</span><span class="t">일반계좌, ISA, 연금계좌에 무엇을 담을지</span></button>
-      <button type="button" class="q"><span class="pl">+</span><span class="t">해외주식 양도세를 줄일 방법이 있는지</span></button>
+    <div class="qg" data-n="5">
+      <button type="button" class="topic" role="checkbox" aria-checked="false"><span class="ck" aria-hidden="true"></span><span class="tg">사업자</span><span class="tt">사업 소득이 커질 때</span></button>
+      <button type="button" class="moreb">세부 질문 5개 보기 ▾</button>
+      <div class="qs">
+        <button type="button" class="q" role="checkbox" aria-checked="false"><span class="ck" aria-hidden="true"></span><span class="t">법인 전환이 유리해지는 시점이 언제인지</span></button>
+        <button type="button" class="q" role="checkbox" aria-checked="false"><span class="ck" aria-hidden="true"></span><span class="t">소득이 오르면 건강보험료가 얼마나 따라오는지</span></button>
+        <button type="button" class="q" role="checkbox" aria-checked="false"><span class="ck" aria-hidden="true"></span><span class="t">사업 돈과 개인 돈을 어떻게 나눌지</span></button>
+        <button type="button" class="q" role="checkbox" aria-checked="false"><span class="ck" aria-hidden="true"></span><span class="t">대출 한도가 왜 그만큼만 나오는지</span></button>
+        <button type="button" class="q" role="checkbox" aria-checked="false"><span class="ck" aria-hidden="true"></span><span class="t">노란우산공제에 넣기 전에 해지 조건이 어떻게 되는지</span></button>
+      </div>
     </div>
-    <div class="qg"><h3>소득이 멈춘 뒤</h3>
-      <button type="button" class="q"><span class="pl">+</span><span class="t">은퇴 뒤 어느 계좌에서 얼마씩 꺼낼지</span></button>
-      <button type="button" class="q"><span class="pl">+</span><span class="t">퇴직금을 어떻게 받아야 세금이 적은지</span></button>
-      <button type="button" class="q"><span class="pl">+</span><span class="t">크게 아플 때 자산에서 얼마가 빠지는지</span></button>
+    <div class="qg" data-n="5">
+      <button type="button" class="topic" role="checkbox" aria-checked="false"><span class="ck" aria-hidden="true"></span><span class="tg">개인</span><span class="tt">투자 구조</span></button>
+      <button type="button" class="moreb">세부 질문 5개 보기 ▾</button>
+      <div class="qs">
+        <button type="button" class="q" role="checkbox" aria-checked="false"><span class="ck" aria-hidden="true"></span><span class="t">지금 포트폴리오가 한 업종이나 한 나라에 쏠려 있지 않은지</span></button>
+        <button type="button" class="q" role="checkbox" aria-checked="false"><span class="ck" aria-hidden="true"></span><span class="t">하락장에서 얼마까지 버틸 수 있게 짜여 있는지</span></button>
+        <button type="button" class="q" role="checkbox" aria-checked="false"><span class="ck" aria-hidden="true"></span><span class="t">비중을 언제 다시 맞출지 기준이 있는지</span></button>
+        <button type="button" class="q" role="checkbox" aria-checked="false"><span class="ck" aria-hidden="true"></span><span class="t">달러 자산 비중을 어떻게 정할지</span></button>
+        <button type="button" class="q" role="checkbox" aria-checked="false"><span class="ck" aria-hidden="true"></span><span class="t">회사 여유자금을 어디에 나눠 둘지</span></button>
+      </div>
     </div>
-    <div class="qg"><h3>지금 가진 보험</h3>
-      <button type="button" class="q"><span class="pl">+</span><span class="t">내는 보험료에 비해 보장이 맞는지</span></button>
-      <button type="button" class="q"><span class="pl">+</span><span class="t">겹치거나 빈 곳이 있는지</span></button>
+    <div class="qg" data-n="4">
+      <button type="button" class="topic" role="checkbox" aria-checked="false"><span class="ck" aria-hidden="true"></span><span class="tg">개인</span><span class="tt">부동산을 들고 갈지, 팔지</span></button>
+      <button type="button" class="moreb">세부 질문 4개 보기 ▾</button>
+      <div class="qs">
+        <button type="button" class="q" role="checkbox" aria-checked="false"><span class="ck" aria-hidden="true"></span><span class="t">보유할 때와 팔 때 세금을 나란히 놓으면 어느 쪽이 나은지</span></button>
+        <button type="button" class="q" role="checkbox" aria-checked="false"><span class="ck" aria-hidden="true"></span><span class="t">개인 명의로 둘지, 법인에 담을지</span></button>
+        <button type="button" class="q" role="checkbox" aria-checked="false"><span class="ck" aria-hidden="true"></span><span class="t">판 돈을 다음에 어디에 둘지</span></button>
+        <button type="button" class="q" role="checkbox" aria-checked="false"><span class="ck" aria-hidden="true"></span><span class="t">임대소득에 세금과 건강보험료가 어떻게 붙는지</span></button>
+      </div>
+    </div>
+    <div class="qg" data-n="4">
+      <button type="button" class="topic" role="checkbox" aria-checked="false"><span class="ck" aria-hidden="true"></span><span class="tg">개인</span><span class="tt">다음 세대로 넘기는 일</span></button>
+      <button type="button" class="moreb">세부 질문 4개 보기 ▾</button>
+      <div class="qs">
+        <button type="button" class="q" role="checkbox" aria-checked="false"><span class="ck" aria-hidden="true"></span><span class="t">상속세 낼 현금이 어디서 나오는지</span></button>
+        <button type="button" class="q" role="checkbox" aria-checked="false"><span class="ck" aria-hidden="true"></span><span class="t">증여를 언제, 무엇부터 할지</span></button>
+        <button type="button" class="q" role="checkbox" aria-checked="false"><span class="ck" aria-hidden="true"></span><span class="t">배우자 상속공제를 얼마나 쓸 수 있는지</span></button>
+        <button type="button" class="q" role="checkbox" aria-checked="false"><span class="ck" aria-hidden="true"></span><span class="t">유언대용신탁으로 미리 정해 둘지</span></button>
+      </div>
+    </div>
+    <div class="qg" data-n="4">
+      <button type="button" class="topic" role="checkbox" aria-checked="false"><span class="ck" aria-hidden="true"></span><span class="tg">개인</span><span class="tt">투자와 세금</span></button>
+      <button type="button" class="moreb">세부 질문 4개 보기 ▾</button>
+      <div class="qs">
+        <button type="button" class="q" role="checkbox" aria-checked="false"><span class="ck" aria-hidden="true"></span><span class="t">여러 증권사에 흩어진 것을 한 표로 보고 싶다</span></button>
+        <button type="button" class="q" role="checkbox" aria-checked="false"><span class="ck" aria-hidden="true"></span><span class="t">일반계좌, ISA, 연금계좌에 무엇을 담을지</span></button>
+        <button type="button" class="q" role="checkbox" aria-checked="false"><span class="ck" aria-hidden="true"></span><span class="t">해외주식 양도세를 줄일 방법이 있는지</span></button>
+        <button type="button" class="q" role="checkbox" aria-checked="false"><span class="ck" aria-hidden="true"></span><span class="t">금융소득이 2천만원을 넘으면 무엇이 달라지는지</span></button>
+      </div>
+    </div>
+    <div class="qg" data-n="4">
+      <button type="button" class="topic" role="checkbox" aria-checked="false"><span class="ck" aria-hidden="true"></span><span class="tg">개인</span><span class="tt">소득이 멈춘 뒤</span></button>
+      <button type="button" class="moreb">세부 질문 4개 보기 ▾</button>
+      <div class="qs">
+        <button type="button" class="q" role="checkbox" aria-checked="false"><span class="ck" aria-hidden="true"></span><span class="t">은퇴 뒤 어느 계좌에서 얼마씩 꺼낼지</span></button>
+        <button type="button" class="q" role="checkbox" aria-checked="false"><span class="ck" aria-hidden="true"></span><span class="t">퇴직금을 어떻게 받아야 세금이 적은지</span></button>
+        <button type="button" class="q" role="checkbox" aria-checked="false"><span class="ck" aria-hidden="true"></span><span class="t">크게 아플 때 자산에서 얼마가 빠지는지</span></button>
+        <button type="button" class="q" role="checkbox" aria-checked="false"><span class="ck" aria-hidden="true"></span><span class="t">국민연금과 개인연금을 언제부터 받을지</span></button>
+      </div>
+    </div>
+    <div class="qg" data-n="3">
+      <button type="button" class="topic" role="checkbox" aria-checked="false"><span class="ck" aria-hidden="true"></span><span class="tg">개인</span><span class="tt">지금 가진 보험</span></button>
+      <button type="button" class="moreb">세부 질문 3개 보기 ▾</button>
+      <div class="qs">
+        <button type="button" class="q" role="checkbox" aria-checked="false"><span class="ck" aria-hidden="true"></span><span class="t">내는 보험료에 비해 보장이 맞는지</span></button>
+        <button type="button" class="q" role="checkbox" aria-checked="false"><span class="ck" aria-hidden="true"></span><span class="t">겹치거나 빈 곳이 있는지</span></button>
+        <button type="button" class="q" role="checkbox" aria-checked="false"><span class="ck" aria-hidden="true"></span><span class="t">집 화재나 일상 배상 같은 보험이 빠져 있지 않은지</span></button>
+      </div>
     </div>
     <div class="qg free"><h3>여기 없는 것도 됩니다.</h3>
       <p>자산에 닿는 것이면 같이 봅니다.</p>
@@ -698,6 +808,15 @@ footer .sns a{text-decoration:none;color:var(--ink2);font-weight:600}
     <div class="stat"><div class="v">500억+</div><div class="k">누적 투자유치</div></div>
     <div class="stat"><div class="v">4위</div><div class="k">키움증권 실전투자대회<br><span class="nb">국내정규전</span> · <span class="nb">4만 5천여명</span></div></div>
   </div>
+  <!-- 투자 원칙: A안 라이브 「촉이 아니라 규칙입니다」 문구. 종목·타이밍·수익률은 넣지 않는다(자본시장법 제17조). -->
+  <div class="invest">
+    <p class="ih">투자는 <b>촉이 아니라 규칙</b>입니다. <span class="nb">살 때 이미 팔 자리를 정해 둡니다.</span></p>
+    <div class="ip">
+      <div><b>사기 전에 정하는 세 가지</b><span>왜 사는지, 얼마에 팔지, 얼마를 넣을지. 이 셋을 안 정하고 사면 그날 기분이 대신 정합니다.</span></div>
+      <div><b>몰라서 못 지키는 게 아닙니다</b><span>손절해야 한다는 걸 모르는 사람은 없습니다. 그런데 막상 그 가격이 오면 「조금만 더 기다려보자」가 나옵니다. 그 한 번이 계좌를 바꿉니다.</span></div>
+      <div><b>종목은 알려드리지 않습니다</b><span>알려드리면 다음에도 저에게 물으셔야 합니다. 무엇을 보고 어떻게 정하는지 아시면, 그다음부터는 혼자 하십니다.</span></div>
+    </div>
+  </div>
   <div class="about">
     <div class="col">
       <div><h3>지금 하는 일</h3><ul>
@@ -743,6 +862,7 @@ footer .sns a{text-decoration:none;color:var(--ink2);font-weight:600}
     <input type="hidden" name="subject" value="[첫대화] 첫 대화 신청 (프로필)">
     <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
     <input type="hidden" name="고른질문" id="pickedField" value="">
+    <input type="hidden" name="관심주제" id="topicField" value="">
     <div class="fgrid">
       <div class="two">
         <div><label class="lb" for="fName">이름 <i>*</i></label><input id="fName" name="이름" type="text" required placeholder="성함"></div>
@@ -755,13 +875,13 @@ footer .sns a{text-decoration:none;color:var(--ink2);font-weight:600}
           <label><input type="radio" name="구분" value="개인사업자 · 프리랜서"><span>개인사업자 · 프리랜서</span></label>
           <label><input type="radio" name="구분" value="세미나 요청"><span>세미나 요청</span></label>
         </div></div>
-      <div><span class="lb">고르신 질문</span>
-        <div class="picked" id="pickedBox">아직 없습니다. <a href="#qs">질문 고르기</a></div></div>
+      <div><span class="lb">고르신 주제와 질문</span>
+        <div class="picked" id="pickedBox">아직 없습니다. <a href="#qs">주제 고르기</a></div></div>
       <div><label class="lb" for="fMsg">더 적으실 것 <em>선택</em></label><textarea id="fMsg" name="문의내용" placeholder="비워 두셔도 됩니다."></textarea></div>
       <div class="consent">
         <label><input type="checkbox" name="개인정보수집이용동의" value="동의함" required><span>[필수] 개인정보 수집·이용에 동의합니다.</span></label>
         <details><summary>수집 항목 · 목적 · 보유기간</summary><div class="body">
-          <p>수집 항목: 이름, 연락처, 구분, 고르신 질문, 문의 내용</p>
+          <p>수집 항목: 이름, 연락처, 구분, 고르신 주제와 질문, 문의 내용</p>
           <p>이용 목적: 첫 대화 신청 접수와 연락</p>
           <p>보유 기간: 상담 완료 후 1년이 지나면 지체 없이 파기</p>
           <p>동의를 거부하실 수 있으며, 거부하시면 신청이 제한됩니다. 신청 내용은 Web3Forms를 거쳐 담당자 이메일로 전달됩니다.</p>
@@ -794,6 +914,8 @@ footer .sns a{text-decoration:none;color:var(--ink2);font-weight:600}
   © 2026 · 본 페이지는 개인 소개와 비즈니스 목적으로 제작되었습니다.
 </div></footer>
 
+<div class="toast" id="toast" role="status" aria-live="polite"><span>문의서에 담았습니다</span><a href="#ask">보내러 가기 →</a></div>
+
 <div class="stick" id="stick">
   <div><b id="stickT">첫 대화 신청</b><small id="stickS">상담료 없음 · 준비하실 것 없음</small></div>
   <a href="#ask">신청하기</a>
@@ -801,27 +923,74 @@ footer .sns a{text-decoration:none;color:var(--ink2);font-weight:600}
 
 <script>
 (function(){
-  var picked = [], box = document.getElementById('pickedBox'), field = document.getElementById('pickedField');
+  var box = document.getElementById('pickedBox'), field = document.getElementById('pickedField'), tfield = document.getElementById('topicField');
   var stickT = document.getElementById('stickT'), stickS = document.getElementById('stickS');
+  var toast = document.getElementById('toast'), toastTimer = null;
+  var groups = [].slice.call(document.querySelectorAll('.qg[data-n]'));
   function esc(s){ return s.replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+  function li(t){ return '<li>' + esc(t) + '</li>'; }
+  function txt(el, sel){ return ((el.querySelector(sel)||{}).textContent||'').trim(); }
+  // st: true 체크 · false 빈칸 · 'mixed' 일부
+  function setCk(b, st){
+    b.classList.toggle('on', st === true); b.classList.toggle('part', st === 'mixed');
+    b.setAttribute('aria-checked', st === 'mixed' ? 'mixed' : st ? 'true' : 'false');
+  }
+  function sync(g){
+    var qs = g.querySelectorAll('.q'), n = 0;
+    qs.forEach(function(q){ if(q.classList.contains('on')) n++; });
+    setCk(g.querySelector('.topic'), n === 0 ? false : n === qs.length ? true : 'mixed');
+  }
   function render(){
-    field.value = picked.join(' / ');
-    if(!picked.length){
-      box.innerHTML = '아직 없습니다. <a href="#qs">질문 고르기</a>';
+    var topics = [], picked = [], h = '';
+    groups.forEach(function(g){
+      var name = txt(g, '.tt'), qs = g.querySelectorAll('.q'), on = [];
+      qs.forEach(function(q){ if(q.classList.contains('on')) on.push(txt(q, '.t')); });
+      if(!on.length) return;
+      if(on.length === qs.length){ topics.push(name + ' (전체)'); h += '<p class="pk">' + esc(name) + '</p><ul><li>세부 질문 전체</li></ul>'; }
+      else { picked = picked.concat(on); h += '<p class="pk">' + esc(name) + '</p><ul>' + on.map(li).join('') + '</ul>'; }
+    });
+    field.value = picked.join(' / '); tfield.value = topics.join(' / ');
+    if(!h){
+      box.innerHTML = '아직 없습니다. <a href="#qs">주제 고르기</a>';
       stickT.textContent = '첫 대화 신청'; stickS.textContent = '상담료 없음 · 준비하실 것 없음'; return;
     }
-    box.innerHTML = '<ul>' + picked.map(function(t){ return '<li>' + esc(t) + '</li>'; }).join('') + '</ul>';
-    stickT.textContent = '고르신 질문 ' + picked.length + '개'; stickS.textContent = '이대로 신청하실 수 있습니다';
+    box.innerHTML = h;
+    var parts = [];
+    if(topics.length) parts.push('주제 ' + topics.length + '개');
+    if(picked.length) parts.push('질문 ' + picked.length + '개');
+    stickT.textContent = '고르신 ' + parts.join(' · '); stickS.textContent = '이대로 신청하실 수 있습니다';
   }
-  document.querySelectorAll('.q').forEach(function(b){
-    b.setAttribute('aria-pressed','false');
-    b.addEventListener('click', function(){
-      var t = b.querySelector('.t').textContent.trim(), i = picked.indexOf(t);
-      if(i >= 0){ picked.splice(i,1); b.classList.remove('on'); b.setAttribute('aria-pressed','false'); b.querySelector('.pl').textContent = '+'; }
-      else { picked.push(t); b.classList.add('on'); b.setAttribute('aria-pressed','true'); b.querySelector('.pl').textContent = '✓'; }
+  function say(){
+    if(!toast) return;
+    toast.classList.add('show');
+    clearTimeout(toastTimer); toastTimer = setTimeout(function(){ toast.classList.remove('show'); }, 2400);
+  }
+  if(toast) toast.querySelector('a').addEventListener('click', function(){ toast.classList.remove('show'); });
+  // 세부 질문: 데스크톱은 펼친 채로, 모바일은 접힌 채로 시작한다. 제목을 고르면 펼쳐서 무엇이 담겼는지 보여 준다
+  var wide = window.matchMedia && window.matchMedia('(min-width: 900px)').matches;
+  groups.forEach(function(g){
+    var mb = g.querySelector('.moreb'), n = g.getAttribute('data-n'), tp = g.querySelector('.topic');
+    function label(){ mb.textContent = g.classList.contains('open') ? '세부 질문 접기 ▴' : '세부 질문 ' + n + '개 보기 ▾'; }
+    if(wide) g.classList.add('open');
+    label();
+    mb.addEventListener('click', function(){ g.classList.toggle('open'); label(); });
+    tp.addEventListener('click', function(){
+      var all = tp.classList.contains('on');
+      g.querySelectorAll('.q').forEach(function(q){ setCk(q, !all); });
+      sync(g);
+      if(!all && !g.classList.contains('open')){ g.classList.add('open'); label(); }
       render();
+      if(!all) say();
+    });
+    g.querySelectorAll('.q').forEach(function(q){
+      q.addEventListener('click', function(){
+        var was = q.classList.contains('on');
+        setCk(q, !was); sync(g); render();
+        if(!was) say();
+      });
     });
   });
+
   var rail = document.getElementById('caseRail');
   document.querySelectorAll('.filters button').forEach(function(b){
     b.addEventListener('click', function(){
@@ -879,6 +1048,10 @@ footer .sns a{text-decoration:none;color:var(--ink2);font-weight:600}
   });
   // 질문 고르기 · 사례 분류 · 근거 탭 (각 버튼의 기존 동작이 먼저 돈 뒤에 센다)
   document.addEventListener('click', function(e){
+    var tp = e.target.closest ? e.target.closest('.topic') : null;
+    if(tp){ T('topic_pick', { t: ((tp.querySelector('.tt')||{}).textContent||'').trim(), on: tp.classList.contains('on') ? 1 : 0 }); return; }
+    var mb = e.target.closest ? e.target.closest('.moreb') : null;
+    if(mb){ var g = mb.closest('.qg'); T('qgroup_open', { t: (((g && g.querySelector('.tt'))||{}).textContent||'').trim(), open: (g && g.classList.contains('open')) ? 1 : 0 }); return; }
     var q = e.target.closest ? e.target.closest('.q') : null;
     if(q){ T('question_pick', { q: (q.textContent||'').trim().slice(0,40), on: q.classList.contains('on') ? 1 : 0 }); return; }
     var f = e.target.closest ? e.target.closest('.filters button') : null;
@@ -914,7 +1087,8 @@ footer .sns a{text-decoration:none;color:var(--ink2);font-weight:600}
     f2.addEventListener('focusin', function(e){ if(!started && e.target.matches('input,select,textarea')){ started = true; T('form_start', { form:'ask' }); } });
     f2.addEventListener('submit', function(){
       var v = (document.getElementById('pickedField')||{}).value || '';
-      T('form_submit', { form:'ask', q_n: v ? v.split(' / ').length : 0 });
+      var tv = (document.getElementById('topicField')||{}).value || '';
+      T('form_submit', { form:'ask', q_n: v ? v.split(' / ').length : 0, t_n: tv ? tv.split(' / ').length : 0 });
     });
   }
   // 옛 A안 주소: 소개서·QR·인스타에 나간 링크를 B의 맞는 자리로 보낸다
