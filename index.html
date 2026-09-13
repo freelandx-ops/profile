@@ -177,6 +177,11 @@ button{font-family:inherit}
 @media(min-width:1120px){.rail{margin-inline:0;padding-inline:0}}
 .case{width:min(86vw,352px);min-height:330px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px;display:flex;flex-direction:column}
 #caseRail{align-items:flex-start}
+#toolRail{scroll-snap-type:none;scrollbar-width:none;cursor:grab;overscroll-behavior-x:contain}
+#toolRail::-webkit-scrollbar{display:none}
+#toolRail.dragging{cursor:grabbing}
+#toolRail .track{display:flex;gap:12px;width:max-content}
+#toolRail .track > *{flex:0 0 auto}
 .case[hidden]{display:none}
 .case .tg{font-size:12.5px;font-weight:600;color:var(--blue)}
 .case .who{font-size:17.5px;font-weight:700;margin:4px 0 12px}
@@ -787,7 +792,7 @@ footer .sns a{text-decoration:none;color:var(--ink2);font-weight:600}
 <section class="sec gray" id="reads"><div class="wrap">
   <h2>바로 쓰실 수 있는 자료</h2>
   <p class="sub">신청 없이 바로 열립니다.</p>
-  <div class="rail">
+  <div class="rail" id="toolRail"><div class="track">
     <a class="card2" href="https://freelandx-ops.github.io/profile/inherit/" target="_blank" rel="noopener"><span class="tg">상속세</span><b>상속세 계산기</b><em>낼 현금이 얼마나 모자라는지</em></a>
     <a class="card2" href="https://freelandx-ops.github.io/profile/calc/" target="_blank" rel="noopener"><span class="tg">비상장주식</span><b>비상장주식 가치 계산기</b><em>재무제표 두 줄로 회사 값</em></a>
     <a class="card2" href="https://freelandx-ops.github.io/profile/succession/" target="_blank" rel="noopener"><span class="tg">가업승계</span><b>가업상속 체크리스트</b><em>2026년 세제개편안 반영</em></a>
@@ -798,7 +803,18 @@ footer .sns a{text-decoration:none;color:var(--ink2);font-weight:600}
     <a class="card2" href="https://freelandx-ops.github.io/profile/variable/" target="_blank" rel="noopener"><span class="tg">변액보험</span><b>변액보험 계약 전 점검</b><em>열 가지로 내 조건에 맞는지</em></a>
     <a class="card2" href="https://freelandx-ops.github.io/profile/bigmoney/" target="_blank" rel="noopener"><span class="tg">사업·투자</span><b>큰 돈을 쫓는 체크리스트</b><em>새 사업과 투자 전에 확인할 스무 칸</em></a>
     <a class="card2" href="https://freelandx-ops.github.io/profile/flow/" target="_blank" rel="noopener"><span class="tg">자산 흐름</span><b>젊은 부자들이 돈을 옮기는 기준</b><em>선택 다섯마다 내 상황을 적어 보는 칸</em></a>
-  </div>
+    <!-- 아래는 끊김 없이 돌게 이어붙인 복제 한 벌 · 카드를 고치면 둘 다 고친다 -->
+    <a class="card2" aria-hidden="true" tabindex="-1" href="https://freelandx-ops.github.io/profile/inherit/" target="_blank" rel="noopener"><span class="tg">상속세</span><b>상속세 계산기</b><em>낼 현금이 얼마나 모자라는지</em></a>
+    <a class="card2" aria-hidden="true" tabindex="-1" href="https://freelandx-ops.github.io/profile/calc/" target="_blank" rel="noopener"><span class="tg">비상장주식</span><b>비상장주식 가치 계산기</b><em>재무제표 두 줄로 회사 값</em></a>
+    <a class="card2" aria-hidden="true" tabindex="-1" href="https://freelandx-ops.github.io/profile/succession/" target="_blank" rel="noopener"><span class="tg">가업승계</span><b>가업상속 체크리스트</b><em>2026년 세제개편안 반영</em></a>
+    <a class="card2" aria-hidden="true" tabindex="-1" href="https://freelandx-ops.github.io/profile/tax2026/" target="_blank" rel="noopener"><span class="tg">세제개편안</span><b>2026년 세제개편안 해설</b><em>무엇이 어떻게 바뀌나</em></a>
+    <a class="card2" aria-hidden="true" tabindex="-1" href="https://freelandx-ops.github.io/profile/estate/" target="_blank" rel="noopener"><span class="tg">상속·증여</span><b>상속 및 증여 케이스</b><em>재산은 그대로인데 세금이 달라지는 자리</em></a>
+    <a class="card2" aria-hidden="true" tabindex="-1" href="https://freelandx-ops.github.io/profile/cash/" target="_blank" rel="noopener"><span class="tg">현금 준비</span><b>자산가가 미리 해 두는 다섯</b><em>여섯 달 현금부터 인출 순서까지</em></a>
+    <a class="card2" aria-hidden="true" tabindex="-1" href="https://freelandx-ops.github.io/profile/retire/" target="_blank" rel="noopener"><span class="tg">은퇴</span><b>포트폴리오 계산기</b><em>은퇴 뒤 쓸 돈을 두 구간으로</em></a>
+    <a class="card2" aria-hidden="true" tabindex="-1" href="https://freelandx-ops.github.io/profile/variable/" target="_blank" rel="noopener"><span class="tg">변액보험</span><b>변액보험 계약 전 점검</b><em>열 가지로 내 조건에 맞는지</em></a>
+    <a class="card2" aria-hidden="true" tabindex="-1" href="https://freelandx-ops.github.io/profile/bigmoney/" target="_blank" rel="noopener"><span class="tg">사업·투자</span><b>큰 돈을 쫓는 체크리스트</b><em>새 사업과 투자 전에 확인할 스무 칸</em></a>
+    <a class="card2" aria-hidden="true" tabindex="-1" href="https://freelandx-ops.github.io/profile/flow/" target="_blank" rel="noopener"><span class="tg">자산 흐름</span><b>젊은 부자들이 돈을 옮기는 기준</b><em>선택 다섯마다 내 상황을 적어 보는 칸</em></a>
+  </div></div>
 </div></section>
 
 <!-- 소개: 사진은 히어로에 있으니 여기서는 뺐다 -->
@@ -1112,5 +1128,38 @@ footer .sns a{text-decoration:none;color:var(--ink2);font-weight:600}
 <!-- Cloudflare Web Analytics -->
 <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "0997cb7a7cab430e8fc4e220baf1dc4f"}'></script>
 <!-- End Cloudflare Web Analytics -->
+<script>
+/* 자료 레일 — 저절로 흐르고, 잡아끌면 그만큼 바로 간다 (2026-09-13 B안에 이식, 원본은 A안 2026-09-01).
+   ⛔ 2026-09-01 사용자 「자동 이동이랑 드래그를 같이하게 해야지」 — 손을 대도 멈추지 않는다.
+   ⛔ 카드를 두 벌 이어붙였으므로 절반을 지나면 절반만큼 빼서 끊김 없이 돈다.
+   ⛔ 드래그 뒤에는 링크를 열지 않는다 — 밀다가 손을 떼면 엉뚱한 자료가 열린다. */
+(function(){
+  var r=document.getElementById('toolRail'); if(!r) return;
+  var t=r.querySelector('.track'); if(!t) return;
+  var SPEED=34.7, dragging=false, last=null, moved=0, px=0, acc=0;
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  function half(){ return (t.scrollWidth+12)/2; }
+  function wrap(){ var h=half(); if(h<=r.clientWidth) return; if(r.scrollLeft>=h) r.scrollLeft-=h; }
+  function frame(ts){ if(last===null) last=ts; var dt=(ts-last)/1000; last=ts;
+    if(!reduce&&dt<0.5){ acc+=SPEED*dt; var step=Math.floor(acc); if(step>=1){ r.scrollLeft+=step; acc-=step; } }
+    wrap(); requestAnimationFrame(frame); }
+  requestAnimationFrame(frame);
+  r.addEventListener('pointerdown',function(e){
+    if(e.pointerType==='touch') return;
+    dragging=true; moved=0; px=e.clientX; r.classList.add('dragging');
+    try{ r.setPointerCapture(e.pointerId); }catch(_){}
+  });
+  r.addEventListener('pointermove',function(e){
+    if(!dragging) return;
+    var dx=e.clientX-px; px=e.clientX; moved+=Math.abs(dx);
+    if(dx>0&&r.scrollLeft<=0){ var h=half(); if(h>r.clientWidth) r.scrollLeft=h; }
+    r.scrollLeft-=dx; wrap(); e.preventDefault();
+  });
+  function end(e){ if(!dragging) return; dragging=false; r.classList.remove('dragging');
+    try{ r.releasePointerCapture(e.pointerId); }catch(_){} }
+  r.addEventListener('pointerup',end); r.addEventListener('pointercancel',end);
+  r.addEventListener('click',function(e){ if(moved>6){ e.preventDefault(); e.stopPropagation(); } moved=0; },true);
+})();
+</script>
 </body>
 </html>
