@@ -66,14 +66,17 @@
   .chk.on .t{font-weight:600}
   .chk .t small{display:block;font-size:14.5px;line-height:1.55;color:var(--muted);font-weight:400;margin-top:6px;letter-spacing:-.02em}
 
-  .write{margin-top:20px;background:#fff;border:1.5px dashed #c9cde0;border-radius:14px;padding:18px 18px 16px}
-  .write label{display:block;font-size:16px;font-weight:600;line-height:1.5;letter-spacing:-.024em;margin-bottom:10px}
-  .write label span{display:block;font-size:13px;font-weight:700;letter-spacing:.06em;color:var(--accent);margin-bottom:4px}
-  .write input{width:100%;background:var(--parchment);border:1px solid transparent;border-radius:10px;
-    color:var(--ink);font-family:inherit;font-size:17px;letter-spacing:-.022em;padding:13px 14px}
-  .write input:focus{outline:none;border-color:var(--accent);background:#fff}
-  .write input::placeholder{color:#b0b0b6}
-  .write.must{border-style:solid;border-color:var(--accent);background:rgba(20,40,160,.03)}
+  .write{margin-top:22px;background:#eef1fb;border:0;border-radius:16px;padding:20px 18px 18px}
+  .write label{display:block;font-size:17px;font-weight:700;line-height:1.5;letter-spacing:-.026em;margin-bottom:12px;color:var(--ink)}
+  .write label::before{content:"✎ 직접 적어 보세요";display:block;font-size:13px;font-weight:700;letter-spacing:.04em;color:var(--accent);margin-bottom:6px}
+  .write.must label::before{content:none}
+  .write label span{display:block;font-size:13px;font-weight:700;letter-spacing:.04em;color:var(--accent);margin-bottom:6px}
+  .write input{width:100%;background:#fff;border:2px solid #9aa5d6;border-radius:12px;
+    color:var(--ink);font-family:inherit;font-size:18px;font-weight:500;letter-spacing:-.022em;padding:15px 16px;
+    box-shadow:0 2px 6px rgba(20,40,160,.08)}
+  .write input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 4px rgba(20,40,160,.14)}
+  .write input::placeholder{color:#8e93a8;font-weight:400}
+  .write.must{background:rgba(20,40,160,.08);border:2px solid var(--accent)}
 
   @media(max-width:480px){
     .wrap{padding:0 18px}
