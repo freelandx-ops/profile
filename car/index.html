@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>영업이익이 얼마면 법인차는 어디까지 타도 될까</title>
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --ink:#1d1d1f; --muted:#7a7a7a; --faint:#a8a8ac; --hairline:#e0e0e0;
+    --accent:#1428A0; --accent-dark:#6E8CF2;
+    --parchment:#f5f5f7; --tile:#272729;
+  }
+  html,body{overflow-x:clip;max-width:100%}
+  html{background:#fff}
+  body{font-family:'Pretendard Variable',Pretendard,system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;word-break:keep-all;
+    background:#fff;color:var(--ink);font-size:18px;line-height:1.74;letter-spacing:-.02em}
+  .wrap{max-width:720px;margin:0 auto;padding:0 24px;min-width:0}
+
+  .cover{background:var(--tile);padding:80px 0 60px}
+  .cover *{color:#fff}
+  .cover .kicker{color:var(--accent-dark);font-size:13px;font-weight:600;letter-spacing:.06em;margin-bottom:18px}
+  .cover h1{font-size:clamp(26px,6.4vw,42px);font-weight:700;line-height:1.24;letter-spacing:-.036em}
+  .cover h1 em{font-style:normal;color:var(--accent-dark)}
+  .cover .lead{color:#c8c8cc;font-size:clamp(17px,4.2vw,19px);line-height:1.62;margin-top:20px}
+
+  .answer{margin-top:36px;display:grid;gap:14px}
+  .ac{border:1px solid var(--hairline);border-radius:18px;padding:22px 22px 20px;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+  .ac .top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
+  .ac .oi{font-size:15px;font-weight:700;color:var(--accent);letter-spacing:.02em}
+  .ac .line{font-size:clamp(24px,6vw,30px);font-weight:800;letter-spacing:-.04em}
+  .ac .car{margin-top:10px;font-size:17px;line-height:1.6}
+  .ac .car b{font-weight:700}
+  .ac .meta{margin-top:10px;display:flex;flex-wrap:wrap;gap:6px 8px}
+  .ac .meta span{font-size:14px;background:var(--parchment);border-radius:100px;padding:4px 12px;color:#444}
+  .ac .meta span.need{background:rgba(20,40,160,.08);color:var(--accent);font-weight:600}
+  p.note{color:var(--muted);font-size:15px;margin-top:14px}
+
+  .rules{margin-top:22px;display:grid;gap:10px}
+  .rl{background:var(--parchment);border-radius:14px;padding:16px 18px}
+  .rl b{display:block;font-size:22px;font-weight:800;color:var(--accent);letter-spacing:-.03em}
+  .rl span{font-size:16px;line-height:1.6;color:#444}
+
+  .topic{margin-top:64px}
+  .topic + .topic{margin-top:80px;padding-top:64px;border-top:1px solid var(--hairline)}
+  .topic > h3{font-size:clamp(23px,5.6vw,30px);font-weight:700;letter-spacing:-.036em;line-height:1.26}
+  .topic > .oneline{font-size:clamp(17px,4.2vw,20px);line-height:1.62;color:var(--muted);margin-top:14px}
+  .topic > .oneline b{font-weight:600;color:var(--ink)}
+  p{margin-top:14px}
+
+  .tw{overflow-x:auto;margin-top:20px;-webkit-overflow-scrolling:touch;max-width:100%}
+  table{border-collapse:collapse;width:100%;font-size:15.5px;letter-spacing:-.024em}
+  th,td{padding:13px 10px;text-align:left;vertical-align:top;border-bottom:1px solid var(--hairline);line-height:1.55}
+  thead th{font-size:13.5px;font-weight:700;color:var(--accent);border-bottom:1.5px solid var(--ink)}
+  th:first-child,td:first-child{padding-left:0}
+  th:last-child,td:last-child{padding-right:0}
+  td.num,th.num{text-align:right;white-space:nowrap}
+  tr.sum td{font-weight:700}
+  td.hl{color:var(--accent);font-weight:700}
+  .wide table{min-width:560px}
+
+  .punch{margin-top:24px;background:var(--parchment);border-radius:16px;padding:22px}
+  .punch .t{font-size:clamp(17px,4.2vw,19px);line-height:1.55;font-weight:700;margin:0}
+  .punch .s{font-size:16.5px;color:var(--muted);line-height:1.68;margin-top:8px}
+  .warn{margin-top:18px;border-left:4px solid #c0392b;background:#fdf3f2;border-radius:0 12px 12px 0;padding:16px 18px;font-size:16.5px}
+
+  .cards{margin-top:24px;display:grid;gap:12px}
+  .cd{border:1px solid var(--hairline);border-radius:16px;padding:20px}
+  .cd h4{font-size:18.5px;font-weight:700;letter-spacing:-.03em}
+  .cd p{margin-top:8px;font-size:16.5px;line-height:1.7;color:#444}
+  .arrow{margin-top:24px;font-weight:700;color:var(--accent);font-size:18px}
+
+  .checks{margin-top:26px}
+  .chk{display:grid;grid-template-columns:32px 1fr;column-gap:14px;align-items:center;
+    padding:15px 17px;margin-bottom:8px;border:1.5px solid transparent;border-radius:13px;
+    background:var(--parchment);cursor:pointer;user-select:none;transition:background .13s,border-color .13s}
+  .chk.on{background:rgba(20,40,160,.06);border-color:var(--accent)}
+  .box{width:26px;height:26px;border:2px solid #b4b4bd;border-radius:8px;background:#fff;
+    display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;color:transparent}
+  .chk.on .box{background:var(--accent);border-color:var(--accent);color:#fff}
+  .chk .t{font-size:17px;line-height:1.5;color:#555}
+  .chk.on .t{color:var(--ink);font-weight:600}
+  .chk .t small{display:block;font-size:14px;color:var(--muted);font-weight:400}
+
+  .tally{position:fixed;left:0;right:0;bottom:0;z-index:29;transform:translateY(105%);transition:.26s;
+    background:rgba(255,255,255,.97);backdrop-filter:blur(14px);border-top:1px solid var(--hairline)}
+  .tally.on{transform:translateY(0)}
+  .tally .in{max-width:720px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:14px}
+  .tally .cnt{font-size:16px;color:var(--muted)}
+  .tally .cnt b{color:var(--accent);font-size:18px;font-weight:700}
+  .btn{display:inline-block;background:var(--accent);color:#fff;border:0;border-radius:100px;
+    font-family:inherit;font-size:16px;font-weight:600;padding:13px 26px;text-decoration:none;cursor:pointer;white-space:nowrap}
+  .form{background:var(--parchment);border-radius:18px;padding:30px 24px;margin-top:24px}
+  .form label{display:block;font-size:15px;font-weight:600;color:var(--muted);margin:20px 0 8px}
+  .form label:first-of-type{margin-top:0}
+  .form input,.form textarea{width:100%;background:#fff;border:1px solid var(--hairline);border-radius:12px;
+    color:var(--ink);font-family:inherit;font-size:17px;padding:14px 16px}
+  .form textarea{min-height:88px;resize:vertical;line-height:1.7}
+  .form .picked{background:#fff;border:1px solid var(--hairline);border-radius:12px;padding:16px;
+    font-size:16px;color:var(--muted);line-height:1.8;min-height:54px;white-space:pre-line}
+  .form .fine{font-size:14.5px;color:var(--muted);margin-top:16px;line-height:1.7}
+  footer{border-top:1px solid var(--hairline);margin-top:88px;padding:36px 0 96px;font-size:14.5px;color:var(--muted);line-height:1.78}
+  footer .who{margin-top:24px;padding-top:20px;border-top:1px solid var(--hairline);display:flex;justify-content:space-between;align-items:flex-end}
+  footer .who b{display:block;font-weight:600;color:var(--ink)}
+
+  @media(max-width:480px){
+    .wrap{padding:0 18px}
+    .cover{padding:64px 0 48px}
+    .cover h1 br{display:none}
+    .topic{margin-top:52px}
+    .topic + .topic{margin-top:64px;padding-top:52px}
+    th,td{padding:12px 8px;font-size:14.5px}
+  }
+</style>
+</head>
+<body>
+
+<div class="cover"><div class="wrap">
+  <p class="kicker">일반법인 · 연 1만km · 일반 옵션 넣은 가격 · 2026년 9월 14일 기준</p>
+  <h1>영업이익이 얼마면<br><em>법인차는 어디까지</em> 타도 될까</h1>
+  <p class="lead">결론부터 드립니다. 영업이익 구간별 차값 기준과 그 급의 차입니다. 왜 이 기준인지는 아래에서 설명합니다.</p>
+</div></div>
+
+<div class="wrap">
+
+<div class="answer">
+  <div class="ac">
+    <div class="top"><span class="oi">영업이익 1억원</span><span class="line">4,000만원 이하</span></div>
+    <p class="car">쏘나타 하이브리드 익스클루시브 <b>3,846만원</b></p>
+    <div class="meta"><span>1년 차 비용 925.6만원</span><span>영업이익의 9.3%</span><span>운행기록부 안 써도 됨</span></div>
+  </div>
+  <div class="ac">
+    <div class="top"><span class="oi">영업이익 2억원</span><span class="line">5천만원대</span></div>
+    <p class="car">그랜저 하이브리드 익스클루시브 <b>5,173만원</b><br>G70 2.5 터보 <b>5,028만원</b></p>
+    <div class="meta"><span>1년 차 비용 1,167.0만원 · 1,252.8만원</span><span>영업이익의 5.8% · 6.3%</span><span>보험료·수선비가 333만원 · 247만원 안이면 기록부 안 써도 됨</span></div>
+  </div>
+  <div class="ac">
+    <div class="top"><span class="oi">영업이익 3억원</span><span class="line">6천만원대</span></div>
+    <p class="car">GV70 2.5 터보 2WD <b>6,163만원</b></p>
+    <div class="meta"><span>1년 차 비용 1,479.8만원</span><span>영업이익의 4.9%</span><span class="need">운행기록부 써야 함</span></div>
+  </div>
+  <div class="ac">
+    <div class="top"><span class="oi">영업이익 5억원 이상</span><span class="line">8,000만원 미만</span></div>
+    <p class="car">G80 2.5 터보 <b>6,598만원</b></p>
+    <div class="meta"><span>1년 차 비용 1,563.3만원</span><span>영업이익의 3.1%</span><span class="need">운행기록부 써야 함</span></div>
+  </div>
+</div>
+<p class="note">1년 차 비용은 감가상각비(차값 ÷ 5)와 유류비와 자동차세를 더한 금액입니다. 보험료는 법인마다 달라 뺐습니다.</p>
+
+<section class="topic">
+  <h3>기준은 법이 정한 금액 셋입니다</h3>
+  <p class="oneline">영업이익이 커져도 <b>비용으로 인정되는 금액은 이 선에서 멈춥니다.</b> 그래서 5억원 이상이어도 8,000만원 아래로 봅니다.</p>
+  <div class="rules">
+    <div class="rl"><b>4,000만원</b><span>감가상각비는 해마다 800만원까지만 비용이 됩니다. 차값 4,000만원까지는 감가 전부가 그해 비용입니다.</span></div>
+    <div class="rl"><b>1,500만원</b><span>1년 차 관련비용이 이 안이면 운행기록부 없이 전부 비용으로 인정됩니다.</span></div>
+    <div class="rl"><b>8,000만원</b><span>차값이 이 금액 이상이면 연두색 전용번호판을 달아야 합니다.</span></div>
+  </div>
+  <div class="punch"><p class="t">이렇게 고르면 차 비용은 영업이익의 3~9%입니다.</p><p class="s">영업이익이 반으로 줄어든 해에도 차 비용이 20%를 넘지 않습니다. 차 비용은 5년 동안 줄지 않는데, 그해에 가장 먼저 줄이게 되는 돈이 대표님 퇴직금 적립과 보장입니다.</p></div>
+</section>
+
+<section class="topic">
+  <h3>표를 쓰기 전에 맞아야 하는 조건</h3>
+  <p class="oneline">하나라도 어긋나면 <b>비용 인정이 0원</b>이 됩니다.</p>
+  <div class="tw"><table>
+    <thead><tr><th>조건</th><th>내용</th></tr></thead>
+    <tbody>
+      <tr><td>업무전용자동차보험</td><td>법인의 임원·직원, 또는 계약으로 법인 업무를 운전하는 사람이 운전할 때만 보상하는 보험에 들어야 합니다</td></tr>
+      <tr><td>전용번호판</td><td>차값 8,000만원 이상이면 연두색 번호판을 달아야 합니다</td></tr>
+      <tr><td>출퇴근</td><td>대표님 출퇴근 거리도 업무용 거리에 들어갑니다</td></tr>
+    </tbody>
+  </table></div>
+  <div class="warn"><b>가족분이 이 차를 운전하시면</b> 업무전용자동차보험 조건부터 맞지 않습니다. 법인 임원이나 직원이 아닌 가족은 운전자 범위에 들어가지 않습니다.</div>
+</section>
+
+<section class="topic">
+  <h3>운행기록부가 필요해지는 금액, 1,500만원</h3>
+  <p class="oneline">감가상각비, 유류비, 보험료, 수선비, 자동차세, 통행료를 합친 <b>1년 비용이 1,500만원 안이면</b> 기록부 없이 전부 비용입니다.</p>
+  <p>1,500만원을 넘기면 기록부 없이는 1,500만원까지만 인정됩니다. <b>넘는 금액은 비용에서 빠지고 차를 쓰는 대표님 상여로 처리</b>되어 대표님 소득세가 붙습니다. 기록부를 쓰면 적힌 업무 거리 비율만큼 인정됩니다.</p>
+  <p>2억원 구간 차는 보험료와 수선비를 그랜저 하이브리드 333.0만원, G70 247.2만원까지 넣어도 1,500만원 안입니다. 3억원 구간 GV70은 20.2만원만 남아 보험료 하나로 넘습니다.</p>
+</section>
+
+<section class="topic">
+  <h3>차값이 올라가도 비용 인정은 거의 늘지 않습니다</h3>
+  <p class="oneline">감가상각비는 <b>해마다 800만원까지만</b> 그해 비용이 됩니다.</p>
+  <p>넘는 금액은 다음 해로 넘어가, 감가가 끝난 6년째부터 해마다 800만원까지 인정됩니다. 그 전에 차를 파시면 처분손실에도 해마다 800만원 한도가 따로 걸립니다.</p>
+  <div class="tw"><table>
+    <thead><tr><th></th><th class="num">쏘나타 HEV</th><th class="num">G80</th><th class="num">차이</th></tr></thead>
+    <tbody>
+      <tr><td>차값</td><td class="num">3,846만원</td><td class="num">6,598만원</td><td class="num hl">2,752만원</td></tr>
+      <tr><td>첫 5년 해마다 비용 인정</td><td class="num">925.6만원</td><td class="num">1,043.7만원</td><td class="num hl">118.1만원</td></tr>
+      <tr><td>법인세 20% 구간 절세</td><td class="num">185.1만원</td><td class="num">208.7만원</td><td class="num hl">23.6만원</td></tr>
+    </tbody>
+  </table></div>
+  <div class="punch"><p class="t">차값은 2,752만원 더 드는데, 줄어드는 법인세는 해마다 23.6만원 더 많을 뿐입니다.</p><p class="s">보험료를 빼고 전부 업무용으로 인정될 때 기준입니다. 비싼 차의 차액은 대부분 절세 없이 법인 현금으로 나갑니다.</p></div>
+</section>
+
+<section class="topic">
+  <h3>차 다섯 대 계산 내역</h3>
+  <p class="oneline">같은 조건으로 계산했습니다. 단위는 만원입니다.</p>
+  <div class="tw wide"><table>
+    <thead><tr><th></th><th class="num">쏘나타 HEV</th><th class="num">그랜저 HEV</th><th class="num">G70</th><th class="num">GV70</th><th class="num">G80</th></tr></thead>
+    <tbody>
+      <tr><td>차값</td><td class="num">3,846</td><td class="num">5,173</td><td class="num">5,028</td><td class="num">6,163</td><td class="num">6,598</td></tr>
+      <tr><td>감가 (÷ 5)</td><td class="num">769.2</td><td class="num">1,034.6</td><td class="num">1,005.6</td><td class="num">1,232.6</td><td class="num">1,319.6</td></tr>
+      <tr><td>유류비</td><td class="num">104.4</td><td class="num">103.3</td><td class="num">182.3</td><td class="num">182.3</td><td class="num">178.8</td></tr>
+      <tr><td>자동차세</td><td class="num">52.0</td><td class="num">29.1</td><td class="num">64.9</td><td class="num">64.9</td><td class="num">64.9</td></tr>
+      <tr class="sum"><td>합계</td><td class="num">925.6</td><td class="num">1,167.0</td><td class="num">1,252.8</td><td class="num">1,479.8</td><td class="num">1,563.3</td></tr>
+      <tr><td>1,500까지</td><td class="num hl">574.4</td><td class="num hl">333.0</td><td class="num hl">247.2</td><td class="num hl">20.2</td><td class="num hl">넘음</td></tr>
+      <tr><td>첫 5년 비용 인정</td><td class="num">925.6</td><td class="num">932.4</td><td class="num">1,047.2</td><td class="num">1,047.2</td><td class="num">1,043.7</td></tr>
+    </tbody>
+  </table></div>
+  <p class="note">넣은 옵션 · 쏘나타 하이브리드 익스클루시브에 파노라마 선루프 · 그랜저 하이브리드 익스클루시브에 스마트센스Ⅱ플러스와 파노라마 선루프 · G70 2.5 터보에 드라이빙 어시스턴스Ⅱ, 파노라마 선루프, 컨비니언스 · GV70 2.5 터보 2WD에 스마트 드라이빙 세이프티Ⅰ, 파퓰러Ⅰ, 빌트인캠, 파노라마 선루프 · G80 2.5 터보에 드라이빙 어시스턴스Ⅰ·Ⅱ, 빌트인캠, 파노라마 선루프</p>
+  <p class="note">복합연비 쏘나타 하이브리드 17.8km/L(17인치), 그랜저 하이브리드 18.0km/L(18인치), G70·GV70 10.2km/L(18인치), G80 10.4km/L(18인치 빌트인캠) · 휘발유 2026년 9월 둘째 주 전국 평균 1,859.1원 · 자동차세 1,600cc 초과 cc당 200원, 이하 140원에 지방교육세 30% · 차값은 제조사 가격표 기준이며 할인과 개별소비세 적용에 따라 달라집니다</p>
+</section>
+
+<section class="topic">
+  <h3>구매·리스·렌트</h3>
+  <p class="oneline">방식이 한도를 바꾸지는 않습니다. <b>바뀌는 것은 처음에 나가는 돈과 5년 뒤 차가 누구 것인가</b>입니다.</p>
+  <div class="tw"><table>
+    <thead><tr><th>방식</th><th>감가로 보는 금액</th></tr></thead>
+    <tbody>
+      <tr><td>구매</td><td>차값 ÷ 5</td></tr>
+      <tr><td>리스</td><td>리스료에서 보험료·자동차세·수선유지비를 뺀 금액</td></tr>
+      <tr><td>렌트</td><td>렌트료의 70%</td></tr>
+    </tbody>
+  </table></div>
+  <p>셋 다 감가로 보는 금액이 해마다 800만원까지 비용이 되고, 1년 관련비용이 1,500만원을 넘으면 기록부가 필요합니다. 렌트는 월 렌트료가 약 95.2만원을 넘으면 감가로 보는 금액이 800만원을 넘습니다(800만원 ÷ 70% ÷ 12개월).</p>
+</section>
+
+<section class="topic">
+  <h3>한 단계 낮추면 법인에 남는 돈</h3>
+  <p class="oneline">절세는 거의 그대로이고 <b>법인 통장에 현금이 남습니다.</b></p>
+  <div class="tw"><table>
+    <thead><tr><th>바꾸면</th><th class="num">차값 차이</th><th class="num">5년간 남는 돈</th></tr></thead>
+    <tbody>
+      <tr><td>GV70 → G70</td><td class="num">1,135만원</td><td class="num hl">1,135만원</td></tr>
+      <tr><td>G80 → 그랜저 HEV</td><td class="num">1,425만원</td><td class="num hl">약 1,870~1,926만원</td></tr>
+    </tbody>
+  </table></div>
+  <p class="note">G80에서 그랜저 하이브리드로 바꾸면 유지비가 해마다 111.3만원 줄고, 그만큼 비용 인정도 줄어 늘어난 법인세를 뺐습니다. 법인세 20% 구간이면 약 1,870만원, 10% 구간이면 약 1,926만원입니다.</p>
+</section>
+
+<section class="topic">
+  <h3>그 돈을 법인에서 쓸 수 있는 곳 넷</h3>
+  <p class="oneline">같은 1천만원이라도 차에 들어가면 5년 뒤 중고차 값이 되고, <b>법인에 남으면 아래 넷에 쓰입니다.</b></p>
+  <div class="cards">
+    <div class="cd"><h4>대표님 퇴직금 재원</h4><p>정관이나 정관이 위임한 규정에 임원 퇴직금 기준이 있으면 그 기준 안의 퇴직금이 법인 비용이 됩니다. 기준이 없으면 한도가 퇴직 전 1년 총급여 × 10% × 근속연수로 줄어듭니다. DC형 퇴직연금에 넣는 부담금은 넣는 해에 비용이 됩니다.</p></div>
+    <div class="cd"><h4>법인 명의 배당 투자</h4><p>법인이 다른 회사 주식에서 받은 배당은 지분율에 따라 일부가 과세 소득에서 빠집니다. 지분 20% 미만이면 30%, 20% 이상 50% 미만이면 80%, 50% 이상이면 100%입니다. 배당기준일 전 3개월 안에 산 주식은 빠집니다.</p></div>
+    <div class="cd"><h4>직원 단체 보장</h4><p>직원을 피보험자로 한 단체 보장성보험은 직원 1인당 연 70만원까지 직원 소득세가 붙지 않고, 법인은 복리후생비로 처리합니다.</p></div>
+    <div class="cd"><h4>대표님 유고 대비</h4><p>대표님이 갑자기 일을 못 하시게 되면 거래처, 대출, 직원 급여가 한꺼번에 흔들립니다. 법인이 그 기간을 버틸 돈을 따로 준비해 두는 칸입니다.</p></div>
+  </div>
+  <p class="arrow">그래서, 제일 먼저 볼 건, 우리 법인 정관의 임원 퇴직금 기준</p>
+  <p>퇴직금 기준이 없으면 쌓아도 비용 인정 한도가 줄어들고, 나머지 셋의 금액도 그 한도를 보고 정하게 됩니다.</p>
+</section>
+
+<section class="topic">
+  <h3>계산이 달라지는 조건</h3>
+  <p class="oneline">해당하는 것을 누르시면 <b>아래 폼에 그대로 첨부됩니다.</b></p>
+  <div class="checks">
+    <div class="chk" data-t="가족이 이 차를 운전한다"><span class="box">&#10003;</span><span class="t">가족분이 이 차를 운전하신다</span></div>
+    <div class="chk" data-t="1년 주행이 1만km보다 많다"><span class="box">&#10003;</span><span class="t">1년 주행이 출퇴근 포함 1만km보다 많다</span></div>
+    <div class="chk" data-t="리스나 렌트를 생각하고 있다"><span class="box">&#10003;</span><span class="t">리스나 렌트를 생각하고 있다</span></div>
+    <div class="chk" data-t="매출 대부분이 부동산 임대다"><span class="box">&#10003;</span><span class="t">매출 대부분이 부동산 임대다<small>한도가 1,500만원 → 500만원, 800만원 → 400만원으로 줄어듭니다</small></span></div>
+    <div class="chk" data-t="법인 명의 차가 이미 있다"><span class="box">&#10003;</span><span class="t">법인 명의 차가 이미 한 대 이상 있다</span></div>
+    <div class="chk" data-t="차를 5년 안에 팔 생각이다"><span class="box">&#10003;</span><span class="t">차를 5년 안에 팔 생각이다</span></div>
+    <div class="chk" data-t="정관에 임원 퇴직금 기준이 없거나 본 적이 없다"><span class="box">&#10003;</span><span class="t">정관에 임원 퇴직금 기준이 없거나 본 적이 없다</span></div>
+    <div class="chk" data-t="영업이익이 해마다 크게 오르내린다"><span class="box">&#10003;</span><span class="t">영업이익이 해마다 크게 오르내린다</span></div>
+    <div class="chk" data-t="대표 급여 말고 법인 돈을 따로 굴리고 있지 않다"><span class="box">&#10003;</span><span class="t">대표님 급여 말고 법인 돈을 따로 굴리고 있지 않다</span></div>
+  </div>
+</section>
+
+<section class="topic">
+  <h3>이 자료에서 계산하지 못한 것이 둘 있습니다</h3>
+  <p class="oneline"><b>보험료와 정관의 퇴직금 기준</b>입니다. 둘은 법인마다 달라 받아야 계산됩니다.</p>
+  <p>영업이익 구간과 체크하신 항목을 남겨 주시면 차 한 대가 아니라 법인 전체 기준으로 답을 드립니다.</p>
+  <form class="form" action="https://api.web3forms.com/submit" method="POST">
+    <input type="hidden" name="access_key" value="56ba5ceb-1e23-4de6-b6ca-7016a3e1e8d7">
+    <input type="hidden" name="구분" value="법인차 영업이익별 기준">
+    <input type="hidden" name="체크한항목" id="picked" value="">
+    <input type="hidden" name="subject" value="[상담신청] 법인차 영업이익별 기준">
+    <input type="checkbox" name="botcheck" style="display:none">
+    <label>체크하신 항목</label>
+    <div class="picked" id="pickedView">아직 체크하신 항목이 없습니다.</div>
+    <label for="oi">대략적인 영업이익</label><input type="text" id="oi" name="영업이익" placeholder="예: 2억원 안팎">
+    <label for="nm">성함</label><input type="text" id="nm" name="성함" required>
+    <label for="ph">연락처</label><input type="tel" id="ph" name="연락처" required>
+    <label for="ms">더 하실 말씀</label><textarea id="ms" name="메모" placeholder="지금 타시는 차나 보시는 차를 적어 주셔도 됩니다."></textarea>
+    <p style="margin-top:24px"><button type="submit" class="btn">보내기</button></p>
+    <p class="fine">내용은 Web3Forms를 통해 담당자 이메일로 전달됩니다.<br>
+      특정 보험상품이나 투자상품을 권유하지 않습니다.</p>
+  </form>
+</section>
+
+<footer>
+  <p>버는 건 시장이 정하고, 지키는 건 구조가 정합니다.</p>
+  <p>근거 조문(2026년 9월 14일 원문 확인) · 법인세법 제27조의2 · 같은 법 시행령 제50조의2 · 시행규칙 제27조의2 · 법인세법 제55조 제1항 · 시행령 제106조 제1항 제1호 · 법인세법 제18조의2 · 시행령 제44조 · 제44조의2 · 소득세법 시행령 제17조의4 · 지방세법 제127조 · 제151조</p>
+  <p>이 페이지는 일반법인, 연 1만km, 제조사 가격표와 공인연비를 기준으로 한 계산 예시입니다. 법인세율 구간은 영업이익을 과세표준으로 보고 적용했고 지방소득세는 따로입니다. 실제 세액은 법인의 과세표준, 보험료, 운행 기록, 차량 취득 방식에 따라 달라지므로 신고 전에 담당 세무 대리인과 확인하시기 바랍니다.</p>
+  <div class="who"><span>영업이익별 법인차 기준</span>
+    <span style="text-align:right"><b>유영곤</b>@wealthstructure.kr</span></div>
+</footer>
+</div>
+
+<div class="tally" id="tally"><div class="in">
+  <span class="cnt"><b id="cnt">0</b>개 체크하셨습니다</span>
+  <a href="#picked" class="btn" onclick="document.querySelector('.form').scrollIntoView({behavior:'smooth'});return false;">계산 받기</a>
+</div></div>
+
+<script>
+(function(){
+  var picked=[];
+  function refresh(){
+    document.getElementById('cnt').textContent=picked.length;
+    document.getElementById('picked').value=picked.join(' / ');
+    var v=document.getElementById('pickedView');
+    v.textContent=picked.length?picked.join('\n'):'아직 체크하신 항목이 없습니다.';
+    document.getElementById('tally').classList.toggle('on',picked.length>0);
+  }
+  document.querySelectorAll('.chk').forEach(function(el){
+    el.addEventListener('click',function(){
+      var k=el.getAttribute('data-t');
+      el.classList.toggle('on');
+      if(el.classList.contains('on')) picked.push(k);
+      else picked=picked.filter(function(x){return x!==k});
+      refresh();
+    });
+  });
+  refresh();
+})();
+</script>
+</body>
+</html>
