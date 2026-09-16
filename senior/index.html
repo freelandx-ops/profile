@@ -222,7 +222,7 @@
   <p class="oneline">신청서를 <b>분기 마지막 날의 다음 날부터 1년 안에</b> 관할 지방고용노동관서에 냅니다.</p>
   <div class="tw"><table>
     <thead><tr><th>지원 기간</th><th class="num">신청 마감</th></tr></thead>
-    <tbody>
+    <tbody id="dueRows">
       <tr><td>2025년 7~9월</td><td class="num hl">2026년 9월 30일</td></tr>
       <tr><td>2025년 10~12월</td><td class="num">2026년 12월 31일</td></tr>
       <tr><td>2026년 1~3월</td><td class="num">2027년 3월 31일</td></tr>
@@ -230,7 +230,7 @@
       <tr><td>2026년 7~9월</td><td class="num">2027년 9월 30일</td></tr>
     </tbody>
   </table></div>
-  <p>신청하면 고용24 안내 기준으로 <b>통상 14일 안에 지급 결정 여부가 통보</b>되고, 결정되면 신청서에 적은 계좌로 입금됩니다. 법으로 정한 입금 기한은 없어 서류 보완을 요청받으면 늦어질 수 있습니다. 오늘 신청할 수 있는 가장 최근 기간은 2026년 4~6월분이고, 7~9월분은 2026년 10월 1일부터 신청합니다.</p>
+  <p>신청하면 고용24 안내 기준으로 <b>통상 14일 안에 지급 결정 여부가 통보</b>되고, 결정되면 신청서에 적은 계좌로 입금됩니다. 법으로 정한 입금 기한은 없어 서류 보완을 요청받으면 늦어질 수 있습니다. <span id="dueNow">오늘 신청할 수 있는 가장 최근 기간은 2026년 4~6월분이고, 7~9월분은 2026년 10월 1일부터 신청합니다.</span></p>
   <p class="note">마감일은 지급 규정 제12조 「해당 분기 마지막 날의 다음 날부터 1년 이내」로 계산했습니다. 요건을 이미 갖추고도 신청하지 않은 기간이 있다면 가장 오래된 기간의 마감이 먼저 옵니다.</p>
 </section>
 
@@ -268,7 +268,7 @@
     <div class="chk" data-t="재고용 계약을 1년보다 짧게 하고 있다"><span class="box">&#10003;</span><span class="t">정년 뒤 재고용 계약을 1년보다 짧게 하고 있다</span></div>
     <div class="chk" data-t="60세 이상 직원 비율이 30%에 가깝거나 넘는다"><span class="box">&#10003;</span><span class="t">고용보험 가입자 중 60세 이상이 30%에 가깝거나 넘는다</span></div>
     <div class="chk" data-t="계속 고용 중인 직원 중 대표 가족이 있다"><span class="box">&#10003;</span><span class="t">계속 고용 중인 직원 중 대표님 가족이 있다</span></div>
-    <div class="chk" data-t="2025년 7~9월 이전부터 계속 고용했는데 신청한 적이 없다"><span class="box">&#10003;</span><span class="t">정년 지난 직원을 2025년 7~9월 이전부터 계속 고용했는데 신청한 적이 없다</span></div>
+    <div class="chk" id="chkOld" data-t="2025년 7~9월 이전부터 계속 고용했는데 신청한 적이 없다"><span class="box">&#10003;</span><span class="t">정년 지난 직원을 <span id="oldQ">2025년 7~9월</span> 이전부터 계속 고용했는데 신청한 적이 없다</span></div>
     <div class="chk" data-t="상시 10명 이상인데 취업규칙을 신고한 적이 없다"><span class="box">&#10003;</span><span class="t">상시 직원이 10명 이상인데 취업규칙을 신고한 적이 없다</span></div>
     <div class="chk" data-t="취업규칙에 단체보험 가입 조항이 없거나 본 적이 없다"><span class="box">&#10003;</span><span class="t">취업규칙에 직원 단체보험 가입 조항이 없거나 본 적이 없다</span></div>
   </div>
@@ -324,6 +324,19 @@
 
 <script>
 (function(){
+  // 신청 마감표는 오늘 날짜로 만든다. 분기 말일 다음 날부터 1년(지급 규정 제12조)
+  var LBL=['1~3월','4~6월','7~9월','10~12월'], END=['3월 31일','6월 30일','9월 30일','12월 31일'];
+  var d=new Date(), y=d.getFullYear(), q=Math.floor(d.getMonth()/3), rows=[];
+  for(var k=-4;k<=0;k++){ var qq=q+k, yy=y; if(qq<0){qq+=4;yy--;} rows.push({y:yy,q:qq}); }
+  function name(r){ return r.y+'년 '+LBL[r.q]; }
+  document.getElementById('dueRows').innerHTML=rows.map(function(r,i){
+    return '<tr><td>'+name(r)+'</td><td class="num'+(i===0?' hl':'')+'">'+(r.y+1)+'년 '+END[r.q]+'</td></tr>';
+  }).join('');
+  var cur=rows[4], nm=cur.q===3?1:cur.q*3+4, ny=cur.q===3?cur.y+1:cur.y;
+  document.getElementById('dueNow').textContent='오늘 신청할 수 있는 가장 최근 기간은 '+name(rows[3])+'분이고, '+LBL[cur.q]+'분은 '+ny+'년 '+nm+'월 1일부터 신청합니다.';
+  document.getElementById('oldQ').textContent=name(rows[0]);
+  document.getElementById('chkOld').setAttribute('data-t',name(rows[0])+' 이전부터 계속 고용했는데 신청한 적이 없다');
+
   var picked=[];
   function refresh(){
     document.getElementById('cnt').textContent=picked.length;
