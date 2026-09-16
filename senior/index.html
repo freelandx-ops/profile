@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>정년 지난 직원 1명당 1,080만원, 우리 회사는 받을 수 있나</title>
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --ink:#1d1d1f; --muted:#7a7a7a; --faint:#a8a8ac; --hairline:#e0e0e0;
+    --accent:#1428A0; --accent-dark:#6E8CF2;
+    --parchment:#f5f5f7; --tile:#272729;
+  }
+  html,body{overflow-x:clip;max-width:100%}
+  html{background:#fff}
+  body{font-family:'Pretendard Variable',Pretendard,system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;word-break:keep-all;
+    background:#fff;color:var(--ink);font-size:18px;line-height:1.74;letter-spacing:-.02em}
+  .wrap{max-width:720px;margin:0 auto;padding:0 24px;min-width:0}
+
+  .cover{background:var(--tile);padding:80px 0 60px}
+  .cover *{color:#fff}
+  .cover .kicker{color:var(--accent-dark);font-size:13px;font-weight:600;letter-spacing:.06em;margin-bottom:18px}
+  .cover h1{font-size:clamp(26px,6.4vw,42px);font-weight:700;line-height:1.24;letter-spacing:-.036em}
+  .cover h1 em{font-style:normal;color:var(--accent-dark)}
+  .cover .lead{color:#c8c8cc;font-size:clamp(17px,4.2vw,19px);line-height:1.62;margin-top:20px}
+
+  .answer{margin-top:36px;display:grid;gap:14px}
+  .ac{border:1px solid var(--hairline);border-radius:18px;padding:22px 22px 20px;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+  .ac .top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
+  .ac .oi{font-size:15px;font-weight:700;color:var(--accent);letter-spacing:.02em}
+  .ac .line{font-size:clamp(24px,6vw,30px);font-weight:800;letter-spacing:-.04em}
+  .ac .car{margin-top:10px;font-size:17px;line-height:1.6}
+  p.note{color:var(--muted);font-size:15px;margin-top:14px}
+
+  .rules{margin-top:22px;display:grid;gap:10px}
+  .rl{background:var(--parchment);border-radius:14px;padding:16px 18px}
+  .rl b{display:block;font-size:20px;font-weight:800;color:var(--accent);letter-spacing:-.03em}
+  .rl span{font-size:16px;line-height:1.6;color:#444}
+
+  .topic{margin-top:64px}
+  .topic + .topic{margin-top:80px;padding-top:64px;border-top:1px solid var(--hairline)}
+  .topic > h3{font-size:clamp(23px,5.6vw,30px);font-weight:700;letter-spacing:-.036em;line-height:1.26}
+  .topic > .oneline{font-size:clamp(17px,4.2vw,20px);line-height:1.62;color:var(--muted);margin-top:14px}
+  .topic > .oneline b{font-weight:600;color:var(--ink)}
+  p{margin-top:14px}
+
+  .tw{overflow-x:auto;margin-top:20px;-webkit-overflow-scrolling:touch;max-width:100%}
+  table{border-collapse:collapse;width:100%;font-size:15.5px;letter-spacing:-.024em}
+  th,td{padding:13px 10px;text-align:left;vertical-align:top;border-bottom:1px solid var(--hairline);line-height:1.55}
+  thead th{font-size:13.5px;font-weight:700;color:var(--accent);border-bottom:1.5px solid var(--ink)}
+  th:first-child,td:first-child{padding-left:0}
+  th:last-child,td:last-child{padding-right:0}
+  td.num,th.num{text-align:right;white-space:nowrap}
+  td.hl{color:var(--accent);font-weight:700}
+
+  .punch{margin-top:24px;background:var(--parchment);border-radius:16px;padding:22px}
+  .punch .t{font-size:clamp(17px,4.2vw,19px);line-height:1.55;font-weight:700;margin:0}
+  .punch .s{font-size:16.5px;color:var(--muted);line-height:1.68;margin-top:8px}
+  .warn{margin-top:18px;border-left:4px solid #c0392b;background:#fdf3f2;border-radius:0 12px 12px 0;padding:16px 18px;font-size:16.5px}
+
+  .cards{margin-top:24px;display:grid;gap:12px}
+  .cd{border:1px solid var(--hairline);border-radius:16px;padding:20px}
+  .cd h4{font-size:18.5px;font-weight:700;letter-spacing:-.03em}
+  .cd p{margin-top:8px;font-size:16.5px;line-height:1.7;color:#444}
+  .arrow{margin-top:24px;font-weight:700;color:var(--accent);font-size:18px}
+
+  .calc{margin-top:24px;background:var(--parchment);border-radius:18px;padding:26px 22px}
+  .calc label{display:block;font-size:15px;font-weight:600;color:var(--muted);margin:16px 0 8px}
+  .calc label:first-child{margin-top:0}
+  .calc input,.calc select{width:100%;background:#fff;border:1px solid var(--hairline);border-radius:12px;
+    color:var(--ink);font-family:inherit;font-size:17px;padding:13px 16px}
+  .calc .out{margin-top:22px;background:#fff;border-radius:14px;padding:18px}
+  .calc .out .row{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid var(--hairline);font-size:16.5px}
+  .calc .out .row:last-child{border-bottom:0}
+  .calc .out .row b{color:var(--accent);font-weight:800;white-space:nowrap}
+  .calc .msg{margin-top:12px;font-size:15.5px;color:var(--muted);line-height:1.65}
+
+  .checks{margin-top:26px}
+  .chk{display:grid;grid-template-columns:32px 1fr;column-gap:14px;align-items:center;
+    padding:15px 17px;margin-bottom:8px;border:1.5px solid transparent;border-radius:13px;
+    background:var(--parchment);cursor:pointer;user-select:none;transition:background .13s,border-color .13s}
+  .chk.on{background:rgba(20,40,160,.06);border-color:var(--accent)}
+  .box{width:26px;height:26px;border:2px solid #b4b4bd;border-radius:8px;background:#fff;
+    display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;color:transparent}
+  .chk.on .box{background:var(--accent);border-color:var(--accent);color:#fff}
+  .chk .t{font-size:17px;line-height:1.5;color:#555}
+  .chk.on .t{color:var(--ink);font-weight:600}
+
+  .tally{position:fixed;left:0;right:0;bottom:0;z-index:29;transform:translateY(105%);transition:.26s;
+    background:rgba(255,255,255,.97);backdrop-filter:blur(14px);border-top:1px solid var(--hairline)}
+  .tally.on{transform:translateY(0)}
+  .tally .in{max-width:720px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:14px}
+  .tally .cnt{font-size:16px;color:var(--muted)}
+  .tally .cnt b{color:var(--accent);font-size:18px;font-weight:700}
+  .btn{display:inline-block;background:var(--accent);color:#fff;border:0;border-radius:100px;
+    font-family:inherit;font-size:16px;font-weight:600;padding:13px 26px;text-decoration:none;cursor:pointer;white-space:nowrap}
+  .form{background:var(--parchment);border-radius:18px;padding:30px 24px;margin-top:24px}
+  .form label{display:block;font-size:15px;font-weight:600;color:var(--muted);margin:20px 0 8px}
+  .form label:first-of-type{margin-top:0}
+  .form input,.form textarea{width:100%;background:#fff;border:1px solid var(--hairline);border-radius:12px;
+    color:var(--ink);font-family:inherit;font-size:17px;padding:14px 16px}
+  .form textarea{min-height:88px;resize:vertical;line-height:1.7}
+  .form .picked{background:#fff;border:1px solid var(--hairline);border-radius:12px;padding:16px;
+    font-size:16px;color:var(--muted);line-height:1.8;min-height:54px;white-space:pre-line}
+  .form .fine{font-size:14.5px;color:var(--muted);margin-top:16px;line-height:1.7}
+  footer{border-top:1px solid var(--hairline);margin-top:88px;padding:36px 0 96px;font-size:14.5px;color:var(--muted);line-height:1.78}
+  footer .who{margin-top:24px;padding-top:20px;border-top:1px solid var(--hairline);display:flex;justify-content:space-between;align-items:flex-end}
+  footer .who b{display:block;font-weight:600;color:var(--ink)}
+
+  @media(max-width:480px){
+    .wrap{padding:0 18px}
+    .cover{padding:64px 0 48px}
+    .cover h1 br{display:none}
+    .topic{margin-top:52px}
+    .topic + .topic{margin-top:64px;padding-top:52px}
+    th,td{padding:12px 8px;font-size:14.5px}
+  }
+</style>
+</head>
+<body>
+
+<div class="cover"><div class="wrap">
+  <p class="kicker">고령자 계속고용장려금 · 고용노동부 지급 규정 원문 기준 · 2026년 9월 16일 확인</p>
+  <h1>정년 지난 직원 1명당<br><em>1,080만원, 우리 회사는</em> 받을 수 있나</h1>
+  <p class="lead">받는 금액부터 드립니다. 아래로 내려가면서 요건 넷, 대상 직원, 신청할 수 없는 회사, 우리 회사 인원으로 계산, 신청 기한 순서로 확인하시면 됩니다.</p>
+</div></div>
+
+<div class="wrap">
+
+<div class="answer">
+  <div class="ac">
+    <div class="top"><span class="oi">서울·인천·경기</span><span class="line">1명당 1,080만원</span></div>
+    <p class="car">월 30만원 × 최대 3년(36개월)</p>
+  </div>
+  <div class="ac">
+    <div class="top"><span class="oi">그 밖의 지역</span><span class="line">1명당 1,440만원</span></div>
+    <p class="car">월 40만원 × 최대 3년(36개월)</p>
+  </div>
+  <div class="ac">
+    <div class="top"><span class="oi">받을 수 있는 인원</span><span class="line">최대 30명</span></div>
+    <p class="car">고용보험 가입자의 30%까지(소수점 버림)입니다. 가입자가 10명 미만인 회사는 3명까지입니다.</p>
+  </div>
+</div>
+<p class="note">지원기간은 그 직원을 처음 계속 고용한 날부터 최대 3년입니다. 월 중간에 들어오거나 나간 직원은 일할 계산합니다.</p>
+
+<section class="topic">
+  <h3>요건은 넷이고, 넷 다 맞아야 합니다</h3>
+  <p class="oneline">정년 지난 직원이 계속 출근하고 있어도 <b>아래 넷 중 하나가 빠지면 받을 수 없습니다.</b></p>
+  <div class="rules">
+    <div class="rl"><b>정년을 1년 이상 운영</b><span>계속고용을 시작하기 전에 정년을 정해 1년 이상 운영하고 있어야 합니다. 법은 정년을 60세 이상으로 정하게 하고, 60세 미만으로 정했으면 60세로 봅니다.</span></div>
+    <div class="rl"><b>취업규칙·단체협약에 명시</b><span>정년 1년 이상 연장, 정년 폐지, 재고용 중 하나를 취업규칙이나 단체협약 같은 명시적인 노사 합의로 운영해야 합니다.</span></div>
+    <div class="rl"><b>60세 이상 직원 30% 이하</b><span>계속고용을 시작한 해의 바로 전 해에 매월 말 고용보험 가입자 수를 합해, 그중 60세 이상이 30% 이하여야 합니다.</span></div>
+    <div class="rl"><b>2019년 1월 1일 이후 도입</b><span>계속고용 제도를 2019년 1월 1일 이후에 도입해 시행했어야 합니다.</span></div>
+  </div>
+  <div class="warn"><b>규칙을 나중에 만들어도 시작일은 30일까지만 앞당겨집니다.</b> 취업규칙에 시작일을 신고일보다 앞당겨 적어도, 신고한 날(신고 의무가 없는 회사는 직원에게 공지한 사실이 확인되는 날)부터 최대 30일 전까지만 시작일로 인정합니다.</div>
+</section>
+
+<section class="topic">
+  <h3>세 방식 중 하나를 고르게 됩니다</h3>
+  <p class="oneline">어느 방식이든 <b>문서에 적혀 있어야 합니다.</b> 재고용은 조건이 더 붙습니다.</p>
+  <div class="tw"><table>
+    <thead><tr><th>방식</th><th>조건</th></tr></thead>
+    <tbody>
+      <tr><td>정년 연장</td><td>정년을 1년 이상 늘립니다</td></tr>
+      <tr><td>정년 폐지</td><td>정년을 없앱니다</td></tr>
+      <tr><td>재고용</td><td>계속 일하기를 원하는 직원 중 취업규칙 등에 정한 합리적인 재고용 기준으로 정한 사람을, 정년이 된 날의 다음 날부터 6개월 안에, 1년 이상 근로계약으로 다시 고용합니다</td></tr>
+    </tbody>
+  </table></div>
+  <div class="punch"><p class="t">재고용을 6개월 단위로 계약하면 대상이 아닙니다.</p><p class="s">재고용 기준도 취업규칙이나 단체협약에 정해 두어야 합니다.</p></div>
+</section>
+
+<section class="topic">
+  <h3>지원금이 나오는 직원, 안 나오는 직원</h3>
+  <p class="oneline">회사가 요건을 갖춰도 <b>직원마다 따로 봅니다.</b></p>
+  <div class="cards">
+    <div class="cd"><h4>지원금이 나오는 직원</h4><p>아래 셋을 모두 갖춰야 합니다.<br>
+      고용보험에 가입한 직원<br>
+      계속고용 시작일부터 5년 안에 종전 정년이 되는 직원<br>
+      계속고용 제도에 따라 계속 고용된 직원</p></div>
+    <div class="cd"><h4>지원금이 안 나오는 직원</h4><p>하나라도 해당하면 빠집니다.<br>
+      대표(법인 대표 포함)의 배우자, 부모, 자녀<br>
+      신고한 월 평균 보수가 124만원 미만인 직원<br>
+      이 회사에서 정년이 될 때까지 고용보험 가입 기간이 계속해서 2년 미만인 직원<br>
+      대한민국 국적이 없는 외국인(거주 F-2, 영주 F-5, 결혼이민 F-6은 대상)</p></div>
+  </div>
+</section>
+
+<section class="topic">
+  <h3>신청할 수 없는 회사</h3>
+  <p class="oneline">신청할 수 있는 회사는 고용보험에 가입한 <b>우선지원대상기업, 중견기업, 사회적기업</b>입니다. 이 중에서도 아래는 빠집니다.</p>
+  <div class="cards">
+    <div class="cd"><h4>임금체불 명단 공개·상습체불 지정</h4><p>임금 체불로 명단이 공개 중이거나 상습체불사업주로 지정된 회사입니다.</p></div>
+    <div class="cd"><h4>보험료 체납</h4><p>고용보험·산재보험 보험료 등을 체납한 회사입니다.</p></div>
+    <div class="cd"><h4>중대산업재해 명단 공표 1년 이내</h4><p>중대산업재해 발생 등으로 명단이 공표된 날부터 1년이 지나지 않은 회사입니다.</p></div>
+    <div class="cd"><h4>공공기관과 일부 업종</h4><p>행정기관, 공공기관, 지방공기업과 중소기업인력지원 특별법 시행령 제2조에서 정한 업종을 하는 회사입니다.</p></div>
+  </div>
+</section>
+
+<section class="topic">
+  <h3>우리 회사 인원으로 계산해 보기</h3>
+  <p class="oneline">숫자를 넣으시면 <b>받을 수 있는 인원과 금액</b>이 나옵니다. 계산 결과는 아래 폼에 함께 첨부됩니다.</p>
+  <div class="calc">
+    <label for="cN">고용보험 가입 직원 수(분기 매월 말 평균)</label><input type="number" id="cN" min="1" inputmode="numeric" placeholder="예: 20">
+    <label for="cM">정년이 지나 계속 고용 중이거나 5년 안에 정년이 되는 직원 수</label><input type="number" id="cM" min="0" inputmode="numeric" placeholder="예: 4">
+    <label for="cR">회사 소재지</label>
+    <select id="cR"><option value="30">서울·인천·경기</option><option value="40">그 밖의 지역</option></select>
+    <div class="out">
+      <div class="row"><span>인원 한도</span><b id="oLimit">-</b></div>
+      <div class="row"><span>지원 인원</span><b id="oTarget">-</b></div>
+      <div class="row"><span>3개월마다</span><b id="oQ">-</b></div>
+      <div class="row"><span>3년 동안 최대</span><b id="oTotal">-</b></div>
+    </div>
+    <p class="msg" id="oMsg">대상 직원 요건(가족 제외, 보수 124만원 이상, 정년까지 고용보험 2년 이상)을 맞춘 인원만 넣어 주세요.</p>
+  </div>
+</section>
+
+<section class="topic">
+  <h3>신청은 3개월마다, 1년이 지나면 그 기간은 받을 수 없습니다</h3>
+  <p class="oneline">신청서를 <b>분기 마지막 날의 다음 날부터 1년 안에</b> 관할 지방고용노동관서에 냅니다.</p>
+  <div class="tw"><table>
+    <thead><tr><th>지원 기간</th><th class="num">신청 마감</th></tr></thead>
+    <tbody>
+      <tr><td>2025년 7~9월</td><td class="num hl">2026년 9월 30일</td></tr>
+      <tr><td>2025년 10~12월</td><td class="num">2026년 12월 31일</td></tr>
+      <tr><td>2026년 1~3월</td><td class="num">2027년 3월 31일</td></tr>
+      <tr><td>2026년 4~6월</td><td class="num">2027년 6월 30일</td></tr>
+      <tr><td>2026년 7~9월</td><td class="num">2027년 9월 30일</td></tr>
+    </tbody>
+  </table></div>
+  <p>신청하면 고용24 안내 기준으로 <b>통상 14일 안에 지급 결정 여부가 통보</b>되고, 결정되면 신청서에 적은 계좌로 입금됩니다. 법으로 정한 입금 기한은 없어 서류 보완을 요청받으면 늦어질 수 있습니다. 오늘 신청할 수 있는 가장 최근 기간은 2026년 4~6월분이고, 7~9월분은 2026년 10월 1일부터 신청합니다.</p>
+  <p class="note">마감일은 지급 규정 제12조 「해당 분기 마지막 날의 다음 날부터 1년 이내」로 계산했습니다. 요건을 이미 갖추고도 신청하지 않은 기간이 있다면 가장 오래된 기간의 마감이 먼저 옵니다.</p>
+</section>
+
+<section class="topic">
+  <h3>정년 지난 직원을 계속 고용하면 회사에 생기는 일 넷</h3>
+  <p class="oneline">지원금은 3년이지만 <b>고용은 그 뒤에도 이어지고, 방식에 따라 회사가 지는 약속이 달라집니다.</b></p>
+  <div class="cards">
+    <div class="cd"><h4>재고용 조항은 약속이 됩니다</h4><p>2026년 9월 대법원 2부는 취업규칙에 재고용 근거가 있고 정년퇴직자 재고용이 반복돼 왔다면, 회사와 직원 사이에 재고용될 수 있다는 신뢰가 생긴다고 보고 원심을 파기했습니다. 재고용 조항을 넣으면 누구를 어떤 기준으로 다시 고용하는지까지 적어 두어야 거부할 때 다툼이 줄어듭니다.</p></div>
+    <div class="cd"><h4>방식에 따라 퇴직금 지급 시점이 달라집니다</h4><p>정년을 늘리거나 없애면 퇴직이 뒤로 갑니다. 재고용은 정년에 근로관계가 끝나고 다시 계약하는 방식이라, 퇴직하면 14일 안에 퇴직금을 지급해야 합니다(근로자퇴직급여 보장법 제9조). 퇴직금은 계속근로 1년에 30일분 평균임금 이상입니다(같은 법 제8조). 재고용 뒤 기간을 앞 근속과 이어서 볼지는 계약 내용에 따라 달라져 확인이 필요합니다.</p></div>
+    <div class="cd"><h4>지원금은 3년에서 끝납니다</h4><p>지원금은 처음 계속 고용한 날부터 최대 3년입니다. 그 뒤의 인건비는 회사가 전부 부담하므로, 몇 세까지 고용할지와 인건비 계획을 같이 정해야 합니다.</p></div>
+    <div class="cd"><h4>사고가 나면 산재보험을 넘는 부분은 회사 몫입니다</h4><p>직원이 산재보험 급여를 받으면 회사는 그 금액 한도에서만 민법상 손해배상 책임을 면합니다(산업재해보상보험법 제80조 제2항). 급여를 넘는 손해는 회사가 배상하게 될 수 있습니다. 계속 고용하는 직원은 60세가 넘은 분들입니다.</p></div>
+  </div>
+</section>
+
+<section class="topic">
+  <h3>정년 조항을 고칠 때 함께 넣어야 하는 조항</h3>
+  <p class="oneline">취업규칙을 고치는 김에 <b>직원 단체보험 일괄가입 조항</b>을 같이 넣으시는 것이 좋습니다.</p>
+  <p>회사가 직원을 피보험자로 하는 보험에 들 때는 원래 직원마다 서면동의를 받아야 합니다. 단체가 규약에 따라 구성원을 한꺼번에 피보험자로 하는 경우에는 이 서면동의가 필요 없습니다(상법 제731조, 제735조의3). 취업규칙이 그 규약이 됩니다.</p>
+  <div class="cards">
+    <div class="cd"><h4>조항이 없으면</h4><p>직원마다 서면동의를 받아야 합니다. 동의가 빠진 직원에 대한 계약은 효력이 없어 사고가 나도 보험금이 나오지 않을 수 있습니다.</p></div>
+    <div class="cd"><h4>보험금을 회사가 받게 하려면</h4><p>보험금 받는 사람을 직원이나 유족이 아닌 회사로 정하려면, 그 내용이 규약에 명시돼 있어야 서면동의 없이 효력이 생깁니다.</p></div>
+    <div class="cd"><h4>왜 지금 같이 넣나</h4><p>취업규칙을 바꾸려면 직원 과반수(과반수 노조가 있으면 그 노조)의 의견을 들어야 하고, 직원에게 불리한 변경이면 동의를 받아야 합니다. 상시 10명 이상 회사는 바꾼 취업규칙을 신고합니다. 정년 조항과 함께 고치면 이 절차를 한 번에 끝냅니다.</p></div>
+  </div>
+  <p class="arrow">그래서, 제일 먼저 볼 건, 지금 우리 회사 취업규칙의 정년 조항과 보험 조항</p>
+  <p>지원금 요건, 재고용 기준, 퇴직금 지급 시점, 사고 대비가 모두 같은 취업규칙 안에서 정해집니다. 한 번 고칠 때 넷을 함께 정리해 두는 것이 순서입니다.</p>
+</section>
+
+<section class="topic">
+  <h3>우리 회사에 해당하는 것을 체크해 주세요</h3>
+  <p class="oneline">누르신 항목은 <b>아래 폼에 그대로 첨부됩니다.</b></p>
+  <div class="checks">
+    <div class="chk" data-t="취업규칙에 정년 조항이 없다"><span class="box">&#10003;</span><span class="t">취업규칙에 정년 조항이 없거나 본 적이 없다</span></div>
+    <div class="chk" data-t="정년 조항을 운영한 지 1년이 안 됐다"><span class="box">&#10003;</span><span class="t">정년 조항을 정한 지 1년이 안 됐다</span></div>
+    <div class="chk" data-t="정년 지난 직원을 문서 없이 계속 근무시키고 있다"><span class="box">&#10003;</span><span class="t">정년 지난 직원이 문서 없이 말로 정해 계속 근무하고 있다</span></div>
+    <div class="chk" data-t="재고용 계약을 1년보다 짧게 하고 있다"><span class="box">&#10003;</span><span class="t">정년 뒤 재고용 계약을 1년보다 짧게 하고 있다</span></div>
+    <div class="chk" data-t="60세 이상 직원 비율이 30%에 가깝거나 넘는다"><span class="box">&#10003;</span><span class="t">고용보험 가입자 중 60세 이상이 30%에 가깝거나 넘는다</span></div>
+    <div class="chk" data-t="계속 고용 중인 직원 중 대표 가족이 있다"><span class="box">&#10003;</span><span class="t">계속 고용 중인 직원 중 대표님 가족이 있다</span></div>
+    <div class="chk" data-t="2025년 7~9월 이전부터 계속 고용했는데 신청한 적이 없다"><span class="box">&#10003;</span><span class="t">정년 지난 직원을 2025년 7~9월 이전부터 계속 고용했는데 신청한 적이 없다</span></div>
+    <div class="chk" data-t="상시 10명 이상인데 취업규칙을 신고한 적이 없다"><span class="box">&#10003;</span><span class="t">상시 직원이 10명 이상인데 취업규칙을 신고한 적이 없다</span></div>
+    <div class="chk" data-t="취업규칙에 단체보험 가입 조항이 없거나 본 적이 없다"><span class="box">&#10003;</span><span class="t">취업규칙에 직원 단체보험 가입 조항이 없거나 본 적이 없다</span></div>
+  </div>
+</section>
+
+<section class="topic">
+  <h3>20분 상담으로 우리 회사 기준을 짚어 드립니다</h3>
+  <p class="oneline">체크하신 항목과 계산 결과를 남겨 주시면 <b>편하신 시간에 연락드려 아래 넷을</b> 우리 회사 기준으로 설명해 드립니다.</p>
+  <div class="rules">
+    <div class="rl"><b>받을 수 있는 금액</b><span>인원 한도 안에서 받을 수 있는 인원과 금액, 아직 신청하지 않은 기간과 그 마감일</span></div>
+    <div class="rl"><b>빠진 요건</b><span>요건 넷 중 지금 비어 있는 것과, 취업규칙에서 고쳐야 할 조항</span></div>
+    <div class="rl"><b>방식별로 달라지는 것</b><span>정년 연장·폐지·재고용 중 어느 방식이냐에 따라 달라지는 재고용 기준과 퇴직금 지급 시점</span></div>
+    <div class="rl"><b>사고 대비가 비어 있는 곳</b><span>60세 넘은 직원이 다쳤을 때 산재보험 밖으로 남는 부분과, 취업규칙에 함께 넣을 단체보험 조항</span></div>
+  </div>
+  <p>상담 뒤에는 이야기 나눈 내용을 한 장으로 정리해 보내 드립니다. 취업규칙은 상담 때 같이 보시면 됩니다.</p>
+  <form class="form" action="https://api.web3forms.com/submit" method="POST">
+    <input type="hidden" name="access_key" value="56ba5ceb-1e23-4de6-b6ca-7016a3e1e8d7">
+    <input type="hidden" name="구분" value="계속고용장려금">
+    <input type="hidden" name="체크한항목" id="picked" value="">
+    <input type="hidden" name="계산결과" id="calcField" value="">
+    <input type="hidden" name="subject" value="[상담신청] 계속고용장려금">
+    <input type="checkbox" name="botcheck" style="display:none">
+    <label>체크하신 항목</label>
+    <div class="picked" id="pickedView">아직 체크하신 항목이 없습니다.</div>
+    <label>계산 결과</label>
+    <div class="picked" id="calcView">위 계산란에 숫자를 넣으시면 여기에 옮겨집니다.</div>
+    <label for="co">업종과 회사 형태</label><input type="text" id="co" name="업종과형태" placeholder="예: 제조업 법인 / 음식점 개인사업자">
+    <label for="nm">성함</label><input type="text" id="nm" name="성함" required>
+    <label for="ph">연락처</label><input type="tel" id="ph" name="연락처" required>
+    <label for="how">상담 방법</label><input type="text" id="how" name="상담방법" placeholder="전화 / 방문 / 화상 중 편하신 것">
+    <label for="when">연락 받기 편한 시간</label><input type="text" id="when" name="편한시간" placeholder="예: 평일 오후 2시 이후">
+    <label for="ms">더 하실 말씀</label><textarea id="ms" name="메모" placeholder="정년이 몇 세로 정해져 있는지, 재고용을 어떻게 하고 계신지 적어 주셔도 됩니다."></textarea>
+    <p style="margin-top:24px"><button type="submit" class="btn">상담 신청하기</button></p>
+    <p class="fine">내용은 Web3Forms를 통해 담당자 이메일로 전달됩니다.<br>
+      지원금 지급 여부는 관할 지방고용노동관서가 결정합니다. 취업규칙 작성·변경과 신고는 공인노무사와 함께 봅니다.<br>
+      특정 보험상품이나 투자상품을 권유하지 않습니다.</p>
+  </form>
+</section>
+
+<footer>
+  <p>버는 건 시장이 정하고, 지키는 건 구조가 정합니다.</p>
+  <p>근거(2026년 9월 16일 원문 확인) · 고령자 고용안정지원금 지급 규정(고용노동부 고시) 제2조·제3조·제4조·제5조·제6조·제7조·제12조 · 고용상 연령차별금지 및 고령자고용촉진에 관한 법률 제19조 · 근로기준법 제93조·제94조 · 상법 제731조·제735조의3</p>
+  <p>이 페이지는 고시 원문을 옮긴 일반 정보입니다. 우선지원대상기업 여부, 제외 업종 해당 여부, 대상 직원 요건은 회사마다 확인이 필요하며 지급 결정은 관할 지방고용노동관서가 합니다.</p>
+  <div class="who"><span>계속고용장려금 확인 자료</span>
+    <span style="text-align:right"><b>유영곤</b>@wealthstructure.kr</span></div>
+</footer>
+</div>
+
+<div class="tally" id="tally"><div class="in">
+  <span class="cnt"><b id="cnt">0</b>개 체크하셨습니다</span>
+  <a href="#picked" class="btn" onclick="document.querySelector('.form').scrollIntoView({behavior:'smooth'});return false;">상담 신청</a>
+</div></div>
+
+<script>
+(function(){
+  var picked=[];
+  function refresh(){
+    document.getElementById('cnt').textContent=picked.length;
+    document.getElementById('picked').value=picked.join(' / ');
+    var v=document.getElementById('pickedView');
+    v.textContent=picked.length?picked.join('\n'):'아직 체크하신 항목이 없습니다.';
+    document.getElementById('tally').classList.toggle('on',picked.length>0);
+  }
+  document.querySelectorAll('.chk').forEach(function(el){
+    el.addEventListener('click',function(){
+      var k=el.getAttribute('data-t');
+      el.classList.toggle('on');
+      if(el.classList.contains('on')) picked.push(k);
+      else picked=picked.filter(function(x){return x!==k});
+      refresh();
+    });
+  });
+  refresh();
+
+  function won(man){
+    if(man>=10000){ var e=Math.floor(man/10000), r=man%10000;
+      return e+'억'+(r?' '+r.toLocaleString('ko-KR')+'만원':'원'); }
+    return man.toLocaleString('ko-KR')+'만원'; }
+  var DEF='대상 직원 요건(가족 제외, 보수 124만원 이상, 정년까지 고용보험 2년 이상)을 맞춘 인원만 넣어 주세요.';
+  function calc(){
+    var n=parseInt(document.getElementById('cN').value,10);
+    var m=parseInt(document.getElementById('cM').value,10);
+    var r=parseInt(document.getElementById('cR').value,10);
+    if(!(n>0)){
+      ['oLimit','oTarget','oQ','oTotal'].forEach(function(i){document.getElementById(i).textContent='-'});
+      document.getElementById('oMsg').textContent=DEF;
+      document.getElementById('calcField').value='';
+      document.getElementById('calcView').textContent='위 계산란에 숫자를 넣으시면 여기에 옮겨집니다.';
+      return;
+    }
+    var limit = n<10 ? 3 : Math.min(Math.floor(n*0.3),30);
+    if(!(m>=0)) m=0;
+    var t=Math.min(m,limit);
+    document.getElementById('oLimit').textContent=limit+'명';
+    document.getElementById('oTarget').textContent=t+'명';
+    document.getElementById('oQ').textContent=won(t*r*3);
+    document.getElementById('oTotal').textContent=won(t*r*36);
+    document.getElementById('oMsg').textContent = m>limit
+      ? '대상 직원이 한도보다 '+(m-limit)+'명 많습니다. 한도까지만 지원됩니다.' : DEF;
+    var region = r===30?'서울·인천·경기':'그 밖의 지역';
+    var s='가입자 '+n+'명 · 대상 '+m+'명 · '+region+' · 한도 '+limit+'명 · 지원 '+t+'명 · 3개월 '+won(t*r*3)+' · 3년 최대 '+won(t*r*36);
+    document.getElementById('calcField').value=s;
+    document.getElementById('calcView').textContent=s;
+  }
+  ['cN','cM','cR'].forEach(function(i){
+    document.getElementById(i).addEventListener('input',calc);
+    document.getElementById(i).addEventListener('change',calc);
+  });
+})();
+</script>
+</body>
+</html>
