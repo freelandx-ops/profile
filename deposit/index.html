@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>통장에 있는 돈, 어디로 옮기면 되나</title>
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://freelandx-ops.github.io/profile/deposit/">
+<meta property="og:title" content="통장에 있는 돈, 어디로 옮기면 되나">
+<meta property="og:image" content="https://freelandx-ops.github.io/profile/og-logo-260916c.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="유영곤 자산·법인 컨설팅">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="통장에 있는 돈, 어디로 옮기면 되나">
+<meta name="twitter:image" content="https://freelandx-ops.github.io/profile/og-logo-260916c.jpg">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --ink:#1d1d1f; --muted:#7a7a7a; --faint:#a8a8ac; --hairline:#e0e0e0;
+    --accent:#1428A0; --accent-dark:#6E8CF2;
+    --parchment:#f5f5f7; --tile:#272729;
+  }
+  html,body{overflow-x:clip;max-width:100%}
+  html{background:#fff}
+  body{font-family:'Pretendard Variable',Pretendard,system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;word-break:keep-all;
+    background:#fff;color:var(--ink);font-size:18px;line-height:1.74;letter-spacing:-.02em}
+  .wrap{max-width:720px;margin:0 auto;padding:0 24px;min-width:0}
+
+  .cover{background:var(--tile);padding:80px 0 60px}
+  .cover *{color:#fff}
+  .cover .kicker{color:var(--accent-dark);font-size:13px;font-weight:600;letter-spacing:.06em;margin-bottom:18px}
+  .cover h1{font-size:clamp(26px,6.4vw,42px);font-weight:700;line-height:1.24;letter-spacing:-.036em}
+  .cover h1 em{font-style:normal;color:var(--accent-dark)}
+  .cover .lead{color:#c8c8cc;font-size:clamp(17px,4.2vw,19px);line-height:1.62;margin-top:20px}
+
+  .answer{margin-top:36px;display:grid;gap:14px}
+  .ac{border:1px solid var(--hairline);border-radius:18px;padding:22px 22px 20px;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+  .ac .top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
+  .ac .oi{font-size:15px;font-weight:700;color:var(--accent);letter-spacing:.02em}
+  .ac .line{font-size:clamp(24px,6vw,30px);font-weight:800;letter-spacing:-.04em}
+  .ac .car{margin-top:10px;font-size:17px;line-height:1.6;color:#444}
+  p.note{color:var(--muted);font-size:15px;margin-top:14px}
+
+  .rules{margin-top:22px;display:grid;gap:10px}
+  .rl{background:var(--parchment);border-radius:14px;padding:16px 18px}
+  .rl b{display:block;font-size:20px;font-weight:800;color:var(--accent);letter-spacing:-.03em}
+  .rl span{font-size:16px;line-height:1.6;color:#444}
+
+  .topic{margin-top:64px}
+  .topic + .topic{margin-top:80px;padding-top:64px;border-top:1px solid var(--hairline)}
+  .topic > h3{font-size:clamp(23px,5.6vw,30px);font-weight:700;letter-spacing:-.036em;line-height:1.26}
+  .topic > .oneline{font-size:clamp(17px,4.2vw,20px);line-height:1.62;color:var(--muted);margin-top:14px}
+  .topic > .oneline b{font-weight:600;color:var(--ink)}
+  p{margin-top:14px}
+
+  table{width:100%;border-collapse:collapse;margin-top:24px;font-size:16px}
+  th{text-align:left;padding:12px 10px;border-bottom:2px solid var(--ink);font-weight:700;font-size:15px}
+  td{padding:14px 10px;border-bottom:1px solid var(--hairline);line-height:1.5;vertical-align:top}
+  td.nm{font-weight:700}
+  .yes{color:var(--accent);font-weight:700}
+  .no{color:#c0392b;font-weight:700}
+  .scroller{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .scroller table{min-width:560px}
+
+  .calc{margin-top:28px;background:var(--parchment);border-radius:18px;padding:24px}
+  .calc label{display:block;font-size:15px;font-weight:600;margin-bottom:8px}
+  .calc input{width:100%;padding:14px 16px;border:1px solid var(--hairline);border-radius:12px;
+    font-size:20px;font-family:inherit;font-weight:700;background:#fff}
+  .out{margin-top:20px;display:grid;gap:10px}
+  .ol{background:#fff;border-radius:12px;padding:14px 16px;display:flex;justify-content:space-between;
+    align-items:baseline;gap:12px;flex-wrap:wrap}
+  .ol .k{font-size:15px;color:var(--muted)}
+  .ol .v{font-size:19px;font-weight:800;letter-spacing:-.03em}
+  .ol.hl{background:var(--accent)}
+  .ol.hl .k{color:#c8d4ff}
+  .ol.hl .v{color:#fff}
+  .ol.warn{background:#fdf0ee}
+  .ol.warn .v{color:#c0392b}
+
+  .checks{margin-top:26px;display:grid;gap:8px}
+  .chk{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border:1px solid var(--hairline);
+    border-radius:12px;cursor:pointer;user-select:none;background:#fff}
+  .chk .box{flex:0 0 auto;width:24px;height:24px;border:2px solid var(--hairline);border-radius:7px;
+    color:transparent;font-size:15px;line-height:20px;text-align:center;font-weight:700}
+  .chk.on{border-color:var(--accent);background:#f2f5ff}
+  .chk.on .box{background:var(--accent);border-color:var(--accent);color:#fff}
+  .chk .t{font-size:16px;line-height:1.55}
+
+  .form{margin-top:30px;display:grid;gap:6px}
+  .form label{font-size:14px;font-weight:600;margin-top:14px}
+  .form input,.form textarea{width:100%;padding:13px 15px;border:1px solid var(--hairline);
+    border-radius:12px;font-size:16px;font-family:inherit;background:#fff}
+  .form textarea{min-height:96px;resize:vertical}
+  .picked{background:var(--parchment);border-radius:12px;padding:14px 16px;font-size:15px;
+    color:#444;line-height:1.6}
+  .btn{display:inline-block;background:var(--accent);color:#fff;border:0;border-radius:999px;
+    padding:16px 34px;font-size:17px;font-weight:700;font-family:inherit;cursor:pointer}
+  .fine{color:var(--faint);font-size:13px;line-height:1.6;margin-top:16px}
+
+  footer{margin-top:90px;padding:40px 0 120px;border-top:1px solid var(--hairline)}
+  footer p{color:var(--muted);font-size:14px;line-height:1.7}
+  footer p:first-child{color:var(--ink);font-size:17px;font-weight:700;margin-bottom:18px}
+  .who{margin-top:24px;display:flex;justify-content:space-between;gap:12px;font-size:14px;color:var(--faint)}
+  .who b{color:var(--ink);display:block}
+
+  .tally{position:fixed;left:0;right:0;bottom:0;background:rgba(255,255,255,.96);
+    backdrop-filter:blur(10px);border-top:1px solid var(--hairline);padding:12px 0;z-index:9}
+  .tally .in{max-width:720px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;
+    align-items:center;gap:12px}
+  .tally .cnt{font-size:15px;color:var(--muted)}
+  .tally .cnt b{color:var(--accent);font-size:19px}
+  .tally .btn{padding:12px 24px;font-size:15px}
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="wrap">
+    <div class="kicker">단기자금 정리표</div>
+    <h1>통장에 있는 돈,<br><em>어디로 옮기면 되나</em></h1>
+    <p class="lead">1억을 통장에 1년 두면 손에 8만원이 남습니다.<br>
+    같은 1억을 1년 정기예금에 넣으면 288만원입니다.<br>
+    저축은행이면 339만원입니다.</p>
+  </div>
+</div>
+
+<div class="wrap">
+
+<section class="topic">
+  <h3>먼저 숫자부터 봅니다</h3>
+  <p class="oneline">전부 세금 15.4%를 뗀 뒤 손에 남는 금액입니다. <b>1억을 1년 맡겼을 때입니다.</b></p>
+  <div class="answer">
+    <div class="ac">
+      <div class="top"><span class="oi">통장에 그냥</span><span class="line">8만원</span></div>
+      <div class="car">보통예금 금리가 연 0.1%입니다. 아무 때나 뺄 수 있는 대신 이자가 거의 없습니다.</div>
+    </div>
+    <div class="ac">
+      <div class="top"><span class="oi">시중은행 1년 정기예금</span><span class="line">288만원</span></div>
+      <div class="car">5대 은행 대표 상품이 연 3.30에서 3.45% 사이입니다. 3.4%로 계산했습니다.</div>
+    </div>
+    <div class="ac">
+      <div class="top"><span class="oi">저축은행 1년 정기예금</span><span class="line">339만원</span></div>
+      <div class="car">금융감독원 공시 기준 최고 연 4.01%입니다. <b>예금자보호는 시중은행과 똑같이 1억까지 됩니다.</b></div>
+    </div>
+  </div>
+  <p class="note">2026년 9월 기준입니다. 금리는 수시로 바뀌므로 가입 직전에 다시 확인하셔야 합니다. 확인하는 곳은 아래에 적어 두었습니다.</p>
+</section>
+
+<section class="topic">
+  <h3>내 돈으로 계산해 보기</h3>
+  <p class="oneline">통장에 지금 잠겨 있는 금액을 넣어 보십시오. <b>만원 단위입니다.</b></p>
+  <div class="calc">
+    <label for="amt">통장에 있는 금액 (만원)</label>
+    <input type="number" id="amt" placeholder="예: 10000" inputmode="numeric">
+    <div class="out" id="out">
+      <div class="ol"><span class="k">통장에 그냥 두면 (0.1%)</span><span class="v" id="o1">-</span></div>
+      <div class="ol"><span class="k">시중은행 정기예금 (3.4%)</span><span class="v" id="o2">-</span></div>
+      <div class="ol"><span class="k">저축은행 정기예금 (4.01%)</span><span class="v" id="o3">-</span></div>
+      <div class="ol hl"><span class="k">옮기면 1년에 더 받는 돈</span><span class="v" id="o4">-</span></div>
+      <div class="ol" id="row5" style="display:none"><span class="k">예금자보호를 벗어나는 금액</span><span class="v" id="o5">-</span></div>
+      <div class="ol warn" id="row6" style="display:none"><span class="k">확인이 필요한 것</span><span class="v" id="o6">-</span></div>
+    </div>
+  </div>
+  <p class="note">전부 1년 뒤 세후 금액입니다. 계산에 쓴 금리는 위에 적은 공시 금리이고, 실제 가입 금리는 금융회사와 조건에 따라 다릅니다.</p>
+  <p><b>숫자는 여기까지 나옵니다.</b> 그런데 이 돈을 몇 곳으로 나눠 얼마씩 넣을지는 지금 어디에 얼마가 있는지를 봐야 정해집니다. 그 자리가 <a href="#picked" onclick="document.querySelector('.form').scrollIntoView({behavior:'smooth'});return false;">상담</a>입니다.</p>
+</section>
+
+<section class="topic">
+  <h3>돈을 맡기는 곳 다섯</h3>
+  <p class="oneline">이름이 어려워 보일 뿐 <b>전부 돈을 맡기고 이자를 받는 것</b>입니다. 갈리는 것은 언제 뺄 수 있느냐와 망했을 때 누가 돌려주느냐 둘입니다.</p>
+  <div class="scroller">
+  <table>
+    <tr><th>어디</th><th>누구</th><th>언제 빼나</th><th>망하면</th></tr>
+    <tr><td class="nm">정기예금</td><td>은행<br>저축은행</td><td>만기에 뺍니다<br>중도에 깨면 약정이자를 못 받습니다</td><td class="yes">1억까지<br>예금보험공사가 줍니다</td></tr>
+    <tr><td class="nm">파킹통장</td><td>은행</td><td>아무 때나 뺍니다<br>하루만 넣어도 이자가 붙습니다</td><td class="yes">1억까지<br>예금보험공사가 줍니다</td></tr>
+    <tr><td class="nm">CMA</td><td>증권사</td><td>아무 때나 뺍니다</td><td class="no">안 줍니다<br>증권사 신용입니다</td></tr>
+    <tr><td class="nm">발행어음</td><td>증권사</td><td>수시형은 아무 때나<br>약정형은 만기까지 둡니다</td><td class="no">안 줍니다<br>증권사 신용입니다</td></tr>
+    <tr><td class="nm">MMF</td><td>증권사</td><td>신청하면 하루나 이틀 뒤</td><td class="no">안 줍니다<br>실적에 따라 달라집니다</td></tr>
+  </table>
+  </div>
+  <p class="note">CMA는 RP형·발행어음형·MMF형으로 나뉘는데 <b>유형을 가리지 않고 전부 예금자보호 대상이 아닙니다.</b> 올해 나온 IMA(종합투자계좌)도 마찬가지입니다. 증권사가 원금을 책임지는 것이지 예금보험이 책임지는 것이 아닙니다.</p>
+  <p class="note">증권사 상품의 금리는 회사마다 매주 달라집니다. 이 표에 적지 않은 이유입니다.</p>
+  <p>다섯 중 어느 것이 내 돈에 맞는지는 <b>그 돈을 언제 쓰시는지</b>에 따라 갈립니다. 세금 낼 돈과 3년 뒤에 쓸 돈은 같은 곳에 두시면 안 됩니다.</p>
+</section>
+
+<section class="topic">
+  <h3>금액이 커지면 나누는 것이 먼저입니다</h3>
+  <p class="oneline">예금자보호는 <b>한 금융회사당 1억</b>입니다. 원금과 이자를 합친 금액이고, 2025년 9월 1일부터 5천만원에서 1억으로 올랐습니다.</p>
+  <div class="rules">
+    <div class="rl"><b>1억 이하</b><span>한 곳에 두셔도 전액 보호됩니다. 금리만 비교하시면 됩니다.</span></div>
+    <div class="rl"><b>1억에서 3억</b><span>두세 곳으로 나눕니다. 이자까지 합쳐 1억이므로 9천만원 선에서 끊는 것이 안전합니다.</span></div>
+    <div class="rl"><b>3억에서 6억</b><span>네다섯 곳으로 나누면서 만기 날짜도 같이 나눕니다. 이유는 바로 아래에 있습니다.</span></div>
+    <div class="rl"><b>6억 이상</b><span>이자만으로 금융소득 종합과세 선에 닿습니다. 예금 밖 선택지를 같이 봐야 하는 구간입니다.</span></div>
+  </div>
+  <p>같은 은행이라도 <b>다른 지점은 같은 회사</b>입니다. 나누실 때는 회사를 나누셔야 합니다. 저축은행은 회사가 많아 나누기 쉽고 금리도 시중은행보다 높습니다.</p>
+  <p class="note">다만 <b>몇 곳으로 나눌지는 지금 어디에 얼마가 있는지를 보지 않고는 정해지지 않습니다.</b> 이미 들어 있는 예금과 증권사 잔고를 같이 놓고 세야 합니다.</p>
+</section>
+
+<section class="topic">
+  <h3>만기를 한 날짜에 몰지 않습니다</h3>
+  <p class="oneline">이자와 배당을 합쳐 <b>한 해 2,000만원</b>을 넘으면 세금 계산 방식이 바뀝니다.</p>
+  <p>2,000만원까지는 15.4%를 떼고 끝납니다. 넘는 부분은 사업소득이나 근로소득과 합쳐 누진세율로 다시 계산합니다. 소득세법 제14조 제3항 6호입니다.</p>
+  <p>연 3.4%로 굴리면 <b>5억 9천만원</b>에서 이자가 2,000만원이 됩니다. 4.01%면 <b>5억</b>에서 닿습니다. 금리가 2%대였을 때는 같은 선을 넘으려면 10억이 필요했습니다. 자산은 그대로인데 금리가 오르면서 문턱만 내려왔습니다.</p>
+  <p>여기서 갈리는 것이 만기 날짜입니다. <b>이자는 받는 해에 잡힙니다.</b> 3년짜리 예금 세 개의 만기가 같은 해에 몰려 있으면 그 해에 3년치 이자가 한꺼번에 들어옵니다. 만기를 해마다 나눠 놓으면 같은 돈으로 같은 이자를 받으면서 선을 넘지 않을 수 있습니다.</p>
+  <p class="note">배당과 다른 이자소득이 이미 있으시면 계산이 달라집니다. 건강보험료도 여기에 연동됩니다.</p>
+  <p><b>이미 가입하신 예금의 만기를 어떻게 나눌지는 계약 내용을 봐야 나옵니다.</b> 중도에 깨면 약정이자를 못 받으므로 순서가 있습니다.</p>
+</section>
+
+<section class="topic">
+  <h3>직접 확인하는 곳</h3>
+  <div class="rules">
+    <div class="rl"><b>예금·적금 금리</b><span>금융감독원 금융상품한눈에 finlife.fss.or.kr · 은행연합회 소비자포털 portal.kfb.or.kr · 저축은행중앙회 fsb.or.kr</span></div>
+    <div class="rl"><b>내 상품이 보호되나</b><span>예금보험공사 kdic.or.kr 보호대상 금융상품 · 가입하신 금융회사 앱의 상품 유형 표기</span></div>
+    <div class="rl"><b>증권사 CMA·발행어음 금리</b><span>각 증권사 앱 또는 홈페이지. 회사마다 매주 달라집니다</span></div>
+  </div>
+  <p class="note">한 가지만 기억하시면 됩니다. <b>상품 이름이 아니라 어느 회사가 발행했느냐로 갈립니다.</b> 은행과 저축은행이면 예금보험공사가 1억까지 주고, 증권사면 주지 않습니다.</p>
+  <p>여기까지는 혼자 하실 수 있습니다. 혼자 안 되는 것은 <b>금리를 비교하는 일이 아니라 내 돈을 몇 조각으로 나누고 각각 어디에 얼마씩 넣을지 정하는 일</b>입니다. 그것은 지금 쓰고 계신 계좌를 같이 보면 20분이면 나옵니다.</p>
+</section>
+
+<section class="topic">
+  <h3>해당되는 것에 체크해 주십시오</h3>
+  <p class="oneline">체크하신 항목은 아래 신청란에 자동으로 옮겨집니다.</p>
+  <div class="checks">
+    <div class="chk" data-t="통장에 6개월 넘게 손대지 않은 돈이 있다"><span class="box">&#10003;</span><span class="t">통장에 6개월 넘게 손대지 않은 돈이 있다</span></div>
+    <div class="chk" data-t="그 돈이 얼마인지 세어 본 적이 없다"><span class="box">&#10003;</span><span class="t">그 돈이 정확히 얼마인지 세어 본 적이 없다</span></div>
+    <div class="chk" data-t="한 금융회사에 1억이 넘게 있다"><span class="box">&#10003;</span><span class="t">한 금융회사에 1억이 넘게 들어 있다</span></div>
+    <div class="chk" data-t="예금자보호 대상인지 확인한 적이 없다"><span class="box">&#10003;</span><span class="t">내가 가입한 상품이 예금자보호 대상인지 확인한 적이 없다</span></div>
+    <div class="chk" data-t="CMA나 발행어음 MMF에 돈이 있다"><span class="box">&#10003;</span><span class="t">CMA나 발행어음, MMF에 돈이 들어 있다</span></div>
+    <div class="chk" data-t="정기예금 만기가 한 해에 몰려 있다"><span class="box">&#10003;</span><span class="t">정기예금 만기가 한 해에 몰려 있다</span></div>
+    <div class="chk" data-t="올해 이자와 배당이 2000만원을 넘을 것 같다"><span class="box">&#10003;</span><span class="t">올해 이자와 배당을 합치면 2,000만원이 넘을 것 같다</span></div>
+    <div class="chk" data-t="금융소득 종합과세로 신고해 본 적이 있다"><span class="box">&#10003;</span><span class="t">금융소득 종합과세로 신고해 본 적이 있다</span></div>
+    <div class="chk" data-t="저축은행 예금을 써 본 적이 없다"><span class="box">&#10003;</span><span class="t">저축은행 예금은 써 본 적이 없다</span></div>
+    <div class="chk" data-t="만기가 지났는데 그대로 둔 예금이 있다"><span class="box">&#10003;</span><span class="t">만기가 지났는데 그대로 두고 있는 예금이 있다</span></div>
+    <div class="chk" data-t="주식 비중을 줄였고 그 돈이 남아 있다"><span class="box">&#10003;</span><span class="t">최근에 주식 비중을 줄였고 그 돈이 아직 남아 있다</span></div>
+    <div class="chk" data-t="곧 쓸 돈과 안 쓸 돈을 나눠 본 적이 없다"><span class="box">&#10003;</span><span class="t">곧 쓸 돈과 한동안 안 쓸 돈을 나눠 본 적이 없다</span></div>
+  </div>
+</section>
+
+<section class="topic">
+  <h3>20분 상담으로 내 돈 기준을 짚어 드립니다</h3>
+  <p class="oneline">체크하신 항목과 계산 결과를 남겨 주시면 <b>편하신 시간에 연락드려 아래 넷을</b> 지금 가지고 계신 계좌 기준으로 설명해 드립니다.</p>
+  <div class="rules">
+    <div class="rl"><b>지금 놓치고 있는 금액</b><span>통장에 잠겨 있는 돈과 옮겼을 때 1년에 더 받는 금액</span></div>
+    <div class="rl"><b>보호 밖에 있는 금액</b><span>한 회사에 1억을 넘긴 부분과 증권사에 들어 있어 예금보험이 안 붙는 부분</span></div>
+    <div class="rl"><b>세금이 걸리는 자리</b><span>올해 이자와 배당 합계가 2,000만원에 닿는지, 만기를 어떻게 나누면 되는지</span></div>
+    <div class="rl"><b>나누는 순서</b><span>곧 쓸 돈과 한동안 안 쓸 돈을 갈라 각각 어디에 두면 되는지</span></div>
+  </div>
+  <p>상담 뒤에는 이야기 나눈 내용을 한 장으로 정리해 보내 드립니다. 거래하시는 은행 앱을 같이 보시면 더 빠릅니다.</p>
+  <form class="form" action="https://api.web3forms.com/submit" method="POST">
+    <input type="hidden" name="access_key" value="56ba5ceb-1e23-4de6-b6ca-7016a3e1e8d7">
+    <input type="hidden" name="구분" value="단기자금 정리">
+    <input type="hidden" name="체크한항목" id="picked" value="">
+    <input type="hidden" name="계산결과" id="calcField" value="">
+    <input type="hidden" name="subject" value="[상담신청] 단기자금 정리">
+    <input type="checkbox" name="botcheck" style="display:none">
+    <label>체크하신 항목</label>
+    <div class="picked" id="pickedView">아직 체크하신 항목이 없습니다.</div>
+    <label>계산 결과</label>
+    <div class="picked" id="calcView">위 계산란에 금액을 넣으시면 여기에 옮겨집니다.</div>
+    <label for="bk">지금 거래하시는 곳</label><input type="text" id="bk" name="거래처" placeholder="예: 시중은행 두 곳 / 증권사 CMA">
+    <label for="nm">성함</label><input type="text" id="nm" name="성함" required>
+    <label for="ph">연락처</label><input type="tel" id="ph" name="연락처" required>
+    <label for="how">상담 방법</label><input type="text" id="how" name="상담방법" placeholder="전화와 방문 중 편하신 것">
+    <label for="when">연락 받기 편한 시간</label><input type="text" id="when" name="편한시간" placeholder="예: 평일 오후 2시 이후">
+    <label for="ms">더 하실 말씀</label><textarea id="ms" name="메모" placeholder="언제 쓸 돈인지, 다른 금융소득이 있으신지 적어 주셔도 됩니다."></textarea>
+    <p style="margin-top:24px"><button type="submit" class="btn">상담 신청하기</button></p>
+    <p class="fine">내용은 Web3Forms를 통해 담당자 이메일로 전달됩니다.<br>
+      금리와 가입 조건은 금융회사가 정하며 가입 시점에 따라 달라집니다.<br>
+      특정 금융회사의 상품을 권유하지 않습니다.</p>
+  </form>
+</section>
+
+<footer>
+  <p>버는 건 시장이 정하고, 지키는 건 구조가 정합니다.</p>
+  <p>근거(2026년 9월 20일 확인) · 보통예금 금리 KB국민은행 공시 · 시중은행 1년 정기예금 3.30~3.45% 은행연합회 소비자포털 · 저축은행 1년 정기예금 최고 4.01% 금융감독원 금융상품한눈에 · 예금자보호 한도 1억원 2025년 9월 1일 시행 · 보호대상 금융상품 구분 예금보험공사 · 이자소득 원천징수 소득세법 제129조 제1항 1호 라목 및 개인지방소득세 · 금융소득 종합과세 기준 소득세법 제14조 제3항 6호</p>
+  <p>이 페이지는 공시 자료와 법령을 옮긴 일반 정보입니다. 금리는 수시로 바뀌므로 가입 직전에 해당 금융회사에서 다시 확인하셔야 하며, 예금자보호 여부는 상품별로 가입 시 설명서에서 확인하실 수 있습니다.</p>
+  <div class="who"><span>단기자금 정리표</span>
+    <span style="text-align:right"><b>유영곤</b>@wealthstructure.kr</span></div>
+</footer>
+</div>
+
+<div class="tally" id="tally"><div class="in">
+  <span class="cnt"><b id="cnt">0</b>개 체크하셨습니다</span>
+  <a href="#picked" class="btn" onclick="document.querySelector('.form').scrollIntoView({behavior:'smooth'});return false;">상담 신청</a>
+</div></div>
+
+<script>
+(function(){
+  var TAX = 0.154;
+  var R_TONG = 0.001, R_BANK = 0.034, R_SB = 0.0401;
+  var LIMIT = 10000;
+  var FIN = 2000;
+
+  function won(manwon){
+    var v = Math.round(manwon);
+    if (v >= 10000) {
+      var eok = Math.floor(v / 10000), rest = v % 10000;
+      return eok + '억' + (rest ? ' ' + rest.toLocaleString() + '만원' : '원');
+    }
+    return v.toLocaleString() + '만원';
+  }
+
+  var amt = document.getElementById('amt');
+  var calcField = document.getElementById('calcField');
+  var calcView = document.getElementById('calcView');
+
+  function calc(){
+    var a = parseFloat(amt.value);
+    if (!a || a <= 0) {
+      ['o1','o2','o3','o4'].forEach(function(i){ document.getElementById(i).textContent = '-'; });
+      document.getElementById('row5').style.display = 'none';
+      document.getElementById('row6').style.display = 'none';
+      calcField.value = '';
+      calcView.textContent = '위 계산란에 금액을 넣으시면 여기에 옮겨집니다.';
+      return;
+    }
+    var i1 = a * R_TONG * (1 - TAX);
+    var i2 = a * R_BANK * (1 - TAX);
+    var i3 = a * R_SB   * (1 - TAX);
+    var gap = i3 - i1;
+
+    document.getElementById('o1').textContent = won(i1);
+    document.getElementById('o2').textContent = won(i2);
+    document.getElementById('o3').textContent = won(i3);
+    document.getElementById('o4').textContent = won(gap);
+
+    var lines = [won(a) + '을 1년 맡길 때 · 통장 ' + won(i1) + ' / 시중은행 ' + won(i2) + ' / 저축은행 ' + won(i3) + ' · 차이 ' + won(gap)];
+
+    var r5 = document.getElementById('row5');
+    if (a > LIMIT) {
+      var over = a - LIMIT;
+      document.getElementById('o5').textContent = won(over);
+      r5.style.display = '';
+      r5.className = 'ol warn';
+      lines.push('한 곳에 두시면 ' + won(over) + '이 예금자보호 밖입니다');
+    } else {
+      r5.style.display = 'none';
+    }
+
+    var r6 = document.getElementById('row6');
+    var pre = a * R_BANK;
+    if (pre >= FIN) {
+      document.getElementById('o6').textContent = '금융소득 종합과세';
+      r6.style.display = '';
+      lines.push('세전 이자가 ' + won(pre) + '이라 금융소득 2,000만원 선을 넘습니다');
+    } else {
+      r6.style.display = 'none';
+    }
+
+    calcField.value = lines.join(' | ');
+    calcView.textContent = lines.join(' · ');
+  }
+  amt.addEventListener('input', calc);
+  amt.addEventListener('change', calc);
+
+  var picked = document.getElementById('picked');
+  var pickedView = document.getElementById('pickedView');
+  var cnt = document.getElementById('cnt');
+
+  document.querySelectorAll('.chk').forEach(function(el){
+    el.addEventListener('click', function(){
+      el.classList.toggle('on');
+      var on = [].slice.call(document.querySelectorAll('.chk.on')).map(function(e){ return e.dataset.t; });
+      cnt.textContent = on.length;
+      picked.value = on.join(' | ');
+      pickedView.textContent = on.length ? on.join(' · ') : '아직 체크하신 항목이 없습니다.';
+    });
+  });
+})();
+</script>
+</body>
+</html>
