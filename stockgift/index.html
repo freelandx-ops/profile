@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>떨어진 주식, 지금 줄까 회복 뒤 줄까</title>
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://freelandx-ops.github.io/profile/stockgift/">
+<meta property="og:title" content="떨어진 주식, 지금 줄까 회복 뒤 줄까">
+<meta property="og:image" content="https://freelandx-ops.github.io/profile/og-logo-260916c.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="유영곤 자산·법인 컨설팅">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="떨어진 주식, 지금 줄까 회복 뒤 줄까">
+<meta name="twitter:image" content="https://freelandx-ops.github.io/profile/og-logo-260916c.jpg">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --ink:#1d1d1f; --muted:#7a7a7a; --faint:#a8a8ac; --hairline:#e0e0e0;
+    --accent:#1428A0; --accent-dark:#6E8CF2;
+    --parchment:#f5f5f7; --tile:#272729;
+  }
+  html,body{overflow-x:clip;max-width:100%}
+  html{background:#fff}
+  body{font-family:'Pretendard Variable',Pretendard,system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;word-break:keep-all;
+    background:#fff;color:var(--ink);font-size:18px;line-height:1.74;letter-spacing:-.02em}
+  .wrap{max-width:720px;margin:0 auto;padding:0 24px;min-width:0}
+
+  .cover{background:var(--tile);padding:80px 0 60px}
+  .cover *{color:#fff}
+  .cover .kicker{color:var(--accent-dark);font-size:13px;font-weight:600;letter-spacing:.06em;margin-bottom:18px}
+  .cover h1{font-size:clamp(26px,6.4vw,42px);font-weight:700;line-height:1.24;letter-spacing:-.036em}
+  .cover h1 em{font-style:normal;color:var(--accent-dark)}
+  .cover .lead{color:#c8c8cc;font-size:clamp(17px,4.2vw,19px);line-height:1.62;margin-top:20px}
+
+  .answer{margin-top:36px;display:grid;gap:14px}
+  .ac{border:1px solid var(--hairline);border-radius:18px;padding:22px 22px 20px;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+  .ac .top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
+  .ac .oi{font-size:15px;font-weight:700;color:var(--accent);letter-spacing:.02em}
+  .ac .line{font-size:clamp(24px,6vw,30px);font-weight:800;letter-spacing:-.04em}
+  .ac .car{margin-top:10px;font-size:17px;line-height:1.6;color:#444}
+  p.note{color:var(--muted);font-size:15px;margin-top:14px}
+
+  .rules{margin-top:22px;display:grid;gap:10px}
+  .rl{background:var(--parchment);border-radius:14px;padding:16px 18px}
+  .rl b{display:block;font-size:20px;font-weight:800;color:var(--accent);letter-spacing:-.03em}
+  .rl span{font-size:16px;line-height:1.6;color:#444}
+
+  .topic{margin-top:64px}
+  .topic + .topic{margin-top:80px;padding-top:64px;border-top:1px solid var(--hairline)}
+  .topic > h3{font-size:clamp(23px,5.6vw,30px);font-weight:700;letter-spacing:-.036em;line-height:1.26}
+  .topic > .oneline{font-size:clamp(17px,4.2vw,20px);line-height:1.62;color:var(--muted);margin-top:14px}
+  .topic > .oneline b{font-weight:600;color:var(--ink)}
+  p{margin-top:14px}
+
+  table{width:100%;border-collapse:collapse;margin-top:24px;font-size:16px}
+  th{text-align:left;padding:12px 10px;border-bottom:2px solid var(--ink);font-weight:700;font-size:15px}
+  td{padding:14px 10px;border-bottom:1px solid var(--hairline);line-height:1.5;vertical-align:top}
+  td.nm{font-weight:700}
+  .yes{color:var(--accent);font-weight:700}
+  .no{color:#c0392b;font-weight:700}
+  .scroller{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .scroller table{min-width:560px}
+
+  .calc{margin-top:28px;background:var(--parchment);border-radius:18px;padding:24px}
+  .calc label{display:block;font-size:15px;font-weight:600;margin-bottom:8px}
+  .calc select{width:100%;padding:14px 16px;border:1px solid var(--hairline);border-radius:12px;font-size:18px;font-family:inherit;font-weight:700;background:#fff;margin-bottom:16px}
+  .calc input{margin-bottom:16px;width:100%;padding:14px 16px;border:1px solid var(--hairline);border-radius:12px;
+    font-size:20px;font-family:inherit;font-weight:700;background:#fff}
+  .out{margin-top:20px;display:grid;gap:10px}
+  .ol{background:#fff;border-radius:12px;padding:14px 16px;display:flex;justify-content:space-between;
+    align-items:baseline;gap:12px;flex-wrap:wrap}
+  .ol .k{font-size:15px;color:var(--muted)}
+  .ol .v{font-size:19px;font-weight:800;letter-spacing:-.03em}
+  .ol.hl{background:var(--accent)}
+  .ol.hl .k{color:#c8d4ff}
+  .ol.hl .v{color:#fff}
+  .ol.warn{background:#fdf0ee}
+  .ol.warn .v{color:#c0392b}
+
+  .checks{margin-top:26px;display:grid;gap:8px}
+  .chk{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border:1px solid var(--hairline);
+    border-radius:12px;cursor:pointer;user-select:none;background:#fff}
+  .chk .box{flex:0 0 auto;width:24px;height:24px;border:2px solid var(--hairline);border-radius:7px;
+    color:transparent;font-size:15px;line-height:20px;text-align:center;font-weight:700}
+  .chk.on{border-color:var(--accent);background:#f2f5ff}
+  .chk.on .box{background:var(--accent);border-color:var(--accent);color:#fff}
+  .chk .t{font-size:16px;line-height:1.55}
+
+  .form{margin-top:30px;display:grid;gap:6px}
+  .form label{font-size:14px;font-weight:600;margin-top:14px}
+  .form input,.form textarea{width:100%;padding:13px 15px;border:1px solid var(--hairline);
+    border-radius:12px;font-size:16px;font-family:inherit;background:#fff}
+  .form textarea{min-height:96px;resize:vertical}
+  .picked{background:var(--parchment);border-radius:12px;padding:14px 16px;font-size:15px;
+    color:#444;line-height:1.6}
+  .btn{display:inline-block;background:var(--accent);color:#fff;border:0;border-radius:999px;
+    padding:16px 34px;font-size:17px;font-weight:700;font-family:inherit;cursor:pointer}
+  .fine{color:var(--faint);font-size:13px;line-height:1.6;margin-top:16px}
+
+  footer{margin-top:90px;padding:40px 0 120px;border-top:1px solid var(--hairline)}
+  footer p{color:var(--muted);font-size:14px;line-height:1.7}
+  footer p:first-child{color:var(--ink);font-size:17px;font-weight:700;margin-bottom:18px}
+  .who{margin-top:24px;display:flex;justify-content:space-between;gap:12px;font-size:14px;color:var(--faint)}
+  .who b{color:var(--ink);display:block}
+
+  .tally{position:fixed;left:0;right:0;bottom:0;background:rgba(255,255,255,.96);
+    backdrop-filter:blur(10px);border-top:1px solid var(--hairline);padding:12px 0;z-index:9}
+  .tally .in{max-width:720px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;
+    align-items:center;gap:12px}
+  .tally .cnt{font-size:15px;color:var(--muted)}
+  .tally .cnt b{color:var(--accent);font-size:19px}
+  .tally .btn{padding:12px 24px;font-size:15px}
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="wrap">
+    <div class="kicker">떨어진 주식 증여 순서표</div>
+    <h1>떨어진 주식,<br><em>지금 줄까 회복 뒤 줄까</em></h1>
+    <p class="lead">3억어치 산 주식이 1억 5,000만원이 됐을 때 성인 자녀에게 주면 증여세가 970만원입니다.<br>
+    회복을 기다렸다가 3억에 주면 3,880만원입니다.<br>
+    우리 집 주식 금액으로 순서대로 계산해 봅니다.</p>
+  </div>
+</div>
+
+<div class="wrap">
+
+<section class="topic">
+  <h3>순서 1. 세금 없이 주는 금액부터 확인합니다</h3>
+  <p class="oneline">성인 자녀는 <b>10년 동안 5,000만원</b>, 미성년 자녀는 2,000만원까지 증여세가 없습니다.</p>
+  <div class="rules">
+    <div class="rl"><b>5,000만원</b><span>엄마와 아빠가 따로 줘도 한 사람이 준 것으로 합칩니다. 자녀가 받은 날부터 거꾸로 10년 안에 받은 것을 모두 더합니다.</span></div>
+    <div class="rl"><b>더하기 1억원</b><span>자녀가 혼인신고 전후 2년 안이거나, 자녀가 아이를 낳은 지 2년 안이면 1억원이 더해집니다. 둘을 합쳐 평생 1억원까지입니다.</span></div>
+    <div class="rl"><b>떨어진 값으로 채웁니다</b><span>공제는 금액으로 정해져 있습니다. 주가가 내려가 있으면 같은 공제 안에 들어가는 주식이 많아집니다.</span></div>
+  </div>
+  <p>10년 안에 이미 준 돈이 있으면 그만큼 줄어듭니다. <b>남은 공제가 얼마인지 먼저 알아야</b> 이번에 넘길 주식의 양이 나옵니다.</p>
+</section>
+
+<section class="topic">
+  <h3>순서 2. 우리 집 주식으로 계산해 보기</h3>
+  <p class="oneline">금액은 <b>만원 단위</b>로 넣으십시오. 1억 5,000만원이면 15000입니다.</p>
+  <div class="calc">
+    <label for="buy">처음 산 금액 (만원)</label>
+    <input type="number" id="buy" placeholder="예: 30000" inputmode="numeric">
+    <label for="now">지금 평가금액 (만원)</label>
+    <input type="number" id="now" placeholder="예: 15000" inputmode="numeric">
+    <label for="rec">회복한 뒤 줄 때 예상 금액 (만원 · 비우면 처음 산 금액으로 봅니다)</label>
+    <input type="number" id="rec" placeholder="예: 30000" inputmode="numeric">
+    <label for="adult">받는 자녀</label>
+    <select id="adult"><option value="1">성인 자녀</option><option value="0">미성년 자녀</option></select>
+    <label for="mar">자녀가 혼인신고 전후 2년 안이거나 아이를 낳은 지 2년 안입니까</label>
+    <select id="mar"><option value="0">아니오</option><option value="1">예</option></select>
+    <label for="prior">10년 안에 부모가 이미 준 금액 (만원)</label>
+    <input type="number" id="prior" placeholder="없으면 0" inputmode="numeric">
+    <label for="kind">손실 난 주식은</label>
+    <select id="kind"><option value="kr">국내 주식</option><option value="us">해외 주식</option></select>
+    <div id="gainBox" style="display:none">
+      <label for="gain">같은 해 다른 해외주식에서 난 이익 (만원 · 부모 기준)</label>
+      <input type="number" id="gain" placeholder="없으면 0" inputmode="numeric">
+    </div>
+    <div class="out">
+      <div class="ol"><span class="k">세금 없이 줄 수 있는 금액</span><span class="v" id="o1">-</span></div>
+      <div class="ol hl"><span class="k">지금 주면 증여세</span><span class="v" id="o2">-</span></div>
+      <div class="ol"><span class="k">회복한 뒤 주면 증여세</span><span class="v" id="o3">-</span></div>
+      <div class="ol"><span class="k">지금 줄 때 덜 내는 증여세</span><span class="v" id="o4">-</span></div>
+      <div class="ol"><span class="k">상속세 계산에서 빠지는 회복분</span><span class="v" id="o5">-</span></div>
+      <div class="ol" id="row6" style="display:none"><span class="k">팔아서 손실을 쓰면 줄어드는 양도세</span><span class="v" id="o6">-</span></div>
+      <div class="ol" id="row7" style="display:none"><span class="k" id="k7">-</span><span class="v" id="o7"></span></div>
+    </div>
+  </div>
+  <p class="note">증여세는 신고세액공제 3%를 뺀 금액입니다. 10년 안에 공제를 넘겨 준 돈이 있으면 그 금액까지 합쳐 세율을 정하므로 실제 세액은 더 나올 수 있습니다. 양도세는 기본공제 250만원과 세율 20%로 계산했고 지방소득세가 따로 붙습니다.</p>
+  <p><b>숫자는 여기까지 나옵니다.</b> 그런데 언제 넘길지, 한 번에 줄지 나눠 줄지는 앞으로 넉 달 동안의 주가와 공제 일정을 같이 놓아야 정해집니다. 그 이야기를 <a href="#picked" onclick="document.querySelector('.form').scrollIntoView({behavior:'smooth'});return false;">상담</a>에서 나눕니다.</p>
+</section>
+
+<section class="topic">
+  <h3>순서 3. 세금은 넉 달 평균으로 매깁니다</h3>
+  <p class="oneline">상장주식 증여세는 준 날 하루 가격이 아니라 <b>준 날 앞 2개월과 뒤 2개월 종가의 평균</b>으로 매깁니다.</p>
+  <div class="scroller">
+  <table>
+    <tr><th>예시</th><th>날짜</th><th>무엇이 정해지나</th></tr>
+    <tr><td class="nm">증여한 날</td><td>10월 15일</td><td>자녀 계좌에 주식이 들어온 날</td></tr>
+    <tr><td class="nm">평균을 내는 기간</td><td>8월 15일 ~ 12월 15일</td><td>이 넉 달 종가 평균이 증여세 기준</td></tr>
+    <tr><td class="nm">신고기한</td><td>다음 해 1월 31일</td><td>증여한 달 말일부터 3개월</td></tr>
+  </table>
+  </div>
+  <p>그래서 <b>하루 급락은 효과가 없습니다.</b> 하락이 길게 이어진 주식일수록 평균이 낮게 잡힙니다. 증여한 뒤 두 달 사이에 주가가 오르면 평균도 같이 올라갑니다.</p>
+  <p class="note">해외 상장주식도 같은 방식으로 평균을 내고, 원화로 바꿀 때는 증여한 날 환율을 쓰는 것으로 알려져 있습니다. 증여한 날은 자녀 계좌에 주식이 들어온 날입니다.</p>
+</section>
+
+<section class="topic">
+  <h3>순서 4. 평균이 올랐다면 돌려받고 다시 줍니다</h3>
+  <p class="oneline">평균이 확정되는 것은 증여 후 2개월이고, 신고기한은 그보다 늦습니다. <b>평균을 보고 나서 판단할 시간이 남습니다.</b></p>
+  <div class="rules">
+    <div class="rl"><b>신고기한 안에</b><span>증여한 달 말일부터 3개월 안에 돌려받으면 처음부터 증여가 없던 것으로 봅니다. 다시 떨어졌을 때 주면 됩니다.</span></div>
+    <div class="rl"><b>주식이라 됩니다</b><span>현금은 돌려받아도 이 규정이 적용되지 않습니다. 주식은 적용됩니다.</span></div>
+    <div class="rl"><b>한 주도 팔지 않아야</b><span>자녀가 받은 주식을 한 주라도 팔았다면 돌려받은 것으로 인정되지 않습니다.</span></div>
+    <div class="rl"><b>세무서가 정하기 전</b><span>돌려받기 전에 세무서가 세액을 결정했다면 이 규정을 쓸 수 없습니다.</span></div>
+  </div>
+</section>
+
+<section class="topic">
+  <h3>순서 5. 해외주식이면 팔 때와 나란히 놓습니다</h3>
+  <p class="oneline">부모가 같은 해 다른 해외주식에서 이익을 냈다면 <b>손실 난 주식을 팔아 그 이익에서 손실을 뺄 수 있습니다.</b></p>
+  <p>증여하면 이 손실은 부모 세금 계산에 쓸 수 없습니다. 그래서 해외주식은 둘을 나란히 놓습니다.</p>
+  <div class="rules">
+    <div class="rl"><b>팔아서 손실을 쓸 때</b><span>같은 해 다른 해외주식 이익에서 250만원을 뺀 금액까지 손실로 줄일 수 있고, 줄어드는 만큼 양도세 20%가 빠집니다.</span></div>
+    <div class="rl"><b>떨어진 채로 줄 때</b><span>증여세가 떨어진 값으로 매겨지고, 회복분은 증여세와 상속세 계산에서 빠집니다.</span></div>
+  </div>
+  <p>국내 주식은 대주주가 아니면 팔 때 양도세가 없어 이 비교가 필요 없는 경우가 많습니다.</p>
+</section>
+
+<section class="topic">
+  <h3>순서 6. 상속까지 보면 차이가 더 납니다</h3>
+  <p class="oneline">증여한 부모가 10년 안에 돌아가시면 준 재산을 상속재산에 다시 더합니다. <b>이때 더하는 값은 증여할 때 매긴 값입니다.</b></p>
+  <div class="rules">
+    <div class="rl"><b>회복분은 빠집니다</b><span>1억 5,000만원에 준 주식이 3억이 돼도 상속재산에는 1억 5,000만원만 더합니다.</span></div>
+    <div class="rl"><b>10년이 지나면</b><span>아예 더하지 않습니다. 일찍 줄수록 상속과 멀어집니다.</span></div>
+    <div class="rl"><b>상속재산이 5억을 넘으면</b><span>10년 안에 공제를 넘겨 준 금액만큼 상속공제를 받을 수 있는 한도가 줄어듭니다. 공제 안에서 준 금액은 영향이 없습니다.</span></div>
+  </div>
+  <p>여기까지는 혼자 확인하실 수 있습니다. 혼자 안 되는 것은 <b>언제, 몇 번에 나눠 넘겨야 공제와 평균 가격을 가장 잘 쓰는지</b>입니다. 계좌와 10년 안의 증여 내역을 같이 보면 20분이면 나옵니다.</p>
+</section>
+
+<section class="topic">
+  <h3>해당되는 것에 체크해 주십시오</h3>
+  <p class="oneline">체크하신 항목은 아래 신청란에 자동으로 옮겨집니다.</p>
+  <div class="checks">
+    <div class="chk" data-t="손실 중인 주식이 1억원 넘게 있다"><span class="box">&#10003;</span><span class="t">손실 중인 주식이 평가금액으로 1억원 넘게 있다</span></div>
+    <div class="chk" data-t="하락이 몇 달째 이어지고 있다"><span class="box">&#10003;</span><span class="t">그 주식의 하락이 몇 달째 이어지고 있다</span></div>
+    <div class="chk" data-t="손실 난 주식이 해외주식이다"><span class="box">&#10003;</span><span class="t">손실 난 주식이 해외주식이다</span></div>
+    <div class="chk" data-t="같은 해 다른 해외주식에서 이익이 났다"><span class="box">&#10003;</span><span class="t">같은 해 다른 해외주식에서 이익이 났다</span></div>
+    <div class="chk" data-t="자녀가 결혼 또는 출산 전후 2년 안이다"><span class="box">&#10003;</span><span class="t">자녀가 결혼하거나 아이를 낳은 지 2년 안이다</span></div>
+    <div class="chk" data-t="10년 안에 자녀에게 준 돈이 있다"><span class="box">&#10003;</span><span class="t">10년 안에 자녀에게 이미 준 돈이 있다</span></div>
+    <div class="chk" data-t="미성년 자녀에게 주려 한다"><span class="box">&#10003;</span><span class="t">미성년 자녀에게 주려 한다</span></div>
+    <div class="chk" data-t="엄마와 아빠 모두 손실 난 종목이 있다"><span class="box">&#10003;</span><span class="t">엄마와 아빠 모두 주식 계좌에 손실 난 종목이 있다</span></div>
+    <div class="chk" data-t="증여세 신고를 해 본 적이 없다"><span class="box">&#10003;</span><span class="t">증여세 신고를 해 본 적이 없다</span></div>
+    <div class="chk" data-t="부모 재산이 10억원을 넘을 것 같다"><span class="box">&#10003;</span><span class="t">부모님 재산이 합쳐 10억원을 넘을 것 같다</span></div>
+  </div>
+</section>
+
+<section class="topic">
+  <h3>20분 상담으로 우리 집 순서를 짚어 드립니다</h3>
+  <p class="oneline">체크하신 항목과 계산 결과를 남겨 주시면 <b>편하신 시간에 연락드려 아래 넷을</b> 우리 집 주식 기준으로 설명해 드립니다.</p>
+  <div class="rules">
+    <div class="rl"><b>넘길 시점</b><span>앞뒤 넉 달 평균을 놓고 언제 넘기는 것이 맞는지</span></div>
+    <div class="rl"><b>넘길 양과 횟수</b><span>남은 공제와 자녀별로 나눠 주는 방법</span></div>
+    <div class="rl"><b>해외주식이면</b><span>팔아서 손실을 쓸 때와 떨어진 채로 줄 때의 비교</span></div>
+    <div class="rl"><b>신고와 되돌리기</b><span>신고기한 안에 평균을 보고 돌려받을지 정하는 순서</span></div>
+  </div>
+  <p>상담 뒤에는 이야기 나눈 내용을 한 장으로 정리해 보내 드립니다.</p>
+  <form class="form" action="https://api.web3forms.com/submit" method="POST">
+    <input type="hidden" name="access_key" value="56ba5ceb-1e23-4de6-b6ca-7016a3e1e8d7">
+    <input type="hidden" name="구분" value="떨어진 주식 증여 순서표">
+    <input type="hidden" name="체크한항목" id="picked" value="">
+    <input type="hidden" name="계산결과" id="calcField" value="">
+    <input type="hidden" name="subject" value="[상담신청] 떨어진 주식 증여 순서표">
+    <input type="checkbox" name="botcheck" style="display:none">
+    <label>체크하신 항목</label>
+    <div class="picked" id="pickedView">아직 체크하신 항목이 없습니다.</div>
+    <label>계산 결과</label>
+    <div class="picked" id="calcView">위 계산란에 금액을 넣으시면 여기에 옮겨집니다.</div>
+    <label for="nm">성함</label><input type="text" id="nm" name="성함" required>
+    <label for="ph">연락처</label><input type="tel" id="ph" name="연락처" required>
+    <label for="how">상담 방법</label><input type="text" id="how" name="상담방법" placeholder="전화와 방문 중 편하신 것">
+    <label for="when">연락 받기 편한 시간</label><input type="text" id="when" name="편한시간" placeholder="예: 평일 오후 2시 이후">
+    <label for="ms">더 하실 말씀</label><textarea id="ms" name="메모" placeholder="자녀 나이와 결혼 시기, 10년 안에 준 돈, 손실 난 주식이 국내인지 해외인지 적어 주셔도 됩니다."></textarea>
+    <p style="margin-top:24px"><button type="submit" class="btn">상담 신청하기</button></p>
+    <p class="fine">내용은 Web3Forms를 통해 담당자 이메일로 전달됩니다.<br>
+      세율과 공제는 법령 개정에 따라 바뀔 수 있습니다.<br>
+      특정 종목의 매수·매도를 권하는 자료가 아닙니다. 신고는 가족 상황에 맞춰 세무 대리인과 함께 진행하시기 바랍니다.</p>
+  </form>
+</section>
+
+<footer>
+  <p>버는 건 시장이 정하고, 지키는 건 구조가 정합니다.</p>
+  <p>근거(2026년 9월 27일 원문 확인) · 상장주식 평가 상속세 및 증여세법 제63조 제1항 제1호 가목 · 증여재산공제 제53조 · 혼인·출산 증여재산공제 제53조의2 · 직계존속과 그 배우자 합산 제47조 제2항 · 증여세율 제26조 · 신고세액공제 제69조 제2항 · 증여 뒤 재산가치 증가 제42조의3 · 상속세 과세가액 가산 제13조 제1항과 증여일 현재 시가 제60조 제4항 · 상속공제 한도 제24조 · 증여재산 반환 제4조 제4항 · 신고기한 제68조 · 양도차손 공제 소득세법 제102조 제2항 · 양도소득 기본공제 제103조 · 증여 뒤 일부 매도 시 반환 불인정 서울신문 2026년 7월 6일</p>
+  <p>이 페이지는 법령을 옮긴 일반 정보입니다. 실제 세액은 증여일 전후 주가, 10년 안의 다른 증여, 가족 상황에 따라 달라집니다.</p>
+  <div class="who"><span>떨어진 주식 증여 순서표</span>
+    <span style="text-align:right"><b>유영곤</b>@wealthstructure.kr</span></div>
+</footer>
+</div>
+
+<div class="tally" id="tally"><div class="in">
+  <span class="cnt"><b id="cnt">0</b>개 체크하셨습니다</span>
+  <a href="#picked" class="btn" onclick="document.querySelector('.form').scrollIntoView({behavior:'smooth'});return false;">상담 신청</a>
+</div></div>
+
+<script>
+(function(){
+  var ADULT = 5000, MINOR = 2000, MARRY = 10000;
+  var CGT = 0.2, CGT_BASE = 250;
+
+  function won(manwon){
+    var v = Math.round(manwon);
+    if (v <= 0) return '0원';
+    if (v >= 10000) {
+      var eok = Math.floor(v / 10000), rest = v % 10000;
+      return eok + '억' + (rest ? ' ' + rest.toLocaleString() + '만원' : '원');
+    }
+    return v.toLocaleString() + '만원';
+  }
+
+  // 상증법 제26조 세율, 제69조 신고세액공제 3%
+  function giftTax(base){
+    if (base <= 0) return 0;
+    var t;
+    if (base <= 10000) t = base * 0.1;
+    else if (base <= 50000) t = 1000 + (base - 10000) * 0.2;
+    else if (base <= 100000) t = 9000 + (base - 50000) * 0.3;
+    else if (base <= 300000) t = 24000 + (base - 100000) * 0.4;
+    else t = 104000 + (base - 300000) * 0.5;
+    return t * 0.97;
+  }
+
+  function num(id){ var v = parseFloat(document.getElementById(id).value); return v > 0 ? v : 0; }
+  function set(id, t){ document.getElementById(id).textContent = t; }
+
+  var calcField = document.getElementById('calcField');
+  var calcView = document.getElementById('calcView');
+  var kindEl = document.getElementById('kind');
+
+  function calc(){
+    var buy = num('buy'), now = num('now');
+    var rec = num('rec') || buy;
+    var adult = document.getElementById('adult').value === '1';
+    var marry = document.getElementById('mar').value === '1';
+    var prior = num('prior');
+    var us = kindEl.value === 'us';
+    document.getElementById('gainBox').style.display = us ? '' : 'none';
+    var gain = num('gain');
+
+    if (!now) {
+      ['o1','o2','o3','o4','o5'].forEach(function(i){ set(i, '-'); });
+      document.getElementById('row6').style.display = 'none';
+      document.getElementById('row7').style.display = 'none';
+      calcField.value = '';
+      calcView.textContent = '위 계산란에 금액을 넣으시면 여기에 옮겨집니다.';
+      return;
+    }
+
+    var ded = Math.max(0, (adult ? ADULT : MINOR) - prior) + (marry ? MARRY : 0);
+    var taxNow = giftTax(now - ded);
+    var taxRec = rec ? giftTax(rec - ded) : 0;
+    var saveGift = Math.max(0, taxRec - taxNow);
+    var upside = Math.max(0, rec - now);
+
+    set('o1', won(ded));
+    set('o2', won(taxNow));
+    set('o3', rec ? won(taxRec) : '-');
+    set('o4', won(saveGift));
+    set('o5', won(upside));
+
+    var lines = ['산 금액 ' + won(buy) + ' · 지금 ' + won(now) + ' · 회복 뒤 ' + won(rec),
+      (adult ? '성인 자녀' : '미성년 자녀') + (marry ? ' · 혼인·출산 공제 가능' : '') + (prior ? ' · 10년 안에 준 돈 ' + won(prior) : ''),
+      '지금 주면 증여세 ' + won(taxNow) + ' · 회복 뒤 주면 ' + won(taxRec) + ' · 차이 ' + won(saveGift),
+      '상속세 계산에서 빠지는 회복분 ' + won(upside)];
+
+    var r6 = document.getElementById('row6'), r7 = document.getElementById('row7');
+    if (us) {
+      var loss = Math.max(0, buy - now);
+      var usable = Math.min(loss, Math.max(0, gain - CGT_BASE));
+      var saveSell = usable * CGT;
+      set('o6', won(saveSell));
+      r6.style.display = '';
+      r7.style.display = '';
+      if (saveSell > saveGift) {
+        set('k7', '팔아서 손실을 쓰는 쪽이 더 줄어드는 금액');
+        set('o7', won(saveSell - saveGift));
+      } else {
+        set('k7', '떨어진 채로 주는 쪽이 더 줄어드는 금액');
+        set('o7', won(saveGift - saveSell));
+      }
+      lines.push('해외주식 · 같은 해 다른 이익 ' + won(gain) + ' · 팔아서 줄어드는 양도세 ' + won(saveSell));
+    } else {
+      r6.style.display = 'none';
+      r7.style.display = 'none';
+    }
+
+    calcField.value = lines.join(' | ');
+    calcView.textContent = lines.join(' · ');
+  }
+  ['buy','now','rec','adult','mar','prior','kind','gain'].forEach(function(id){
+    var el = document.getElementById(id);
+    el.addEventListener('input', calc);
+    el.addEventListener('change', calc);
+  });
+
+  var picked = document.getElementById('picked');
+  var pickedView = document.getElementById('pickedView');
+  var cnt = document.getElementById('cnt');
+
+  document.querySelectorAll('.chk').forEach(function(el){
+    el.addEventListener('click', function(){
+      el.classList.toggle('on');
+      var on = [].slice.call(document.querySelectorAll('.chk.on')).map(function(e){ return e.dataset.t; });
+      cnt.textContent = on.length;
+      picked.value = on.join(' | ');
+      pickedView.textContent = on.length ? on.join(' · ') : '아직 체크하신 항목이 없습니다.';
+    });
+  });
+})();
+</script>
+</body>
+</html>
