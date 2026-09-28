@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>월 200~300만원, 연금으로 받을 수 있을까</title>
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://freelandx-ops.github.io/profile/income/">
+<meta property="og:title" content="월 200~300만원, 연금으로 받을 수 있을까">
+<meta property="og:description" content="받고 싶은 금액을 넣으면 어디서 얼마씩 받으면 되는지, 원금이 얼마 드는지 계산합니다">
+<meta property="og:image" content="https://freelandx-ops.github.io/profile/og-logo-260916c.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="유영곤 자산·법인 컨설팅">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="월 200~300만원, 연금으로 받을 수 있을까">
+<meta name="twitter:image" content="https://freelandx-ops.github.io/profile/og-logo-260916c.jpg">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --ink:#1d1d1f; --muted:#7a7a7a; --faint:#a8a8ac; --hairline:#e0e0e0;
+    --accent:#1428A0; --accent-dark:#6E8CF2;
+    --parchment:#f5f5f7; --tile:#272729; --warn:#c0392b;
+    --c1:#1428A0; --c2:#4a6ee0; --c3:#8aa4f0; --c4:#c9d5f7; --c5:#e7a33e;
+  }
+  html,body{overflow-x:clip;max-width:100%}
+  html{background:#fff}
+  body{font-family:'Pretendard Variable',Pretendard,system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;word-break:keep-all;
+    background:#fff;color:var(--ink);font-size:18px;line-height:1.74;letter-spacing:-.02em}
+  .wrap{max-width:720px;margin:0 auto;padding:0 24px;min-width:0}
+
+  .cover{background:var(--tile);padding:80px 0 60px}
+  .cover *{color:#fff}
+  .cover .kicker{color:var(--accent-dark);font-size:13px;font-weight:600;letter-spacing:.06em;margin-bottom:18px}
+  .cover h1{font-size:clamp(26px,6.4vw,42px);font-weight:700;line-height:1.24;letter-spacing:-.036em}
+  .cover h1 em{font-style:normal;color:var(--accent-dark)}
+  .cover .lead{color:#c8c8cc;font-size:clamp(17px,4.2vw,19px);line-height:1.62;margin-top:20px}
+  .cover .lead b{color:#fff}
+
+  .topic{margin-top:64px}
+  .topic + .topic{margin-top:80px;padding-top:64px;border-top:1px solid var(--hairline)}
+  .topic > h3{font-size:clamp(23px,5.6vw,30px);font-weight:700;letter-spacing:-.036em;line-height:1.26}
+  .topic > .oneline{font-size:clamp(17px,4.2vw,20px);line-height:1.62;color:var(--muted);margin-top:14px}
+  .topic > .oneline b{font-weight:600;color:var(--ink)}
+  p{margin-top:14px}
+  p.note{color:var(--muted);font-size:15px;margin-top:14px}
+
+  .calc{margin-top:28px;background:var(--parchment);border-radius:18px;padding:24px}
+  .calc .main label{display:block;font-size:16px;font-weight:700;margin-bottom:8px}
+  .calc .main input{font-size:26px}
+  .calc input{width:100%;padding:14px 16px;border:1px solid var(--hairline);border-radius:12px;
+    font-size:19px;font-family:inherit;font-weight:700;background:#fff;color:var(--ink)}
+  .quick{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+  .quick button{border:1px solid var(--hairline);background:#fff;border-radius:999px;padding:8px 16px;
+    font-family:inherit;font-size:15px;font-weight:600;cursor:pointer;color:var(--ink)}
+  .quick button.on{background:var(--accent);border-color:var(--accent);color:#fff}
+  .more{margin-top:22px;display:grid;grid-template-columns:1fr 1fr;gap:14px 12px}
+  .more label{display:block;font-size:14px;font-weight:600;margin-bottom:6px;color:#444}
+  .more .hint{font-size:12.5px;color:var(--muted);margin-top:4px;line-height:1.45}
+  .tog{grid-column:1 / -1;display:flex;align-items:center;gap:10px;font-size:15px;font-weight:600;cursor:pointer;user-select:none}
+  .tog input{width:22px;height:22px;accent-color:var(--accent)}
+  @media (max-width:520px){ .more{grid-template-columns:1fr} }
+
+  .versus{margin-top:26px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  @media (max-width:560px){ .versus{grid-template-columns:1fr} }
+  .card{border:1px solid var(--hairline);border-radius:18px;padding:20px;background:#fff}
+  .card.best{border:2px solid var(--accent)}
+  .card .tag{font-size:13px;font-weight:700;letter-spacing:.04em;color:var(--muted)}
+  .card.best .tag{color:var(--accent)}
+  .card .big{font-size:clamp(26px,6.4vw,32px);font-weight:800;letter-spacing:-.04em;line-height:1.2;margin-top:6px}
+  .card .sub{font-size:14px;color:var(--muted);margin-top:2px}
+  .card ul{list-style:none;margin-top:14px;display:grid;gap:6px}
+  .card li{font-size:15px;line-height:1.5;display:flex;justify-content:space-between;gap:10px}
+  .card li span:last-child{font-weight:700;text-align:right}
+  .card li.bad span:last-child{color:var(--warn)}
+  .card li.good span:last-child{color:var(--accent)}
+
+  .stack{margin-top:22px}
+  .bar{display:flex;height:40px;border-radius:12px;overflow:hidden;background:#eee}
+  .bar div{height:100%;transition:width .35s}
+  .legend{margin-top:12px;display:grid;gap:8px}
+  .lg{display:flex;align-items:center;gap:10px;font-size:15.5px;line-height:1.45}
+  .lg i{flex:0 0 14px;height:14px;border-radius:4px}
+  .lg .nm{flex:1}
+  .lg .am{font-weight:800}
+
+  .verdict{margin-top:22px;display:grid;gap:10px}
+  .vd{border-radius:14px;padding:16px 18px;background:var(--parchment);font-size:16px;line-height:1.6}
+  .vd b{display:block;font-size:17px;margin-bottom:4px}
+  .vd.ok{background:#eef2ff}
+  .vd.ok b{color:var(--accent)}
+  .vd.bad{background:#fdf0ee}
+  .vd.bad b{color:var(--warn)}
+
+  .ways{margin-top:26px;display:grid;gap:12px}
+  .way{border:1px solid var(--hairline);border-radius:16px;padding:18px 20px;background:#fff}
+  .way.in{border:2px solid var(--accent);background:#fbfcff}
+  .way .hd{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
+  .way .hd b{font-size:19px;letter-spacing:-.03em}
+  .way .badge{font-size:12.5px;font-weight:700;border-radius:999px;padding:3px 10px;background:#eee;color:#666}
+  .way.in .badge{background:var(--accent);color:#fff}
+  .way dl{margin-top:10px;display:grid;grid-template-columns:78px 1fr;gap:6px 12px;font-size:15.5px;line-height:1.55}
+  .way dt{color:var(--muted);font-weight:600}
+  .way dd .warn{color:var(--warn);font-weight:600}
+
+  table{width:100%;border-collapse:collapse;margin-top:24px;font-size:15px}
+  th{text-align:left;padding:10px 8px;border-bottom:2px solid var(--ink);font-weight:700;font-size:14px}
+  td{padding:12px 8px;border-bottom:1px solid var(--hairline);line-height:1.45;vertical-align:top}
+  td.nm{font-weight:700}
+  .y{color:var(--warn);font-weight:700}
+  .n{color:var(--accent);font-weight:700}
+  .scroller{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .scroller table{min-width:600px}
+
+  .checks{margin-top:26px;display:grid;gap:8px}
+  .chk{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border:1px solid var(--hairline);
+    border-radius:12px;cursor:pointer;user-select:none;background:#fff}
+  .chk .box{flex:0 0 auto;width:24px;height:24px;border:2px solid var(--hairline);border-radius:7px;
+    color:transparent;font-size:15px;line-height:20px;text-align:center;font-weight:700}
+  .chk.on{border-color:var(--accent);background:#f2f5ff}
+  .chk.on .box{background:var(--accent);border-color:var(--accent);color:#fff}
+  .chk .t{font-size:16px;line-height:1.55}
+
+  .rules{margin-top:22px;display:grid;gap:10px}
+  .rl{background:var(--parchment);border-radius:14px;padding:16px 18px}
+  .rl b{display:block;font-size:19px;font-weight:800;color:var(--accent);letter-spacing:-.03em}
+  .rl span{font-size:16px;line-height:1.6;color:#444}
+
+  .form{margin-top:30px;display:grid;gap:6px}
+  .form label{font-size:14px;font-weight:600;margin-top:14px}
+  .form input,.form textarea{width:100%;padding:13px 15px;border:1px solid var(--hairline);
+    border-radius:12px;font-size:16px;font-family:inherit;background:#fff}
+  .form textarea{min-height:96px;resize:vertical}
+  .picked{background:var(--parchment);border-radius:12px;padding:14px 16px;font-size:15px;color:#444;line-height:1.6}
+  .btn{display:inline-block;background:var(--accent);color:#fff;border:0;border-radius:999px;
+    padding:16px 34px;font-size:17px;font-weight:700;font-family:inherit;cursor:pointer;text-decoration:none}
+  .fine{color:var(--faint);font-size:13px;line-height:1.6;margin-top:16px}
+
+  footer{margin-top:90px;padding:40px 0 120px;border-top:1px solid var(--hairline)}
+  footer p{color:var(--muted);font-size:14px;line-height:1.7}
+  footer p:first-child{color:var(--ink);font-size:17px;font-weight:700;margin-bottom:18px}
+  .who{margin-top:24px;display:flex;justify-content:space-between;gap:12px;font-size:14px;color:var(--faint)}
+  .who b{color:var(--ink);display:block}
+
+  .tally{position:fixed;left:0;right:0;bottom:0;background:rgba(255,255,255,.96);
+    backdrop-filter:blur(10px);border-top:1px solid var(--hairline);padding:12px 0;z-index:9}
+  .tally .in{max-width:720px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+  .tally .cnt{font-size:15px;color:var(--muted)}
+  .tally .cnt b{color:var(--accent);font-size:19px}
+  .tally .btn{padding:12px 24px;font-size:15px}
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="wrap">
+    <div class="kicker">월 생활비 계산기</div>
+    <h1>월 200~300만원,<br><em>연금으로 받을 수 있을까</em></h1>
+    <p class="lead">국민연금 평균 110만원을 받아도, 월 300만원을 채우려고 나머지 190만원을 배당으로 받으면 원금이 약 <b>6억 7천만원</b> 들고 피부양자에서도 제외됩니다.<br>
+    같은 분이 70세이고 시가 5억원 집이 있으면 주택연금 153.9만원을 더해, 예금 약 <b>1억 5천만원</b>의 이자로 나머지가 채워집니다.<br>
+    받고 싶은 금액을 넣으시면 내 조건으로 바로 계산됩니다.</p>
+  </div>
+</div>
+
+<div class="wrap">
+
+<section class="topic" id="calcTop">
+  <h3>한 달에 얼마를 받고 싶으신가요</h3>
+  <p class="oneline">세금과 건보료를 뗀 뒤 <b>손에 쥐고 싶은 금액</b>을 넣으시면 됩니다. 아래 칸은 아시는 것만 채우셔도 계산됩니다.</p>
+
+  <div class="calc">
+    <div class="main">
+      <label for="want">받고 싶은 월 생활비 (만원)</label>
+      <input type="number" id="want" inputmode="numeric" value="300">
+      <div class="quick" id="quick">
+        <button type="button" data-v="200">200만원</button>
+        <button type="button" data-v="250">250만원</button>
+        <button type="button" data-v="300" class="on">300만원</button>
+        <button type="button" data-v="400">400만원</button>
+      </div>
+    </div>
+    <div class="more">
+      <div><label for="age">나이 (부부면 적은 쪽)</label>
+        <input type="number" id="age" inputmode="numeric" value="65">
+      </div>
+      <div><label for="np">국민연금 예상 월액 (만원)</label>
+        <input type="number" id="np" inputmode="numeric" placeholder="모르시면 비워 두세요">
+        <div class="hint">비우시면 20년 이상 가입자 평균 110만원으로 계산합니다. 국민연금공단 「내 연금 알아보기」에서 확인됩니다.</div>
+      </div>
+      <div><label for="house">사는 집 시가 (억원)</label>
+        <input type="number" id="house" inputmode="decimal" placeholder="예: 5">
+      </div>
+      <div><label for="pens">연금저축·IRP·퇴직연금 잔액 (억원)</label>
+        <input type="number" id="pens" inputmode="decimal" placeholder="예: 1.5">
+      </div>
+      <div><label for="fin">그 밖의 예금·주식 등 (억원)</label>
+        <input type="number" id="fin" inputmode="decimal" placeholder="예: 3">
+      </div>
+      <div></div>
+      <label class="tog"><input type="checkbox" id="useHouse" checked> 집이 있으면 주택연금도 넣어서 계산</label>
+    </div>
+  </div>
+
+  <div class="versus">
+    <div class="card">
+      <div class="tag">배당만으로 받으면</div>
+      <div class="big" id="divPrin">-</div>
+      <div class="sub">필요한 원금 (배당률 4%)</div>
+      <ul id="divList"></ul>
+    </div>
+    <div class="card best">
+      <div class="tag">나눠서 받으면</div>
+      <div class="big" id="mixPrin">-</div>
+      <div class="sub" id="mixSub">추가로 필요한 금융자산</div>
+      <ul id="mixList"></ul>
+    </div>
+  </div>
+
+  <div class="stack">
+    <div class="bar" id="bar"></div>
+    <div class="legend" id="legend"></div>
+  </div>
+
+  <div class="verdict" id="verdict"></div>
+  <p class="note" id="assume"></p>
+</section>
+
+<section class="topic">
+  <h3>이 조합에 들어간 방법</h3>
+  <p class="oneline">위 계산에 쓰인 방법은 <b>파란 테두리</b>로 표시됩니다. 방법마다 무엇인지, 얼마가 드는지, 무엇을 조심해야 하는지, 어떤 분께 더 나은지를 적었습니다.</p>
+  <div class="ways" id="ways"></div>
+  <p class="note">여기 적은 것은 방법의 종류입니다. 특정 금융회사의 상품이나 종목을 권하지 않습니다. 같은 방법이라도 상품마다 조건이 달라 가입 전에 설명서를 확인하셔야 합니다.</p>
+</section>
+
+<section class="topic">
+  <h3>연금이 항상 답은 아닙니다</h3>
+  <p class="oneline">같은 돈이라도 <b>나이와 가진 것에 따라</b> 더 나은 방법이 달라집니다.</p>
+  <div class="rules">
+    <div class="rl"><b>주택연금은 늦게 들수록 많이 나옵니다</b><span>시가 5억원 집이면 60세 가입은 월 105.3만원, 70세 가입은 월 153.9만원입니다. 60대 초반에 생활비가 급하지 않다면 서두르지 않는 편이 낫습니다.</span></div>
+    <div class="rl"><b>목돈은 연금계좌에 한 번에 못 넣습니다</b><span>연금저축과 IRP를 합쳐 한 해 1,800만원까지만 넣을 수 있습니다. 퇴직금과 ISA 만기 자금은 이 한도와 별개로 옮길 수 있지만, 한 번에 생긴 목돈은 순서를 짜야 합니다.</span></div>
+    <div class="rl"><b>원금을 물려주려면 원금을 남기는 방법이 맞습니다</b><span>연금은 원금을 헐어 쓰는 구조입니다. 원금을 남기려면 이자·배당으로만 받되, 금융소득을 한 해 1,000만원 안에 두면 피부양자 판정에서 제외됩니다.</span></div>
+    <div class="rl"><b>더 받을 금액이 작으면 연금이 필요 없을 수 있습니다</b><span>국민연금 외에 월 70만원 정도만 더 필요하면 예금 약 2억 9천만원의 이자로 금융소득 1,000만원 선 안에서 채워집니다.</span></div>
+  </div>
+</section>
+
+<section class="topic">
+  <h3>어디서 받느냐에 따라 건보료가 갈립니다</h3>
+  <p class="oneline">받는 곳마다 <b>피부양자 판정과 건보료와 종합과세</b>에 걸리는지가 다릅니다.</p>
+  <div class="scroller">
+  <table>
+    <tr><th>받는 곳</th><th>피부양자 판정</th><th>지역 건보료</th><th>금융소득 종합과세</th><th>원금</th></tr>
+    <tr><td class="nm">국민연금</td><td class="y">전액 들어감</td><td class="y">절반 반영</td><td class="n">해당 없음</td><td>보험료 낸 만큼</td></tr>
+    <tr><td class="nm">주택연금</td><td class="n">안 들어감</td><td class="n">안 붙음</td><td class="n">해당 없음</td><td>집에 계속 삶</td></tr>
+    <tr><td class="nm">연금저축·IRP</td><td class="n">안 들어감</td><td class="n">안 붙음</td><td class="n">해당 없음</td><td>헐어 씀</td></tr>
+    <tr><td class="nm">예금 이자·배당</td><td class="y">1,000만원 넘으면 전액</td><td class="y">붙음</td><td class="y">2,000만원 넘으면</td><td>남음</td></tr>
+  </table>
+  </div>
+  <p class="note">지역가입자 건보료는 재산에도 붙습니다. 이 표는 소득에 붙는 부분만 비교한 것입니다. 피부양자는 재산세 과세표준 합계가 5억 4천만원을 넘으면서 소득이 1,000만원을 넘거나, 9억원을 넘으면 소득과 관계없이 제외됩니다.</p>
+</section>
+
+<section class="topic">
+  <h3>해당되는 것에 체크해 주십시오</h3>
+  <p class="oneline">체크하신 항목과 계산 결과는 아래 신청란에 자동으로 옮겨집니다.</p>
+  <div class="checks">
+    <div class="chk" data-t="국민연금 예상액을 조회해 본 적이 없다"><span class="box">&#10003;</span><span class="t">국민연금 예상액을 조회해 본 적이 없다</span></div>
+    <div class="chk" data-t="자녀의 건강보험 피부양자로 있거나 될 예정이다"><span class="box">&#10003;</span><span class="t">자녀의 건강보험 피부양자로 있거나 될 예정이다</span></div>
+    <div class="chk" data-t="이자와 배당이 한 해 1000만원을 넘을 것 같다"><span class="box">&#10003;</span><span class="t">이자와 배당을 합치면 한 해 1,000만원이 넘을 것 같다</span></div>
+    <div class="chk" data-t="월배당 ETF를 갖고 있거나 살 생각이다"><span class="box">&#10003;</span><span class="t">월배당 ETF를 갖고 있거나 살 생각이다</span></div>
+    <div class="chk" data-t="연금저축 IRP 잔액을 정확히 모른다"><span class="box">&#10003;</span><span class="t">연금저축·IRP 잔액을 정확히 모른다</span></div>
+    <div class="chk" data-t="퇴직금을 일시금으로 받았거나 받을 예정이다"><span class="box">&#10003;</span><span class="t">퇴직금을 일시금으로 받았거나 받을 예정이다</span></div>
+    <div class="chk" data-t="주택연금을 알아본 적이 없다"><span class="box">&#10003;</span><span class="t">주택연금을 알아본 적이 없다</span></div>
+    <div class="chk" data-t="원금은 되도록 자녀에게 물려주고 싶다"><span class="box">&#10003;</span><span class="t">원금은 되도록 자녀에게 물려주고 싶다</span></div>
+  </div>
+</section>
+
+<section class="topic">
+  <h3>20분 상담으로 내 조합을 짜 드립니다</h3>
+  <p class="oneline">계산기는 평균값과 가정으로 계산합니다. <b>실제 국민연금 예상액과 계좌 잔액</b>을 놓고 보면 아래 넷이 정해집니다.</p>
+  <div class="rules">
+    <div class="rl"><b>어디서 얼마씩</b><span>국민연금·주택연금·연금계좌·예금과 배당을 어떤 순서로 얼마씩 받을지</span></div>
+    <div class="rl"><b>건보료와 피부양자</b><span>지금 계획대로면 피부양자에서 제외되는지, 제외되면 건보료가 얼마인지</span></div>
+    <div class="rl"><b>세금이 걸리는 선</b><span>금융소득 1,000만원과 2,000만원, 사적연금 1,500만원 선을 어떻게 넘지 않을지</span></div>
+    <div class="rl"><b>옮기는 순서</b><span>퇴직금·목돈·만기 예금을 언제 어디로 옮기면 되는지</span></div>
+  </div>
+  <form class="form" action="https://api.web3forms.com/submit" method="POST">
+    <input type="hidden" name="access_key" value="56ba5ceb-1e23-4de6-b6ca-7016a3e1e8d7">
+    <input type="hidden" name="구분" value="월 생활비 구조">
+    <input type="hidden" name="체크한항목" id="picked" value="">
+    <input type="hidden" name="계산결과" id="calcField" value="">
+    <input type="hidden" name="subject" value="[상담신청] 월 생활비 구조">
+    <input type="checkbox" name="botcheck" style="display:none">
+    <label>체크하신 항목</label>
+    <div class="picked" id="pickedView">아직 체크하신 항목이 없습니다.</div>
+    <label>계산 결과</label>
+    <div class="picked" id="calcView">위 계산기에 금액을 넣으시면 여기에 옮겨집니다.</div>
+    <label for="nm">성함</label><input type="text" id="nm" name="성함" required>
+    <label for="ph">연락처</label><input type="tel" id="ph" name="연락처" required>
+    <label for="how">상담 방법</label><input type="text" id="how" name="상담방법" placeholder="전화와 방문 중 편하신 것">
+    <label for="when">연락 받기 편한 시간</label><input type="text" id="when" name="편한시간" placeholder="예: 평일 오후 2시 이후">
+    <label for="ms">더 하실 말씀</label><textarea id="ms" name="메모" placeholder="은퇴 시점, 배우자 연금, 물려줄 계획 등을 적어 주셔도 됩니다."></textarea>
+    <p style="margin-top:24px"><button type="submit" class="btn">상담 신청하기</button></p>
+    <p class="fine">내용은 Web3Forms를 통해 담당자 이메일로 전달됩니다.<br>
+      특정 금융회사의 상품이나 종목을 권유하지 않습니다.</p>
+  </form>
+</section>
+
+<footer>
+  <p>버는 건 시장이 정하고, 지키는 건 구조가 정합니다.</p>
+  <p>근거(2026년 9월 28일 확인) · 주택연금 월지급금 한국주택금융공사 월지급금 예시(일반주택·종신지급 정액형, 2026년 3월 1일 기준) · 주택연금 가입 요건 한국주택금융공사 · 국민연금 20년 이상 가입자 평균 월 약 110만원(2024년 12월) · 건강보험료율 7.19%·장기요양보험료 건강보험료 대비 13.14% 보건복지부 2026년 고시 · 피부양자 요건 국민건강보험법 시행규칙 제44조·별표1의2 · 1년 정기예금 시중은행 연 3.3~3.5% · 연금소득 원천징수 소득세법 제129조 · 사적연금 1,500만원 기준 소득세법 제14조 제3항 · 연금계좌 납입한도 소득세법 시행령 제40조의2 · 저축성보험 비과세 소득세법 제16조·시행령 제25조 · ISA 조세특례제한법 제91조의18 · 개인투자용국채 조세특례제한법 제91조의23 · 공모리츠 분리과세 조세특례제한법 제87조의7 · 금융소득 종합과세 기준 소득세법 제14조 제3항</p>
+  <p>이 계산기는 공시 자료와 법령을 바탕으로 한 일반 정보이며 실제 수령액을 보장하지 않습니다. 국민연금은 가입 이력, 주택연금은 감정가와 가입 시점의 기준, 연금계좌는 운용 결과, 건보료는 재산과 다른 소득에 따라 달라집니다. 정부 세제개편안은 국회를 통과하기 전이라 반영하지 않았습니다. 특정 상품의 매수·매도를 권유하지 않습니다.</p>
+  <div class="who"><span>월 생활비 계산기</span>
+    <span style="text-align:right"><b>유영곤</b>@wealthstructure.kr</span></div>
+</footer>
+</div>
+
+<div class="tally"><div class="in">
+  <span class="cnt"><b id="cnt">0</b>개 체크하셨습니다</span>
+  <a href="#" class="btn" onclick="document.querySelector('.form').scrollIntoView({behavior:'smooth'});return false;">상담 신청</a>
+</div></div>
+
+<script>
+(function(){
+  /* 기준값 · 근거는 footer와 _설계.md */
+  var TAX_FIN = 0.154;             // 이자·배당 원천징수
+  var DIV_R = 0.04;                // 배당률 가정
+  var DEP_R = 0.034;               // 1년 정기예금 가정 (시중은행 3.3~3.5%)
+  var ANN_R = 0.034, ANN_N = 20;   // 원금을 나눠 받는 경우: 연 3.4%, 20년
+  var HI = 0.0719, LTC = 0.1314;   // 2026 건보료율 · 장기요양(건보료 대비)
+  var FIN_EXCL = 1000;             // 피부양자 판정에서 금융소득이 빠지는 선(연)
+  var DEP_LINE = 2000;             // 피부양자 소득 기준(연)
+  var COMP_LINE = 2000;            // 금융소득 종합과세 기준(연)
+  var PRIV_LINE = 1500;            // 사적연금 분리과세 기준(연)
+  var NP_AVG = 110;                // 국민연금 20년 이상 가입자 평균(월)
+
+  /* 주택연금 월지급금(천원) · 일반주택 · 종신지급 정액형 · 2026-03-01 · 한국주택금융공사 */
+  var HF_AGE = [55,60,65,70,75,80];
+  var HF = [
+    [156,312,468,624,780,936,1092,1248,1404,1560,1716,1872],
+    [210,421,632,842,1053,1264,1475,1685,1896,2107,2318,2528],
+    [252,505,758,1011,1264,1517,1770,2023,2276,2529,2782,3035],
+    [307,615,923,1231,1539,1847,2155,2462,2770,3078,3386,3414],
+    [381,762,1143,1525,1906,2287,2669,3050,3431,3666,3666,3666],
+    [483,966,1449,1932,2416,2899,3382,3865,4060,4060,4060,4060]
+  ];
+  function hfRow(ai, eok){
+    var r = HF[ai];
+    if (eok <= 1) return r[0] * eok;
+    if (eok >= 12) return r[11];
+    var lo = Math.floor(eok), f = eok - lo;
+    return r[lo-1] + (r[lo] - r[lo-1]) * f;
+  }
+  function housePension(age, eok){      // 만원/월
+    if (!eok || eok <= 0 || age < 55) return 0;
+    var a = Math.min(Math.max(age,55),80);
+    var i = 0; while (i < HF_AGE.length-1 && HF_AGE[i+1] <= a) i++;
+    var v;
+    if (i === HF_AGE.length-1) v = hfRow(i, eok);
+    else { var f = (a - HF_AGE[i]) / (HF_AGE[i+1] - HF_AGE[i]); v = hfRow(i,eok) + (hfRow(i+1,eok) - hfRow(i,eok)) * f; }
+    return v / 10;
+  }
+  function annuityPay(prin, r, n){ var m = r/12, k = n*12; return prin * m / (1 - Math.pow(1+m, -k)); }
+  function annuityPV(pay, r, n){ var m = r/12, k = n*12; return pay * (1 - Math.pow(1+m, -k)) / m; }
+  function pensTax(age){ return age >= 80 ? 0.033 : age >= 70 ? 0.044 : 0.055; }
+  function hiMonthly(yearIncome){ return yearIncome / 12 * HI * (1 + LTC); }
+
+  function won(manwon){
+    var v = Math.round(manwon);
+    if (Math.abs(v) >= 10000) {
+      var eok = Math.floor(v / 10000), rest = Math.round((v % 10000) / 100) * 100;
+      if (rest === 10000) { eok += 1; rest = 0; }
+      return eok + '억' + (rest ? ' ' + rest.toLocaleString() + '만원' : '원');
+    }
+    return v.toLocaleString() + '만원';
+  }
+  function m1(v){ return (Math.round(v*10)/10).toLocaleString() + '만원'; }
+  function num(id){ var v = parseFloat(document.getElementById(id).value); return isNaN(v) ? null : v; }
+  function li(k, v, cls){ return '<li' + (cls ? ' class="'+cls+'"' : '') + '><span>'+k+'</span><span>'+v+'</span></li>'; }
+
+  /* 방법 카드 */
+  var WAYS = [
+    {id:'np', nm:'국민연금', what:'이미 가입해 둔 공적연금입니다.',
+     cost:'새로 넣을 돈은 없습니다. 예상액은 국민연금공단 「내 연금 알아보기」에서 조회됩니다.',
+     care:'<span class="warn">피부양자 판정에 전액 들어갑니다.</span> 지역가입자 건보료에는 절반이 반영됩니다.',
+     good:'모든 분의 출발점입니다. 여기서 모자라는 금액을 아래 방법으로 채웁니다.'},
+    {id:'house', nm:'주택연금', what:'사는 집을 담보로 평생 매달 받는 연금입니다. 집에 계속 사시고, 받는 돈은 소득이 아니라 대출로 봅니다.',
+     cost:'현금은 들지 않습니다. 부부 중 한 분이 55세 이상이고, 부부 합산 공시가격 12억원 이하여야 하며, 그 집에 실제로 사셔야 합니다.',
+     care:'늦게 가입할수록 많이 나옵니다. 가입 뒤 집값이 올라도 월지급금은 그대로이고, 가입할 때 보증료가 듭니다.',
+     good:'집은 있는데 현금이 부족한 70세 전후라면 가장 적은 부담으로 생활비를 채웁니다.'},
+    {id:'pens', nm:'연금저축·IRP', what:'세액공제를 받으며 쌓은 연금계좌와 퇴직금을 옮겨 둔 계좌에서 연금으로 받습니다.',
+     cost:'연금저축과 IRP를 합쳐 한 해 1,800만원까지 넣을 수 있습니다. 퇴직금과 ISA 만기 자금은 이 한도와 별개로 옮겨집니다.',
+     care:'연금으로 받으면 나이에 따라 5.5%·4.4%·3.3%로 따로 끝나지만, 연금저축에서 받는 몫이 한 해 1,500만원을 넘으면 종합과세나 16.5% 분리과세를 골라야 합니다. 퇴직금에서 나오는 연금은 이 1,500만원에 들어가지 않고, 퇴직소득세를 30~50% 덜 냅니다.',
+     good:'퇴직금이나 연금저축이 이미 쌓여 있는 분께 원금 대비 가장 많이 나옵니다. 건보료가 붙지 않습니다.'},
+    {id:'ins', nm:'연금보험(비과세)', what:'보험회사에 돈을 맡기고 연금으로 받는 저축성 보험입니다. 요건을 채우면 불어난 몫에 세금이 붙지 않습니다.',
+     cost:'한 번에 넣는 방식은 1억원까지, 매달 넣는 방식은 5년 이상 월 150만원까지 비과세입니다. 55세 이후 평생 연금으로 받는 종신형은 금액 한도가 없습니다.',
+     care:'10년 이상 유지해야 비과세이고, 일찍 해지하면 낸 돈보다 적게 돌려받을 수 있습니다. 사업비가 들어가고, 종신형은 연금을 받기 시작하면 해지할 수 없습니다.',
+     good:'연금계좌 한도에 막힌 목돈이 있고 금융소득을 늘리고 싶지 않은 분께 맞습니다.'},
+    {id:'dep', nm:'정기예금', what:'원금이 보장되고 이자를 받는 가장 단순한 방법입니다.',
+     cost:'1년 정기예금은 시중은행 연 3.3~3.5%입니다. 연 3.4%로 계산하면 세후 월 70만원을 받는 데 약 2억 9천만원이 듭니다.',
+     care:'한 회사당 원금과 이자를 합쳐 1억원까지 예금자보호가 됩니다. 이자는 금융소득이라 한 해 1,000만원을 넘으면 피부양자 판정에 전액 들어갑니다.',
+     good:'원금을 그대로 남기고 싶거나 곧 쓸 돈을 넣어 두기에 맞습니다.'},
+    {id:'div', nm:'배당주·배당 ETF', what:'주식에서 나오는 배당으로 받습니다. 주가가 오르면 원금도 불어납니다.',
+     cost:'배당률 4%로 계산하면 세후 월 100만원에 약 3억 5천만원이 듭니다.',
+     care:'<span class="warn">주가가 하락하면 원금도 줄고, 배당은 깎일 수 있습니다.</span> 분배율이 높은 커버드콜 ETF는 상승장에서 덜 오르고 하락장에서는 같이 하락합니다.',
+     good:'오래 들고 갈 수 있고 원금 변동을 견딜 수 있는 분께 맞습니다. 금융소득 1,000만원 선을 같이 봐야 합니다.'},
+    {id:'bond', nm:'개인투자용 국채', what:'정부가 개인에게 파는 국채입니다. 만기까지 들고 가면 원금과 이자를 받습니다.',
+     cost:'2027년 말까지 사는 금액 중 2억원까지는 이자를 다른 소득과 합치지 않고 15.4%로 끝냅니다.',
+     care:'전용계좌로 사야 하고 보유 요건이 있습니다. 만기 전에 팔면 혜택이 줄어듭니다.',
+     good:'금융소득이 이미 2,000만원 선에 가까워 종합과세를 피하고 싶은 분께 맞습니다.'},
+    {id:'reit', nm:'공모리츠·공모부동산펀드', what:'여러 사람의 돈으로 건물을 사서 임대료를 배당으로 나눠 주는 상품입니다.',
+     cost:'투자금 5,000만원까지는 배당을 9.9%로 따로 끝냅니다. 2026년 말까지 투자하는 금액에 적용됩니다.',
+     care:'3년 안에 팔면 혜택이 사라집니다. 상장 리츠는 주가처럼 가격이 움직입니다.',
+     good:'부동산에서 나오는 월세를 작은 금액으로 받고 싶은 분께 맞습니다.'},
+    {id:'isa', nm:'ISA', what:'한 계좌에서 예금·펀드·ETF를 굴리고, 이익 중 일정 금액까지 세금을 안 내는 계좌입니다.',
+     cost:'한 해 2,000만원, 모두 합쳐 1억원까지 넣을 수 있습니다. 이익 200만원(서민형 400만원)까지 비과세이고 넘는 몫은 9.9%입니다.',
+     care:'3년 이상 유지해야 혜택이 있습니다. 만기 자금을 연금계좌로 옮기면 옮긴 금액의 10%(300만원까지)가 세액공제 대상으로 더해집니다.',
+     good:'은퇴 3년 이상 전에 목돈을 모아 두고 나중에 연금계좌로 넘기려는 분께 맞습니다.'}
+  ];
+  document.getElementById('ways').innerHTML = WAYS.map(function(w){
+    return '<div class="way" id="w_'+w.id+'"><div class="hd"><b>'+w.nm+'</b><span class="badge">참고</span></div>'
+      + '<dl><dt>무엇</dt><dd>'+w.what+'</dd><dt>얼마</dt><dd>'+w.cost+'</dd><dt>유의할 점</dt><dd>'+w.care+'</dd><dt>이런 분께</dt><dd>'+w.good+'</dd></dl></div>';
+  }).join('');
+  function markWay(id, on, label){
+    var el = document.getElementById('w_'+id); if (!el) return;
+    el.classList.toggle('in', on);
+    el.querySelector('.badge').textContent = on ? (label || '이번 계산에 들어감') : '참고';
+  }
+
+  var calcField = document.getElementById('calcField'), calcView = document.getElementById('calcView');
+  function calc(){
+    var want = num('want');
+    if (!want || want <= 0) return;
+    var age = num('age'); if (!age) age = 65;
+    var npIn = num('np'), npAssumed = (npIn === null);
+    var np = npAssumed ? NP_AVG : npIn;
+    var house = num('house') || 0, pens = (num('pens') || 0) * 10000, fin = (num('fin') || 0) * 10000;
+    var useHouse = document.getElementById('useHouse').checked;
+    var npYear = np * 12;
+
+    /* 배당만: 국민연금을 빼고 모자라는 돈을 배당으로 */
+    var gapD = Math.max(0, want - np);
+    var divGross = gapD * 12 / (1 - TAX_FIN);
+    var divPrin = divGross / DIV_R;
+    var depIncD = npYear + (divGross > FIN_EXCL ? divGross : 0);
+    var outD = depIncD > DEP_LINE;
+    var hiD = outD ? hiMonthly(divGross + npYear * 0.5) : 0;
+    document.getElementById('divPrin').textContent = gapD > 0 ? won(divPrin) : '필요 없음';
+    var dl = li('국민연금', m1(np) + (npAssumed ? ' (평균)' : ''))
+      + li('배당으로 받을 몫', m1(gapD))
+      + li('한 해 배당 (세전)', won(divGross), divGross > FIN_EXCL ? 'bad' : '')
+      + li('피부양자', outD ? '제외됨' : '유지 가능', outD ? 'bad' : 'good');
+    if (outD) dl += li('건보료 (소득분)', '월 ' + m1(hiD), 'bad') + li('손에 남는 금액', '월 ' + m1(want - hiD), 'bad');
+    if (divGross > COMP_LINE) dl += li('금융소득 종합과세', '대상', 'bad');
+    document.getElementById('divList').innerHTML = dl;
+
+    /* 나눠 받기: 국민연금 → 주택연금 → 연금계좌 → 예금 이자 → 원금을 나눠 받기 */
+    var rem = want - np, parts = [{k:'국민연금', v:np, c:'var(--c1)'}];
+    var hp = (useHouse && house > 0 && age >= 55) ? housePension(age, house) : 0;
+    if (hp > 0) { parts.push({k:'주택연금', v:hp, c:'var(--c2)'}); rem -= hp; }
+    var pNet = 0, pGrossY = 0;
+    if (pens > 0 && rem > 0) {
+      var t = pensTax(age), pMax = annuityPay(pens, ANN_R, ANN_N);
+      pNet = Math.min(pMax * (1 - t), rem);
+      pGrossY = pNet / (1 - t) * 12;
+      parts.push({k:'연금저축·IRP', v:pNet, c:'var(--c3)'}); rem -= pNet;
+    }
+    var depNet = 0, depPrin = 0, annNet = 0, annPrin = 0;
+    var depCap = FIN_EXCL * (1 - TAX_FIN) / 12;
+    if (rem > 0) {
+      depNet = Math.min(rem, depCap);
+      depPrin = depNet * 12 / (1 - TAX_FIN) / DEP_R;
+      parts.push({k:'예금 이자 (금융소득 1,000만원 안)', v:depNet, c:'var(--c4)'});
+      rem -= depNet;
+      if (rem > 0) {
+        annNet = rem; annPrin = annuityPV(annNet, ANN_R, ANN_N);
+        parts.push({k:'원금을 나눠 받기 (연금보험 등)', v:annNet, c:'var(--c5)'});
+        rem = 0;
+      }
+    }
+    var needFin = depPrin + annPrin;
+    var mixGross = depNet * 12 / (1 - TAX_FIN);
+    var depIncM = npYear + (mixGross > FIN_EXCL ? mixGross : 0);
+    var outM = depIncM > DEP_LINE;
+
+    document.getElementById('mixPrin').textContent = needFin > 0 ? won(needFin) : '추가로 필요 없음';
+    document.getElementById('mixSub').textContent = needFin > 0 ? '추가로 필요한 금융자산' : '국민연금과 연금만으로 채워집니다';
+    var ml = li('국민연금', m1(np) + (npAssumed ? ' (평균)' : ''));
+    if (hp > 0) ml += li('주택연금 (시가 ' + house + '억, ' + age + '세)', m1(hp));
+    if (pNet > 0) ml += li('연금저축·IRP (20년)', m1(pNet));
+    if (depNet > 0) ml += li('예금 이자 · 원금 ' + won(depPrin), m1(depNet));
+    if (annNet > 0) ml += li('나눠 받기 20년 · 원금 ' + won(annPrin), m1(annNet));
+    ml += li('피부양자', outM ? '제외됨' : '유지 가능', outM ? 'bad' : 'good');
+    if (fin > 0 && needFin > 0) ml += li('가진 금융자산 ' + won(fin), fin >= needFin ? '충분합니다' : won(needFin - fin) + ' 부족', fin >= needFin ? 'good' : 'bad');
+    document.getElementById('mixList').innerHTML = ml;
+
+    var total = parts.reduce(function(s,p){ return s + p.v; }, 0), base = Math.max(total, want);
+    document.getElementById('bar').innerHTML = parts.map(function(p){ return '<div style="width:'+(p.v/base*100)+'%;background:'+p.c+'"></div>'; }).join('');
+    document.getElementById('legend').innerHTML = parts.map(function(p){
+      return '<div class="lg"><i style="background:'+p.c+'"></i><span class="nm">'+p.k+'</span><span class="am">월 '+m1(p.v)+'</span></div>';
+    }).join('') + (total > want + 0.5 ? '<div class="lg"><i style="background:#ddd"></i><span class="nm">목표보다 더 나오는 금액</span><span class="am">월 '+m1(total - want)+'</span></div>' : '');
+
+    var v = [];
+    if (gapD > 0) v.push({c:'ok', t:'원금 차이 ' + won(Math.max(divPrin - needFin, 0)), d:'배당만으로 받으면 원금 ' + won(divPrin) + '이 들고, 나눠 받으면 ' + (needFin > 0 ? won(needFin) + '이면 됩니다.' : '추가 금융자산 없이 됩니다.')});
+    if (outD && !outM) v.push({c:'ok', t:'피부양자를 지킬 수 있습니다', d:'배당만으로 받으면 국민연금과 합쳐 한 해 ' + won(depIncD) + '이 판정에 잡혀 기준 2,000만원을 넘습니다. 나눠 받으면 ' + won(depIncM) + '입니다.'});
+    if (outM) v.push({c:'bad', t:'나눠 받아도 피부양자 기준을 넘습니다', d:'판정에 잡히는 소득이 한 해 ' + won(depIncM) + '입니다. 이 경우는 지역가입자 건보료를 전제로 짜야 합니다.'});
+    if (pGrossY > PRIV_LINE) v.push({c:'bad', t:'연금계좌에서 한 해 ' + won(pGrossY) + '을 받게 됩니다', d:'연금저축에서 나오는 몫이 1,500만원을 넘으면 종합과세나 16.5% 분리과세를 골라야 합니다. 퇴직금에서 나오는 연금이면 해당하지 않으니 재원을 나눠 봐야 합니다.'});
+    if (hp > 0 && age < 65) v.push({c:'', t:'주택연금은 지금 들면 적게 나옵니다', d:age + '세 가입이면 월 ' + m1(hp) + '이고, 70세에 들면 월 ' + m1(housePension(70, house)) + '입니다. 생활비가 급하지 않으면 늦추는 편이 낫습니다.'});
+    if (house > 12) v.push({c:'', t:'집 가격 기준을 확인하셔야 합니다', d:'주택연금은 부부 합산 공시가격 12억원 이하만 가입할 수 있습니다. 계산은 12억원 기준 월지급금으로 했습니다.'});
+    if (annNet > 0) v.push({c:'', t:'원금을 나눠 받는 몫이 월 ' + m1(annNet) + '입니다', d:'예금 이자만으로 채우면 금융소득 1,000만원 선을 넘기 때문에, 나머지는 20년에 걸쳐 원금과 함께 받는 것으로 계산했습니다. 비과세 연금보험은 한 번에 넣으면 1억원까지이고, 평생 받는 종신형은 한도가 없습니다.'});
+    if (np >= want) v.push({c:'ok', t:'국민연금만으로 채워집니다', d:'남는 자산은 원금을 지키는 쪽으로 두셔도 됩니다.'});
+    document.getElementById('verdict').innerHTML = v.map(function(x){ return '<div class="vd '+x.c+'"><b>'+x.t+'</b>'+x.d+'</div>'; }).join('');
+
+    document.getElementById('assume').textContent = '가정 · 배당률 연 4% · 예금 연 3.4% · 원금을 나눠 받는 경우 연 3.4%로 20년 · 배당과 이자는 15.4% 원천징수 · 건보료는 2026년 요율로 소득에 붙는 부분만 · 국민연금에 붙는 세금은 뺐습니다'
+      + (npAssumed ? ' · 국민연금은 20년 이상 가입자 평균 월 110만원으로 넣었습니다' : '') + '.';
+
+    markWay('np', true); markWay('house', hp > 0); markWay('pens', pNet > 0);
+    markWay('dep', depNet > 0); markWay('ins', annNet > 0, '남는 몫에 검토');
+    markWay('div', false); markWay('bond', false); markWay('reit', false); markWay('isa', false);
+
+    var line = '받고 싶은 금액 월 ' + m1(want) + ' · ' + age + '세 · 국민연금 ' + m1(np) + (npAssumed ? '(평균)' : '')
+      + (house ? ' · 집 ' + house + '억' : '') + (pens ? ' · 연금계좌 ' + won(pens) : '') + (fin ? ' · 금융자산 ' + won(fin) : '')
+      + ' | 배당만: 원금 ' + won(divPrin) + (outD ? ', 피부양자 제외' : '')
+      + ' | 나눠 받기: ' + parts.map(function(p){ return p.k + ' ' + m1(p.v); }).join(', ') + ', 추가 금융자산 ' + won(needFin) + (outM ? ', 피부양자 제외' : ', 피부양자 유지');
+    calcField.value = line; calcView.textContent = line;
+  }
+
+  ['want','age','np','house','pens','fin'].forEach(function(id){
+    var el = document.getElementById(id); el.addEventListener('input', calc); el.addEventListener('change', calc);
+  });
+  document.getElementById('useHouse').addEventListener('change', calc);
+  document.querySelectorAll('#quick button').forEach(function(b){
+    b.addEventListener('click', function(){
+      document.getElementById('want').value = b.dataset.v;
+      document.querySelectorAll('#quick button').forEach(function(x){ x.classList.toggle('on', x === b); });
+      calc();
+    });
+  });
+  document.getElementById('want').addEventListener('input', function(){
+    var cur = document.getElementById('want').value;
+    document.querySelectorAll('#quick button').forEach(function(x){ x.classList.toggle('on', x.dataset.v === cur); });
+  });
+  calc();
+
+  var picked = document.getElementById('picked'), pickedView = document.getElementById('pickedView'), cnt = document.getElementById('cnt');
+  document.querySelectorAll('.chk').forEach(function(el){
+    el.addEventListener('click', function(){
+      el.classList.toggle('on');
+      var on = [].slice.call(document.querySelectorAll('.chk.on')).map(function(e){ return e.dataset.t; });
+      cnt.textContent = on.length;
+      picked.value = on.join(' | ');
+      pickedView.textContent = on.length ? on.join(' · ') : '아직 체크하신 항목이 없습니다.';
+    });
+  });
+})();
+</script>
+</body>
+</html>
