@@ -42,6 +42,9 @@ ol li::marker{font-weight:800;color:#1428A0}
 .bar input{flex:1 1 140px;min-width:0;border:1px solid #E3E6EB;border-radius:10px;padding:12px 13px;font:inherit;font-weight:600}
 .bar button{border:0;border-radius:10px;padding:12px 16px;font:inherit;font-weight:700;cursor:pointer;background:#1428A0;color:#fff}
 .bar button.g{background:#EEF1FB;color:#1428A0}
+
+.bar .ck{display:flex;align-items:center;gap:7px;font-size:14px;font-weight:600;white-space:nowrap}
+.bar .ck input{flex:none;width:18px;height:18px;padding:0;accent-color:#1428A0}
 .bar small{color:#6B7280;font-size:12.5px}
 @media print{.bar{display:none !important}}
 @media screen{body{padding:16px 0}.page{box-shadow:0 20px 50px -30px rgba(13,27,110,.45)}}
@@ -52,8 +55,9 @@ ol li::marker{font-weight:800;color:#1428A0}
 <div class="bar">
   <b>대표님용 · 이 줄은 인쇄되지 않습니다</b>
   <div class="r"><input id="in_n" placeholder="고객 성함"><input id="in_d" placeholder="날짜 (예: 2026년 10월 9일)"><button type="button" id="bt_p">확약서 인쇄</button></div>
+  <div class="r"><input id="in_t" inputmode="tel" placeholder="고객 연락처 (넣으면 고객이 다시 안 적습니다)"><label class="ck"><input type="checkbox" id="in_f"> 상담신청서를 이미 쓴 고객</label></div>
   <div class="r"><input id="in_l" readonly value="https://freelandx-ops.github.io/profile/intake/"><button type="button" class="g" id="bt_c">질문지 링크 복사</button></div>
-  <small>고객에게는 질문지 링크만 보냅니다. 이 화면 주소를 즐겨찾기에 두시면 링크와 확약서를 여기서 꺼내 쓰실 수 있습니다.</small>
+  <small>성함과 연락처를 적고 복사하면 그 고객 전용 링크가 됩니다. 고객 화면에 성함과 연락처가 채워져 열리고, 상담신청서를 쓴 고객에게는 고민을 다시 묻지 않습니다. 고객에게는 이 링크만 보냅니다.</small>
 </div>
 <div class="page">
   <div class="eyebrow">유영곤 · 당신의 CFO</div>
@@ -83,7 +87,9 @@ ol li::marker{font-weight:800;color:#1428A0}
   var t = new Date(), iN = document.getElementById('in_n'), iD = document.getElementById('in_d');
   iN.value = n; iD.value = d || (t.getFullYear() + '년 ' + (t.getMonth() + 1) + '월 ' + t.getDate() + '일');
   function put(){ document.getElementById('n').textContent = iN.value.trim() || ' '; document.getElementById('d').textContent = iD.value.trim() || ' '; }
-  iN.addEventListener('input', put); iD.addEventListener('input', put); put();
+  var iT = document.getElementById('in_t'), iF = document.getElementById('in_f'), iL = document.getElementById('in_l');
+  function link(){ var q = []; if(iN.value.trim()) q.push('n=' + encodeURIComponent(iN.value.trim())); if(iT.value.trim()) q.push('t=' + encodeURIComponent(iT.value.trim())); if(iF.checked) q.push('f=1'); iL.value = 'https://freelandx-ops.github.io/profile/intake/' + (q.length ? '?' + q.join('&') : ''); }
+  iN.addEventListener('input', function(){ put(); link(); }); iD.addEventListener('input', put); iT.addEventListener('input', link); iF.addEventListener('change', link); put(); link();
   document.getElementById('bt_p').addEventListener('click', function(){ put(); window.print(); });
   document.getElementById('bt_c').addEventListener('click', function(){ var l = document.getElementById('in_l'), b = this; l.select(); (navigator.clipboard ? navigator.clipboard.writeText(l.value) : Promise.reject()).catch(function(){ document.execCommand('copy'); }).then(function(){ b.textContent = '복사했습니다'; setTimeout(function(){ b.textContent = '질문지 링크 복사'; }, 1500); }); });
 })();

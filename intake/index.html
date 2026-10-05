@@ -217,7 +217,7 @@ textarea.in{min-height:120px;resize:vertical;font-weight:500;line-height:1.7}
 <section class="step" data-step="1">
   <div class="sh"><div class="k">1 / 9</div><h2>무엇을 도와드릴까요</h2><p>편하게 적어 주시면 됩니다. 이 내용이 보고서의 출발점입니다.</p></div>
   <div class="card">
-    <div class="q"><label for="q_memo">지금 가장 고민되는 것</label><textarea class="in" id="q_memo" data-k="memo" placeholder="예: 은퇴가 5년 남았는데 지금 가진 것으로 충분한지 모르겠습니다. 큰아이에게 집을 넘겨주고 싶은데 세금이 얼마나 나올지도 궁금합니다."></textarea></div>
+    <div class="q"><label for="q_memo" id="lb_memo">지금 가장 고민되는 것</label><textarea class="in" id="q_memo" data-k="memo" placeholder="예: 은퇴가 5년 남았는데 지금 가진 것으로 충분한지 모르겠습니다. 큰아이에게 집을 넘겨주고 싶은데 세금이 얼마나 나올지도 궁금합니다."></textarea></div>
     <div class="q"><div class="lb">함께 보고 싶은 것 <span class="h">여러 개 고르셔도 됩니다</span></div>
       <div class="seg" data-multi="tags">
         <button type="button" data-v="tax">세금</button><button type="button" data-v="hi">건강보험료</button><button type="button" data-v="re">부동산</button><button type="button" data-v="inv">투자</button><button type="button" data-v="give">상속과 증여</button><button type="button" data-v="retire">은퇴 준비</button><button type="button" data-v="protect">보험</button><button type="button" data-v="biz">회사와 사업</button>
@@ -389,6 +389,10 @@ var KEY = 'intake_v1', LAST = 10;
 var S = {v:{}, dk:{}, tags:{}, props:[], step:0};
 try{ var saved0 = JSON.parse(localStorage.getItem(KEY) || 'null'); if(saved0 && saved0.v){ S = saved0; S.dk = S.dk || {}; S.tags = S.tags || {}; S.props = S.props || []; S.step = Math.min(S.step || 0, LAST); } }catch(_){}
 function $(id){ return document.getElementById(id); }
+/* 대표님이 보낸 링크에 성함 · 연락처 · 상담신청 여부가 실려 오면 다시 묻지 않는다 (?n= &t= &f=1) */
+var Q = new URLSearchParams(location.search), VIA = Q.get('f') === '1';
+if((Q.get('n') || '').trim() && !S.v.name) S.v.name = Q.get('n').trim();
+if((Q.get('t') || '').trim() && !S.v.tel) S.v.tel = Q.get('t').trim();
 function qa(s, el){ return Array.prototype.slice.call((el || document).querySelectorAll(s)); }
 function save(){ try{ localStorage.setItem(KEY, JSON.stringify(S)); $('saved').textContent = '저장됨'; clearTimeout(save.t); save.t = setTimeout(function(){ $('saved').textContent = ''; }, 1200); }catch(_){} }
 function num(k){ var x = parseFloat(S.v[k]); return isFinite(x) ? x : null; }
@@ -503,6 +507,7 @@ function readable(){
   var o = out(), L = [], V = o.v;
   L.push('[첫 상담 전 질문지] ' + (S.v.name || '') + ' · ' + (S.v.tel || '')); if(S.v.mdate) L.push('상담 날짜: ' + S.v.mdate);
   L.push('동의: 수집과 이용 ' + (S.v.ag1 ? '예' : '아니오') + ' · 국외 보관 ' + (S.v.ag2 ? '예' : '아니오') + ' · ' + today());
+  if(VIA) L.push('경로: 상담신청서를 이미 쓴 고객');
   L.push(''); L.push('고민: ' + (S.v.memo || '')); L.push('관심: ' + Object.keys(S.tags).filter(function(k){ return S.tags[k]; }).join(', '));
   L.push(''); Object.keys(V).forEach(function(k){ if(k !== 'memo') L.push(k + ' = ' + V[k]); });
   o.props.forEach(function(p, i){ L.push('부동산 ' + (i + 1) + ': ' + JSON.stringify(p)); });
@@ -542,6 +547,7 @@ document.addEventListener('click', function(ev){
 });
 window.__intake = {out:out, readable:readable, S:S, go:go, fill:fill, finish:finish};
 fill(); go(S.step);
+if(VIA){ $('lb_memo').innerHTML = '신청하실 때 적어 주신 내용에 더하실 것 <span class="h">적어 주신 내용은 이미 받았습니다. 없으면 비워 두셔도 됩니다</span>'; $('q_memo').placeholder = ''; $('q_memo').style.minHeight = '80px'; }
 })();
 </script>
 </body>
