@@ -1,0 +1,548 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>유영곤 | 첫 상담 전 질문지</title>
+<meta name="description" content="미리 적어 주시면 첫 상담에서 고객님 숫자로 된 자산 관리표와 보고서를 드립니다.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="유영곤 | 첫 상담 전 질문지">
+<meta property="og:description" content="미리 적어 주시면 첫 상담에서 고객님 숫자로 된 자산 관리표와 보고서를 드립니다.">
+<meta property="og:image" content="https://freelandx-ops.github.io/profile/og-logo-260916c.jpg">
+<meta property="og:locale" content="ko_KR">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<!-- 설계: 같은 폴더 _설계.md. 문항은 006. playbook/미팅자산/자산종합진단/index.html 의 입력 id 와 맞춘다(아래 out 함수).
+     디자인은 개인프로필_B안.html 토큰. 전송 주소는 ENDPOINT 한 줄. 개인정보 보호법 제15조 제2항 · 제22조 제1항 제7호 · 제28조의8 (2026-10-06 원문 확인). -->
+<style>
+:root{
+  --bg:#F4F6F9; --card:#FFFFFF; --ink:#111827; --ink2:#374151; --mut:#6B7280; --faint:#9CA3AF;
+  --line:#E3E6EB; --line2:#EDEFF3;
+  --blue:#1428A0; --blue-d:#0D1B6E; --blue-m:#4B63D8; --blue-l:#A9B6EE; --blue-s:#EEF1FB;
+  --good:#16794A; --good-s:#E7F5EE; --warn:#B42318;
+}
+*{box-sizing:border-box}
+html{background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif;font-size:16px;line-height:1.65;word-break:keep-all;letter-spacing:-.01em;-webkit-font-smoothing:antialiased;padding-bottom:calc(92px + env(safe-area-inset-bottom,0px))}
+button,input,select,textarea{font:inherit;color:inherit}
+h1,h2,h3{margin:0;text-wrap:balance}
+p{margin:0;text-wrap:pretty}
+[hidden]{display:none !important}
+.wrap{max-width:680px;margin:0 auto;padding-inline:16px}
+
+/* 상단 */
+.top{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.96);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;height:56px}
+.top b{font-size:16px;font-weight:700}
+.top small{color:var(--mut);font-size:13px;margin-left:8px}
+.top .cnt{font-size:13px;color:var(--mut);font-variant-numeric:tabular-nums;white-space:nowrap}
+.prog{height:3px;background:var(--line2)}
+.prog i{display:block;height:100%;width:0;background:var(--blue);transition:width .25s}
+
+/* 표지 */
+.hero{padding:36px 0 8px}
+.eyebrow{font-size:13.5px;font-weight:600;color:var(--blue);letter-spacing:.02em}
+.hero h1{font-size:clamp(27px,7vw,38px);line-height:1.3;font-weight:800;letter-spacing:-.035em;margin:10px 0 14px}
+.hero h1 em{font-style:normal;color:var(--blue)}
+.hero .lead{color:var(--ink2);font-size:16.5px}
+.gets{display:grid;gap:10px;margin:22px 0 0;padding:0;list-style:none}
+.gets li{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;display:grid;grid-template-columns:28px 1fr;gap:12px;align-items:start}
+.gets .n{width:28px;height:28px;border-radius:8px;background:var(--blue-s);color:var(--blue);font-weight:800;font-size:14px;display:grid;place-items:center}
+.gets b{display:block;font-size:15.5px}
+.gets span{color:var(--mut);font-size:14px}
+.meta{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:18px;color:var(--mut);font-size:13.5px}
+.meta span::before{content:"";display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--blue-l);margin-right:7px;vertical-align:3px}
+
+/* 문서 (확약서) */
+.doc{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:30px 26px 26px;margin-top:18px;box-shadow:0 18px 40px -30px rgba(13,27,110,.4);position:relative}
+.doc::before{content:"";position:absolute;inset:0 0 auto 0;height:4px;background:var(--blue);border-radius:4px 4px 0 0}
+.doc h2{font-size:21px;font-weight:800;letter-spacing:.02em;text-align:center;padding-bottom:16px;border-bottom:1px solid var(--ink);margin-bottom:18px}
+.doc .to{font-size:15.5px;color:var(--ink2)}
+.doc .to b{color:var(--ink);border-bottom:1px solid var(--ink);padding:0 2px}
+.doc ol{margin:16px 0 0;padding-left:20px;display:grid;gap:9px;font-size:15.5px}
+.doc ol li::marker{font-weight:700;color:var(--blue)}
+.doc .sign{margin-top:24px;padding-top:16px;border-top:1px dashed var(--line);display:flex;justify-content:space-between;align-items:flex-end;gap:12px;font-size:14.5px;color:var(--ink2)}
+.doc .sign b{font-size:19px;color:var(--ink);letter-spacing:.06em}
+.doc .sign small{display:block;color:var(--mut);font-size:12.5px}
+
+/* 장 */
+.step{display:none;padding-top:26px}
+.step.on{display:block}
+.sh{margin-bottom:16px}
+.sh .k{font-size:12.5px;font-weight:700;color:var(--blue);letter-spacing:.06em}
+.sh h2{font-size:24px;font-weight:800;letter-spacing:-.03em;margin-top:4px}
+.sh p{color:var(--mut);font-size:14.5px;margin-top:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 16px;margin-top:12px}
+.q{padding:14px 0;border-bottom:1px solid var(--line2)}
+.q:first-child{padding-top:0}
+.q:last-child{border-bottom:0;padding-bottom:0}
+.q > label,.q > .lb{display:block;font-weight:700;font-size:15.5px;margin-bottom:8px}
+.q .h{display:block;font-weight:400;color:var(--mut);font-size:13.5px;margin-top:2px}
+.sub{font-weight:600;font-size:14.5px;margin:10px 0 8px}
+.in{width:100%;border:1px solid var(--line);border-radius:10px;background:#fff;padding:13px 14px;font-weight:600;outline:none;-webkit-appearance:none;appearance:none}
+.in::placeholder,.amt input::placeholder{color:var(--faint);font-weight:400}
+textarea.in{min-height:120px;resize:vertical;font-weight:500;line-height:1.7}
+.in:focus,.amt:focus-within{border-color:var(--blue-m);box-shadow:0 0 0 3px var(--blue-s)}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.amt{display:flex;align-items:center;border:1px solid var(--line);border-radius:10px;background:#fff;overflow:hidden;flex:1 1 120px;min-width:0}
+.amt input{flex:1;min-width:0;width:100%;border:0;background:transparent;padding:13px 4px 13px 14px;font-weight:700;font-variant-numeric:tabular-nums;outline:none;text-align:right;-moz-appearance:textfield}
+.amt input::-webkit-outer-spin-button,.amt input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.amt span{padding:0 12px 0 6px;color:var(--mut);font-size:14px;white-space:nowrap}
+.amt .pre{padding:0 0 0 14px;color:var(--ink2);font-weight:600}
+.amt.dis{background:var(--bg);opacity:.55}
+.seg{display:flex;flex-wrap:wrap;gap:8px}
+.seg button{flex:1 1 auto;min-width:88px;border:1px solid var(--line);background:#fff;border-radius:10px;padding:12px 12px;font-weight:600;font-size:15px;color:var(--ink2);cursor:pointer}
+.seg button.on{background:var(--blue);border-color:var(--blue);color:#fff}
+.dk{flex:0 0 auto;border:1px solid var(--line);background:#fff;border-radius:10px;padding:12px 12px;font-size:13.5px;font-weight:600;color:var(--mut);cursor:pointer;white-space:nowrap}
+.dk.on{background:var(--ink);border-color:var(--ink);color:#fff}
+.gate{background:var(--blue-s);border:1px solid var(--blue-l);border-radius:14px;padding:18px 16px;margin-top:12px}
+.gate .lb{font-weight:800;font-size:16.5px;margin-bottom:10px}
+.prop{border:1px solid var(--line);border-top:3px solid var(--blue);border-radius:14px;padding:16px;margin-top:12px;background:#fff}
+.prop-h{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.prop-h b{font-size:15.5px;color:var(--blue)}
+.x{border:0;background:transparent;color:var(--mut);font-size:13.5px;cursor:pointer;padding:6px 4px}
+.add{width:100%;margin-top:12px;border:1px dashed var(--blue-m);background:transparent;color:var(--blue);border-radius:12px;padding:13px;font-weight:700;cursor:pointer}
+
+/* 동의 */
+.agree{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 16px;margin-top:14px}
+.agree h3{font-size:16px;font-weight:800;margin-bottom:10px}
+.agree dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:6px 12px;font-size:14px}
+.agree dt{color:var(--mut);white-space:nowrap}
+.agree dd{margin:0;color:var(--ink2)}
+.agree p{font-size:13.5px;color:var(--mut);margin-top:10px}
+.chk{display:flex;gap:10px;align-items:flex-start;margin-top:14px;padding:13px 14px;border:1px solid var(--line);border-radius:10px;cursor:pointer;font-weight:700;font-size:15px}
+.chk input{width:20px;height:20px;margin:2px 0 0;accent-color:var(--blue);flex:none}
+.chk.on{border-color:var(--blue);background:var(--blue-s)}
+
+/* 하단 */
+.nav{position:fixed;left:0;right:0;bottom:0;z-index:30;background:rgba(255,255,255,.97);border-top:1px solid var(--line);padding:12px 0 calc(12px + env(safe-area-inset-bottom,0px))}
+.nav .wrap{display:flex;gap:10px;align-items:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;border-radius:12px;padding:15px 20px;font-weight:700;font-size:16px;border:1px solid transparent;cursor:pointer;line-height:1.2}
+.btn.pri{background:var(--blue);color:#fff;flex:1}
+.btn.pri:disabled{background:var(--blue-l);cursor:not-allowed}
+.btn.line{background:#fff;border-color:var(--line);color:var(--ink2);flex:0 0 auto}
+.saved{font-size:12.5px;color:var(--good);white-space:nowrap}
+.err{color:var(--warn);font-size:14px;font-weight:600;margin-top:10px}
+
+/* 끝 */
+.sum{display:grid;gap:8px;margin-top:12px}
+.sum div{display:flex;justify-content:space-between;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-size:14.5px}
+.sum span{color:var(--mut)}
+.sum b{font-variant-numeric:tabular-nums;text-align:right}
+.done{text-align:center;padding:48px 0 12px}
+.done .ok{width:64px;height:64px;border-radius:50%;background:var(--good-s);color:var(--good);font-size:30px;display:grid;place-items:center;margin:0 auto 18px}
+.done h2{font-size:26px;font-weight:800;letter-spacing:-.03em}
+.done p{color:var(--ink2);margin-top:10px}
+.foot{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);color:var(--mut);font-size:12.5px;line-height:1.7}
+.foot b{color:var(--ink2)}
+@media (min-width:720px){.hero{padding-top:56px}.doc{padding:40px 44px 34px}.card{padding:22px 22px}}
+@media print{
+  body{background:#fff;padding:0}
+  .top,.nav,.foot,.done,.noprint{display:none !important}
+  .step{display:none !important}
+  .step[data-step="11"]{display:block !important;padding:0}
+  .doc{box-shadow:none;border:1px solid #999;margin:24mm 0 0}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap"><div><b>첫 상담 전 질문지</b><small>유영곤 · 당신의 CFO</small></div><span class="cnt" id="cnt"></span></div>
+  <div class="prog"><i id="prog"></i></div>
+</header>
+
+<main class="wrap">
+
+<!-- 0. 표지 · 확약서 · 동의 -->
+<section class="step on" data-step="0">
+  <div class="hero">
+    <div class="eyebrow">첫 상담 전에 준비합니다</div>
+    <h1>미리 적어 주시면,<br><em>고객님 숫자로 된 보고서</em>를 들고 가겠습니다</h1>
+    <p class="lead">첫 만남에서 여쭙기만 하다 끝나지 않도록, 적어 주신 내용으로 자산 관리표와 진단 보고서를 먼저 만들어 갑니다.</p>
+    <ul class="gets">
+      <li><span class="n">1</span><div><b>자산 관리표 한 장</b><span>재산, 빚, 순자산, 한 해 수지, 남는 돈을 지금과 개선 뒤로 나란히</span></div></li>
+      <li><span class="n">2</span><div><b>무엇이 문제이고 얼마인지</b><span>세금만이 아니라 유동성, 빚, 보장, 은퇴 뒤, 물려주는 일까지 금액으로</span></div></li>
+      <li><span class="n">3</span><div><b>무엇부터 하면 되는지</b><span>문제마다 방법과 순서를 붙여서</span></div></li>
+    </ul>
+    <div class="meta"><span>15분 안팎</span><span>모르는 것은 「잘 모름」</span><span>중간에 닫아도 이어서 작성</span></div>
+  </div>
+
+  <div class="card" style="margin-top:22px">
+    <div class="q"><label for="n_name">성함</label><input class="in" id="n_name" data-k="name" autocomplete="name" placeholder="예: 홍길동"></div>
+    <div class="q"><label for="n_tel">연락처</label><input class="in" id="n_tel" data-k="tel" inputmode="tel" autocomplete="tel" placeholder="예: 010-1234-5678"></div>
+  </div>
+
+  <div class="doc" id="doc">
+    <h2>비밀유지 확약서</h2>
+    <p class="to">유영곤은 <b id="docName">고객</b> 님이 이 질문지에 적어 주신 내용을 아래와 같이 다룰 것을 약속드립니다.</p>
+    <ol>
+      <li>첫 상담을 준비하는 데에만 씁니다.</li>
+      <li>유영곤 본인만 봅니다. 가족, 동료, 회사, 다른 고객 누구에게도 알리지 않습니다.</li>
+      <li>세무사 같은 전문가의 확인이 필요할 때에는 먼저 여쭙고, 허락하신 범위만 전달합니다.</li>
+      <li>첫 상담일부터 1년이 지나면 지웁니다. 그 전이라도 지워 달라고 하시면 바로 지우고 알려 드립니다.</li>
+      <li>보험이나 금융상품을 권하는 연락에 이 내용을 쓰지 않습니다.</li>
+    </ol>
+    <div class="sign"><span id="docDate"></span><span style="text-align:right"><b>유 영 곤</b><small>드림</small></span></div>
+  </div>
+
+  <div class="agree">
+    <h3>개인정보 수집과 이용 동의</h3>
+    <dl>
+      <dt>항목</dt><dd>이름, 연락처, 출생 연도, 가족 구성, 재산과 빚, 소득, 보험, 사업과 회사에 관한 내용</dd>
+      <dt>목적</dt><dd>첫 상담 준비와 자산 종합 진단 보고서 작성</dd>
+      <dt>기간</dt><dd>첫 상담일부터 1년. 요청하시면 바로 지웁니다.</dd>
+    </dl>
+    <p>동의하지 않으실 수 있습니다. 그때는 이 질문지 없이 상담을 진행하고, 보고서는 상담 자리에서 여쭈어 가며 채웁니다.</p>
+    <label class="chk" id="agL1"><input type="checkbox" id="ag1" data-k="ag1"><span>수집과 이용에 동의합니다</span></label>
+  </div>
+
+  <div class="agree">
+    <h3>국외 보관에 대한 동의</h3>
+    <dl>
+      <dt>맡는 곳</dt><dd>구글 (Google LLC, 받은 질문지와 전자우편 보관) · 앤트로픽 (Anthropic PBC, 진단 보고서 작성 프로그램)</dd>
+      <dt>나라</dt><dd>미국</dd>
+      <dt>방법</dt><dd>질문지를 보내실 때 암호화된 통신으로 전송</dd>
+      <dt>항목</dt><dd>위 수집 항목과 같습니다</dd>
+      <dt>목적</dt><dd>유영곤이 받은 내용을 보관하고 보고서를 계산하는 일</dd>
+      <dt>기간</dt><dd>첫 상담일부터 1년. 요청하시면 바로 지웁니다.</dd>
+    </dl>
+    <p>유영곤이 쓰는 전자우편과 진단 프로그램의 서버가 해외에 있어 여쭙니다. 동의하지 않으시면 질문지를 보내지 않으셔도 되고, 상담 자리에서 직접 여쭙겠습니다.</p>
+    <label class="chk" id="agL2"><input type="checkbox" id="ag2" data-k="ag2"><span>국외 보관에 동의합니다</span></label>
+  </div>
+  <div class="err" id="err0" hidden></div>
+</section>
+
+<!-- 1 -->
+<section class="step" data-step="1">
+  <div class="sh"><div class="k">1 / 9</div><h2>무엇을 도와드릴까요</h2><p>편하게 적어 주시면 됩니다. 이 내용이 보고서의 출발점입니다.</p></div>
+  <div class="card">
+    <div class="q"><label for="q_memo">지금 가장 고민되는 것</label><textarea class="in" id="q_memo" data-k="memo" placeholder="예: 은퇴가 5년 남았는데 지금 가진 것으로 충분한지 모르겠습니다. 큰아이에게 집을 넘겨주고 싶은데 세금이 얼마나 나올지도 궁금합니다."></textarea></div>
+    <div class="q"><div class="lb">함께 보고 싶은 것 <span class="h">여러 개 고르셔도 됩니다</span></div>
+      <div class="seg" data-multi="tags">
+        <button type="button" data-v="tax">세금</button><button type="button" data-v="hi">건강보험료</button><button type="button" data-v="re">부동산</button><button type="button" data-v="inv">투자</button><button type="button" data-v="give">상속과 증여</button><button type="button" data-v="retire">은퇴 준비</button><button type="button" data-v="protect">보험</button><button type="button" data-v="biz">회사와 사업</button>
+      </div></div>
+  </div>
+</section>
+
+<!-- 2 -->
+<section class="step" data-step="2">
+  <div class="sh"><div class="k">2 / 9</div><h2>기본</h2><p>가족 구성과 생활비는 거의 모든 계산의 바탕입니다.</p></div>
+  <div class="card">
+    <div class="q"><div class="lb">출생 연도</div><div class="row"><div class="amt"><input type="number" inputmode="numeric" data-k="birth" placeholder="1975"><span>년</span></div></div></div>
+    <div class="q"><div class="lb">배우자</div><div class="seg" data-k="sp"><button type="button" data-v="1">있음</button><button type="button" data-v="0">없음</button></div>
+      <div class="row" data-show="sp=1" style="margin-top:8px"><div class="amt"><input type="number" inputmode="numeric" data-k="spbirth" placeholder="배우자 출생 연도"><span>년</span></div></div></div>
+    <div class="q"><div class="lb">자녀</div><div class="row"><div class="amt"><input type="number" inputmode="numeric" data-k="kids" placeholder="0"><span>명</span></div></div>
+      <input class="in" data-k="kidages" data-show="kids>0" style="margin-top:8px" placeholder="자녀 나이를 쉼표로 (예: 32, 29)"></div>
+    <div class="q" data-show="kids>0"><div class="lb">결혼한 자녀와 손주</div><div class="row"><div class="amt"><span class="pre">결혼한 자녀</span><input type="number" inputmode="numeric" data-k="married" placeholder="0"><span>명</span></div><div class="amt"><span class="pre">손주</span><input type="number" inputmode="numeric" data-k="grand" placeholder="0"><span>명</span></div></div></div>
+    <div class="q"><div class="lb">한 달 생활비 <span class="h">세금, 건강보험료, 보험료, 대출 상환은 빼고 실제로 쓰시는 금액</span></div><div class="row" data-won="living" data-unit="man"></div></div>
+    <div class="q"><div class="lb">언제까지 일하실 생각이십니까</div><div class="row"><div class="amt"><input type="number" inputmode="numeric" data-k="retire" placeholder="65"><span>세까지</span></div><button type="button" class="dk" data-dk="retire">아직 모름</button></div></div>
+    <div class="q"><div class="lb">건강보험</div><div class="seg" data-k="emp"><button type="button" data-v="w">직장</button><button type="button" data-v="r">지역</button><button type="button" data-v="d">가족 밑으로</button></div></div>
+  </div>
+</section>
+
+<!-- 3 -->
+<section class="step" data-step="3">
+  <div class="sh"><div class="k">3 / 9</div><h2>부동산</h2><p>가진 것을 하나씩 적어 주십시오. 대략의 금액이면 충분합니다.</p></div>
+  <div class="gate"><div class="lb">부동산을 갖고 계십니까</div><div class="seg" data-k="hasre"><button type="button" data-v="1">예</button><button type="button" data-v="0">아니오</button></div></div>
+  <div data-show="hasre=1"><div id="props"></div><button type="button" class="add" id="addProp">+ 부동산 하나 더</button></div>
+</section>
+
+<!-- 4 -->
+<section class="step" data-step="4">
+  <div class="sh"><div class="k">4 / 9</div><h2>금융자산과 빚</h2><p>여러 곳에 흩어져 있으면 합쳐서 적어 주십시오. 없으면 0입니다.</p></div>
+  <div class="card">
+    <div class="q"><div class="lb">예금과 현금</div><div class="row" data-won="dep"></div></div>
+    <div class="q"><div class="lb">국내 주식</div><div class="row" data-won="kr"></div></div>
+    <div class="q"><div class="lb">해외 주식</div><div class="row" data-won="os"></div>
+      <div data-show="os>0"><div class="sub">그중 지금 오른 금액 <span class="h">팔면 세금이 붙는 부분입니다</span></div><div class="row" data-won="osgain"></div></div></div>
+    <div class="q"><div class="lb">채권과 펀드</div><div class="row" data-won="bond"></div></div>
+    <div class="q"><div class="lb">연금저축, IRP, 퇴직연금에 쌓인 금액</div><div class="row" data-won="pen"></div></div>
+    <div class="q"><div class="lb">올해 연금저축과 IRP에 넣으신 금액</div><div class="row" data-won="penpay" data-unit="man"></div></div>
+  </div>
+  <div class="card">
+    <div class="q"><div class="lb">부동산 담보 외의 대출 <span class="h">신용대출, 마이너스통장, 사업 대출</span></div><div class="row" data-won="loan"></div></div>
+    <div class="q"><div class="lb">모든 대출의 한 해 상환액 <span class="h">원금과 이자를 합쳐서</span></div><div class="row" data-won="debtpay" data-unit="man"></div></div>
+    <div class="q"><div class="lb">대출 평균 금리</div><div class="row"><div class="amt"><input type="number" inputmode="decimal" step="any" data-k="rate" placeholder="4.5"><span>%</span></div><button type="button" class="dk" data-dk="rate">잘 모름</button></div></div>
+    <div class="q"><div class="lb">투자에서 한 해에 감당하실 수 있는 손실 <span class="h">이 금액을 잃어도 생활이 흔들리지 않는 크기</span></div><div class="row" data-won="loss"></div></div>
+  </div>
+</section>
+
+<!-- 5 -->
+<section class="step" data-step="5">
+  <div class="sh"><div class="k">5 / 9</div><h2>소득</h2><p>한 해 기준입니다. 없는 것은 0으로 두시면 됩니다.</p></div>
+  <div class="card">
+    <div class="q"><div class="lb">급여 <span class="h">세금을 떼기 전 연봉</span></div><div class="row" data-won="work" data-unit="man"></div></div>
+    <div class="q"><div class="lb">이자와 배당</div><div class="row" data-won="fin" data-unit="man"></div></div>
+    <div class="q"><div class="lb">임대소득 <span class="h">한 해 받는 월세 합계</span></div><div class="row" data-won="rent" data-unit="man"></div></div>
+    <div class="q"><div class="lb">받고 계신 연금 <span class="h">국민연금, 공무원연금 등</span></div><div class="row" data-won="penpub" data-unit="man"></div></div>
+  </div>
+</section>
+
+<!-- 6 -->
+<section class="step" data-step="6">
+  <div class="sh"><div class="k">6 / 9</div><h2>보험</h2><p>가입하신 것을 합쳐서 적어 주십시오.</p></div>
+  <div class="card">
+    <div class="q"><div class="lb">사망 보장 합계 <span class="h">종신보험, 정기보험의 사망보험금</span></div><div class="row" data-won="death"></div></div>
+    <div class="q"><div class="lb">한 달 보험료 합계</div><div class="row" data-won="prem" data-unit="man"></div></div>
+    <div class="q"><div class="lb">사망보험의 계약자 <span class="h">보험료를 실제로 내는 사람</span></div><div class="seg" data-k="insown"><button type="button" data-v="self">본인</button><button type="button" data-v="child">자녀나 배우자</button></div></div>
+    <div class="q"><div class="lb">연금보험과 저축보험에 쌓인 금액</div><div class="row" data-won="annuity"></div></div>
+  </div>
+</section>
+
+<!-- 7 -->
+<section class="step" data-step="7">
+  <div class="sh"><div class="k">7 / 9</div><h2>가족에게 넘기는 일</h2><p>주는 쪽과 받는 쪽을 함께 봅니다.</p></div>
+  <div class="card">
+    <div class="q"><div class="lb">최근 10년 안에 배우자나 자녀에게 주신 재산</div><div class="row" data-won="prior"></div></div>
+    <div class="q"><div class="lb">지금 재산을 넘기는 것에 대해</div><div class="seg" data-k="mood"><button type="button" data-v="ok">괜찮다</button><button type="button" data-v="part">일부만</button><button type="button" data-v="no">아직 어렵다</button></div></div>
+  </div>
+  <div class="gate"><div class="lb">부모님 재산을 물려받으실 일이 있습니까</div><div class="seg" data-k="haspp"><button type="button" data-v="1">예</button><button type="button" data-v="0">아니오</button></div></div>
+  <div class="card" data-show="haspp=1">
+    <div class="q"><div class="lb">부모님 연세 <span class="h">두 분이 계시면 연세가 많으신 분</span></div><div class="row"><div class="amt"><input type="number" inputmode="numeric" data-k="ppage" placeholder="75"><span>세</span></div></div></div>
+    <div class="q"><div class="lb">부모님이 두 분 다 계십니까</div><div class="seg" data-k="ppsp"><button type="button" data-v="y">두 분 다</button><button type="button" data-v="n">한 분만</button></div>
+      <div class="row" data-show="ppsp=n" style="margin-top:8px"><div class="amt"><input type="number" inputmode="numeric" data-k="ppdyear" placeholder="먼저 돌아가신 해 (예: 2020)"><span>년</span></div></div></div>
+    <div class="q"><div class="lb">부모님 재산 가운데 부동산</div><div class="row" data-won="ppre"></div></div>
+    <div class="q"><div class="lb">부모님 재산 가운데 예금과 주식</div><div class="row" data-won="ppfin"></div></div>
+    <div class="q"><div class="lb">형제자매 <span class="h">본인을 포함한 자녀 수</span></div><div class="row"><div class="amt"><input type="number" inputmode="numeric" data-k="ppkids" placeholder="3"><span>명</span></div></div></div>
+  </div>
+</section>
+
+<!-- 8 -->
+<section class="step" data-step="8">
+  <div class="sh"><div class="k">8 / 9</div><h2>사업</h2><p>개인사업자로 일하고 계시면 적어 주십시오. 직장에 다니면서 하는 사업도 해당합니다.</p></div>
+  <div class="gate"><div class="lb">개인사업을 하고 계십니까</div><div class="seg" data-k="hasbiz"><button type="button" data-v="1">예</button><button type="button" data-v="0">아니오</button></div></div>
+  <div class="card" data-show="hasbiz=1">
+    <div class="q"><div class="lb">업종</div><div class="seg" data-k="zind"><button type="button" data-v="svc">서비스</button><button type="button" data-v="trade">도소매</button><button type="button" data-v="mfg">제조</button><button type="button" data-v="med">병의원</button><button type="button" data-v="rent">부동산 임대</button><button type="button" data-v="etc">그 밖</button></div></div>
+    <div class="q"><div class="lb">시작한 해</div><div class="row"><div class="amt"><input type="number" inputmode="numeric" data-k="zstart" placeholder="2024"><span>년</span></div></div></div>
+    <div class="q"><div class="lb">한 해 매출</div><div class="row" data-won="zsales"></div></div>
+    <div class="q"><div class="lb">한 해 남는 금액 <span class="h">매출에서 비용을 뺀 금액. 적자이면 「적자」를 누르고 적자 금액을 적어 주십시오</span></div><div class="row" data-won="zprofit" data-unit="man" data-neg="1"></div></div>
+    <div class="q"><div class="lb">직원 수</div><div class="row"><div class="amt"><input type="number" inputmode="numeric" data-k="zemp" placeholder="0"><span>명</span></div></div></div>
+  </div>
+</section>
+
+<!-- 9 -->
+<section class="step" data-step="9">
+  <div class="sh"><div class="k">9 / 9</div><h2>회사</h2><p>법인의 주주이거나 대표이시면 적어 주십시오. 회사 이름을 알려 주시면 공개된 재무 자료는 제가 먼저 찾아보겠습니다.</p></div>
+  <div class="gate"><div class="lb">회사(법인)를 갖고 계십니까</div><div class="seg" data-k="hascorp"><button type="button" data-v="1">예</button><button type="button" data-v="0">아니오</button></div></div>
+  <div data-show="hascorp=1">
+  <div class="card">
+    <div class="q"><label for="c_name">회사 이름</label><input class="in" id="c_name" data-k="cname" placeholder="예: 주식회사 ○○"></div>
+    <div class="q"><div class="lb">지분율</div><div class="row"><div class="amt"><span class="pre">본인</span><input type="number" inputmode="decimal" step="any" data-k="cshare" placeholder="0"><span>%</span></div><div class="amt"><span class="pre">자녀</span><input type="number" inputmode="decimal" step="any" data-k="ckid" placeholder="0"><span>%</span></div></div></div>
+    <div class="q"><div class="lb">경영하신 기간</div><div class="row"><div class="amt"><input type="number" inputmode="numeric" data-k="cyears" placeholder="15"><span>년</span></div></div></div>
+    <div class="q"><div class="lb">본인 연봉</div><div class="row" data-won="csal" data-unit="man"></div></div>
+    <div class="q"><div class="lb">회사에서 받는 한 해 배당</div><div class="row" data-won="cdiv" data-unit="man"></div></div>
+  </div>
+  <div class="card">
+    <div class="q"><div class="lb">순이익 <span class="h">최근 3년. 모르시면 「잘 모름」으로 두셔도 제가 찾아봅니다</span></div>
+      <div class="sub">작년</div><div class="row" data-won="cp1"></div>
+      <div class="sub">2년 전</div><div class="row" data-won="cp2"></div>
+      <div class="sub">3년 전</div><div class="row" data-won="cp3"></div></div>
+    <div class="q"><div class="lb">자본총계</div><div class="row" data-won="cnav"></div></div>
+    <div class="q"><div class="lb">이익잉여금</div><div class="row" data-won="cret"></div></div>
+    <div class="q"><div class="lb">회사 자산 가운데 부동산</div><div class="seg" data-k="crer"><button type="button" data-v="lt50">절반 미만</button><button type="button" data-v="50">절반에서 80%</button><button type="button" data-v="80">80% 이상</button></div></div>
+  </div>
+  <div class="card">
+    <div class="q"><div class="lb">정관에 임원 퇴직금 규정</div><div class="seg" data-k="crule"><button type="button" data-v="y">있음</button><button type="button" data-v="n">없음</button><button type="button" data-v="u">모름</button></div></div>
+    <div class="q"><div class="lb">회사에서 빌려 쓰신 돈 <span class="h">가지급금</span></div><div class="row" data-won="cloan"></div></div>
+    <div class="q"><div class="lb">회사에 빌려주신 돈 <span class="h">가수금</span></div><div class="row" data-won="cgaji"></div></div>
+    <div class="q"><div class="lb">회사 빚에 서신 개인 보증</div><div class="row" data-won="cguar"></div></div>
+    <div class="q"><div class="lb">회사를 이을 사람</div><div class="seg" data-k="cheir"><button type="button" data-v="y">가족이 2년 넘게 근무 중</button><button type="button" data-v="s">근무한 지 얼마 안 됐거나 예정</button><button type="button" data-v="n">없음</button></div></div>
+  </div>
+  </div>
+</section>
+
+<!-- 10. 확인 -->
+<section class="step" data-step="10">
+  <div class="sh"><div class="k">마지막</div><h2>보내기 전에</h2><p>적어 주신 내용을 묶어 보여 드립니다. 고칠 곳이 있으면 「이전」으로 돌아가시면 됩니다.</p></div>
+  <div class="sum" id="sum"></div>
+  <div class="card"><div class="q"><label for="q_more">더 알려 주실 것 <span class="h">위 질문에 담기지 않은 사정이 있으면 적어 주십시오</span></label><textarea class="in" id="q_more" data-k="more" style="min-height:90px"></textarea></div>
+    <div class="q"><label for="q_date">상담 날짜 <span class="h">이미 정하셨으면</span></label><input class="in" id="q_date" data-k="mdate" placeholder="예: 2026년 10월 9일 오후 2시"></div></div>
+  <div class="err" id="err10" hidden></div>
+</section>
+
+<section class="step" data-step="11">
+  <div class="done"><div class="ok">✓</div><h2>잘 받았습니다</h2><p><b id="doneName"></b> 님, 적어 주신 내용으로 자산 관리표와 보고서를 준비해 가겠습니다.</p><p style="color:var(--mut);font-size:14.5px">아래 확약서는 보관하실 수 있습니다. 첫 상담 때 서명한 종이로도 드립니다.</p></div>
+  <div class="doc" id="doc2"></div>
+  <button type="button" class="add noprint" id="printDoc">확약서 저장하거나 인쇄하기</button>
+</section>
+
+<div class="foot">
+  <b>유영곤</b> · 삼성생명 GFC · 삼성화재 · 삼성증권 투자권유대행인<br>
+  버는 건 시장이 정하고, 지키는 건 구조가 정합니다.<br>
+  이 질문지는 상담 준비를 위한 것이며 특정 금융상품의 권유가 아닙니다.
+</div>
+</main>
+
+<nav class="nav"><div class="wrap">
+  <button class="btn line" id="prev" type="button">이전</button>
+  <button class="btn pri" id="next" type="button">시작하기</button>
+  <span class="saved" id="saved"></span>
+</div></nav>
+
+<script>
+(function(){
+'use strict';
+/* 전송 주소 — 받는 쪽을 바꿀 때 이 한 줄만 고친다 */
+var ENDPOINT = 'https://script.google.com/macros/s/AKfycbx6cmmu5eS943gKxLye41zwUB24kFcyhGfNtLfsRnW4HT7Q4jt5o7-ED8yQN4JVDvzC/exec';
+var KEY = 'intake_v1', LAST = 10;
+var S = {v:{}, dk:{}, tags:{}, props:[], step:0};
+try{ var saved0 = JSON.parse(localStorage.getItem(KEY) || 'null'); if(saved0 && saved0.v){ S = saved0; S.dk = S.dk || {}; S.tags = S.tags || {}; S.props = S.props || []; S.step = Math.min(S.step || 0, LAST); } }catch(_){}
+function $(id){ return document.getElementById(id); }
+function qa(s, el){ return Array.prototype.slice.call((el || document).querySelectorAll(s)); }
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify(S)); $('saved').textContent = '저장됨'; clearTimeout(save.t); save.t = setTimeout(function(){ $('saved').textContent = ''; }, 1200); }catch(_){} }
+function num(k){ var x = parseFloat(S.v[k]); return isFinite(x) ? x : null; }
+function esc(s){ return String(s == null ? '' : s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+
+/* 금액 입력 — 억 + 천만원 (큰 금액) 또는 만원 (작은 금액) */
+function wonHTML(k, unit, neg){
+  var dk = '<button type="button" class="dk' + (S.dk[k] ? ' on' : '') + '" data-dk="' + k + '">잘 모름</button>';
+  var ng = neg ? '<button type="button" class="dk' + (S.v[k + '_neg'] ? ' on' : '') + '" data-neg="' + k + '">적자</button>' : '';
+  var dis = S.dk[k] ? ' dis' : '', ro = S.dk[k] ? ' disabled' : '';
+  function box(sfx, label){ return '<div class="amt' + dis + '"><input type="number" inputmode="numeric" data-k="' + k + sfx + '" placeholder="0"' + ro + ' value="' + esc(S.v[k + sfx]) + '"><span>' + label + '</span></div>'; }
+  if(unit === 'man') return ng + box('_m', '만원') + dk;
+  return box('_e', '억') + box('_c', '천만원') + dk;
+}
+function eok(k){ if(S.dk[k]) return null; var e = num(k + '_e'), c = num(k + '_c'); if(e == null && c == null) return null; return Math.round(((e || 0) + (c || 0)/10)*100)/100; }
+function man(k){ if(S.dk[k]) return null; var m = num(k + '_m'); if(m == null) return null; return S.v[k + '_neg'] ? -Math.abs(m) : m; }
+function wonTxt(x, unit){
+  if(x == null) return '적지 않음';
+  if(unit === 'man'){ var a = Math.abs(x), e2 = Math.floor(a/10000), r = Math.round(a - e2*10000); return (x < 0 ? '적자 ' : '') + ((e2 ? e2 + '억 ' : '') + (r || !e2 ? r.toLocaleString('ko-KR') + '만' : '')).trim() + '원'; }
+  var e = Math.floor(x), c = Math.round((x - e)*10); return (e || c) ? ((e ? e + '억 ' : '') + (c ? c + '천만' : '')).trim() + '원' : '0원';
+}
+
+/* 부동산 물건 */
+var PK = [['home','사는 집'],['house','다른 주택'],['comm','상가 · 건물'],['land','토지']];
+function propHTML(p, i){
+  function w(k, unit){ return '<div class="row">' + wonHTML('p' + i + '_' + k, unit) + '</div>'; }
+  function seg(k, opts){ return '<div class="seg" data-pk="' + i + ':' + k + '">' + opts.map(function(o){ return '<button type="button" data-v="' + o[0] + '"' + (p[k] === o[0] ? ' class="on"' : '') + '>' + o[1] + '</button>'; }).join('') + '</div>'; }
+  return '<div class="prop"><div class="prop-h"><b>부동산 ' + (i + 1) + '</b>' + (S.props.length > 1 ? '<button type="button" class="x" data-delprop="' + i + '">빼기</button>' : '') + '</div>' +
+    '<div class="q"><div class="lb">종류</div>' + seg('kind', PK) + '</div>' +
+    '<div class="q"><div class="lb">지금 시세</div>' + w('price') + '</div>' +
+    '<div class="q"><div class="lb">사신 가격과 연도 <span class="h">물려받으셨으면 그때의 평가액</span></div>' + w('buy') + '<div class="row" style="margin-top:8px"><div class="amt"><input type="number" inputmode="numeric" data-k="p' + i + '_year" placeholder="2015" value="' + esc(S.v['p' + i + '_year']) + '"><span>년에 취득</span></div></div></div>' +
+    '<div class="q"><div class="lb">담보대출 잔액</div>' + w('loan') + '</div>' +
+    '<div class="q"><div class="lb">받고 계신 보증금</div>' + w('deposit') + '<div class="sub">한 해 받는 월세 합계</div>' + w('rent', 'man') + '</div>' +
+    '<div class="q"><div class="lb">명의</div>' + seg('owner', [['self','본인'],['spouse','배우자'],['joint','공동']]) + '</div>' +
+    '<div class="q"><div class="lb">파실 계획</div>' + seg('sellPlan', [['1y','1년 안'],['3y','2~3년 안'],['none','없음']]) + '</div></div>';
+}
+function renderProps(){ if(!S.props.length) S.props.push({}); $('props').innerHTML = S.props.map(propHTML).join(''); }
+
+/* 화면 채우기 */
+function fill(){
+  qa('[data-won]').forEach(function(el){ el.innerHTML = wonHTML(el.dataset.won, el.dataset.unit, el.dataset.neg); });
+  renderProps();
+  qa('input[data-k],textarea[data-k]').forEach(function(el){ var k = el.dataset.k; if(el.type === 'checkbox') el.checked = !!S.v[k]; else if(S.v[k] != null && el.value !== String(S.v[k])) el.value = S.v[k]; });
+  qa('.seg[data-k]').forEach(function(sg){ qa('button', sg).forEach(function(b){ b.classList.toggle('on', S.v[sg.dataset.k] != null && S.v[sg.dataset.k] === b.dataset.v); }); });
+  qa('.seg[data-multi] button').forEach(function(b){ b.classList.toggle('on', !!S.tags[b.dataset.v]); });
+  qa('.dk[data-dk]').forEach(function(b){ b.classList.toggle('on', !!S.dk[b.dataset.dk]); });
+  show(); doc();
+}
+function cond(expr){ var m = /^(\w+)(=|>)(.*)$/.exec(expr); if(!m) return true; if(m[2] === '=') return String(S.v[m[1]] == null ? '' : S.v[m[1]]) === m[3]; var x = m[1] === 'os' ? eok('os') : parseFloat(S.v[m[1]]); return (x || 0) > parseFloat(m[3]); }
+function show(){ qa('[data-show]').forEach(function(el){ el.hidden = !cond(el.dataset.show); }); $('agL1').classList.toggle('on', !!S.v.ag1); $('agL2').classList.toggle('on', !!S.v.ag2); }
+function today(){ var d = new Date(); return d.getFullYear() + '년 ' + (d.getMonth() + 1) + '월 ' + d.getDate() + '일'; }
+function doc(){ $('docName').textContent = (S.v.name || '').trim() || '고객'; $('docDate').textContent = today(); }
+
+/* 단계 */
+function go(n){
+  S.step = Math.max(0, Math.min(n, 11)); if(S.step <= LAST) save();
+  qa('.step').forEach(function(s){ s.classList.toggle('on', +s.dataset.step === S.step); });
+  $('prev').hidden = S.step === 0 || S.step === 11;
+  $('next').hidden = S.step === 11;
+  $('next').disabled = false;
+  $('next').textContent = S.step === 0 ? '시작하기' : S.step === LAST ? '보내기' : '다음';
+  $('cnt').textContent = S.step >= 1 && S.step <= 9 ? S.step + ' / 9' : '';
+  $('prog').style.width = (S.step >= 11 ? 100 : S.step/LAST*100) + '%';
+  if(S.step === LAST) summary();
+  window.scrollTo(0, 0);
+}
+function check0(){
+  var e = $('err0'), msg = '';
+  if(!(S.v.name || '').trim()) msg = '성함을 적어 주십시오.';
+  else if(!(S.v.tel || '').trim()) msg = '연락처를 적어 주십시오.';
+  else if(!S.v.ag1 || !S.v.ag2) msg = '두 가지 동의에 표시해 주셔야 질문지를 보내실 수 있습니다.';
+  e.textContent = msg; e.hidden = !msg; if(msg) e.scrollIntoView({block:'center'}); return !msg;
+}
+
+/* 진단 도구 입력으로 바꾸기 — 006. playbook/미팅자산/자산종합진단/index.html 의 입력 id */
+function out(){
+  var Y = new Date().getFullYear(), v = {}, V = S.v;
+  function put(k, x){ if(x != null && x !== '' && !(typeof x === 'number' && !isFinite(x))) v[k] = String(x); }
+  var b = num('birth'); if(b) put('b_age', Y - b);
+  put('b_sp', V.sp); var sb = num('spbirth'); if(sb && V.sp === '1') put('b_spage', Y - sb);
+  put('b_kids', V.kids); put('b_kidages', V.kidages); put('b_married', V.married); put('b_grand', V.grand);
+  put('b_living', man('living')); if(!S.dk.retire) put('b_retire', V.retire); put('i_emp', V.emp);
+  put('f_dep', eok('dep')); put('f_kr', eok('kr')); put('f_os', eok('os')); put('f_osgain', eok('osgain')); put('f_bond', eok('bond')); put('f_pen', eok('pen')); put('i_penpay', man('penpay'));
+  put('d_loan', eok('loan')); put('i_debtpay', man('debtpay')); if(!S.dk.rate) put('d_rate', V.rate); put('v_loss', eok('loss'));
+  put('i_work', man('work')); put('i_fin', man('fin')); put('i_rent', man('rent')); put('i_penpub', man('penpub'));
+  put('s_death', eok('death')); put('s_prem', man('prem')); put('s_own', V.insown); put('s_annuity', eok('annuity'));
+  put('h_prior', eok('prior')); put('o_mood', V.mood);
+  if(V.haspp === '1'){ put('pp_age', V.ppage); put('pp_sp', V.ppsp); put('pp_dyear', V.ppsp === 'n' ? V.ppdyear : null); put('pp_re', eok('ppre')); put('pp_fin', eok('ppfin')); put('pp_kids', V.ppkids); put('pp_basis', 'unk'); }
+  var type = 'ind';
+  if(V.hasbiz === '1'){ type = 'biz'; put('z_industry', V.zind); put('z_start', V.zstart); put('z_sales', eok('zsales')); put('i_biz', man('zprofit')); put('z_emp', V.zemp); }
+  if(V.hascorp === '1'){ type = 'corp'; put('c_share', V.cshare); put('c_kidshare', V.ckid); put('c_years', V.cyears); put('c_sal', man('csal')); put('c_divy', man('cdiv'));
+    put('c_p1', eok('cp1')); put('c_p2', eok('cp2')); put('c_p3', eok('cp3')); put('c_nav', eok('cnav')); put('c_retained', eok('cret')); put('c_rer', V.crer); put('c_rule', V.crule === 'u' ? null : V.crule);
+    put('c_loan', eok('cloan')); put('c_gaji', eok('cgaji')); put('c_guarantee', eok('cguar')); put('c_heir', V.cheir); }
+  put('b_type', type);
+  put('memo', [(V.memo || '').trim(), (V.more || '').trim() ? '추가: ' + V.more.trim() : '', V.hascorp === '1' && V.cname ? '회사: ' + V.cname : ''].filter(Boolean).join('\n'));
+  put('r_name', (V.name || '').trim() ? V.name.trim() + ' 님' : null);
+  var props = V.hasre === '1' ? S.props.map(function(p, i){ var o = {}, pre = 'p' + i + '_';
+      function pp(k, x){ if(x != null && x !== '') o[k] = String(x); }
+      pp('kind', p.kind); pp('price', eok(pre + 'price')); pp('buy', eok(pre + 'buy')); var yr = num(pre + 'year'); if(yr){ pp('acqYear', yr); pp('hold', Math.max(Y - yr, 0)); if(p.kind === 'home') pp('live', Math.max(Y - yr, 0)); }
+      pp('loan', eok(pre + 'loan')); pp('deposit', eok(pre + 'deposit')); pp('rent', man(pre + 'rent')); pp('owner', p.owner); pp('sellPlan', p.sellPlan); return o; }).filter(function(o){ return o.price != null; }) : [];
+  var tags = {}; Object.keys(S.tags).forEach(function(k){ if(S.tags[k]){ tags[k] = 1; if(k === 'give') tags.inh = 1; } });
+  return {v:v, props:props, tags:tags};
+}
+function summary(){
+  var o = out(), V = o.v;
+  function tot(keys){ var any = false, t = 0; keys.forEach(function(k){ if(V[k] != null){ any = true; t += parseFloat(V[k]) || 0; } }); return any ? t : null; }
+  var re = o.props.reduce(function(t, p){ return t + (parseFloat(p.price) || 0); }, 0);
+  var rows = [['성함', S.v.name || ''], ['부동산', o.props.length ? o.props.length + '건 · ' + wonTxt(re) : (S.v.hasre === '0' ? '없음' : '적지 않음')], ['금융자산', wonTxt(tot(['f_dep','f_kr','f_os','f_bond','f_pen']))], ['한 해 소득', wonTxt(tot(['i_work','i_biz','i_fin','i_rent','i_penpub']), 'man')], ['개인사업', S.v.hasbiz === '1' ? '적으심' : '해당 없음'], ['회사', S.v.hascorp === '1' ? (S.v.cname || '적으심') : '해당 없음'], ['부모님 재산', S.v.haspp === '1' ? '적으심' : '해당 없음']];
+  $('sum').innerHTML = rows.map(function(r){ return '<div><span>' + r[0] + '</span><b>' + esc(r[1]) + '</b></div>'; }).join('');
+}
+function readable(){
+  var o = out(), L = [], V = o.v;
+  L.push('[첫 상담 전 질문지] ' + (S.v.name || '') + ' · ' + (S.v.tel || '')); if(S.v.mdate) L.push('상담 날짜: ' + S.v.mdate);
+  L.push('동의: 수집과 이용 ' + (S.v.ag1 ? '예' : '아니오') + ' · 국외 보관 ' + (S.v.ag2 ? '예' : '아니오') + ' · ' + today());
+  L.push(''); L.push('고민: ' + (S.v.memo || '')); L.push('관심: ' + Object.keys(S.tags).filter(function(k){ return S.tags[k]; }).join(', '));
+  L.push(''); Object.keys(V).forEach(function(k){ if(k !== 'memo') L.push(k + ' = ' + V[k]); });
+  o.props.forEach(function(p, i){ L.push('부동산 ' + (i + 1) + ': ' + JSON.stringify(p)); });
+  var dk = Object.keys(S.dk).filter(function(k){ return S.dk[k]; }); if(dk.length) L.push('잘 모름: ' + dk.join(', '));
+  return L.join('\n');
+}
+function send(){
+  var e = $('err10'), btn = $('next'); e.hidden = true;
+  if(!ENDPOINT){ e.textContent = '전송 주소가 아직 연결되지 않았습니다.'; e.hidden = false; return; }
+  btn.disabled = true; btn.textContent = '보내는 중';
+  var o = out(), body = {subject:'[사전질문지] ' + (S.v.name || ''), name:S.v.name || '', tel:S.v.tel || '', text:readable(), data:JSON.stringify({v:o.v, props:o.props, tags:o.tags, dk:S.dk, at:new Date().toISOString()})};
+  fetch(ENDPOINT, {method:'POST', headers:{'Content-Type':'text/plain;charset=utf-8'}, body:JSON.stringify(body)}).then(function(r){ if(!r.ok) throw new Error('http ' + r.status); return r.text(); }).then(function(){ finish(); try{ localStorage.removeItem(KEY); }catch(_){} })
+  .catch(function(){ e.textContent = '보내지 못했습니다. 잠시 뒤 다시 눌러 주십시오. 적으신 내용은 이 기기에 저장돼 있습니다.'; e.hidden = false; btn.disabled = false; btn.textContent = '보내기'; });
+}
+function finish(){ $('doneName').textContent = S.v.name || ''; $('doc2').innerHTML = $('doc').innerHTML.replace(/ id="[^"]*"/g, ''); go(11); }
+
+document.addEventListener('input', function(ev){ var t = ev.target, k = t.dataset && t.dataset.k; if(!k) return; S.v[k] = t.type === 'checkbox' ? t.checked : t.value; if(k === 'name') doc(); show(); save(); });
+document.addEventListener('click', function(ev){
+  var b = ev.target.closest('button'); if(!b) return;
+  if(b.id === 'next'){ if(S.step === 0 && !check0()) return; if(S.step === LAST){ send(); return; } go(S.step + 1); return; }
+  if(b.id === 'prev'){ go(S.step - 1); return; }
+  if(b.id === 'printDoc'){ window.print(); return; }
+  if(b.id === 'addProp'){ S.props.push({}); renderProps(); save(); return; }
+  if(b.dataset.delprop != null){
+    var di = +b.dataset.delprop, nv = {}, nd = {};
+    var shift = function(src, dst){ Object.keys(src).forEach(function(k){ var m = /^p(\d+)_(.*)$/.exec(k); if(!m){ dst[k] = src[k]; return; } var n = +m[1]; if(n === di) return; dst['p' + (n > di ? n - 1 : n) + '_' + m[2]] = src[k]; }); };
+    shift(S.v, nv); shift(S.dk, nd);
+    S.v = nv; S.dk = nd; S.props.splice(di, 1); renderProps(); save(); return; }
+  if(b.dataset.dk){ var k = b.dataset.dk; S.dk[k] = !S.dk[k]; if(S.dk[k]){ ['_e','_c','_m',''].forEach(function(s){ delete S.v[k + s]; }); } save(); fill(); return; }
+  if(b.dataset.neg){ var kn = b.dataset.neg + '_neg'; S.v[kn] = !S.v[kn]; b.classList.toggle('on', !!S.v[kn]); save(); return; }
+  var sg = b.parentElement;
+  if(sg && sg.classList.contains('seg')){
+    if(sg.dataset.multi){ S.tags[b.dataset.v] = !S.tags[b.dataset.v]; b.classList.toggle('on', !!S.tags[b.dataset.v]); save(); return; }
+    if(sg.dataset.pk){ var a = sg.dataset.pk.split(':'), p = S.props[+a[0]]; p[a[1]] = p[a[1]] === b.dataset.v ? null : b.dataset.v; qa('button', sg).forEach(function(x){ x.classList.toggle('on', x.dataset.v === p[a[1]]); }); save(); return; }
+    if(sg.dataset.k){ var kk = sg.dataset.k; S.v[kk] = S.v[kk] === b.dataset.v ? null : b.dataset.v; qa('button', sg).forEach(function(x){ x.classList.toggle('on', S.v[kk] != null && x.dataset.v === S.v[kk]); }); show(); save(); return; }
+  }
+});
+window.__intake = {out:out, readable:readable, S:S, go:go, fill:fill, finish:finish};
+fill(); go(S.step);
+})();
+</script>
+</body>
+</html>
