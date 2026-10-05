@@ -28,11 +28,25 @@ ol li::marker{font-weight:800;color:#1428A0}
 .sign .who span{display:inline-block;min-width:44mm;border-bottom:.8pt solid #111827;height:13mm;margin-top:3mm}
 .sign .who small{display:block;font-size:9.5pt;color:#6B7280;margin-top:1.5mm}
 .foot{margin-top:10mm;padding-top:5mm;border-top:.6pt solid #E3E6EB;font-size:9pt;color:#6B7280;line-height:1.7}
+.bar{max-width:210mm;margin:0 auto 14px;background:#fff;border:1px solid #E3E6EB;border-radius:14px;padding:16px;display:grid;gap:10px}
+.bar b{font-size:15px}
+.bar .r{display:flex;gap:8px;flex-wrap:wrap}
+.bar input{flex:1 1 140px;min-width:0;border:1px solid #E3E6EB;border-radius:10px;padding:12px 13px;font:inherit;font-weight:600}
+.bar button{border:0;border-radius:10px;padding:12px 16px;font:inherit;font-weight:700;cursor:pointer;background:#1428A0;color:#fff}
+.bar button.g{background:#EEF1FB;color:#1428A0}
+.bar small{color:#6B7280;font-size:12.5px}
+@media print{.bar{display:none !important}}
 @media screen{body{padding:16px 0}.page{box-shadow:0 20px 50px -30px rgba(13,27,110,.45)}}
 @media screen and (max-width:820px){.page{width:auto;min-height:0;padding:44px 22px 28px;margin:0 12px}h1{font-size:24px}.to,ol{font-size:16px}.sign{flex-direction:column;align-items:stretch;gap:20px}.sign .who{text-align:left}}
 </style>
 </head>
 <body>
+<div class="bar">
+  <b>대표님용 · 이 줄은 인쇄되지 않습니다</b>
+  <div class="r"><input id="in_n" placeholder="고객 성함"><input id="in_d" placeholder="날짜 (예: 2026년 10월 9일)"><button type="button" id="bt_p">확약서 인쇄</button></div>
+  <div class="r"><input id="in_l" readonly value="https://freelandx-ops.github.io/profile/intake/"><button type="button" class="g" id="bt_c">질문지 링크 복사</button></div>
+  <small>고객에게는 질문지 링크만 보냅니다. 이 화면 주소를 즐겨찾기에 두시면 링크와 확약서를 여기서 꺼내 쓰실 수 있습니다.</small>
+</div>
 <div class="page">
   <div class="eyebrow">유영곤 · 당신의 CFO</div>
   <h1>비밀유지 확약서</h1>
@@ -55,6 +69,12 @@ ol li::marker{font-weight:800;color:#1428A0}
   var q = new URLSearchParams(location.search), n = (q.get('n') || '').trim(), d = (q.get('d') || '').trim();
   if(n) document.getElementById('n').textContent = n;
   if(d) document.getElementById('d').textContent = d;
+  var t = new Date(), iN = document.getElementById('in_n'), iD = document.getElementById('in_d');
+  iN.value = n; iD.value = d || (t.getFullYear() + '년 ' + (t.getMonth() + 1) + '월 ' + t.getDate() + '일');
+  function put(){ document.getElementById('n').textContent = iN.value.trim() || ' '; document.getElementById('d').textContent = iD.value.trim() || ' '; }
+  iN.addEventListener('input', put); iD.addEventListener('input', put); put();
+  document.getElementById('bt_p').addEventListener('click', function(){ put(); window.print(); });
+  document.getElementById('bt_c').addEventListener('click', function(){ var l = document.getElementById('in_l'), b = this; l.select(); (navigator.clipboard ? navigator.clipboard.writeText(l.value) : Promise.reject()).catch(function(){ document.execCommand('copy'); }).then(function(){ b.textContent = '복사했습니다'; setTimeout(function(){ b.textContent = '질문지 링크 복사'; }, 1500); }); });
 })();
 </script>
 </body>
