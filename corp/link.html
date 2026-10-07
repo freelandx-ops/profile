@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>법인컨설팅 제안서 링크 만들기</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<!-- 내부용. 보낼 영역을 누른 순서대로 주소를 만든다. 받는 분에게 보내는 화면이 아니다. -->
+<style>
+:root{--ink:#111827;--ink2:#374151;--mut:#6B7280;--line:#E3E6EB;--blue:#1428A0;--blue-d:#0D1B6E;--blue-s:#EEF1FB}
+*{box-sizing:border-box}
+body{margin:0;background:#F4F6F9;color:var(--ink);font-family:'Pretendard',-apple-system,'Malgun Gothic',sans-serif;font-size:16px;line-height:1.6;word-break:keep-all}
+.wrap{max-width:560px;margin:0 auto;padding:28px 18px 60px}
+h1{font-size:22px;margin:0 0 4px}
+.sub{color:var(--mut);font-size:14px;margin:0 0 20px}
+.list{display:grid;gap:8px}
+.it{display:flex;align-items:center;gap:12px;width:100%;text-align:left;background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;font:inherit;font-weight:600;cursor:pointer;color:var(--ink)}
+.it .n{flex:0 0 auto;width:26px;height:26px;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;font-size:13px;color:#fff}
+.it.on{border-color:var(--blue);background:var(--blue-s)}
+.it.on .n{background:var(--blue);border-color:var(--blue)}
+.out{margin-top:20px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px}
+.out label{display:block;font-size:13px;font-weight:700;color:var(--mut);margin-bottom:6px}
+.out input{width:100%;border:1px solid var(--line);border-radius:8px;padding:11px 12px;font:inherit;font-size:14px;color:var(--ink2)}
+.row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:10px}
+.btn{border:0;border-radius:10px;padding:13px;font:inherit;font-weight:700;cursor:pointer;background:var(--blue);color:#fff;text-align:center;text-decoration:none}
+.btn.line{background:#fff;color:var(--blue);border:1px solid var(--blue)}
+.tip{font-size:13px;color:var(--mut);margin:14px 0 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>법인컨설팅 제안서 링크 만들기</h1>
+  <p class="sub">보낼 영역을 누르세요. 누른 순서대로 펼쳐집니다. 아무것도 고르지 않으면 전체가 보이는 기본 주소입니다.</p>
+  <div class="list" id="list"></div>
+  <div class="out">
+    <label for="url">보낼 주소</label>
+    <input id="url" readonly>
+    <div class="row">
+      <button class="btn" id="copy" type="button">주소 복사</button>
+      <a class="btn line" id="open" target="_blank" rel="noopener">미리 보기</a>
+      <button class="btn line" id="reset" type="button">다시 고르기</button>
+    </div>
+    <p class="tip">고르지 않은 영역은 받는 분 화면 아래 「그 밖에 도와드리는 영역」에 이름만 나옵니다.</p>
+  </div>
+</div>
+<script>
+(function(){
+  var BASE='https://freelandx-ops.github.io/profile/corp/';
+  var A=[['cash','법인자금 유동화 (급여, 배당, 퇴직금)'],['loan','가지급금·이익잉여금 정리'],['rule','정관·임원 규정 정비'],['val','비상장주식 가치평가'],['nominee','명의신탁주식 환원'],['succ','상속·증여와 가업승계'],['exit','기업 매각·청산 (M&A)'],['labor','노무·중대재해처벌법 대응'],['fund','정책자금·정부지원사업·기업 인증'],['benefit','퇴직연금·임직원 복리후생'],['conv','개인사업자 법인전환']];
+  var pick=[],list=document.getElementById('list'),url=document.getElementById('url'),open=document.getElementById('open');
+  var local=location.protocol==='file:';
+  function draw(){
+    list.innerHTML='';
+    A.forEach(function(a){
+      var i=pick.indexOf(a[0]),b=document.createElement('button');b.type='button';b.className='it'+(i>=0?' on':'');
+      var n=document.createElement('span');n.className='n';n.textContent=i>=0?i+1:'';
+      b.appendChild(n);b.appendChild(document.createTextNode(a[1]));
+      b.onclick=function(){if(i>=0)pick.splice(i,1);else pick.push(a[0]);draw()};
+      list.appendChild(b);
+    });
+    var q=pick.length?'?a='+pick.join(','):'';
+    url.value=BASE+q;open.href=(local?'index.html':BASE)+q;
+  }
+  document.getElementById('copy').onclick=function(){
+    var b=this;url.select();
+    (navigator.clipboard?navigator.clipboard.writeText(url.value):Promise.reject()).catch(function(){document.execCommand('copy')}).then(function(){b.textContent='복사했습니다';setTimeout(function(){b.textContent='주소 복사'},1500)});
+  };
+  document.getElementById('reset').onclick=function(){pick=[];draw()};
+  draw();
+})();
+</script>
+</body>
+</html>
