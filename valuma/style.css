@@ -1,0 +1,116 @@
+/* VALUMA 홈페이지 공용 스타일. 색과 글자 톤은 명함 뒷면(브랜드자산/명함_뒷면_v2_캐치프레이즈.png)에서 가져온다.
+   바탕 #0D4F3C · 로고와 이름 #E2CDA0 · 캐치프레이즈 #CDC096 · 앞면 글자 #111111 · 라벨 #8A8A8A
+   글자: 이름과 라벨은 산세리프(굵은 이름 + 넓은 자간), 캐치프레이즈와 제목은 세리프.
+   정렬: 첫 화면과 마지막 화면은 가운데, 그 사이는 전부 왼쪽 한 줄에 맞춘다.
+   강조: 상자를 쓰지 않는다. 녹색과 굵기로만 한다(로고가 가는 선이라 색 덩어리가 안 맞는다). */
+:root{
+  --green:#0D4F3C; --gold:#E2CDA0; --gold2:#CDC096; --sage:#6D8869; --ink:#111111; --mute:#8A8A8A;
+  --paper:#ffffff; --ivory:#F6F1E4; --line:#d9d4c6;
+  --en:"Raleway","Noto Sans KR",sans-serif;
+  --ko:"Noto Sans KR","Malgun Gothic",sans-serif;
+  --serif-en:"Cormorant Garamond","Noto Serif KR",serif;
+  --serif:"Noto Serif KR","Cormorant Garamond",serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--ko);font-weight:400;line-height:1.8;word-break:keep-all}
+.wrap{max-width:1160px;margin:0 auto;padding:0 56px}
+
+/* 공통 부품 */
+.memo{font-size:12px;color:#b3261e;margin-top:16px}
+.eyebrow{font-family:var(--en);font-size:11px;letter-spacing:.32em;color:var(--mute);margin-bottom:28px}
+.blank{border:1px dashed currentColor;opacity:.55;display:inline-block;padding:0 12px;font-weight:300;letter-spacing:0}
+.img{background:var(--ivory);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--mute);text-align:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;font-family:var(--ko);font-weight:500;
+  font-size:14px;letter-spacing:.12em;padding:16px 40px;border-radius:999px;background:var(--green);color:var(--gold);border:1px solid var(--green);text-decoration:none}
+.btn.gold{background:var(--gold);color:var(--green);border-color:var(--gold)}
+.btn.sq{border-radius:0;padding:10px 20px;font-size:13px}
+h1,h2{margin:0;font-family:var(--serif);font-weight:400;letter-spacing:-.02em;line-height:1.5;text-wrap:balance}
+h1{font-size:clamp(30px,4.4vw,56px)}
+h2{font-size:clamp(25px,3.1vw,40px)}
+p{margin:0 0 20px;text-wrap:pretty}
+p:last-child{margin-bottom:0}
+.em{color:var(--green);font-weight:700}
+.body .em{font-weight:500}
+section{position:relative;border-bottom:1px solid var(--line)}
+.pad{padding:120px 0}
+.mark{display:block;fill:none;stroke:currentColor;stroke-linejoin:miter;stroke-miterlimit:12;overflow:visible}
+/* 캐치프레이즈 · 명함 뒷면 맨 아랫줄: 세리프 대문자, 넓은 자간, 마침표 없음 */
+.catch{font-family:var(--serif-en);font-weight:700;text-transform:uppercase;letter-spacing:.2em;color:var(--gold2)}
+
+/* 상단 · 명함 앞면처럼 흰 바탕에 검은 로고 */
+header{position:sticky;top:0;z-index:10;background:var(--paper);border-bottom:1px solid var(--ink)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:14px}
+.brand .mark{width:30px;height:29px;stroke-width:7}
+.brand b{font-family:var(--en);font-weight:700;letter-spacing:.3em;font-size:15px}
+nav{display:flex;align-items:center;gap:32px;font-size:14px}
+
+/* 첫 화면 · 명함 뒷면을 그대로 옮긴다: 심볼, 굵은 이름, ASSET INSTITUTE, 캐치프레이즈 */
+.hero{background:var(--green);color:var(--gold);border-bottom:0;text-align:center}
+.hero .wrap{display:flex;flex-direction:column;align-items:center;padding-top:104px;padding-bottom:112px}
+.hero .mark{width:168px;height:auto;stroke-width:5.5}
+.hero .name{font-family:var(--en);font-weight:700;font-size:clamp(26px,3vw,34px);letter-spacing:.3em;padding-left:.3em;margin-top:52px;line-height:1.2}
+.hero .sub{font-family:var(--en);font-weight:400;font-size:clamp(11px,1.15vw,14px);letter-spacing:.44em;padding-left:.44em;margin-top:18px}
+.hero h1{font-size:clamp(17px,2.3vw,30px);line-height:1.5;margin-top:68px;padding-left:.2em}
+.hero .ko{font-family:var(--serif);font-size:clamp(14px,1.3vw,17px);font-weight:300;margin:18px 0 0;color:#cfe0c9;letter-spacing:.08em}
+.hero .btn{margin-top:52px}
+
+/* 흐르는 띠 */
+.band{overflow:hidden;white-space:nowrap;padding:18px 0;background:var(--green);
+  font-family:var(--en);font-weight:500;font-size:13px;letter-spacing:.3em;color:var(--sage);border-top:1px solid rgba(226,205,160,.25)}
+.band div{display:inline-block;animation:run 40s linear infinite}
+.band span{margin:0 22px;color:#9fb79a}
+@keyframes run{to{transform:translateX(-50%)}}
+
+/* 하는 일 · 일하는 방식 — 두 단의 윗선을 맞춘다 */
+.two{display:grid;grid-template-columns:5fr 6fr;gap:88px;align-items:start}
+.body{font-size:17px;color:#2b2b2b;max-width:33em}
+.two .body{padding-top:.6em}
+.how h2{margin-bottom:36px}
+.how .two .body{padding-top:0}
+.how .img{aspect-ratio:4/3;width:100%}
+
+/* 사람들 */
+.ivorybg{background:var(--ivory)}
+.people{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-top:56px}
+.person .img{aspect-ratio:4/5;margin-bottom:20px;background:var(--paper)}
+.person .nm{font-weight:700;font-size:19px;letter-spacing:.2em;line-height:1.5}
+.person .nm small{font-weight:400;font-size:13px;letter-spacing:0;color:var(--mute);margin-left:8px}
+.person .en{font-family:var(--en);font-size:11px;letter-spacing:.34em;margin:2px 0 12px}
+.person .fd{font-size:14px;color:var(--mute)}
+
+/* 남는 것 · 금색 바탕 */
+.goldbg{background:var(--gold);color:var(--green);border-bottom:0}
+.goldbg .eyebrow{color:var(--green);opacity:.7}
+.goldbg .btn{margin-top:44px}
+.four{display:grid;grid-template-columns:repeat(4,1fr);gap:36px;margin-top:88px;padding-top:40px;border-top:1px solid var(--green)}
+.four .t{font-family:var(--serif);font-weight:700;font-size:19px;margin-bottom:12px;line-height:1.5}
+.four p{font-size:15px;line-height:1.75;margin:0;color:#1d4a3c;text-wrap:balance}
+
+/* 마지막 상담 버튼 · 가운데 정렬 */
+.last{background:var(--green);color:var(--gold);text-align:center;border-bottom:0}
+.last p{color:#cfe0c9;font-weight:300;margin:26px 0 0;letter-spacing:.04em}
+.last .btn{margin-top:48px}
+
+footer{background:var(--green);color:#9fb79a;border-top:1px solid rgba(226,205,160,.25)}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;padding:36px 56px;font-size:12px;gap:24px;flex-wrap:wrap}
+footer .brand{color:var(--gold)}
+footer .catch{font-size:12px;letter-spacing:.22em}
+
+@media (max-width:820px){
+  .wrap{padding:0 20px}
+  footer .wrap{padding:28px 20px;flex-direction:column;align-items:flex-start;gap:12px}
+  nav .m{display:none}
+  .hero .wrap{padding-top:76px;padding-bottom:84px}
+  .hero .mark{width:128px}
+  .hero .name{margin-top:40px}
+  .hero h1{margin-top:52px;letter-spacing:.14em;padding-left:.14em}
+  .two{grid-template-columns:1fr;gap:36px}
+  .two .body{padding-top:0}
+  .body{font-size:16px}
+  .people{grid-template-columns:1fr 1fr;gap:28px 16px}
+  .four{grid-template-columns:1fr;gap:28px;margin-top:56px}
+  .pad{padding:76px 0}
+  .brand b{font-size:13px;letter-spacing:.26em}
+}
