@@ -233,6 +233,7 @@ textarea.in{min-height:120px;resize:vertical;font-weight:500;line-height:1.7}
   <div class="sh"><div class="k">2 / 9</div><h2>기본</h2><p>가족 구성과 생활비는 거의 모든 계산의 바탕입니다.</p></div>
   <div class="card">
     <div class="q"><div class="lb">출생 연도</div><div class="row"><div class="amt"><input type="number" inputmode="numeric" data-k="birth" placeholder="1975"><span>년</span></div></div></div>
+    <div class="q"><div class="lb">성별 <span class="h">기대여명 계산에 씁니다</span></div><div class="seg" data-k="sex"><button type="button" data-v="m">남</button><button type="button" data-v="f">여</button></div></div>
     <div class="q"><div class="lb">배우자</div><div class="seg" data-k="sp"><button type="button" data-v="1">있음</button><button type="button" data-v="0">없음</button></div>
       <div class="row" data-show="sp=1" style="margin-top:8px"><div class="amt"><input type="number" inputmode="numeric" data-k="spbirth" placeholder="배우자 출생 연도"><span>년</span></div></div></div>
     <div class="q"><div class="lb">자녀</div><div class="row"><div class="amt"><input type="number" inputmode="numeric" data-k="kids" placeholder="0"><span>명</span></div></div>
@@ -288,6 +289,8 @@ textarea.in{min-height:120px;resize:vertical;font-weight:500;line-height:1.7}
   <div class="card">
     <div class="q"><div class="lb">사망 보장 합계 <span class="h">종신보험, 정기보험의 사망보험금</span></div><div class="row" data-won="death"></div></div>
     <div class="q"><div class="lb">한 달 보험료 합계</div><div class="row" data-won="prem" data-unit="man"></div></div>
+    <div class="q"><div class="lb">암 진단금 합계 <span class="h">암으로 진단받으면 받는 금액을 합쳐서</span></div><div class="row" data-won="cancer" data-unit="man"></div></div>
+    <div class="q"><div class="lb">간병 · 치매 보장 합계 <span class="h">치매 진단금과 간병비 보장을 합쳐서</span></div><div class="row" data-won="care" data-unit="man"></div></div>
     <div class="q"><div class="lb">사망보험의 계약자 <span class="h">보험료를 실제로 내는 사람</span></div><div class="seg" data-k="insown"><button type="button" data-v="self">본인</button><button type="button" data-v="child">자녀나 배우자</button></div></div>
     <div class="q"><div class="lb">연금보험과 저축보험에 쌓인 금액</div><div class="row" data-won="annuity"></div></div>
   </div>
@@ -303,6 +306,7 @@ textarea.in{min-height:120px;resize:vertical;font-weight:500;line-height:1.7}
   <div class="gate"><div class="lb">부모님 재산을 물려받으실 일이 있습니까</div><div class="seg" data-k="haspp"><button type="button" data-v="1">예</button><button type="button" data-v="0">아니오</button></div></div>
   <div class="card" data-show="haspp=1">
     <div class="q"><div class="lb">부모님 연세 <span class="h">두 분이 계시면 연세가 많으신 분</span></div><div class="row"><div class="amt"><input type="number" inputmode="numeric" data-k="ppage" placeholder="75"><span>세</span></div></div></div>
+    <div class="q"><div class="lb">어느 분의 재산인지 <span class="h">두 분이 계시면 연세가 많으신 분</span></div><div class="seg" data-k="ppsex"><button type="button" data-v="m">아버님</button><button type="button" data-v="f">어머님</button></div></div>
     <div class="q"><div class="lb">부모님이 두 분 다 계십니까</div><div class="seg" data-k="ppsp"><button type="button" data-v="y">두 분 다</button><button type="button" data-v="n">한 분만</button></div>
       <div class="row" data-show="ppsp=n" style="margin-top:8px"><div class="amt"><input type="number" inputmode="numeric" data-k="ppdyear" placeholder="먼저 돌아가신 해 (예: 2020)"><span>년</span></div></div></div>
     <div class="q"><div class="lb">부모님 재산 가운데 부동산</div><div class="row" data-won="ppre"></div></div>
@@ -474,16 +478,16 @@ function check0(){
 function out(){
   var Y = new Date().getFullYear(), v = {}, V = S.v;
   function put(k, x){ if(x != null && x !== '' && !(typeof x === 'number' && !isFinite(x))) v[k] = String(x); }
-  var b = num('birth'); if(b) put('b_age', Y - b);
+  var b = num('birth'); if(b) put('b_age', Y - b); put('b_sex', V.sex);
   put('b_sp', V.sp); var sb = num('spbirth'); if(sb && V.sp === '1') put('b_spage', Y - sb);
   put('b_kids', V.kids); put('b_kidages', V.kidages); put('b_married', V.married); put('b_grand', V.grand);
   put('b_living', man('living')); if(!S.dk.retire) put('b_retire', V.retire); put('i_emp', V.emp);
   put('f_dep', eok('dep')); put('f_kr', eok('kr')); put('f_os', eok('os')); put('f_osgain', eok('osgain')); put('f_bond', eok('bond')); put('f_pen', eok('pen')); put('i_penpay', man('penpay'));
   put('d_loan', eok('loan')); put('i_debtpay', man('debtpay')); if(!S.dk.rate) put('d_rate', V.rate); put('v_loss', eok('loss'));
   put('i_work', man('work')); put('i_fin', man('fin')); put('i_rent', man('rent')); put('i_penpub', man('penpub'));
-  put('s_death', eok('death')); put('s_prem', man('prem')); put('s_own', V.insown); put('s_annuity', eok('annuity'));
+  put('s_death', eok('death')); put('s_prem', man('prem')); put('s_cancer', man('cancer')); put('s_care', man('care')); put('s_own', V.insown); put('s_annuity', eok('annuity'));
   put('h_prior', eok('prior')); put('o_mood', V.mood);
-  if(V.haspp === '1'){ put('pp_age', V.ppage); put('pp_sp', V.ppsp); put('pp_dyear', V.ppsp === 'n' ? V.ppdyear : null); put('pp_re', eok('ppre')); put('pp_fin', eok('ppfin')); put('pp_kids', V.ppkids); put('pp_basis', 'unk'); }
+  if(V.haspp === '1'){ put('pp_age', V.ppage); put('pp_sex', V.ppsex); put('pp_sp', V.ppsp); put('pp_dyear', V.ppsp === 'n' ? V.ppdyear : null); put('pp_re', eok('ppre')); put('pp_fin', eok('ppfin')); put('pp_kids', V.ppkids); put('pp_basis', 'unk'); }
   var type = 'ind';
   if(V.hasbiz === '1'){ type = 'biz'; put('z_industry', V.zind); put('z_start', V.zstart); put('z_sales', eok('zsales')); put('i_biz', man('zprofit')); put('z_emp', V.zemp); }
   if(V.hascorp === '1'){ type = 'corp'; put('c_share', V.cshare); put('c_kidshare', V.ckid); put('c_years', V.cyears); put('c_sal', man('csal')); put('c_divy', man('cdiv'));
