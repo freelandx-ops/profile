@@ -45,6 +45,9 @@ header .wrap{display:flex;align-items:center;justify-content:space-between;heigh
 .brand .mark{width:30px;height:29px;stroke-width:7}
 .brand b{font-family:var(--en);font-weight:700;letter-spacing:.3em;font-size:15px}
 nav{display:flex;align-items:center;gap:32px;font-size:14px}
+nav a.m{color:inherit;text-decoration:none}
+nav a.m:hover{color:var(--green)}
+section[id]{scroll-margin-top:64px}
 
 /* 첫 화면 · 명함 뒷면을 그대로 옮긴다: 심볼, 굵은 이름, ASSET INSTITUTE, 캐치프레이즈 */
 .hero{background:var(--green);color:var(--gold);border-bottom:0;text-align:center}
@@ -65,20 +68,39 @@ nav{display:flex;align-items:center;gap:32px;font-size:14px}
 
 /* 하는 일 · 일하는 방식 — 두 단의 윗선을 맞춘다 */
 .two{display:grid;grid-template-columns:5fr 6fr;gap:88px;align-items:start}
-.body{font-size:17px;color:#2b2b2b;max-width:33em}
+.body{font-size:17px;color:#2b2b2b;max-width:36em}
+/* 줄바꿈 · 문장과 뜻 단위에서 손으로 끊는다(2026-10-11 사용자 — 「디자인적으로도 의미적으로도 유의미하게」). 좁은 화면에서는 끊은 자리를 풀고 흘린다 */
 .two .body{padding-top:.6em}
 .how h2{margin-bottom:36px}
 .how .two .body{padding-top:0}
 .how .img{aspect-ratio:4/3;width:100%}
 
+/* 일하는 방식 옆 사진 */
+.howimg{display:block;width:100%;aspect-ratio:4/3;object-fit:cover}
+
+/* 생각 */
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:48px;margin-top:56px}
+.three .t{font-family:var(--serif);font-weight:700;font-size:20px;line-height:1.5;color:var(--green);margin-bottom:14px}
+.three p{font-size:15.5px;line-height:1.85;color:#2b2b2b;margin:0 0 12px}
+.three p:last-child{margin-bottom:0}
+.srcline{font-size:12px;color:var(--mute);margin-top:44px}
+.think .intro{font-size:17px;color:#2b2b2b;margin:28px 0 0}
+.three .t{margin-bottom:10px}
+.three p.d{font-family:var(--serif);font-size:15.5px;line-height:1.7;color:var(--ink);font-weight:600;margin:0 0 16px}
+
 /* 사람들 */
 .ivorybg{background:var(--ivory)}
 .people{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-top:56px}
 .person .img{aspect-ratio:4/5;margin-bottom:20px;background:var(--paper)}
+.person .ph{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center top;margin-bottom:20px;background:var(--paper)}
 .person .nm{font-weight:700;font-size:19px;letter-spacing:.2em;line-height:1.5}
 .person .nm small{font-weight:400;font-size:13px;letter-spacing:0;color:var(--mute);margin-left:8px}
 .person .en{font-family:var(--en);font-size:11px;letter-spacing:.34em;margin:2px 0 12px}
-.person .fd{font-size:14px;color:var(--mute)}
+.person .fd{font-size:14px;color:var(--green);font-weight:500}
+/* 경력과 자격 · 분야 아래에 작게. 나누는 것은 여백으로 한다 */
+.person .cv .now{font-weight:500;color:var(--ink)}
+.person .cv{list-style:none;margin:16px 0 0;padding:0;font-size:13.5px;line-height:1.8;color:#2b2b2b}
+.person .lic{margin-top:12px;font-size:12px;line-height:1.7;color:var(--mute)}
 
 /* 남는 것 · 금색 바탕 */
 .goldbg{background:var(--gold);color:var(--green);border-bottom:0}
@@ -92,6 +114,16 @@ nav{display:flex;align-items:center;gap:32px;font-size:14px}
 .last{background:var(--green);color:var(--gold);text-align:center;border-bottom:0}
 .last p{color:#cfe0c9;font-weight:300;margin:26px 0 0;letter-spacing:.04em}
 .last .btn{margin-top:48px}
+/* 상담 신청 입력 · 가운데 한 줄 폭, 금색 가는 테두리 */
+.talk{display:flex;flex-direction:column;align-items:stretch;gap:12px;max-width:400px;margin:48px auto 0}
+.talk[hidden]{display:none}
+.talk input,.talk textarea{font:inherit;font-size:16px;color:var(--gold);background:transparent;border:1px solid rgba(226,205,160,.45);border-radius:0;padding:14px 16px;resize:vertical}
+.talk input::placeholder,.talk textarea::placeholder{color:#9fb79a}
+.talk input:focus,.talk textarea:focus{outline:0;border-color:var(--gold)}
+.talk .btn{margin-top:16px;cursor:pointer;font-size:14px}
+.talk .btn:disabled{opacity:.6;cursor:default}
+.talk .note{font-size:12px;color:#9fb79a;margin-top:4px}
+.last .done{font-family:var(--serif);font-size:19px;line-height:1.8;margin-top:48px}
 
 footer{background:var(--green);color:#9fb79a;border-top:1px solid rgba(226,205,160,.25)}
 footer .wrap{display:flex;justify-content:space-between;align-items:center;padding:36px 56px;font-size:12px;gap:24px;flex-wrap:wrap}
@@ -109,7 +141,10 @@ footer .catch{font-size:12px;letter-spacing:.22em}
   .two{grid-template-columns:1fr;gap:36px}
   .two .body{padding-top:0}
   .body{font-size:16px}
+  .think .intro{font-size:16px}
+  .body br,.think .intro br,.three p:not(.d) br{display:none}
   .people{grid-template-columns:1fr 1fr;gap:28px 16px}
+  .three{grid-template-columns:1fr;gap:32px;margin-top:40px}
   .four{grid-template-columns:1fr;gap:28px;margin-top:56px}
   .pad{padding:76px 0}
   .brand b{font-size:13px;letter-spacing:.26em}
