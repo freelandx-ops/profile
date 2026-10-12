@@ -97,17 +97,13 @@ section[id]{scroll-margin-top:64px}
 .person .nm small{font-weight:400;font-size:13px;letter-spacing:0;color:var(--mute);margin-left:8px}
 .person .en{font-family:var(--en);font-size:11px;letter-spacing:.34em;margin:2px 0 12px}
 .person .fd{font-size:14px;color:var(--green);font-weight:500}
-/* 경력과 자격 · 분야 아래에 작게. 나누는 것은 여백으로 한다 */
+/* 경력 · 주요 이력 · 자격 순서로 분야 아래에 작게. 접지 않고 전부 보인다. 나누는 것은 여백으로 한다 */
+/* 사람 넷의 같은 줄(사진 · 이름 · 분야 · 경력 · 주요 이력 · 자격)이 나란히 서도록 행을 부모 격자에 맞춘다. 경력이 짧은 사람은 그 아래가 빈다 */
+.person{display:grid;grid-template-rows:subgrid;grid-row:span 7;row-gap:0;align-content:start}
+.person .lb{margin-top:18px;font-size:11px;font-weight:500;letter-spacing:.18em;color:var(--mute)}
 .person .cv .now{font-weight:500;color:var(--ink)}
-.person .cv{list-style:none;margin:16px 0 0;padding:0;font-size:13.5px;line-height:1.8;color:#2b2b2b;min-height:7.2em}
-/* 약력 밸런스 · 보이는 줄은 現 포함 넷으로 맞추고(min-height가 넷 줄 높이) 더 긴 약력은 접는다 */
-.person .more{margin-top:10px;font-size:12.5px;color:var(--mute)}
-.person .more summary{cursor:pointer;color:var(--green);font-weight:500;list-style:none}
-.person .more summary::-webkit-details-marker{display:none}
-.person .more summary::after{content:" +"}
-.person .more[open] summary::after{content:" −"}
-.person .more .cv{min-height:0;margin-top:6px;font-size:12.5px;color:#555}
-.person .lic{margin-top:12px;font-size:12px;line-height:1.7;color:var(--mute)}
+.person .cv{list-style:none;margin:6px 0 0;padding:0;font-size:13.5px;line-height:1.8;color:#2b2b2b}
+.person .lic{margin-top:14px;font-size:12px;line-height:1.7;color:var(--mute)}
 
 /* 남는 것 · 금색 바탕 */
 .goldbg{background:var(--gold);color:var(--green);border-bottom:0}
@@ -152,8 +148,7 @@ footer .catch{font-size:12px;letter-spacing:.22em}
   .body br,.think .intro br,.three p:not(.d) br{display:none}
   .people{grid-template-columns:1fr 1fr;gap:28px 16px}
   .person{min-width:0}
-  .person .fd,.person .cv,.person .lic{word-break:normal;overflow-wrap:anywhere}
-  .person .cv{min-height:9em}
+  .person .fd,.person .cv,.person .lic{word-break:keep-all;overflow-wrap:break-word}
   .three{grid-template-columns:1fr;gap:32px;margin-top:40px}
   .four{grid-template-columns:1fr;gap:28px;margin-top:56px}
   .pad{padding:76px 0}
