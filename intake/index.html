@@ -101,6 +101,17 @@ textarea.in{min-height:120px;resize:vertical;font-weight:500;line-height:1.7}
 .prop-h{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
 .prop-h b{font-size:15.5px;color:var(--blue)}
 .x{border:0;background:transparent;color:var(--mut);font-size:13.5px;cursor:pointer;padding:6px 4px}
+.seg.list{flex-direction:column;gap:6px}
+.seg.list button{flex:none;width:100%;text-align:left;display:flex;align-items:center;gap:10px;padding:12px 14px;font-weight:600}
+.seg.list button::before{content:"";flex:none;width:18px;height:18px;border-radius:5px;border:1.5px solid var(--line);background:#fff}
+.seg.list button.on{background:var(--blue-s);border-color:var(--blue);color:var(--ink)}
+.seg.list button.on::before{background:var(--blue) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 8.5l3 3 6-7' fill='none' stroke='%23fff' stroke-width='2'/%3E%3C/svg%3E") center/14px no-repeat;border-color:var(--blue)}
+.seg.list button.all{margin-top:6px;border-style:dashed}
+.ex{margin-top:10px;background:var(--bg);border-radius:10px;padding:10px 12px;font-size:13.5px;color:var(--ink2)}
+.ex b{display:block;font-size:13px;color:var(--mut);font-weight:700;margin-bottom:4px}
+.ex ul{margin:0;padding-left:18px;display:grid;gap:2px}
+.hint{font-size:14px;color:var(--ink2);background:var(--bg);border-radius:10px;padding:10px 12px;margin-bottom:10px}
+.hint.auto{background:var(--good-s);color:var(--good);font-weight:600}
 .add{width:100%;margin-top:12px;border:1px dashed var(--blue-m);background:transparent;color:var(--blue);border-radius:12px;padding:13px;font-weight:700;cursor:pointer}
 
 /* 동의 */
@@ -140,7 +151,7 @@ textarea.in{min-height:120px;resize:vertical;font-weight:500;line-height:1.7}
   body{background:#fff;padding:0}
   .top,.nav,.foot,.done,.noprint{display:none !important}
   .step{display:none !important}
-  .step[data-step="11"]{display:block !important;padding:0}
+  .step[data-step="12"]{display:block !important;padding:0}
   .doc{box-shadow:none;border:1px solid #999;margin:24mm 0 0}
 }
 </style>
@@ -165,7 +176,7 @@ textarea.in{min-height:120px;resize:vertical;font-weight:500;line-height:1.7}
       <li><span class="n">2</span><div><b>무엇이 문제이고 얼마인지</b><span>세금만이 아니라 유동성, 빚, 보장, 은퇴 뒤, 물려주는 일까지 금액으로</span></div></li>
       <li><span class="n">3</span><div><b>무엇부터 하면 되는지</b><span>문제마다 방법과 순서를 붙여서</span></div></li>
     </ul>
-    <div class="meta"><span>15분 안팎</span><span>모르는 것은 「잘 모름」</span><span>중간에 닫아도 이어서 작성</span></div>
+    <div class="meta"><span>15분 안팎</span><span>대략의 금액이면 충분합니다</span><span>중간에 닫아도 이어서 작성</span></div>
   </div>
 
   <div class="card" style="margin-top:22px">
@@ -218,19 +229,20 @@ textarea.in{min-height:120px;resize:vertical;font-weight:500;line-height:1.7}
 
 <!-- 1 -->
 <section class="step" data-step="1">
-  <div class="sh"><div class="k">1 / 9</div><h2>무엇을 도와드릴까요</h2><p>편하게 적어 주시면 됩니다. 이 내용이 보고서의 출발점입니다.</p></div>
+  <div class="sh"><div class="k">1 / 9</div><h2>무엇을 도와드릴까요</h2><p>편하게 적어 주시면 됩니다. 고르신 고민에 맞는 질문만 이어서 여쭙니다.</p></div>
   <div class="card">
-    <div class="q"><label for="q_memo" id="lb_memo">지금 가장 고민되는 것</label><textarea class="in" id="q_memo" data-k="memo" placeholder="예: 은퇴가 5년 남았는데 지금 가진 것으로 충분한지 모르겠습니다. 큰아이에게 집을 넘겨주고 싶은데 세금이 얼마나 나올지도 궁금합니다."></textarea></div>
-    <div class="q"><div class="lb">함께 보고 싶은 것 <span class="h">여러 개 고르셔도 됩니다</span></div>
-      <div class="seg" data-multi="tags">
-        <button type="button" data-v="tax">세금</button><button type="button" data-v="hi">건강보험료</button><button type="button" data-v="re">부동산</button><button type="button" data-v="inv">투자</button><button type="button" data-v="give">상속과 증여</button><button type="button" data-v="retire">은퇴 준비</button><button type="button" data-v="protect">보험</button><button type="button" data-v="biz">회사와 사업</button>
-      </div></div>
+    <div class="q"><label for="q_memo" id="lb_memo">지금 가장 고민되는 것</label><textarea class="in" id="q_memo" data-k="memo" placeholder="예: 은퇴가 5년 남았는데 지금 가진 것으로 충분한지 모르겠습니다. 큰아이에게 집을 넘겨주고 싶은데 세금이 얼마나 나올지도 궁금합니다."></textarea>
+      <div class="ex"><b>이렇게 적으셔도 됩니다</b><ul><li>부모님 집과 땅을 나중에 어떻게 물려받아야 할지 모르겠습니다</li><li>갖고 있는 상가를 팔까 고민입니다</li><li>은퇴하면 매달 얼마로 살 수 있을지 궁금합니다</li><li>회사 돈을 개인으로 가져오는 방법이 궁금합니다</li></ul></div></div>
+    <div class="q"><div class="lb">어떤 고민이신지 <span class="h">여러 개 고르셔도 됩니다</span></div>
+      <p class="hint" id="tagHint">해당하는 것을 골라 주십시오.</p>
+      <div class="seg list" data-multi="tags" id="tagList"></div></div>
   </div>
+  <div class="err" id="err1" hidden></div>
 </section>
 
 <!-- 2 -->
 <section class="step" data-step="2">
-  <div class="sh"><div class="k">2 / 9</div><h2>기본</h2><p>가족 구성과 생활비는 거의 모든 계산의 바탕입니다.</p></div>
+  <div class="sh"><div class="k">2 / 9</div><h2>기본</h2><p>가족 구성과 생활비, 하시는 일은 거의 모든 계산의 바탕입니다. 「비워 두셔도 됩니다」가 없는 질문은 모두 답해 주십시오.</p></div>
   <div class="card">
     <div class="q"><div class="lb">출생 연도</div><div class="row"><div class="amt"><input type="number" inputmode="numeric" data-k="birth" placeholder="1975"><span>년</span></div></div></div>
     <div class="q"><div class="lb">성별 <span class="h">기대여명 계산에 씁니다</span></div><div class="seg" data-k="sex"><button type="button" data-v="m">남</button><button type="button" data-v="f">여</button></div></div>
@@ -240,16 +252,19 @@ textarea.in{min-height:120px;resize:vertical;font-weight:500;line-height:1.7}
       <input class="in" data-k="kidages" data-show="kids>0" style="margin-top:8px" placeholder="자녀 나이를 쉼표로 (예: 32, 29)"></div>
     <div class="q" data-show="kids>0"><div class="lb">결혼한 자녀와 손주</div><div class="row"><div class="amt"><span class="pre">결혼한 자녀</span><input type="number" inputmode="numeric" data-k="married" placeholder="0"><span>명</span></div><div class="amt"><span class="pre">손주</span><input type="number" inputmode="numeric" data-k="grand" placeholder="0"><span>명</span></div></div></div>
     <div class="q"><div class="lb">한 달 생활비 <span class="h">세금, 건강보험료, 보험료, 대출 상환은 빼고 실제로 쓰시는 금액</span></div><div class="row" data-won="living" data-unit="man"></div></div>
-    <div class="q"><div class="lb">언제까지 일하실 생각이십니까</div><div class="row"><div class="amt"><input type="number" inputmode="numeric" data-k="retire" placeholder="65"><span>세까지</span></div><button type="button" class="dk" data-dk="retire">아직 모름</button></div></div>
-    <div class="q"><div class="lb">건강보험</div><div class="seg" data-k="emp"><button type="button" data-v="w">직장</button><button type="button" data-v="r">지역</button><button type="button" data-v="d">가족 밑으로</button></div></div>
+    <div class="q"><div class="lb">하시는 일 <span class="h">여러 개 고르셔도 됩니다. 고르신 일에 맞춰 사업과 회사 질문이 이어집니다</span></div>
+      <div class="seg list" data-multi="job"><button type="button" data-v="w">직장인</button><button type="button" data-v="b">개인사업자 · 프리랜서</button><button type="button" data-v="c">법인 대표 · 임원</button><button type="button" data-v="n">은퇴 · 소득 없음</button></div></div>
+    <div class="q"><div class="lb">언제까지 일하실 생각이십니까 <span class="h">정하지 않으셨으면 비워 두셔도 됩니다</span></div><div class="row"><div class="amt"><input type="number" inputmode="numeric" data-k="retire" placeholder="65"><span>세까지</span></div></div></div>
+    <div class="q"><div class="lb">건강보험 <span class="h">비워 두셔도 됩니다</span></div><div class="seg" data-k="emp"><button type="button" data-v="w">직장</button><button type="button" data-v="r">지역</button><button type="button" data-v="d">가족 밑으로</button></div></div>
+    <div class="q"><div class="lb">부동산을 갖고 계십니까 <span class="h">「예」면 다음 장에서 하나씩 여쭙니다</span></div><div class="seg" data-k="hasre"><button type="button" data-v="1">예</button><button type="button" data-v="0">아니오</button></div></div>
   </div>
+  <div class="err" id="err2" hidden></div>
 </section>
 
 <!-- 3 -->
 <section class="step" data-step="3">
-  <div class="sh"><div class="k">3 / 9</div><h2>부동산</h2><p>가진 것을 하나씩 적어 주십시오. 대략의 금액이면 충분합니다.</p></div>
-  <div class="gate"><div class="lb">부동산을 갖고 계십니까</div><div class="seg" data-k="hasre"><button type="button" data-v="1">예</button><button type="button" data-v="0">아니오</button></div></div>
-  <div data-show="hasre=1"><div id="props"></div><button type="button" class="add" id="addProp">+ 부동산 하나 더</button></div>
+  <div class="sh"><div class="k">3 / 9</div><h2>부동산</h2><p>가진 것을 하나씩 적어 주십시오. 대략의 금액이면 충분하고, 모르시는 것은 「잘 모름」을 누르시면 됩니다.</p></div>
+  <div id="props"></div><button type="button" class="add" id="addProp">+ 부동산 하나 더</button>
 </section>
 
 <!-- 4 -->
@@ -259,28 +274,30 @@ textarea.in{min-height:120px;resize:vertical;font-weight:500;line-height:1.7}
     <div class="q"><div class="lb">예금과 현금</div><div class="row" data-won="dep"></div></div>
     <div class="q"><div class="lb">국내 주식</div><div class="row" data-won="kr"></div></div>
     <div class="q"><div class="lb">해외 주식</div><div class="row" data-won="os"></div>
-      <div data-show="os>0"><div class="sub">그중 지금 오른 금액 <span class="h">팔면 세금이 붙는 부분입니다</span></div><div class="row" data-won="osgain"></div></div></div>
+      <div data-show="os>0"><div class="sub">그중 지금 오른 금액 <span class="h">팔면 세금이 붙는 부분입니다. 모르시면 비워 두셔도 됩니다</span></div><div class="row" data-won="osgain"></div></div></div>
     <div class="q"><div class="lb">채권과 펀드</div><div class="row" data-won="bond"></div></div>
     <div class="q"><div class="lb">연금저축, IRP, 퇴직연금에 쌓인 금액</div><div class="row" data-won="pen"></div></div>
-    <div class="q"><div class="lb">올해 연금저축과 IRP에 넣으신 금액</div><div class="row" data-won="penpay" data-unit="man"></div></div>
+    <div class="q"><div class="lb">올해 연금저축과 IRP에 넣으신 금액 <span class="h">모르시면 비워 두셔도 됩니다</span></div><div class="row" data-won="penpay" data-unit="man"></div></div>
   </div>
   <div class="card">
     <div class="q"><div class="lb">부동산 담보 외의 대출 <span class="h">신용대출, 마이너스통장, 사업 대출</span></div><div class="row" data-won="loan"></div></div>
-    <div class="q"><div class="lb">모든 대출의 한 해 상환액 <span class="h">원금과 이자를 합쳐서</span></div><div class="row" data-won="debtpay" data-unit="man"></div></div>
-    <div class="q"><div class="lb">대출 평균 금리</div><div class="row"><div class="amt"><input type="number" inputmode="decimal" step="any" data-k="rate" placeholder="4.5"><span>%</span></div><button type="button" class="dk" data-dk="rate">잘 모름</button></div></div>
-    <div class="q"><div class="lb">투자에서 한 해에 감당하실 수 있는 손실 <span class="h">이 금액을 잃어도 생활이 흔들리지 않는 크기</span></div><div class="row" data-won="loss"></div></div>
+    <div class="q"><div class="lb">모든 대출의 한 해 상환액 <span class="h">원금과 이자를 합쳐서. 모르시면 비워 두셔도 됩니다</span></div><div class="row" data-won="debtpay" data-unit="man"></div></div>
+    <div class="q"><div class="lb">대출 평균 금리 <span class="h">모르시면 비워 두셔도 됩니다</span></div><div class="row"><div class="amt"><input type="number" inputmode="decimal" step="any" data-k="rate" placeholder="4.5"><span>%</span></div></div></div>
+    <div class="q"><div class="lb">투자에서 한 해에 감당하실 수 있는 손실 <span class="h">이 금액을 잃어도 생활이 흔들리지 않는 크기. 정하지 않으셨으면 비워 두셔도 됩니다</span></div><div class="row" data-won="loss"></div></div>
   </div>
+  <div class="err" id="err4" hidden></div>
 </section>
 
 <!-- 5 -->
 <section class="step" data-step="5">
   <div class="sh"><div class="k">5 / 9</div><h2>소득</h2><p>한 해 기준입니다. 없는 것은 0으로 두시면 됩니다.</p></div>
   <div class="card">
-    <div class="q"><div class="lb">급여 <span class="h">세금을 떼기 전 연봉</span></div><div class="row" data-won="work" data-unit="man"></div></div>
+    <div class="q"><div class="lb"><span id="lb_work">급여</span> <span class="h" id="h_work">세금을 떼기 전 연봉</span></div><div class="row" data-won="work" data-unit="man"></div></div>
     <div class="q"><div class="lb">이자와 배당</div><div class="row" data-won="fin" data-unit="man"></div></div>
     <div class="q"><div class="lb">임대소득 <span class="h">한 해 받는 월세 합계</span></div><div class="row" data-won="rent" data-unit="man"></div></div>
     <div class="q"><div class="lb">받고 계신 연금 <span class="h">국민연금, 공무원연금 등</span></div><div class="row" data-won="penpub" data-unit="man"></div></div>
   </div>
+  <div class="err" id="err5" hidden></div>
 </section>
 
 <!-- 6 -->
@@ -303,23 +320,43 @@ textarea.in{min-height:120px;resize:vertical;font-weight:500;line-height:1.7}
     <div class="q"><div class="lb">최근 10년 안에 배우자나 자녀에게 주신 재산</div><div class="row" data-won="prior"></div></div>
     <div class="q"><div class="lb">지금 재산을 넘기는 것에 대해</div><div class="seg" data-k="mood"><button type="button" data-v="ok">괜찮다</button><button type="button" data-v="part">일부만</button><button type="button" data-v="no">아직 어렵다</button></div></div>
   </div>
-  <div class="gate"><div class="lb">부모님 재산을 물려받으실 일이 있습니까</div><div class="seg" data-k="haspp"><button type="button" data-v="1">예</button><button type="button" data-v="0">아니오</button></div></div>
-  <div class="card" data-show="haspp=1">
-    <div class="q"><div class="lb">부모님 연세 <span class="h">두 분이 계시면 연세가 많으신 분</span></div><div class="row"><div class="amt"><input type="number" inputmode="numeric" data-k="ppage" placeholder="75"><span>세</span></div></div></div>
-    <div class="q"><div class="lb">어느 분의 재산인지 <span class="h">두 분이 계시면 연세가 많으신 분</span></div><div class="seg" data-k="ppsex"><button type="button" data-v="m">아버님</button><button type="button" data-v="f">어머님</button></div></div>
-    <div class="q"><div class="lb">부모님이 두 분 다 계십니까</div><div class="seg" data-k="ppsp"><button type="button" data-v="y">두 분 다</button><button type="button" data-v="n">한 분만</button></div>
-      <div class="row" data-show="ppsp=n" style="margin-top:8px"><div class="amt"><input type="number" inputmode="numeric" data-k="ppdyear" placeholder="먼저 돌아가신 해 (예: 2020)"><span>년</span></div></div></div>
-    <div class="q"><div class="lb">부모님 재산 가운데 부동산</div><div class="row" data-won="ppre"></div></div>
-    <div class="q"><div class="lb">부모님 재산 가운데 예금과 주식</div><div class="row" data-won="ppfin"></div></div>
+  <div class="gate" id="ppAsk"><div class="lb">부모님 재산을 물려받으실 일도 있습니까 <span class="h">「예」를 누르시면 바로 다음 장에서 부모님 재산을 여쭙니다</span></div><div class="seg" data-k="haspp"><button type="button" data-v="1">예</button><button type="button" data-v="0">아니오</button></div></div>
+</section>
+
+<!-- 8. 부모님 재산 (고민에서 parent · all 을 고르셨거나 7장에서 「예」일 때만) -->
+<section class="step" data-step="8">
+  <div class="sh"><div class="k">8 / 9</div><h2>부모님 재산</h2><p>물려받으실 재산은 고객님 재산과 따로 봅니다. 아시는 만큼만 적어 주십시오.</p></div>
+  <div class="card">
+    <div class="q"><div class="lb">지금 계신 부모님</div><div class="seg" data-k="ppsp"><button type="button" data-v="y">두 분 다 계십니다</button><button type="button" data-v="n">한 분만 계십니다</button></div></div>
+    <div class="q"><div class="lb">재산을 가진 분 <span class="h">두 분 다 계시면 재산이 더 많은 분</span></div><div class="seg" data-k="ppsex"><button type="button" data-v="m">아버님</button><button type="button" data-v="f">어머님</button></div></div>
+    <div class="q"><div class="lb">그분의 연세</div><div class="row"><div class="amt"><input type="number" inputmode="numeric" data-k="ppage" placeholder="80"><span>세</span></div><button type="button" class="dk" data-dk="ppage">잘 모름</button></div></div>
+    <div class="q"><div class="lb">건강과 판단 <span class="h">재산을 받거나 넘길 때 그분이 직접 정하실 수 있는지가 중요합니다</span></div>
+      <div class="seg" data-k="pphealth"><button type="button" data-v="ok">건강하십니다</button><button type="button" data-v="ill">편찮으시지만 직접 정하십니다</button><button type="button" data-v="hard">치매 등으로 직접 정하기 어려우십니다</button><button type="button" data-v="u">잘 모름</button></div>
+      <div data-show="pphealth=hard" style="margin-top:10px"><div class="sub">법원에서 정한 후견인이 있습니까</div><div class="seg" data-k="ppguard"><button type="button" data-v="y">있음</button><button type="button" data-v="p">신청 중</button><button type="button" data-v="n">없음</button><button type="button" data-v="u">모름</button></div></div></div>
+  </div>
+  <div class="card" data-show="ppsp=n">
+    <div class="q"><div class="lb">먼저 돌아가신 분이 돌아가신 해</div><div class="row"><div class="amt"><input type="number" inputmode="numeric" data-k="ppdyear" placeholder="2026"><span>년</span></div></div></div>
+    <div class="q"><div class="lb">그때의 상속 정리 <span class="h">재산 나누기와 상속세 신고</span></div><div class="seg" data-k="ppdone"><button type="button" data-v="done">끝났습니다</button><button type="button" data-v="doing">아직 진행 중입니다</button><button type="button" data-v="u">모름</button></div>
+      <div data-show="ppdone=done" style="margin-top:10px"><div class="sub">그때 상속세 신고</div><div class="seg" data-k="ppfiled"><button type="button" data-v="y">신고했습니다</button><button type="button" data-v="n">낼 세금이 없어 하지 않았습니다</button><button type="button" data-v="u">모름</button></div></div></div>
+  </div>
+  <div class="card">
+    <div class="q"><div class="lb">부모님 재산 가운데 부동산, 대략의 시세를 합쳐서 <span class="h">상속 정리가 아직이면 돌아가신 분의 재산도 함께 적어 주십시오</span></div><div class="row" data-won="ppre"></div></div>
+    <div class="q"><div class="lb">예금, 현금, 주식</div><div class="row" data-won="ppfin"></div></div>
+    <div class="q"><div class="lb">대출과 돌려줄 보증금 <span class="h">부모님 재산에 걸린 빚</span></div><div class="row" data-won="ppdebt"></div></div>
+  </div>
+  <div class="gate"><div class="lb">부동산을 하나씩 적으실 수 있으면</div><p style="font-size:14px;color:var(--ink2)">어느 것을 누가 받을지 함께 보려면 하나씩 있는 편이 좋습니다. 어려우시면 위 합계만 적으셔도 됩니다.</p></div>
+  <div id="ppprops"></div><button type="button" class="add" id="addPP">+ 부모님 부동산 하나 더</button>
+  <div class="card">
     <div class="q"><div class="lb">형제자매 <span class="h">본인을 포함한 자녀 수</span></div><div class="row"><div class="amt"><input type="number" inputmode="numeric" data-k="ppkids" placeholder="3"><span>명</span></div></div></div>
+    <div class="q"><div class="lb">가족끼리 이 이야기를</div><div class="seg" data-k="ppfam"><button type="button" data-v="ok">편하게 나눌 수 있습니다</button><button type="button" data-v="care">조심스럽습니다</button><button type="button" data-v="hard">어렵습니다</button></div></div>
+    <div class="q"><div class="lb">최근 10년 안에 부모님께 받은 재산 <span class="h">본인과 형제자매가 받은 것을 합쳐서</span></div><div class="row" data-won="ppgift"></div></div>
   </div>
 </section>
 
-<!-- 8 -->
-<section class="step" data-step="8">
-  <div class="sh"><div class="k">8 / 9</div><h2>사업</h2><p>개인사업자로 일하고 계시면 적어 주십시오. 직장에 다니면서 하는 사업도 해당합니다.</p></div>
-  <div class="gate"><div class="lb">개인사업을 하고 계십니까</div><div class="seg" data-k="hasbiz"><button type="button" data-v="1">예</button><button type="button" data-v="0">아니오</button></div></div>
-  <div class="card" data-show="hasbiz=1">
+<!-- 9 -->
+<section class="step" data-step="9">
+  <div class="sh"><div class="k">9 / 9</div><h2>사업</h2><p>하고 계신 사업을 적어 주십시오. 직장에 다니면서 하는 사업도 해당합니다.</p></div>
+  <div class="card">
     <div class="q"><div class="lb">업종</div><div class="seg" data-k="zind"><button type="button" data-v="svc">서비스</button><button type="button" data-v="trade">도소매</button><button type="button" data-v="mfg">제조</button><button type="button" data-v="med">병의원</button><button type="button" data-v="rent">부동산 임대</button><button type="button" data-v="etc">그 밖</button></div></div>
     <div class="q"><div class="lb">시작한 해</div><div class="row"><div class="amt"><input type="number" inputmode="numeric" data-k="zstart" placeholder="2024"><span>년</span></div></div></div>
     <div class="q"><div class="lb">한 해 매출</div><div class="row" data-won="zsales"></div></div>
@@ -328,17 +365,16 @@ textarea.in{min-height:120px;resize:vertical;font-weight:500;line-height:1.7}
   </div>
 </section>
 
-<!-- 9 -->
-<section class="step" data-step="9">
+<!-- 10 -->
+<section class="step" data-step="10">
   <div class="sh"><div class="k">9 / 9</div><h2>회사</h2><p>법인의 주주이거나 대표이시면 적어 주십시오. 회사 이름을 알려 주시면 공개된 재무 자료는 제가 먼저 찾아보겠습니다.</p></div>
-  <div class="gate"><div class="lb">회사(법인)를 갖고 계십니까</div><div class="seg" data-k="hascorp"><button type="button" data-v="1">예</button><button type="button" data-v="0">아니오</button></div></div>
-  <div data-show="hascorp=1">
+  <div>
   <div class="card">
     <div class="q"><label for="c_name">회사 이름</label><input class="in" id="c_name" data-k="cname" placeholder="예: 주식회사 ○○"></div>
+    <div class="q"><div class="lb">회사 규모</div><div class="seg" data-k="csize"><button type="button" data-v="1">중소기업</button><button type="button" data-v="2">중견기업</button><button type="button" data-v="0">그 밖</button><button type="button" data-v="u">잘 모름</button></div></div>
     <div class="q"><div class="lb">지분율</div><div class="row"><div class="amt"><span class="pre">본인</span><input type="number" inputmode="decimal" step="any" data-k="cshare" placeholder="0"><span>%</span></div><div class="amt"><span class="pre">자녀</span><input type="number" inputmode="decimal" step="any" data-k="ckid" placeholder="0"><span>%</span></div></div></div>
     <div class="q"><div class="lb">경영하신 기간</div><div class="row"><div class="amt"><input type="number" inputmode="numeric" data-k="cyears" placeholder="15"><span>년</span></div></div></div>
-    <div class="q"><div class="lb">본인 연봉</div><div class="row" data-won="csal" data-unit="man"></div></div>
-    <div class="q"><div class="lb">회사에서 받는 한 해 배당</div><div class="row" data-won="cdiv" data-unit="man"></div></div>
+    <div class="q"><div class="lb">회사에서 받는 한 해 배당 <span class="h">연봉은 앞의 소득 장에서 적으신 금액을 씁니다</span></div><div class="row" data-won="cdiv" data-unit="man"></div></div>
   </div>
   <div class="card">
     <div class="q"><div class="lb">순이익 <span class="h">최근 3년. 모르시면 「잘 모름」으로 두셔도 제가 찾아봅니다</span></div>
@@ -359,16 +395,16 @@ textarea.in{min-height:120px;resize:vertical;font-weight:500;line-height:1.7}
   </div>
 </section>
 
-<!-- 10. 확인 -->
-<section class="step" data-step="10">
+<!-- 11. 확인 -->
+<section class="step" data-step="11">
   <div class="sh"><div class="k">마지막</div><h2>보내기 전에</h2><p>적어 주신 내용을 묶어 보여 드립니다. 고칠 곳이 있으면 「이전」으로 돌아가시면 됩니다.</p></div>
   <div class="sum" id="sum"></div>
   <div class="card"><div class="q"><label for="q_more">더 알려 주실 것 <span class="h">위 질문에 담기지 않은 사정이 있으면 적어 주십시오</span></label><textarea class="in" id="q_more" data-k="more" style="min-height:90px"></textarea></div>
     <div class="q"><label for="q_date">상담 날짜 <span class="h">이미 정하셨으면</span></label><input class="in" id="q_date" data-k="mdate" placeholder="예: 2026년 10월 9일 오후 2시"></div></div>
-  <div class="err" id="err10" hidden></div>
+  <div class="err" id="err11" hidden></div>
 </section>
 
-<section class="step" data-step="11">
+<section class="step" data-step="12">
   <div class="done"><div class="ok">✓</div><h2>잘 받았습니다</h2><p><b id="doneName"></b> 님, 적어 주신 내용으로 자산 관리표와 보고서를 준비해 가겠습니다.</p><p style="color:var(--mut);font-size:14.5px">아래 확약서는 보관하실 수 있습니다. 첫 상담 때 서명한 종이로도 드립니다.</p></div>
   <div class="doc" id="doc2"></div>
   <button type="button" class="add noprint" id="printDoc">확약서 저장하거나 인쇄하기</button>
@@ -392,9 +428,61 @@ textarea.in{min-height:120px;resize:vertical;font-weight:500;line-height:1.7}
 'use strict';
 /* 전송 주소 — 받는 쪽을 바꿀 때 이 한 줄만 고친다 */
 var ENDPOINT = 'https://script.google.com/macros/s/AKfycbx6cmmu5eS943gKxLye41zwUB24kFcyhGfNtLfsRnW4HT7Q4jt5o7-ED8yQN4JVDvzC/exec';
-var KEY = 'intake_v1', LAST = 10;
-var S = {v:{}, dk:{}, tags:{}, props:[], step:0};
-try{ var saved0 = JSON.parse(localStorage.getItem(KEY) || 'null'); if(saved0 && saved0.v){ S = saved0; S.dk = S.dk || {}; S.tags = S.tags || {}; S.props = S.props || []; S.step = Math.min(S.step || 0, LAST); } }catch(_){}
+var KEY = 'intake_v1', LAST = 11, DONE = 12;
+/* 고민 — 진단 도구(006. playbook/미팅자산/자산종합진단/index.html 의 var TAGS)와 같은 키 · 같은 글. parent · all 두 개는 질문지에만 있다 */
+var TAGS = [['give','자녀에게 넘기고 싶다'],['inh','상속세가 걱정된다'],['spouse','배우자 몫이 걱정된다'],['tax','세금이 너무 많다'],['hi','건강보험료가 부담된다'],['retire','은퇴 뒤 생활비'],['re','부동산을 팔거나 정리하고 싶다'],['biz','회사를 넘기거나 정리하고 싶다'],['inv','투자를 어떻게 굴릴지'],['cash','목돈 쓸 일이 있다'],['protect','가족이 걱정된다'],['parent','부모님 재산 상속이 걱정된다'],['all','잘 모르겠습니다. 전체를 봐 주십시오']];
+/* 장을 여는 규칙 셋 (2026-10-16 재설계 · _설계.md 「2026-10-16 확정 추가」)
+   ① 재무 뼈대 — 1 고민 · 2 기본 · 4 금융자산과 빚 · 5 소득 · 11 확인은 늘 나온다. 고민과 상관없다
+   ② 기본 장의 답이 연다 — 3 부동산은 「부동산을 갖고 계십니까」가 예일 때 · 9 사업은 하시는 일에 개인사업자 · 10 회사는 법인 대표
+   ③ 고민이 연다 — 6 보험 · 7 넘기는 일 · 8 부모님 재산 (아래 표) */
+var PAGES = {give:[7], inh:[6,7], spouse:[6,7], tax:[], hi:[], retire:[6], re:[], biz:[7], inv:[], cash:[], protect:[6], parent:[8], all:[6,7,8]};
+var ALWAYS = [4, 5];
+var STEPNM = {1:'고민', 2:'기본', 3:'부동산', 4:'금융자산과 빚', 5:'소득', 6:'보험', 7:'가족에게 넘기는 일', 8:'부모님 재산', 9:'사업', 10:'회사'};
+/*KW-START 적어 주신 고민에서 미리 고르는 낱말. 띄어쓰기를 지운 글에 맞춘다. 실제 고객 글로 시험한 결과는 같은 폴더 _키워드시험.md */
+var KW_PAR = /어머니|어머님|엄마|아버지|아버님|아빠|부모|모친|부친|친정|시댁|시어머니|시아버지|장인|장모|노모|할머니|할머님|할아버지|할아버님|조부모/;
+var KW_PARCTX = /상속|물려|재산|자산|유산|증여|돌아가|유고|별세|작고|사망|치매|명의|받으|받을|받는|받게|받아|유류분|돈/;
+var KW = {
+  /* 자녀 낱말과 건네는 낱말이 한 문장 안에 어느 순서로든 (「아들한테 아파트 미리 주는」 「딸 집 사주는」 「물려줄 사람이 아들」) */
+  give: /(자녀|자식|아들|딸|아이|애들|손주|손자|손녀|큰애|작은애|사위|며느리)[^.?!,]{0,20}?(주[는고려면기었어시세던]|줘|준(?!비)|줄(?![어이여])|물려|넘겨|넘기|증여|사주|명의)|(물려주|물려줄|넘겨주|넘겨줄|증여|사주|보태주|보태줄)[^.?!]{0,15}(자녀|자식|아들|딸|아이|애들|손주|손자|손녀|사위|며느리)/,
+  inh: /상속세|유산|상속(준비|대비|계획|설계)|(제가|내가)죽|죽으면|죽고나면|사망하면(?!서)|사망시|사망후|떠나면/,
+  spouse: /배우자|아내|남편|와이프|집사람|안사람|부인|신랑/,
+  tax: /세금|절세|세무(?!사)|소득세|종합소득|종소세|양도세|양도소득|종부세|종합부동산세|재산세|취득세|중과|부가세|법인세|연말정산|세액공제|소득공제|비용처리|필요경비|감면|(회사|법인)의?돈|회삿돈|가지급금|가수금|개인으로가져/,
+  hi: /건보|건강보험|피부양|지역가입|직장가입/,
+  retire: /은퇴|노후|퇴직|정년|퇴사|연금|생활비|그만두/,
+  /* 파는 말이 있을 때만 (2026-10-16) — 「상가」 「땅」 「아파트」 같은 물건 이름만으로는 켜지 않는다. 시험고객 「자녀 둘에게 집과 상가를 … 넘겨야」가 re 로 잡혔다. 판매 · 정리는 물건 이름과 같은 절에 있을 때만 */
+  re: /매도|매각|처분|팔[고아려리자면지까았]|팔릴|팔리|파는|내놓|내놔|양도(?!세|소득)|갈아타|매물|분양|재건축|재개발|학군|역세권|평형|평당|(부동산|아파트|주택|빌라|상가|건물|토지|땅|필지|임야|오피스텔|집)[^.?!,]{0,20}?(판매|정리)/,
+  biz: /가업|승계|법인|지분|폐업|후계|대표이사|비상장|회사(를|의)?(넘|물려|정리|팔|매각|접|키우|이어)|사업체?(을|를)?(넘|물려|정리|접|이어)|엑시트|exit|m&a|인수합병/i,
+  inv: /투자|주식(?!회사)|펀드|etf|코인|채권|배당|굴리|굴릴|운용|수익률|포트폴리오|isa|달러|재테크|자산배분|예금|적금/i,
+  cash: /목돈|대출|자금|매수|구입|장만|마련|결혼|학비|유학|병원비|창업|전세금|갈아타|들어올|들어오|현금이?필요|잔금|중도금|돈이모자|돈이부족/,
+  protect: /(?<!건강)보험|보장|종신|실손|간병|장애|아프|투병|암(진단|보험|수술|에걸)|사고(가|로|나)|혼자남|남은가족|생계|유족/,
+  parent: /물려받|상속받|상속을받|유산을받|(저한테|제게|저에게|나한테|내게)[^.?!]{0,8}(명의|증여|물려|넘겨|넘기|상속)/
+};
+function guess(text){
+  var t = String(text || '').replace(/\s+/g, ''), r = {};
+  if(!t) return r;
+  var par = KW_PAR.test(t);
+  Object.keys(KW).forEach(function(k){ if(KW[k].test(t)) r[k] = 1; });
+  if(par && KW_PARCTX.test(t)) r.parent = 1;
+  if(!par && /증여|물려주|물려줄|나눠주|나눠줘|나눠줄/.test(t)) r.give = 1;                                   /* 부모님 얘기 안의 증여는 받는 쪽이다 */
+  if(!par && !r.parent && /상속(?!금|받|을받|이들어)/.test(t)) r.inh = 1;      /* 부모님 얘기 안의 상속은 parent 로 간다 */
+  if(r.spouse && par && /배우자공제|배우자상속/.test(t)) delete r.spouse;     /* 돌아가신 분의 배우자 공제는 부모님 얘기다 */
+  if(!par && /치매/.test(t)) r.protect = 1;                                 /* 부모님 치매는 parent 에서 묻는다 */
+  if(par && !Object.keys(r).length) r.parent = 1;                          /* 부모님 얘기만 있고 다른 낱말이 없으면 */
+  return r;
+}
+/*KW-END*/
+/* 재무 뼈대(기본 · 금융자산과 빚 · 소득)에는 「잘 모름」 버튼을 두지 않는다 (2026-10-15 대표님 「뼈대에 있는 부분은 잘 모름을 넣지 마. 너무 불필요한 친절이야」). 필수는 없으면 0이 자연스러운 것만이고 나머지는 비워도 넘어간다. 비운 값은 0으로 바꾸지 않고 보내지 않는다 */
+var NODK_STEP = [2, 4, 5], NODK = ['living', 'retire', 'dep', 'kr', 'os', 'osgain', 'bond', 'pen', 'penpay', 'loan', 'debtpay', 'rate', 'loss', 'work', 'fin', 'rent', 'penpub'];
+var REQ = {2:[['birth', '출생 연도', 'n'], ['sp', '배우자', 'v'], ['kids', '자녀 수', 'n'], ['living', '한 달 생활비', 'man'], ['job', '하시는 일', 'multi'], ['hasre', '부동산이 있는지', 'v']],
+  4:[['dep', '예금과 현금', 'eok'], ['kr', '국내 주식', 'eok'], ['os', '해외 주식', 'eok'], ['bond', '채권과 펀드', 'eok'], ['pen', '연금계좌에 쌓인 금액', 'eok'], ['loan', '부동산 담보 외의 대출', 'eok']],
+  5:[['work', '급여', 'man'], ['fin', '이자와 배당', 'man'], ['rent', '임대소득', 'man'], ['penpub', '받고 계신 연금', 'man']]};
+var S = {v:{}, dk:{}, tags:{}, tman:{}, props:[], pprops:[], step:0, ver:2};
+try{ var saved0 = JSON.parse(localStorage.getItem(KEY) || 'null'); if(saved0 && saved0.v){ S = saved0; S.dk = S.dk || {}; S.tags = S.tags || {}; S.props = S.props || []; S.pprops = S.pprops || [];
+  if(!S.tman){ S.tman = {}; Object.keys(S.tags).forEach(function(k){ if(S.tags[k]) S.tman[k] = true; }); }   /* 예전 저장본 — 고르신 것은 손으로 고른 것으로 둔다 */
+  if(!S.ver){ if((S.step || 0) >= 8) S.step = (S.step || 0) + 1; S.ver = 2; }                            /* 예전 장 번호(8 사업 · 9 회사 · 10 확인)를 한 칸씩 민다 */
+  S.step = Math.min(S.step || 0, LAST);
+  if(!S.v.job && (S.v.hasbiz === '1' || S.v.hascorp === '1')) S.v.job = {b:S.v.hasbiz === '1', c:S.v.hascorp === '1'};   /* 예전 저장본의 「사업 · 회사 예 · 아니오」를 하시는 일로 옮긴다 (2026-10-16) */
+  NODK.forEach(function(k){ delete S.dk[k]; }); } }catch(_){}
 function $(id){ return document.getElementById(id); }
 /* 대표님이 보낸 링크에 성함 · 연락처 · 상담신청 여부가 실려 오면 다시 묻지 않는다 (?n= &t= &f=1) */
 var Q = new URLSearchParams(location.search), VIA = Q.get('f') === '1';
@@ -405,9 +493,37 @@ function save(){ try{ localStorage.setItem(KEY, JSON.stringify(S)); $('saved').t
 function num(k){ var x = parseFloat(S.v[k]); return isFinite(x) ? x : null; }
 function esc(s){ return String(s == null ? '' : s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
 
+/* 고른 고민과 보이는 장 */
+function picked(){ return TAGS.map(function(t){ return t[0]; }).filter(function(k){ return S.tags[k]; }); }
+function job(){ return S.v.job || {}; }
+function shown(n){
+  if(n <= 2 || n >= LAST || ALWAYS.indexOf(n) >= 0) return true;
+  if(n === 3) return S.v.hasre === '1';
+  if(n === 9) return !!job().b;
+  if(n === 10) return !!job().c;
+  if(S.tags.all) return true;
+  if(n === 8 && S.v.haspp === '1' && shown(7)) return true;
+  return picked().some(function(k){ return (PAGES[k] || []).indexOf(n) >= 0; });
+}
+function order(){ var a = []; for(var i = 1; i < LAST; i++) if(shown(i)) a.push(i); return a; }
+/* 글이 있는데 낱말이 하나도 안 걸리면 전체를 묻는다 (2026-10-15 대표님) */
+function autoGuess(){ var g = guess(S.v.memo); if((S.v.memo || '').trim() && !Object.keys(g).length) g = {all:1}; return g; }
+function dropAutoAll(){ if(!('all' in S.tman) && TAGS.some(function(t){ return t[0] !== 'all' && S.tman[t[0]]; })) S.tags.all = false; }   /* 고객이 직접 고른 것이 있으면 자동 「전체」는 내린다 */
+function autoTags(){
+  var g = autoGuess(); S.auto = g;
+  TAGS.forEach(function(t){ var k = t[0]; S.tags[k] = (k in S.tman) ? !!S.tman[k] : !!g[k]; });
+  dropAutoAll(); paintTags();
+}
+function paintTags(){
+  qa('#tagList button').forEach(function(b){ b.classList.toggle('on', !!S.tags[b.dataset.v]); });
+  var g = autoGuess(), memo = (S.v.memo || '').trim(), h = $('tagHint');
+  h.textContent = !memo ? '해당하는 것을 골라 주십시오. 고르지 않고 넘어가시면 전체를 여쭙겠습니다.' : g.all ? '적어 주신 내용만으로는 고르기 어려워 전체를 여쭙겠습니다. 해당하는 것만 고르셔도 됩니다.' : '적어 주신 내용으로 미리 골라 두었습니다. 맞는지 보시고 고쳐 주십시오.';
+  h.classList.toggle('auto', !!memo);
+}
+
 /* 금액 입력 — 억 + 천만원 (큰 금액) 또는 만원 (작은 금액) */
-function wonHTML(k, unit, neg){
-  var dk = '<button type="button" class="dk' + (S.dk[k] ? ' on' : '') + '" data-dk="' + k + '">잘 모름</button>';
+function wonHTML(k, unit, neg, nodk){
+  var dk = nodk ? '' : '<button type="button" class="dk' + (S.dk[k] ? ' on' : '') + '" data-dk="' + k + '">잘 모름</button>';
   var ng = neg ? '<button type="button" class="dk' + (S.v[k + '_neg'] ? ' on' : '') + '" data-neg="' + k + '">적자</button>' : '';
   var dis = S.dk[k] ? ' dis' : '', ro = S.dk[k] ? ' disabled' : '';
   function box(sfx, label){ return '<div class="amt' + dis + '"><input type="number" inputmode="numeric" data-k="' + k + sfx + '" placeholder="0"' + ro + ' value="' + esc(S.v[k + sfx]) + '"><span>' + label + '</span></div>'; }
@@ -436,33 +552,57 @@ function propHTML(p, i){
     '<div class="q"><div class="lb">명의</div>' + seg('owner', [['self','본인'],['spouse','배우자'],['joint','공동']]) + '</div>' +
     '<div class="q"><div class="lb">파실 계획</div>' + seg('sellPlan', [['1y','1년 안'],['3y','2~3년 안'],['none','없음']]) + '</div></div>';
 }
+/* 부모님 부동산 한 건씩 — 3장 물건 줄과 같은 꼴. 키는 q{번호}_ 로 본인 부동산(p{번호}_)과 섞이지 않는다. 읽는 글로만 간다 */
+var PPK = [['apt','아파트 · 주택'],['comm','상가'],['bldg','건물'],['land','토지'],['off','오피스텔'],['etc','그 밖']];
+var PPO = [['f','아버님'],['m','어머님'],['both','두 분 공동'],['dead','돌아가신 분 명의 그대로'],['u','모름']];
+function ppPropHTML(p, i){
+  function w(k){ return '<div class="row">' + wonHTML('q' + i + '_' + k) + '</div>'; }
+  function seg(k, opts){ return '<div class="seg" data-ppk="' + i + ':' + k + '">' + opts.map(function(o){ return '<button type="button" data-v="' + o[0] + '"' + (p[k] === o[0] ? ' class="on"' : '') + '>' + o[1] + '</button>'; }).join('') + '</div>'; }
+  return '<div class="prop"><div class="prop-h"><b>부모님 부동산 ' + (i + 1) + '</b>' + (S.pprops.length > 1 ? '<button type="button" class="x" data-delpp="' + i + '">빼기</button>' : '') + '</div>' +
+    '<div class="q"><div class="lb">종류</div>' + seg('kind', PPK) + '</div>' +
+    '<div class="q"><div class="lb">대략의 시세</div>' + w('price') + '</div>' +
+    '<div class="q"><div class="lb">명의</div>' + seg('owner', PPO) + '</div>' +
+    '<div class="q"><div class="lb">대출 <span class="h">없으면 0</span></div>' + w('loan') + '<div class="sub">돌려줄 보증금</div>' + w('deposit') + '</div></div>';
+}
+function renderPP(){ S.pprops = S.pprops || []; if(!S.pprops.length) S.pprops.push({}); $('ppprops').innerHTML = S.pprops.map(ppPropHTML).join(''); }
 function renderProps(){ if(!S.props.length) S.props.push({}); $('props').innerHTML = S.props.map(propHTML).join(''); }
 
 /* 화면 채우기 */
 function fill(){
-  qa('[data-won]').forEach(function(el){ el.innerHTML = wonHTML(el.dataset.won, el.dataset.unit, el.dataset.neg); });
-  renderProps();
+  $('tagList').innerHTML = TAGS.map(function(t){ return '<button type="button" data-v="' + t[0] + '"' + (t[0] === 'all' ? ' class="all"' : '') + '>' + esc(t[1]) + '</button>'; }).join('');
+  qa('[data-won]').forEach(function(el){ var st = el.closest('.step'); el.innerHTML = wonHTML(el.dataset.won, el.dataset.unit, el.dataset.neg, st && NODK_STEP.indexOf(+st.dataset.step) >= 0); });
+  renderProps(); renderPP();
   qa('input[data-k],textarea[data-k]').forEach(function(el){ var k = el.dataset.k; if(el.type === 'checkbox') el.checked = !!S.v[k]; else if(S.v[k] != null && el.value !== String(S.v[k])) el.value = S.v[k]; });
   qa('.seg[data-k]').forEach(function(sg){ qa('button', sg).forEach(function(b){ b.classList.toggle('on', S.v[sg.dataset.k] != null && S.v[sg.dataset.k] === b.dataset.v); }); });
-  qa('.seg[data-multi] button').forEach(function(b){ b.classList.toggle('on', !!S.tags[b.dataset.v]); });
+  qa('.seg[data-multi]').forEach(function(sg){ var m = sg.dataset.multi, o = m === 'tags' ? S.tags : (S.v[m] || {}); qa('button', sg).forEach(function(b){ b.classList.toggle('on', !!o[b.dataset.v]); }); });
   qa('.dk[data-dk]').forEach(function(b){ b.classList.toggle('on', !!S.dk[b.dataset.dk]); });
-  show(); doc();
+  paintTags(); show(); doc();
 }
 function cond(expr){ var m = /^(\w+)(=|>)(.*)$/.exec(expr); if(!m) return true; if(m[2] === '=') return String(S.v[m[1]] == null ? '' : S.v[m[1]]) === m[3]; var x = m[1] === 'os' ? eok('os') : parseFloat(S.v[m[1]]); return (x || 0) > parseFloat(m[3]); }
-function show(){ qa('[data-show]').forEach(function(el){ el.hidden = !cond(el.dataset.show); }); $('agL1').classList.toggle('on', !!S.v.ag1); $('agL2').classList.toggle('on', !!S.v.ag2); }
+function show(){ qa('[data-show]').forEach(function(el){ el.hidden = !cond(el.dataset.show); }); $('agL1').classList.toggle('on', !!S.v.ag1); $('agL2').classList.toggle('on', !!S.v.ag2); $('ppAsk').hidden = !!(S.tags.parent || S.tags.all);
+  var J = job(); $('lb_work').textContent = J.c ? '급여 · 법인에서 받는 연봉' : '급여'; $('h_work').textContent = J.c ? '세금을 떼기 전 연봉. 다른 직장 급여가 있으면 합쳐서. 회사 질문에서는 이 금액을 대표님 연봉으로 씁니다' : '세금을 떼기 전 연봉';   /* 법인 대표의 연봉은 여기서 한 번만 묻는다 (2026-10-16) */
+  counter(); }
 function today(){ var d = new Date(); return d.getFullYear() + '년 ' + (d.getMonth() + 1) + '월 ' + d.getDate() + '일'; }
 function doc(){ $('docName').textContent = (S.v.name || '').trim() || '고객'; $('docDate').textContent = today(); }
 
-/* 단계 */
+/* 단계 — 고르신 고민에 맞는 장만 지난다 */
+function counter(){
+  var o = order(), i = o.indexOf(S.step), full = o.length + 2, at = S.step === 0 ? 0 : S.step >= LAST ? o.length + 1 : i + 1;
+  $('cnt').textContent = i >= 0 ? (i + 1) + ' / ' + o.length : '';
+  qa('.step').forEach(function(s){ var n = +s.dataset.step, j = o.indexOf(n), k = s.querySelector('.sh .k'); if(k && j >= 0) k.textContent = (j + 1) + ' / ' + o.length; });
+  $('prog').style.width = (S.step >= DONE ? 100 : at/(full - 1)*100) + '%';
+}
+function nextOf(n){ for(var m = n + 1; m < LAST; m++) if(shown(m)) return m; return LAST; }
+function prevOf(n){ for(var m = n - 1; m > 0; m--) if(shown(m)) return m; return 0; }
 function go(n){
-  S.step = Math.max(0, Math.min(n, 11)); if(S.step <= LAST) save();
+  n = Math.max(0, Math.min(n, DONE)); if(n > 0 && n < LAST && !shown(n)) n = nextOf(n);
+  S.step = n; if(S.step <= LAST) save();
   qa('.step').forEach(function(s){ s.classList.toggle('on', +s.dataset.step === S.step); });
-  $('prev').hidden = S.step === 0 || S.step === 11;
-  $('next').hidden = S.step === 11;
+  $('prev').hidden = S.step === 0 || S.step === DONE;
+  $('next').hidden = S.step === DONE;
   $('next').disabled = false;
   $('next').textContent = S.step === 0 ? '시작하기' : S.step === LAST ? '보내기' : '다음';
-  $('cnt').textContent = S.step >= 1 && S.step <= 9 ? S.step + ' / 9' : '';
-  $('prog').style.width = (S.step >= 11 ? 100 : S.step/LAST*100) + '%';
+  counter();
   if(S.step === LAST) summary();
   window.scrollTo(0, 0);
 }
@@ -473,86 +613,135 @@ function check0(){
   else if(!S.v.ag1 || !S.v.ag2) msg = '두 가지 동의에 표시해 주셔야 질문지를 보내실 수 있습니다.';
   e.textContent = msg; e.hidden = !msg; if(msg) e.scrollIntoView({block:'center'}); return !msg;
 }
+/* 재무 뼈대의 필수 — 비우면 다음으로 넘어가지 않고 빠진 항목 이름을 말한다. 0은 답이다 */
+function missing(st){ return (REQ[st] || []).filter(function(q){ var k = q[0], t = q[2]; if(t === 'n') return num(k) == null; if(t === 'v') return S.v[k] == null || S.v[k] === ''; if(t === 'multi'){ var o = S.v[k] || {}; return !Object.keys(o).some(function(x){ return o[x]; }); } return t === 'eok' ? eok(k) == null : man(k) == null; }).map(function(q){ return q[1]; }); }
+function checkReq(st){ var e = $('err' + st); if(!e) return true; var ms = missing(st), msg = ms.length ? '아직 적지 않으신 것이 있습니다 · ' + ms.join(', ') + '. 없으면 0을 적어 주십시오.' : ''; e.textContent = msg; e.hidden = !msg; if(msg) e.scrollIntoView({block:'center'}); return !msg; }
+function check1(){ if(!picked().length){ S.tags.all = true; S.allSkip = true; paintTags(); show(); } else if(Object.keys(S.tman).some(function(k){ return S.tman[k]; })) S.allSkip = false; return true; }   /* 고르지 않고 넘어가면 전체로 (2026-10-15 대표님) */
 
-/* 진단 도구 입력으로 바꾸기 — 006. playbook/미팅자산/자산종합진단/index.html 의 입력 id */
+/* 진단 도구 입력으로 바꾸기 — 006. playbook/미팅자산/자산종합진단/index.html 의 입력 id. 보인 장의 답만 보낸다 */
 function out(){
   var Y = new Date().getFullYear(), v = {}, V = S.v;
   function put(k, x){ if(x != null && x !== '' && !(typeof x === 'number' && !isFinite(x))) v[k] = String(x); }
   var b = num('birth'); if(b) put('b_age', Y - b); put('b_sex', V.sex);
   put('b_sp', V.sp); var sb = num('spbirth'); if(sb && V.sp === '1') put('b_spage', Y - sb);
   put('b_kids', V.kids); put('b_kidages', V.kidages); put('b_married', V.married); put('b_grand', V.grand);
-  put('b_living', man('living')); if(!S.dk.retire) put('b_retire', V.retire); put('i_emp', V.emp);
+  put('b_living', man('living')); put('b_retire', V.retire); put('i_emp', V.emp);
+  /* 금융자산과 빚 · 소득은 늘 묻는다(재무 뼈대). 비운 칸은 보내지 않는다 — 진단 도구가 「입력 안 함」으로 읽는다 */
   put('f_dep', eok('dep')); put('f_kr', eok('kr')); put('f_os', eok('os')); put('f_osgain', eok('osgain')); put('f_bond', eok('bond')); put('f_pen', eok('pen')); put('i_penpay', man('penpay'));
-  put('d_loan', eok('loan')); put('i_debtpay', man('debtpay')); if(!S.dk.rate) put('d_rate', V.rate); put('v_loss', eok('loss'));
+  put('d_loan', eok('loan')); put('i_debtpay', man('debtpay')); put('d_rate', V.rate); put('v_loss', eok('loss'));
   put('i_work', man('work')); put('i_fin', man('fin')); put('i_rent', man('rent')); put('i_penpub', man('penpub'));
-  put('s_death', eok('death')); put('s_prem', man('prem')); put('s_cancer', man('cancer')); put('s_care', man('care')); put('s_own', V.insown); put('s_annuity', eok('annuity'));
-  put('h_prior', eok('prior')); put('o_mood', V.mood);
-  if(V.haspp === '1'){ put('pp_age', V.ppage); put('pp_sex', V.ppsex); put('pp_sp', V.ppsp); put('pp_dyear', V.ppsp === 'n' ? V.ppdyear : null); put('pp_re', eok('ppre')); put('pp_fin', eok('ppfin')); put('pp_kids', V.ppkids); put('pp_basis', 'unk'); }
-  var type = 'ind';
-  if(V.hasbiz === '1'){ type = 'biz'; put('z_industry', V.zind); put('z_start', V.zstart); put('z_sales', eok('zsales')); put('i_biz', man('zprofit')); put('z_emp', V.zemp); }
-  if(V.hascorp === '1'){ type = 'corp'; put('c_share', V.cshare); put('c_kidshare', V.ckid); put('c_years', V.cyears); put('c_sal', man('csal')); put('c_divy', man('cdiv'));
+  if(shown(6)){ put('s_death', eok('death')); put('s_prem', man('prem')); put('s_cancer', man('cancer')); put('s_care', man('care')); put('s_own', V.insown); put('s_annuity', eok('annuity')); }
+  if(shown(7)){ put('h_prior', eok('prior')); put('o_mood', V.mood); }
+  /* 부모님 재산 — 진단 도구의 「부모님 재산」 칸(pp_)에만 넣는다. 본인 재산 칸에는 넣지 않는다 */
+  if(shown(8)){ if(!S.dk.ppage) put('pp_age', V.ppage); put('pp_sex', V.ppsex); put('pp_sp', V.ppsp); put('pp_dyear', V.ppsp === 'n' ? V.ppdyear : null); put('pp_re', eok('ppre')); put('pp_fin', eok('ppfin')); put('pp_debt', eok('ppdebt')); put('pp_kids', V.ppkids); put('pp_prior', eok('ppgift')); put('pp_basis', 'unk'); }
+  /* 고객 유형은 하나만 받는다 — 법인 대표 > 개인사업자 > 개인 자산가. 둘 다인 분도 사업 매출을 보내면 진단 도구가 유형과 상관없이 사업을 계산에 넣는다 (2026-10-16) */
+  var J = job(), type = J.c ? 'corp' : J.b ? 'biz' : 'ind';
+  if(shown(9)){ put('z_industry', V.zind); put('z_start', V.zstart); put('z_sales', eok('zsales')); put('i_biz', man('zprofit')); put('z_emp', V.zemp); }
+  var corp = shown(10);
+  if(corp){ put('c_size', V.csize === 'u' ? null : V.csize); put('c_share', V.cshare); put('c_kidshare', V.ckid); put('c_years', V.cyears); put('c_sal', man('work')); put('c_divy', man('cdiv'));   /* 대표님 연봉은 소득 장의 급여 하나로 묻고 두 곳에 넣는다 */
     put('c_p1', eok('cp1')); put('c_p2', eok('cp2')); put('c_p3', eok('cp3')); put('c_nav', eok('cnav')); put('c_retained', eok('cret')); put('c_rer', V.crer); put('c_rule', V.crule === 'u' ? null : V.crule);
     put('c_loan', eok('cloan')); put('c_gaji', eok('cgaji')); put('c_guarantee', eok('cguar')); put('c_heir', V.cheir); }
   put('b_type', type);
-  put('memo', [(V.memo || '').trim(), (V.more || '').trim() ? '추가: ' + V.more.trim() : '', V.hascorp === '1' && V.cname ? '회사: ' + V.cname : ''].filter(Boolean).join('\n'));
+  put('memo', [(V.memo || '').trim(), (V.more || '').trim() ? '추가: ' + V.more.trim() : '', corp && V.cname ? '회사: ' + V.cname : ''].filter(Boolean).join('\n'));
   put('r_name', (V.name || '').trim() ? V.name.trim() + ' 님' : null);
-  var props = V.hasre === '1' ? S.props.map(function(p, i){ var o = {}, pre = 'p' + i + '_';
+  var props = shown(3) ? S.props.map(function(p, i){ var o = {}, pre = 'p' + i + '_';
       function pp(k, x){ if(x != null && x !== '') o[k] = String(x); }
       pp('kind', p.kind); pp('price', eok(pre + 'price')); pp('buy', eok(pre + 'buy')); var yr = num(pre + 'year'); if(yr){ pp('acqYear', yr); pp('hold', Math.max(Y - yr, 0)); if(p.kind === 'home') pp('live', Math.max(Y - yr, 0)); }
       pp('loan', eok(pre + 'loan')); pp('deposit', eok(pre + 'deposit')); pp('rent', man(pre + 'rent')); pp('owner', p.owner); pp('sellPlan', p.sellPlan); return o; }).filter(function(o){ return o.price != null; }) : [];
-  var tags = {}; Object.keys(S.tags).forEach(function(k){ if(S.tags[k]){ tags[k] = 1; if(k === 'give') tags.inh = 1; } });
-  return {v:v, props:props, tags:tags};
+  /* 고른 키를 그대로 보낸다. parent 는 진단 도구가 무시하고 all 은 강조 없음으로 읽는다. 예전의 give → inh 묶음은 글이 나뉘어 없앴다 */
+  var tags = {}; picked().forEach(function(k){ tags[k] = 1; });
+  return {v:v, props:props, tags:tags, unk:unkIds()};
+}
+/* 「잘 모름」을 누른 항목을 진단 도구 입력 이름으로 — 보고서가 「묻지 않은 것 · 모른다고 한 것 · 0이라고 한 것」을 가른다 (2026-10-16) */
+var DKID = {ppage:'pp_age', death:'s_death', prem:'s_prem', cancer:'s_cancer', care:'s_care', annuity:'s_annuity', prior:'h_prior', ppre:'pp_re', ppfin:'pp_fin', ppdebt:'pp_debt', ppgift:'pp_prior', zsales:'z_sales', zprofit:'i_biz', cp1:'c_p1', cp2:'c_p2', cp3:'c_p3', cnav:'c_nav', cret:'c_retained', cloan:'c_loan', cgaji:'c_gaji', cguar:'c_guarantee'};
+function unkIds(){ var r = [], d = dkShown(); Object.keys(d).forEach(function(k){ var m = /^p(\d+)_(.*)$/.exec(k); if(m) r.push('p' + m[1] + '.' + m[2]); else if(DKID[k]) r.push(DKID[k]); });
+  if(shown(10) && S.v.csize === 'u') r.push('c_size'); if(shown(10) && S.v.crule === 'u') r.push('c_rule'); return r; }
+var JOBS = [['w', '직장인'], ['b', '개인사업자 · 프리랜서'], ['c', '법인 대표 · 임원'], ['n', '은퇴 · 소득 없음']];
+function jobTxt(){ var J = job(); return JOBS.filter(function(x){ return J[x[0]]; }).map(function(x){ return x[1]; }).join(' · '); }
+function dkShown(){ var r = {}; Object.keys(S.dk).forEach(function(k){ if(!S.dk[k]) return; var el = document.querySelector('[data-dk="' + k + '"]'), sec = el && el.closest('.step'); if(sec && shown(+sec.dataset.step)) r[k] = true; }); return r; }
+function lbl(arr, x){ for(var i = 0; i < arr.length; i++) if(arr[i][0] === x) return arr[i][1]; return null; }
+var PPL = {health:[['ok','건강하심'],['ill','편찮으시나 직접 정하심'],['hard','직접 정하기 어려우심'],['u','모름']], guard:[['y','후견인 있음'],['p','후견 신청 중'],['n','후견인 없음'],['u','후견 모름']], done:[['done','끝남'],['doing','진행 중'],['u','모름']], filed:[['y','신고함'],['n','세금 없어 안 함'],['u','모름']], fam:[['ok','편하게 나눔'],['care','조심스러움'],['hard','어려움']]};
+function ppLines(){
+  var V = S.v, L = [];
+  L.push('계신 분: ' + (V.ppsp === 'y' ? '두 분 다' : V.ppsp === 'n' ? '한 분만' : '적지 않음') + ' · 재산 가진 분: ' + (V.ppsex === 'm' ? '아버님' : V.ppsex === 'f' ? '어머님' : '적지 않음') + ' · 연세: ' + (S.dk.ppage ? '모름' : (V.ppage || '적지 않음')));
+  L.push('건강과 판단: ' + (lbl(PPL.health, V.pphealth) || '적지 않음') + (V.pphealth === 'hard' ? ' · ' + (lbl(PPL.guard, V.ppguard) || '후견 적지 않음') : ''));
+  if(V.ppsp === 'n') L.push('먼저 돌아가신 해: ' + (V.ppdyear || '적지 않음') + ' · 상속 정리: ' + (lbl(PPL.done, V.ppdone) || '적지 않음') + (V.ppdone === 'done' ? ' · 상속세 신고: ' + (lbl(PPL.filed, V.ppfiled) || '적지 않음') : ''));
+  L.push('부동산 시세 합계: ' + (S.dk.ppre ? '모름' : wonTxt(eok('ppre'))));
+  (S.pprops || []).forEach(function(p, i){ var q = 'q' + i + '_', amt = function(k){ return S.dk[q + k] ? '모름' : wonTxt(eok(q + k)); };
+    if(!p.kind && !p.owner && eok(q + 'price') == null && !S.dk[q + 'price']) return;
+    L.push('  부동산 ' + (i + 1) + ': ' + (lbl(PPK, p.kind) || '종류 적지 않음') + ' · 시세 ' + amt('price') + ' · 명의 ' + (lbl(PPO, p.owner) || '적지 않음') + ' · 대출 ' + amt('loan') + ' · 보증금 ' + amt('deposit')); });
+  L.push('예금 · 현금 · 주식 ' + wonTxt(eok('ppfin')) + ' · 빚 ' + wonTxt(eok('ppdebt')) + ' · 자녀 수 ' + (V.ppkids || '적지 않음') + ' · 가족 대화: ' + (lbl(PPL.fam, V.ppfam) || '적지 않음') + ' · 10년 안에 받은 재산 ' + wonTxt(eok('ppgift')));
+  return L;
 }
 function summary(){
   var o = out(), V = o.v;
   function tot(keys){ var any = false, t = 0; keys.forEach(function(k){ if(V[k] != null){ any = true; t += parseFloat(V[k]) || 0; } }); return any ? t : null; }
   var re = o.props.reduce(function(t, p){ return t + (parseFloat(p.price) || 0); }, 0);
-  var rows = [['성함', S.v.name || ''], ['부동산', o.props.length ? o.props.length + '건 · ' + wonTxt(re) : (S.v.hasre === '0' ? '없음' : '적지 않음')], ['금융자산', wonTxt(tot(['f_dep','f_kr','f_os','f_bond','f_pen']))], ['한 해 소득', wonTxt(tot(['i_work','i_biz','i_fin','i_rent','i_penpub']), 'man')], ['개인사업', S.v.hasbiz === '1' ? '적으심' : '해당 없음'], ['회사', S.v.hascorp === '1' ? (S.v.cname || '적으심') : '해당 없음'], ['부모님 재산', S.v.haspp === '1' ? '적으심' : '해당 없음']];
+  var rows = [['성함', S.v.name || ''], ['고민', picked().map(function(k){ return lbl(TAGS, k); }).join(' · ')],
+    ['기본', [S.v.birth ? S.v.birth + '년생' : '', S.v.sp === '1' ? '배우자 있음' : S.v.sp === '0' ? '배우자 없음' : '', S.v.kids ? '자녀 ' + S.v.kids + '명' : ''].filter(Boolean).join(' · ') || '적지 않음'], ['하시는 일', jobTxt() || '적지 않음']];
+  rows.push(['부동산', shown(3) ? (o.props.length ? o.props.length + '건 · ' + wonTxt(re) : '적지 않음') : (S.v.hasre === '0' ? '없음' : '적지 않음')]);
+  rows.push(['금융자산', wonTxt(tot(['f_dep','f_kr','f_os','f_bond','f_pen']))]);
+  rows.push(['한 해 소득', wonTxt(tot(['i_work','i_biz','i_fin','i_rent','i_penpub']), 'man')]);
+  if(shown(6)) rows.push(['사망 보장', wonTxt(V.s_death != null ? +V.s_death : null)]);
+  if(shown(7)) rows.push(['10년 안에 넘기신 재산', wonTxt(V.h_prior != null ? +V.h_prior : null)]);
+  if(shown(8)) rows.push(['부모님 재산', wonTxt(tot(['pp_re','pp_fin']))]);
+  if(shown(9)) rows.push(['개인사업', S.v.zind || eok('zsales') != null ? '적으심' : '적지 않음']);
+  if(shown(10)) rows.push(['회사', S.v.cname || '적으심']);
   $('sum').innerHTML = rows.map(function(r){ return '<div><span>' + r[0] + '</span><b>' + esc(r[1]) + '</b></div>'; }).join('');
 }
 function readable(){
-  var o = out(), L = [], V = o.v;
+  var o = out(), L = [], V = o.v, g = autoGuess();
   L.push('[첫 상담 전 질문지] ' + (S.v.name || '') + ' · ' + (S.v.tel || '')); if(S.v.mdate) L.push('상담 날짜: ' + S.v.mdate);
   L.push('동의: 수집과 이용 ' + (S.v.ag1 ? '예' : '아니오') + ' · 국외 보관 ' + (S.v.ag2 ? '예' : '아니오') + ' · ' + today());
   if(VIA) L.push('경로: 상담신청서를 이미 쓴 고객');
-  L.push(''); L.push('고민: ' + (S.v.memo || '')); L.push('관심: ' + Object.keys(S.tags).filter(function(k){ return S.tags[k]; }).join(', '));
+  L.push('하시는 일: ' + (jobTxt() || '적지 않음') + ' · 부동산: ' + (S.v.hasre === '1' ? '있음' : S.v.hasre === '0' ? '없음' : '적지 않음'));
+  L.push(''); L.push('고민: ' + (S.v.memo || ''));
+  L.push('고른 고민: ' + picked().map(function(k){ return lbl(TAGS, k) + '(' + k + ')'; }).join(', '));
+  var gk = Object.keys(g); L.push('글에서 미리 고른 것: ' + (gk.length ? gk.join(', ') : '없음') + ' · 고객이 고친 것: ' + (Object.keys(S.tman).filter(function(k){ return !!S.tman[k] !== !!g[k]; }).map(function(k){ return (S.tman[k] ? '+' : '-') + k; }).join(', ') || '없음'));
+  if(S.allSkip && S.tags.all && !S.tman.all) L.push('고민을 고르지 않고 넘어가 전체를 여쭘');
+  L.push('물어본 장: ' + order().map(function(n){ return STEPNM[n]; }).join(' · '));
   L.push(''); Object.keys(V).forEach(function(k){ if(k !== 'memo') L.push(k + ' = ' + V[k]); });
   o.props.forEach(function(p, i){ L.push('부동산 ' + (i + 1) + ': ' + JSON.stringify(p)); });
-  var dk = Object.keys(S.dk).filter(function(k){ return S.dk[k]; }); if(dk.length) L.push('잘 모름: ' + dk.join(', '));
+  if(shown(8)){ L.push(''); L.push('[부모님 재산 · 진단 입력 외 참고]'); ppLines().forEach(function(x){ L.push(x); }); }
+  var dk = o.unk; if(dk.length) L.push('잘 모름: ' + dk.join(', '));
   return L.join('\n');
 }
 function send(){
-  var e = $('err10'), btn = $('next'); e.hidden = true;
+  var e = $('err11'), btn = $('next'); e.hidden = true;
   if(!ENDPOINT){ e.textContent = '전송 주소가 아직 연결되지 않았습니다.'; e.hidden = false; return; }
   btn.disabled = true; btn.textContent = '보내는 중';
-  var o = out(), body = {subject:'[사전질문지] ' + (S.v.name || ''), name:S.v.name || '', tel:S.v.tel || '', text:readable(), data:JSON.stringify({v:o.v, props:o.props, tags:o.tags, dk:S.dk, at:new Date().toISOString()})};
+  var o = out(), body = {subject:'[사전질문지] ' + (S.v.name || ''), name:S.v.name || '', tel:S.v.tel || '', text:readable(), data:JSON.stringify({v:o.v, props:o.props, tags:o.tags, steps:order(), unk:o.unk, at:new Date().toISOString()})};
   fetch(ENDPOINT, {method:'POST', headers:{'Content-Type':'text/plain;charset=utf-8'}, body:JSON.stringify(body)}).then(function(r){ if(!r.ok) throw new Error('http ' + r.status); return r.text(); }).then(function(){ finish(); try{ localStorage.removeItem(KEY); }catch(_){} })
   .catch(function(){ e.textContent = '보내지 못했습니다. 잠시 뒤 다시 눌러 주십시오. 적으신 내용은 이 기기에 저장돼 있습니다.'; e.hidden = false; btn.disabled = false; btn.textContent = '보내기'; });
 }
-function finish(){ $('doneName').textContent = S.v.name || ''; $('doc2').innerHTML = $('doc').innerHTML.replace(/ id="[^"]*"/g, ''); go(11); }
+function finish(){ $('doneName').textContent = S.v.name || ''; $('doc2').innerHTML = $('doc').innerHTML.replace(/ id="[^"]*"/g, ''); go(DONE); }
 
-document.addEventListener('input', function(ev){ var t = ev.target, k = t.dataset && t.dataset.k; if(!k) return; S.v[k] = t.type === 'checkbox' ? t.checked : t.value; if(k === 'name') doc(); show(); save(); });
+document.addEventListener('input', function(ev){ var t = ev.target, k = t.dataset && t.dataset.k; if(!k) return; S.v[k] = t.type === 'checkbox' ? t.checked : t.value; if(k === 'name') doc(); if(k === 'memo') autoTags(); show(); save(); });
 document.addEventListener('click', function(ev){
   var b = ev.target.closest('button'); if(!b) return;
-  if(b.id === 'next'){ if(S.step === 0 && !check0()) return; if(S.step === LAST){ send(); return; } go(S.step + 1); return; }
-  if(b.id === 'prev'){ go(S.step - 1); return; }
+  if(b.id === 'next'){ if(S.step === 0 && !check0()) return; if(S.step === 1 && !check1()) return; if(REQ[S.step] && !checkReq(S.step)) return; if(S.step === LAST){ send(); return; } go(nextOf(S.step)); return; }
+  if(b.id === 'prev'){ go(prevOf(S.step)); return; }
   if(b.id === 'printDoc'){ window.print(); return; }
   if(b.id === 'addProp'){ S.props.push({}); renderProps(); save(); return; }
-  if(b.dataset.delprop != null){
-    var di = +b.dataset.delprop, nv = {}, nd = {};
-    var shift = function(src, dst){ Object.keys(src).forEach(function(k){ var m = /^p(\d+)_(.*)$/.exec(k); if(!m){ dst[k] = src[k]; return; } var n = +m[1]; if(n === di) return; dst['p' + (n > di ? n - 1 : n) + '_' + m[2]] = src[k]; }); };
+  if(b.id === 'addPP'){ S.pprops.push({}); renderPP(); save(); return; }
+  if(b.dataset.delprop != null || b.dataset.delpp != null){
+    var pre = b.dataset.delprop != null ? 'p' : 'q', di = +(pre === 'p' ? b.dataset.delprop : b.dataset.delpp), nv = {}, nd = {}, rx = new RegExp('^' + pre + '(\\d+)_(.*)$');
+    var shift = function(src, dst){ Object.keys(src).forEach(function(k){ var m = rx.exec(k); if(!m){ dst[k] = src[k]; return; } var n = +m[1]; if(n === di) return; dst[pre + (n > di ? n - 1 : n) + '_' + m[2]] = src[k]; }); };
     shift(S.v, nv); shift(S.dk, nd);
-    S.v = nv; S.dk = nd; S.props.splice(di, 1); renderProps(); save(); return; }
+    S.v = nv; S.dk = nd; if(pre === 'p'){ S.props.splice(di, 1); renderProps(); } else { S.pprops.splice(di, 1); renderPP(); } save(); return; }
   if(b.dataset.dk){ var k = b.dataset.dk; S.dk[k] = !S.dk[k]; if(S.dk[k]){ ['_e','_c','_m',''].forEach(function(s){ delete S.v[k + s]; }); } save(); fill(); return; }
   if(b.dataset.neg){ var kn = b.dataset.neg + '_neg'; S.v[kn] = !S.v[kn]; b.classList.toggle('on', !!S.v[kn]); save(); return; }
   var sg = b.parentElement;
   if(sg && sg.classList.contains('seg')){
-    if(sg.dataset.multi){ S.tags[b.dataset.v] = !S.tags[b.dataset.v]; b.classList.toggle('on', !!S.tags[b.dataset.v]); save(); return; }
+    if(sg.dataset.multi === 'tags'){ var tk = b.dataset.v; S.tags[tk] = !S.tags[tk]; S.tman[tk] = S.tags[tk]; dropAutoAll(); $('err1').hidden = true; paintTags(); show(); save(); return; }
+    if(sg.dataset.multi){ var mk = sg.dataset.multi, mo = S.v[mk] = S.v[mk] || {}; mo[b.dataset.v] = !mo[b.dataset.v]; b.classList.toggle('on', !!mo[b.dataset.v]); $('err2').hidden = true; show(); save(); return; }   /* 하시는 일이 바뀌면 사업 · 회사 장과 급여 설명이 바로 바뀐다 */
+    if(sg.dataset.ppk){ var a2 = sg.dataset.ppk.split(':'), q2 = S.pprops[+a2[0]]; q2[a2[1]] = q2[a2[1]] === b.dataset.v ? null : b.dataset.v; qa('button', sg).forEach(function(x){ x.classList.toggle('on', x.dataset.v === q2[a2[1]]); }); save(); return; }
     if(sg.dataset.pk){ var a = sg.dataset.pk.split(':'), p = S.props[+a[0]]; p[a[1]] = p[a[1]] === b.dataset.v ? null : b.dataset.v; qa('button', sg).forEach(function(x){ x.classList.toggle('on', x.dataset.v === p[a[1]]); }); save(); return; }
     if(sg.dataset.k){ var kk = sg.dataset.k; S.v[kk] = S.v[kk] === b.dataset.v ? null : b.dataset.v; qa('button', sg).forEach(function(x){ x.classList.toggle('on', S.v[kk] != null && x.dataset.v === S.v[kk]); }); show(); save(); return; }
   }
 });
-window.__intake = {out:out, readable:readable, S:S, go:go, fill:fill, finish:finish};
+window.__intake = {out:out, readable:readable, S:function(){ return S; }, go:go, fill:fill, finish:finish, guess:guess, order:order, shown:shown, missing:missing, TAGS:TAGS, PAGES:PAGES};
+if(S.step > 1 && !picked().length) S.step = 1;   /* 고민을 안 고른 저장본은 고민 장에서 다시 시작한다 */
 fill(); go(S.step);
 if(VIA){ $('lb_memo').innerHTML = '신청하실 때 적어 주신 내용에 더하실 것 <span class="h">적어 주신 내용은 이미 받았습니다. 없으면 비워 두셔도 됩니다</span>'; $('q_memo').placeholder = ''; $('q_memo').style.minHeight = '80px'; }
 })();
