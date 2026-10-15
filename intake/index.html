@@ -211,19 +211,6 @@ textarea.in{min-height:120px;resize:vertical;font-weight:500;line-height:1.7}
     <label class="chk" id="agL1"><input type="checkbox" id="ag1" data-k="ag1"><span>수집과 이용에 동의합니다</span></label>
   </div>
 
-  <div class="agree">
-    <h3>국외 보관에 대한 동의</h3>
-    <dl>
-      <dt>맡는 곳</dt><dd>구글 (Google LLC, 받은 질문지와 전자우편 보관) · 앤트로픽 (Anthropic PBC, 진단 보고서 작성 프로그램)</dd>
-      <dt>나라</dt><dd>미국</dd>
-      <dt>방법</dt><dd>질문지를 보내실 때 암호화된 통신으로 전송</dd>
-      <dt>항목</dt><dd>위 수집 항목과 같습니다</dd>
-      <dt>목적</dt><dd>유영곤이 받은 내용을 보관하고 보고서를 계산하는 일</dd>
-      <dt>기간</dt><dd>첫 상담일부터 1년. 요청하시면 바로 지웁니다.</dd>
-    </dl>
-    <p>유영곤이 쓰는 전자우편과 진단 프로그램의 서버가 해외에 있어 여쭙니다. 동의하지 않으시면 질문지를 보내지 않으셔도 되고, 상담 자리에서 직접 여쭙겠습니다.</p>
-    <label class="chk" id="agL2"><input type="checkbox" id="ag2" data-k="ag2"><span>국외 보관에 동의합니다</span></label>
-  </div>
   <div class="err" id="err0" hidden></div>
 </section>
 
@@ -579,7 +566,7 @@ function fill(){
   paintTags(); show(); doc();
 }
 function cond(expr){ var m = /^(\w+)(=|>)(.*)$/.exec(expr); if(!m) return true; if(m[2] === '=') return String(S.v[m[1]] == null ? '' : S.v[m[1]]) === m[3]; var x = m[1] === 'os' ? eok('os') : parseFloat(S.v[m[1]]); return (x || 0) > parseFloat(m[3]); }
-function show(){ qa('[data-show]').forEach(function(el){ el.hidden = !cond(el.dataset.show); }); $('agL1').classList.toggle('on', !!S.v.ag1); $('agL2').classList.toggle('on', !!S.v.ag2); $('ppAsk').hidden = !!(S.tags.parent || S.tags.all);
+function show(){ qa('[data-show]').forEach(function(el){ el.hidden = !cond(el.dataset.show); }); $('agL1').classList.toggle('on', !!S.v.ag1); $('ppAsk').hidden = !!(S.tags.parent || S.tags.all);
   var J = job(); $('lb_work').textContent = J.c ? '급여 · 법인에서 받는 연봉' : '급여'; $('h_work').textContent = J.c ? '세금을 떼기 전 연봉. 다른 직장 급여가 있으면 합쳐서. 회사 질문에서는 이 금액을 대표님 연봉으로 씁니다' : '세금을 떼기 전 연봉';   /* 법인 대표의 연봉은 여기서 한 번만 묻는다 (2026-10-16) */
   counter(); }
 function today(){ var d = new Date(); return d.getFullYear() + '년 ' + (d.getMonth() + 1) + '월 ' + d.getDate() + '일'; }
@@ -610,7 +597,7 @@ function check0(){
   var e = $('err0'), msg = '';
   if(!(S.v.name || '').trim()) msg = '성함을 적어 주십시오.';
   else if(!(S.v.tel || '').trim()) msg = '연락처를 적어 주십시오.';
-  else if(!S.v.ag1 || !S.v.ag2) msg = '두 가지 동의에 표시해 주셔야 질문지를 보내실 수 있습니다.';
+  else if(!S.v.ag1) msg = '수집과 이용에 동의해 주셔야 질문지를 보내실 수 있습니다.';   /* 국외 보관 동의는 2026-10-16 대표님 지시로 뺐다(개인정보 보호법 제28조의8 한 번 짚음 · 대표님 확인) */
   e.textContent = msg; e.hidden = !msg; if(msg) e.scrollIntoView({block:'center'}); return !msg;
 }
 /* 재무 뼈대의 필수 — 비우면 다음으로 넘어가지 않고 빠진 항목 이름을 말한다. 0은 답이다 */
@@ -692,7 +679,7 @@ function summary(){
 function readable(){
   var o = out(), L = [], V = o.v, g = autoGuess();
   L.push('[첫 상담 전 질문지] ' + (S.v.name || '') + ' · ' + (S.v.tel || '')); if(S.v.mdate) L.push('상담 날짜: ' + S.v.mdate);
-  L.push('동의: 수집과 이용 ' + (S.v.ag1 ? '예' : '아니오') + ' · 국외 보관 ' + (S.v.ag2 ? '예' : '아니오') + ' · ' + today());
+  L.push('동의: 수집과 이용 ' + (S.v.ag1 ? '예' : '아니오') + ' · ' + today());
   if(VIA) L.push('경로: 상담신청서를 이미 쓴 고객');
   L.push('하시는 일: ' + (jobTxt() || '적지 않음') + ' · 부동산: ' + (S.v.hasre === '1' ? '있음' : S.v.hasre === '0' ? '없음' : '적지 않음'));
   L.push(''); L.push('고민: ' + (S.v.memo || ''));
