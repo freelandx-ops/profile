@@ -23,7 +23,7 @@
   --good:#16794A; --good-s:#E7F5EE; --warn:#B42318;
 }
 *{box-sizing:border-box}
-html{background:var(--bg);scroll-padding-top:120px}
+html{background:var(--bg);scroll-padding-top:70px}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif;font-size:16px;line-height:1.65;word-break:keep-all;letter-spacing:-.01em;-webkit-font-smoothing:antialiased}
 button,input,select{font:inherit;color:inherit}
 h1,h2,h3{margin:0;text-wrap:balance}
@@ -35,12 +35,19 @@ p{margin:0;text-wrap:pretty}
 .top .bar{display:flex;align-items:center;height:52px}
 .top b{font-size:16px;font-weight:700}
 .top small{color:var(--mut);font-size:13px;margin-left:8px}
-.tabs{display:flex;gap:6px;overflow-x:auto;padding:0 0 10px;scrollbar-width:none}
-.tabs::-webkit-scrollbar{display:none}
-.tabs a{flex:0 0 auto;text-decoration:none;color:var(--ink2);font-weight:700;font-size:14.5px;padding:8px 14px;border-radius:999px;border:1px solid var(--line);background:#fff;white-space:nowrap}
-.tabs a.on{background:var(--blue);border-color:var(--blue);color:#fff}
-.tabs a.go{border-color:var(--blue-l);color:var(--blue)}
-.tabs a.go.on{color:#fff}
+.home-link{margin-left:auto;text-decoration:none;color:var(--blue);font-weight:700;font-size:14px;border:1px solid var(--blue-l);border-radius:999px;padding:6px 12px;background:#fff}
+.menu{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}
+.menu a{display:flex;flex-direction:column;gap:4px;text-decoration:none;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 14px;min-height:118px}
+.menu a:hover{border-color:var(--blue-m)}
+.menu b{font-size:16.5px;font-weight:800;letter-spacing:-.02em}
+.menu span{color:var(--mut);font-size:13.5px;line-height:1.5}
+.menu i{font-style:normal;margin-top:auto;font-size:13.5px;font-weight:700;color:var(--blue)}
+@media (max-width:360px){ .menu{grid-template-columns:1fr} }
+.sub-note{background:var(--blue-s);border:1px solid var(--blue-l);border-radius:12px;padding:14px;font-size:14.5px;color:var(--ink2);margin-top:12px}
+.sub-note a{color:var(--blue);font-weight:700}
+.ok{color:var(--good);font-weight:700}
+.no{color:var(--warn);font-weight:700}
+tr.best td{background:var(--good-s)}
 
 .hero{padding:30px 0 4px}
 .eyebrow{font-size:13.5px;font-weight:600;color:var(--blue);letter-spacing:.02em}
@@ -124,13 +131,30 @@ tr.t td{border-top:1.5px solid var(--ink);font-weight:800}
 </head>
 <body>
 <header class="top"><div class="wrap">
-  <div class="bar"><b>유영곤</b><small>세금 계산</small></div>
-  <nav class="tabs">
-    <a href="#inherit" data-tab="inherit">상속세</a><a href="#gift" data-tab="gift">증여세</a><a href="#cgt" data-tab="cgt">양도세</a><a href="#jb" data-tab="jb">종부세</a><a href="#send" data-tab="send" class="go">종합 진단 받기</a>
-  </nav>
+  <div class="bar"><b>유영곤</b><small>세금 계산</small><a class="home-link" href="#home" id="homeLink">전체 항목</a></div>
 </div></header>
 
 <main class="wrap">
+
+<!-- ===================== 메인 ===================== -->
+<section class="pane" id="p-home">
+<div class="hero">
+  <p class="eyebrow">세금 계산</p>
+  <h1>궁금하신 <em>항목 하나</em>를 고르세요</h1>
+  <p class="lead">고르신 항목만 채우시면 됩니다. 넣으신 숫자는 이 기기에만 남고, 여러 항목을 계산하신 뒤 한 번에 보내 주셔도 됩니다.</p>
+</div>
+<div class="menu">
+  <a href="#inherit"><b>상속세</b><span>본인 상속 때와 배우자분 상속 때 두 번 나오는 세금</span><i id="m-inherit"></i></a>
+  <a href="#gift"><b>증여세</b><span>자녀에게 넘길 때 증여세 · 취득세 · 양도세</span><i id="m-gift"></i></a>
+  <a href="#cgt"><b>양도세</b><span>팔고 나서 손에 남는 돈</span><i id="m-cgt"></i></a>
+  <a href="#jb"><b>종부세</b><span>집을 들고만 있어도 매년 나가는 세금</span><i id="m-jb"></i></a>
+  <a href="#stock"><b>비상장주식 평가</b><span>세법이 보는 우리 회사 주식 값</span><i id="m-stock"></i></a>
+  <a href="#pay"><b>급여 및 배당</b><span>회사 돈을 급여로 받을지 배당으로 받을지</span><i id="m-pay"></i></a>
+  <a href="#ret"><b>임원퇴직금</b><span>퇴직금으로 인정되는 한도와 세금</span><i id="m-ret"></i></a>
+  <a href="#biz"><b>가업승계제도 검토</b><span>증여특례와 가업상속공제로 줄어드는 세금</span><i id="m-biz"></i></a>
+</div>
+<a class="togo" href="#send">계산한 숫자로 종합 자산 진단 받기 →</a>
+</section>
 
 <!-- ===================== 상속세 ===================== -->
 <section class="pane" id="p-inherit">
@@ -288,6 +312,147 @@ tr.t td{border-top:1.5px solid var(--ink);font-weight:800}
 <a class="togo" href="#send">이 숫자로 종합 자산 진단 받기 →</a>
 </section>
 
+<!-- ===================== 비상장주식 평가 ===================== -->
+<section class="pane" id="p-stock">
+<div class="hero">
+  <p class="eyebrow">비상장주식 평가</p>
+  <h1>세법이 보는 <em>우리 회사 주식 값</em></h1>
+  <p class="lead">물려주거나 넘길 때 세금은 장부 가격이 아니라 세법이 정한 방식으로 매긴 주식 값에 붙습니다. 최근 3년 이익과 순자산을 섞어 계산하고, 영업권과 최대주주 할증까지 넣습니다. 금액은 억원 단위입니다.</p>
+</div>
+
+<div class="sh"><p class="k">1 · 회사</p><h2>회사 기본 정보</h2></div>
+<div class="card">
+  <div class="q"><span class="lb">회사 규모</span><div class="seg" data-seg="c_size"><button type="button" data-v="1">중소기업</button><button type="button" data-v="2">중견기업</button><button type="button" data-v="0">그 밖</button></div></div>
+  <div class="q"><span class="lb">회사 자산 중 부동산 비중</span><div class="seg" data-seg="c_rer"><button type="button" data-v="lt50">50% 미만</button><button type="button" data-v="50">50% ~ 80%</button><button type="button" data-v="80">80% 이상</button></div></div>
+  <div class="two">
+    <div class="q"><label for="c_bizyrs">사업을 시작한 뒤<span class="h">3년 미만이면 순자산으로만 봅니다</span></label><div class="amt"><input id="c_bizyrs" data-k="c_bizyrs" type="number" inputmode="numeric" min="0" step="1" placeholder="예: 15"><span>년</span></div></div>
+    <div class="q"><label for="c_years">대표님이 경영하신 기간<span class="h">가업승계 요건에도 씁니다</span></label><div class="amt"><input id="c_years" data-k="c_years" type="number" inputmode="numeric" min="0" step="1" placeholder="예: 15"><span>년</span></div></div>
+  </div>
+  <div class="two">
+    <div class="q"><label for="c_share">대표님 지분</label><div class="amt"><input id="c_share" data-k="c_share" type="number" inputmode="decimal" min="0" max="100" step="0.1" placeholder="예: 80"><span>%</span></div></div>
+    <div class="q"><label for="c_shares">발행주식 총수<span class="h">1주당 값을 냅니다</span></label><div class="amt"><input id="c_shares" data-k="c_shares" type="number" inputmode="numeric" min="0" step="1" placeholder="예: 100000"><span>주</span></div></div>
+  </div>
+</div>
+
+<div class="sh"><p class="k">2 · 이익</p><h2>최근 3년 순이익</h2><p>손익계산서의 당기순이익입니다. 손실이면 앞에 −를 붙이세요. 가까운 해일수록 무게가 큽니다(3 : 2 : 1).</p></div>
+<div class="card">
+  <div class="q"><label for="c_p1">직전 연도</label><div class="amt"><input id="c_p1" data-k="c_p1" type="number" inputmode="decimal" step="0.1" placeholder="예: 10"><span>억원</span></div></div>
+  <div class="q"><label for="c_p2">2년 전</label><div class="amt"><input id="c_p2" data-k="c_p2" type="number" inputmode="decimal" step="0.1" placeholder="예: 8"><span>억원</span></div></div>
+  <div class="q"><label for="c_p3">3년 전</label><div class="amt"><input id="c_p3" data-k="c_p3" type="number" inputmode="decimal" step="0.1" placeholder="예: 6"><span>억원</span></div></div>
+  <div class="q"><label for="c_eadj">세법상 순손익과의 차이 (해마다)<span class="h">비용으로 인정받지 못한 금액이 있으면 더합니다. 모르시면 비워 두세요.</span></label><div class="amt"><input id="c_eadj" data-k="c_eadj" type="number" inputmode="decimal" step="0.1" placeholder="모르시면 비워 두세요"><span>억원</span></div></div>
+</div>
+
+<div class="sh"><p class="k">3 · 순자산</p><h2>재무상태표와 시가 차이</h2></div>
+<div class="card">
+  <div class="q"><label for="c_nav">자본총계</label><div class="amt"><input id="c_nav" data-k="c_nav" type="number" inputmode="decimal" step="0.1" placeholder="예: 50"><span>억원</span></div></div>
+  <div class="q"><label for="c_reup">회사 부동산 시세 − 장부가</label><div class="amt"><input id="c_reup" data-k="c_reup" type="number" inputmode="decimal" step="0.1" placeholder="없으면 비워 두세요"><span>억원</span></div></div>
+  <div class="q"><label for="c_invup">회사 투자자산 시세 − 장부가<span class="h">회사 명의 주식 · 펀드 · 출자금. 손실이면 −</span></label><div class="amt"><input id="c_invup" data-k="c_invup" type="number" inputmode="decimal" step="0.1" placeholder="없으면 비워 두세요"><span>억원</span></div></div>
+  <div class="q"><label for="c_prov">대손충당금 같은 충당금 · 준비금<span class="h">순자산에 다시 더합니다</span></label><div class="amt"><input id="c_prov" data-k="c_prov" type="number" inputmode="decimal" step="0.1" placeholder="없으면 비워 두세요"><span>억원</span></div></div>
+  <div class="q"><label for="c_prepaid">선급비용 · 개발비<span class="h">순자산에서 뺍니다</span></label><div class="amt"><input id="c_prepaid" data-k="c_prepaid" type="number" inputmode="decimal" step="0.1" placeholder="없으면 비워 두세요"><span>억원</span></div></div>
+  <div class="q"><label for="c_baddebt">받지 못할 것이 확실한 채권</label><div class="amt"><input id="c_baddebt" data-k="c_baddebt" type="number" inputmode="decimal" step="0.1" placeholder="없으면 비워 두세요"><span>억원</span></div></div>
+  <div class="q"><label for="c_taxdue">장부에 아직 없는 법인세</label><div class="amt"><input id="c_taxdue" data-k="c_taxdue" type="number" inputmode="decimal" step="0.1" placeholder="없으면 비워 두세요"><span>억원</span></div></div>
+</div>
+
+<div class="sh"><p class="k">4 · 퇴직금</p><h2>장부에 잡힌 퇴직금</h2><p>장부의 퇴직급여충당부채를 넣으시면 그 금액을 더하고 대표님과 직원 퇴직금 추계액을 뺍니다. 비우면 추계액이 이미 장부에 있다고 봅니다.</p></div>
+<div class="card">
+  <div class="q"><label for="c_retprov">장부상 퇴직급여충당부채</label><div class="amt"><input id="c_retprov" data-k="c_retprov" type="number" inputmode="decimal" step="0.1" placeholder="모르시면 비워 두세요"><span>억원</span></div></div>
+  <div class="q" data-show="c_retprov:+"><label for="c_retemp">직원 퇴직금 추계액 (대표님 몫 제외)</label><div class="amt"><input id="c_retemp" data-k="c_retemp" type="number" inputmode="decimal" step="0.1" placeholder="예: 3"><span>억원</span></div></div>
+  <div class="q"><span class="lb">정관에 임원퇴직금 규정이 있습니까</span><div class="seg" data-seg="c_rule"><button type="button" data-v="y">있습니다</button><button type="button" data-v="n">없습니다</button></div></div>
+  <div class="two">
+    <div class="q"><label for="c_sal">대표님 연봉</label><div class="amt"><input id="c_sal" data-k="c_sal" type="number" inputmode="numeric" min="0" step="100" placeholder="예: 15000"><span>만원</span></div></div>
+    <div class="q"><label for="c_ret">대표님 퇴직금 예상액<span class="h">비우면 연봉 · 경영 기간으로</span></label><div class="amt"><input id="c_ret" data-k="c_ret" type="number" inputmode="decimal" step="0.1" placeholder="비워 두셔도 됩니다"><span>억원</span></div></div>
+  </div>
+  <div class="q"><label for="c_div">곧 배당할 이익잉여금<span class="h">평가 전에 배당하면 순자산에서 빠집니다</span></label><div class="amt"><input id="c_div" data-k="c_div" type="number" inputmode="decimal" step="0.1" placeholder="없으면 비워 두세요"><span>억원</span></div></div>
+</div>
+
+<div class="sh"><p class="k">결과</p><h2>세법상 주식 값</h2></div>
+<div class="res" id="r-stock"></div>
+<a class="togo" href="#send">이 숫자로 종합 자산 진단 받기 →</a>
+</section>
+
+<!-- ===================== 급여 및 배당 ===================== -->
+<section class="pane" id="p-pay">
+<div class="hero">
+  <p class="eyebrow">급여 및 배당</p>
+  <h1>같은 돈도 <em>꺼내는 방법</em>에 따라 세금이 다릅니다</h1>
+  <p class="lead">급여는 회사 비용이라 법인세가 줄고 대표님 소득세가 늘어납니다. 배당은 법인세를 낸 뒤의 돈에서 나가고 2천만원이 넘으면 다른 소득과 합쳐집니다. 회사와 대표님 세금을 합쳐서 비교합니다.</p>
+</div>
+
+<div class="sh"><p class="k">1 · 회사</p><h2>회사 이익</h2></div>
+<div class="card">
+  <div class="q"><label for="p_profit">대표님 급여를 빼기 전 회사 이익 (한 해)<span class="h">대표님 급여를 비용으로 넣기 전의 세전 이익입니다</span></label><div class="amt"><input id="p_profit" data-k="p_profit" type="number" inputmode="decimal" step="0.1" placeholder="예: 10"><span>억원</span></div></div>
+</div>
+
+<div class="sh"><p class="k">2 · 대표님</p><h2>지금 받으시는 돈</h2></div>
+<div class="card">
+  <div class="q"><label for="p_sal">연봉</label><div class="amt"><input id="p_sal" data-k="p_sal" type="number" inputmode="numeric" min="0" step="100" placeholder="예: 12000"><span>만원</span></div></div>
+  <div class="q"><label for="p_div">한 해 배당</label><div class="amt"><input id="p_div" data-k="p_div" type="number" inputmode="numeric" min="0" step="100" placeholder="예: 5000"><span>만원</span></div></div>
+  <div class="q"><label for="p_fin">그 밖의 이자 · 배당<span class="h">예금 이자 · 다른 주식 배당. 배당과 합쳐 2천만원이 넘으면 종합과세입니다.</span></label><div class="amt"><input id="p_fin" data-k="p_fin" type="number" inputmode="numeric" min="0" step="100" placeholder="없으면 비워 두세요"><span>만원</span></div></div>
+  <div class="q"><label for="p_n">기본공제 받는 사람 수<span class="h">본인 포함. 소득이 없는 배우자 · 20세 이하 자녀 · 60세 이상 부모님</span></label><div class="amt"><input id="p_n" data-k="p_n" type="number" inputmode="numeric" min="1" step="1" placeholder="예: 3"><span>명</span></div></div>
+  <div class="q"><label for="p_step">비교할 급여 폭<span class="h">급여를 이 비율씩 올리고 내리며, 줄인 만큼 배당으로 받는 경우를 같이 봅니다</span></label><div class="amt"><input id="p_step" data-k="p_step" type="number" inputmode="numeric" min="5" max="50" step="5" placeholder="10"><span>%</span></div></div>
+</div>
+
+<div class="sh"><p class="k">결과</p><h2>회사와 대표님 세금 합계</h2></div>
+<div class="res" id="r-pay"></div>
+<a class="togo" href="#send">이 숫자로 종합 자산 진단 받기 →</a>
+</section>
+
+<!-- ===================== 임원퇴직금 ===================== -->
+<section class="pane" id="p-ret">
+<div class="hero">
+  <p class="eyebrow">임원퇴직금</p>
+  <h1>퇴직금도 <em>한도</em>를 넘으면 근로소득이 됩니다</h1>
+  <p class="lead">임원 퇴직금은 정관에 정한 만큼 줄 수 있지만, 세법이 퇴직소득으로 인정하는 금액에는 한도가 있습니다. 한도 안은 낮은 퇴직소득세, 넘는 몫은 근로소득세로 계산합니다.</p>
+</div>
+
+<div class="sh"><p class="k">1 · 급여와 근속</p><h2>퇴직 전 급여와 근속 기간</h2></div>
+<div class="card">
+  <div class="q"><label for="r_sal">퇴직 전 3년 평균 연봉</label><div class="amt"><input id="r_sal" data-k="r_sal" type="number" inputmode="numeric" min="0" step="100" placeholder="예: 15000"><span>만원</span></div></div>
+  <div class="q"><label for="r_years">임원으로 근속한 기간<span class="h">올해 퇴직한다고 보고 계산합니다</span></label><div class="amt"><input id="r_years" data-k="r_years" type="number" inputmode="numeric" min="1" step="1" placeholder="예: 20"><span>년</span></div></div>
+</div>
+
+<div class="sh"><p class="k">2 · 받을 금액</p><h2>정관에 정한 퇴직금</h2></div>
+<div class="card">
+  <div class="q"><span class="lb">정관 지급 배수<span class="h">연평균 급여 × 10% × 근속 연수 × 배수</span></span><div class="seg" data-seg="r_mult"><button type="button" data-v="1">1배</button><button type="button" data-v="2">2배</button><button type="button" data-v="3">3배</button></div></div>
+  <div class="q"><label for="r_amt">받으실 금액을 정해 두셨다면<span class="h">넣으시면 배수 대신 이 금액으로 계산합니다</span></label><div class="amt"><input id="r_amt" data-k="r_amt" type="number" inputmode="decimal" min="0" step="0.1" placeholder="비워 두셔도 됩니다"><span>억원</span></div></div>
+  <div class="q"><label for="r_yrsal">퇴직하는 해에 받는 급여<span class="h">한도를 넘는 몫이 이 급여와 합쳐 과세됩니다</span></label><div class="amt"><input id="r_yrsal" data-k="r_yrsal" type="number" inputmode="numeric" min="0" step="100" placeholder="예: 7500"><span>만원</span></div></div>
+</div>
+
+<div class="sh"><p class="k">결과</p><h2>퇴직금 세금</h2></div>
+<div class="res" id="r-ret"></div>
+<a class="togo" href="#send">이 숫자로 종합 자산 진단 받기 →</a>
+</section>
+
+<!-- ===================== 가업승계 ===================== -->
+<section class="pane" id="p-biz">
+<div class="hero">
+  <p class="eyebrow">가업승계제도 검토</p>
+  <h1>회사를 물려줄 때 <em>두 가지 길</em></h1>
+  <p class="lead">살아계실 때 주식을 넘기는 증여세 과세특례와, 돌아가신 뒤 상속세에서 빼 주는 가업상속공제를 같이 계산합니다. 회사 주식 값은 「비상장주식 평가」에서 넣으신 숫자를 그대로 씁니다.</p>
+</div>
+<div class="sub-note" id="bizNeed">먼저 <a href="#stock">비상장주식 평가</a>에서 회사 숫자를 넣어 주세요. 그 값으로 아래가 계산됩니다.</div>
+
+<div class="sh"><p class="k">1 · 요건</p><h2>대표님과 회사</h2></div>
+<div class="card">
+  <div class="q"><label for="b_age">대표님 나이<span class="h">증여특례는 60세 이상 부모님이 주실 때 됩니다</span></label><div class="amt"><input id="b_age" data-k="b_age" type="number" inputmode="numeric" min="0" step="1" placeholder="예: 65"><span>세</span></div></div>
+  <div class="q"><span class="lb">상장 여부</span><div class="seg" data-seg="c_listed"><button type="button" data-v="n">비상장</button><button type="button" data-v="y">상장</button></div></div>
+  <div class="q"><span class="lb">회사를 이을 자녀</span><div class="seg list" data-seg="c_heir"><button type="button" data-v="y">자녀나 그 배우자가 2년 넘게 회사에서 일하고 있습니다</button><button type="button" data-v="s">일한 지 2년이 안 됐거나 들어올 예정입니다</button><button type="button" data-v="n">이을 사람이 없습니다</button></div></div>
+  <div class="q"><label for="c_k">회사 자산 중 사업과 관계없는 자산 비율<span class="h">임대 부동산 · 사업과 무관한 예금 · 주식처럼 회사 사업에 쓰지 않는 자산. 이 몫은 특례와 공제를 받지 못합니다.</span></label><div class="amt"><input id="c_k" data-k="c_k" type="number" inputmode="decimal" min="0" max="100" step="1" placeholder="예: 10"><span>%</span></div></div>
+  <div class="q"><label for="z_prior">10년 안에 그 자녀에게 이미 주신 재산<span class="h">일반 증여로 넘기는 몫과 합쳐 계산합니다</span></label><div class="amt"><input id="z_prior" data-k="z_prior" type="number" inputmode="decimal" min="0" step="0.1" placeholder="없으면 비워 두세요"><span>억원</span></div></div>
+</div>
+
+<div class="sh"><p class="k">2 · 상속으로 넘길 때</p><h2>회사 말고 남기실 재산과 가족</h2></div>
+<div class="card">
+  <div class="q"><label for="z_other">회사 주식 말고 남기실 재산<span class="h">집 · 예금 · 다른 투자에서 빚을 뺀 금액</span></label><div class="amt"><input id="z_other" data-k="z_other" type="number" inputmode="decimal" min="0" step="0.1" placeholder="예: 30"><span>억원</span></div></div>
+  <div class="q"><span class="lb">배우자분</span><div class="seg" data-seg="z_sp"><button type="button" data-v="1">계십니다</button><button type="button" data-v="0">안 계십니다</button></div></div>
+  <div class="q"><label for="z_kids">자녀 수</label><div class="amt"><input id="z_kids" data-k="z_kids" type="number" inputmode="numeric" min="0" step="1" placeholder="예: 2"><span>명</span></div></div>
+</div>
+
+<div class="sh"><p class="k">결과</p><h2>제도를 쓸 때와 안 쓸 때</h2></div>
+<div class="res" id="r-biz"></div>
+<a class="togo" href="#send">이 숫자로 종합 자산 진단 받기 →</a>
+</section>
+
 <!-- ===================== 종합 진단 연결 ===================== -->
 <section class="pane" id="p-send">
 <div class="hero">
@@ -336,7 +501,7 @@ function has(id){ var x = S.v[id]; return x !== undefined && x !== null && Strin
 function n(id){ var x = parseFloat(S.v[id]); return isFinite(x) ? x : 0; }
 function nn(id){ return has(id) ? n(id) : null; }
 function sv(id){ return S.v[id]; }
-/* 자산 종합 진단 index.html 에서 그대로 가져온 것 · LAW, incTax, giftTax, finDed, inherit, secondTax, K_NONBIZ_B, cgt, cgtOwn, K_ACQ, pIsH, acqBuyRate, LIFE, lifeLeft */
+/* 자산 종합 진단 index.html 에서 그대로 가져온 것 · LAW, incTax, giftTax, finDed, inherit, secondTax, K_NONBIZ_B, cgt, cgtOwn, K_ACQ, pIsH, acqBuyRate, LIFE, lifeLeft, corpTax, K_GW, corpCalc, divGross, finTaxY, earnCred */
 var LAW = window.LAW = {
   inc: [[14e6,.06,0],[50e6,.15,1.26e6],[88e6,.24,5.76e6],[150e6,.35,15.44e6],[300e6,.38,19.94e6],[500e6,.40,25.94e6],[1e9,.42,35.94e6],[Infinity,.45,65.94e6]],   /* 소득세법 §55① · 2026-09-28 원문 확인 */
   divG: .10, divG27: .11, divGFrom: 2027, finWh: .14, localR: .10,   /* 소득세법 §17③ 단서 배당 가산율 — 2026-12-31 이전에 지급받는 배당은 100분의 10, 2027-01-01 이후 지급받는 배당부터 100분의 11 (법률 제21221호 2025.12.23 부칙 제1조 제2호 · 제14조 경과조치) · §129①2호 원천징수 14% · 지방소득세 10% · 2026-10-05 원문 확인 */
@@ -416,6 +581,99 @@ function pIsH(p){ return !!p && (p.kind === 'home' || p.kind === 'house'); }
 function acqBuyRate(p, v){ if(!pIsH(p)) return K_ACQ.buy; var r = v <= 6*E ? .01 : v <= 9*E ? Math.round((v*2/(3*E) - 3)*100)/10000 : .03; return r*(1 + K_ACQ.eduH) + K_ACQ.ntH; }
 var LIFE = {m:[[0,80.8],[40,41.9],[60,23.7],[65,19.5],[80,8.5]], f:[[0,86.6],[40,47.4],[60,28.4],[65,23.7],[80,10.9]]};
 function lifeLeft(sex, age){ var T = LIFE[sex]; if(age >= 80) return T[4][1]; for(var i = 1; i < T.length; i++){ if(age <= T[i][0]){ var a = T[i-1], b = T[i]; return a[1] + (b[1] - a[1])*(age - a[0])/(b[0] - a[0]); } } return T[4][1]; }
+function corpTax(b){ if(b <= 0) return 0; for(var i = 0; i < LAW.corpRate.length; i++){ var r = LAW.corpRate[i]; if(b <= r[0]) return b*r[1] - r[2]; } return 0; }
+var K_GW = {half:.5, rate:.10, pv:(1 - Math.pow(1.1, -5))/.1};
+function corpCalc(){
+  /* 순손익액은 각 사업연도소득에 조정을 더하고 뺀 금액이다(상증법 시행령 §56④). 입력은 손익계산서 순이익이라 그 차이(c_eadj)를 세 해에 같은 금액으로 더한다 */
+  var eadj = n('c_eadj')*E, p1 = n('c_p1')*E + eadj, p2 = n('c_p2')*E + eadj, p3 = n('c_p3')*E + eadj;
+  /* 순자산가액의 가감 (상증법 시행령 §55①② · 시행규칙 §17의2 · 시행령 §58② 단서 · 2026-10-03 원문 확인)
+     더한다 — 장부의 퇴직급여충당부채와 그 밖의 충당금·준비금(4호 · 부채에서 뺀다)
+     뺀다 — 임직원 전원의 퇴직급여 추계액(3호 다목 · 대표 몫은 아래 base 에서) · 선급비용과 개발비(2호) · 회수할 수 없는 채권(§58② 단서) · 평가기준일까지 생긴 소득의 법인세 등 가운데 장부에 없는 금액(3호 가목) */
+  var ADJ = {retprov:n('c_retprov')*E, prov:n('c_prov')*E, retemp:n('c_retemp')*E, prepaid:n('c_prepaid')*E, baddebt:n('c_baddebt')*E, taxdue:n('c_taxdue')*E};
+  /* 퇴직급여 — 조문은 장부의 충당부채를 부채에서 빼고(4호) 전원의 추계액을 부채에 더하라고 한다(3호 다목). 장부의 충당부채를 모르면 추계액만큼 이미 장부에 잡혀 있다고 본다(더 빼지 않는다 · 평가액과 세금이 크게 잡히는 쪽 · 75판).
+     「장부상 퇴직급여충당부채」를 넣으면(없으면 0) 조문대로 충당부채를 더하고 대표와 직원의 추계액을 뺀다 */
+  var provKnown = has('c_retprov');
+  var adjN = (provKnown ? ADJ.retprov - ADJ.retemp : 0) + ADJ.prov - ADJ.prepaid - ADJ.baddebt - ADJ.taxdue;
+  var nav = (n('c_nav') + n('c_reup') + n('c_invup'))*E + adjN;
+  var rer = sv('c_rer') || 'lt50', share = Math.min(Math.max(n('c_share'),0),100)/100;
+  var size = sv('c_size') || '1', years = n('c_years'), age = n('b_age');
+  var rule = sv('c_rule') === 'y';
+  var retY = new Date().getFullYear(), retY20 = Math.max(Math.min(years, retY - 2020), 0), retY12 = Math.max(2020 - Math.max(retY - years, 2012), 0);   /* 소득세법 §22③ 2012~2019년 근무분 3배 · 2020년 이후 2배 · 2011년 이전은 한도 밖 · 2026-10-02 원문 확인 */
+  var retEst = has('c_ret') ? n('c_ret')*E : (has('c_sal') && has('c_years') ? n('c_sal')*M*.1*(retY12*3 + retY20*2) : 0);
+  var div = n('c_div')*E, deathIns = n('s_corp')*E;
+  var k = has('c_k') ? Math.min(Math.max(n('c_k'),0),100)/100 : null;
+  var prem = size === '0' && !(has('c_p1') && has('c_p2') && has('c_p3') && n('c_p1') < 0 && n('c_p2') < 0 && n('c_p3') < 0) ? 1.2 : 1;   /* 최대주주 할증 20% — 중소기업 · 중견기업과 「평가기준일이 속하는 사업연도 전 3년 이내의 사업연도부터 계속하여 결손금이 있는 법인」은 제외(상증법 §63③ · 2026-10-05 원문 확인). 최근 3년 순손익이 모두 음수이면 할증하지 않는다 */
+  /* 사업개시 후 3년 미만 법인은 순자산가치로만 평가하고 영업권도 더하지 않는다 (시행령 §54④2호 · §55③2호 · 2026-10-03 원문 확인). 「법인의 사업 기간」이 비고 경영 기간이 3년 미만이면 두 방법 중 큰 금액으로 본다(세금이 크게 잡히는 쪽) */
+  var young = has('c_bizyrs') ? n('c_bizyrs') < 3 : false, youngQ = !has('c_bizyrs') && has('c_years') && years < 3;
+  var gwOn = rer !== '80' && !young;   /* 부동산 비중 80% 이상 법인은 영업권을 더하지 않는다 (시행령 §55③1호 · §54④3호) */
+  function value(navUse, dE, rr){
+    var rer0 = rr || rer, gwOn0 = rer0 !== '80' && !young;   /* rr — 부동산 비중 구간이 바뀐 뒤의 평가 (이어지는 효과 corp.rer) */
+    var W = (3*p1 + 2*p2 + p3)/6 + (dE || 0), gwRaw = young ? 0 : Math.max(Math.max(W, 0)*K_GW.half - Math.max(navUse, 0)*K_GW.rate, 0)*K_GW.pv, earn = Math.max(W, 0)/.10;
+    /* 부동산 비중 80% 이상 법인 — 2026-02-27 개정 시행령 §54④ 단서: 가중평균(순손익가치 2 · 순자산가치 3)이 순자산가치보다 낮을 때만 순자산가치로 평가한다. 가중평균이 더 높으면 ①항으로 평가한다.
+       그때 영업권을 더하는지는 조문에 답이 없다(§55③1호 「제54조제4항제1호 또는 제3호에 해당하는 경우」는 더하지 않는다 — 단서 때문에 ④항이 적용되지 않는 법인이 「해당하는 경우」인지 문구가 없다 · 해석례 못 찾음).
+       문언에 가까운 해석 가운데 세금이 크게 잡히는 쪽 — ④항이 적용되지 않으면 영업권을 더한다 (2026-10-05 · 종전에는 더하지 않았다) */
+    var on80 = rer0 === '80' && (2*earn + 3*Math.max(navUse, 0))/5 >= Math.max(navUse, 0);
+    var gw = gwOn0 || on80 ? gwRaw : 0, nvg = Math.max(navUse + gw, 0), navP = Math.max(navUse, 0), v;   /* 영업권은 자산가액에 합산한 뒤(시행령 §55③) 부채를 빼고, 그 순자산가액이 0원 이하이면 0원(§55①). 자본잠식 법인은 영업권을 더한 뒤에 0으로 막는다 — 종전에는 0으로 막은 뒤 영업권을 더해 평가액이 생겼다(2026-10-05 · 실제 자료 시험에서 발견) */   /* 자기자본은 영업권을 더하기 전의 순자산가액으로 본다 */
+    if(rer0 === '80') v = on80 ? (2*earn + 3*nvg)/5 : navP;
+    else { v = rer0 === '50' ? (2*earn + 3*nvg)/5 : (3*earn + 2*nvg)/5; v = Math.max(v, nvg*.8); }
+    if(young) v = navP; else if(youngQ) v = Math.max(v, navP);
+    return {earn:earn, nav:nvg, gw:gw, navRaw:navUse, val:v*prem};
+  }
+  var retNoRule = has('c_sal') && has('c_years') ? n('c_sal')*M*.1*years : 0;   /* 상증법 시행규칙 §17의2 3호 다목은 규정 유무를 묻지 않고 퇴직급여 추계액을 부채에 더한다 · 규정이 없는 임원은 법인세법 시행령 §44④2호(1년 총급여의 10분의 1 × 근속연수)로 본다 · 2026-10-02 조문 원문 확인, 이 연결을 적은 예규는 못 읽음 */
+  var baseRaw = nav - (provKnown ? (rule ? retEst : retNoRule) : 0), base = Math.max(baseRaw, 0), b0 = baseRaw < 0 ? baseRaw : Math.max(base - div, 0);   /* b0 — 자본잠식이면 음수 그대로 넘겨 영업권을 더한 뒤 0으로 막는다 */
+  var now = value(b0), before = value(baseRaw < 0 ? baseRaw : base);
+  var withRule = value(Math.max(nav - (provKnown ? retEst : (rule ? 0 : Math.max(retEst - retNoRule, 0))) - div, 0));   /* 규정을 갖추면 추계액이 늘어나는 만큼만 더 뺀다 */
+  var atDeath = value(b0 + deathIns);   // 법인이 받을 사망보험금은 순자산에 더한다 (시행규칙 §17의2 1호)
+  var S1 = now.val*share, Srule = withRule.val*share;
+  var shMin = sv('c_listed') === 'y' ? .2 : .4;   /* 최대주주등 지분 40%(상장법인 20%) 이상을 10년 이상 계속 보유 (상증법 시행령 §15③1호가목 · 조특법 §30의6 이 준용) · 2026-10-05 상장 20% 반영 */
+  var eligible = age >= 60 && years >= 10 && size !== '0' && share >= shMin;   /* 가업승계 증여특례 (조특법 §30의6 — 60세 이상 부모) */
+  var heir = sv('c_heir') || null, inhOk = years >= 10 && size !== '0' && share >= shMin && heir !== 'n';   /* 가업상속공제 (상증법 §18의2 · 시행령 §15③) — 피상속인 나이 요건은 없고 가업을 이을 상속인이 있어야 한다 */
+  var lim = years >= 30 ? 600*E : years >= 20 ? 400*E : 300*E;
+  function spTax(x){ var bizPart = k != null ? x*(1 - k) : x, other = x - bizPart; var b = Math.max(Math.min(bizPart, lim) - 10*E, 0); return Math.min(b, 120*E)*.10 + Math.max(b - 120*E, 0)*.20 + genAdd(Math.max(bizPart - lim, 0) + other); }   /* 한도를 넘는 몫과 사업무관자산 몫은 일반 증여다 — 증여재산공제 5천만원(상증법 §53 · 성년 자녀 한 명이 받는 것으로 본다)과 신고세액공제 3%(§69②)를 적용한다. 특례 부분에는 신고세액공제가 없다(조특법 §30의6④ → §30의5⑪) · 2026-10-05 */
+  /* 일반 증여 몫은 10년 안에 같은 사람에게서 받은 증여와 합산한다(상증법 §47② · §53 후단 — 공제는 10년 합쳐 5천만원). 화면의 종전 증여 가운데 배우자 몫을 뺀 금액을 이 주식을 받는 한 사람이 받았다고 본다(세금이 크게 잡히는 쪽) · 2026-10-05 */
+  var Pg = Math.max(n('h_prior') - (sv('b_sp') === '1' ? n('h_priorsp') : 0), 0)*E;
+  function genAdd(x){ x = Math.max(x, 0); return x > 0 ? (giftTax(Math.max(Pg + x - .5*E, 0)) - giftTax(Math.max(Pg - .5*E, 0)))*.97 : 0; }
+  function genTax(x){ return genAdd(x); }
+  /* 해마다의 세후 이익이 dE 만큼, 순자산이 dN 만큼 달라질 때의 상속 시점 지분 평가액 (상증법 시행령 §54 가중평균 — 위 value 와 같은 식) */
+  function sim(dE, dN, o){ return value(b0 + deathIns + (dN || 0), dE, o && o.rer).val*share; }
+  /* 상속 시점이 아닌 때(매각·청산)의 평가액 — 법인이 받을 사망보험금을 더하지 않는다 */
+  function simLive(dE, dN){ return value(b0 + (dN || 0), dE).val*share; }
+  var profUse = has('c_profit') ? n('c_profit')*E : null; if(profUse == null && has('c_p1') && n('c_p1') > 0){ var lo = n('c_p1')*E, hi = lo*2; for(var bi = 0; bi < 60; bi++){ var md = (lo + hi)/2; if(md - corpTax(md)*1.1 < n('c_p1')*E) lo = md; else hi = md; } profUse = hi; }
+  var retUse = nn('c_retained') != null ? n('c_retained')*E : (has('c_nav') ? Math.max(n('c_nav'), 0)*E : null);   /* 이익잉여금 입력이 없으면 자본총계 전부를 이익잉여금으로 본다 — 꺼낼 때 세금이 크게 잡히는 쪽 (추정) */
+  return {spTaxF:spTax, sim:sim, simLive:simLive, adj:ADJ, adjN:adjN, gw:now.gw, eadj:eadj, navBook:n('c_nav')*E, profitUse:profUse, profEstd:!has('c_profit') && profUse != null, retUse:retUse, retEstd:nn('c_retained') == null && retUse != null, retNo:rule ? retEst : retNoRule, young:young, youngQ:youngQ, provKnown:provKnown, provAsm:!provKnown && (rule ? retEst : retNoRule) > 0, cur:now, S:S1, S0:before.val*share, Srule:Srule, Sdeath:atDeath.val*share, share:share, rule:rule, retEst:retEst, eligible:eligible, inhOk:inhOk, heir:heir, lim:lim, prem:prem, size:size, years:years, rer:rer, k:k, div:div,
+    gen:genTax(S1), sp:spTax(S1), genRule:genTax(Srule), spRule:spTax(Srule),
+    loan:n('c_loan')*E, gaji:n('c_gaji')*E, salary:has('c_sal') ? n('c_sal')*M : null,
+    export:sv('c_export') || null, trouble:has('c_trouble') ? sv('c_trouble') === 'y' : null,
+    profit:has('c_profit') ? n('c_profit')*E : null, invest:has('c_invest') ? n('c_invest')*E : null, rnd:has('c_rnd') ? sv('c_rnd') === 'y' : null, empChange:nn('c_empchg'), industry:sv('c_industry') || null, sales:nn('c_sales') != null ? n('c_sales')*E : null, retained:nn('c_retained') != null ? n('c_retained')*E : null,
+    kidShare:has('c_kidshare') ? n('c_kidshare')/100 : null, famCorp:has('c_famcorp') ? sv('c_famcorp') === 'y' : null, estate:has('c_estate') ? n('c_estate')*E : null,
+    emp:nn('c_emp'), listed:has('c_listed') ? sv('c_listed') === 'y' : null, nominee:has('c_nominee') ? sv('c_nominee') === 'y' : null, spExec:has('c_spexec') ? sv('c_spexec') === 'y' : null};
+}
+function divGross(y){ return (y != null ? y : new Date().getFullYear()) >= LAW.divGFrom ? LAW.divG27 : LAW.divG; }
+function finTaxY(B0, F, Dg, y){ var s0 = LAW.finSep*M; B0 = Math.max(B0 || 0, 0); F = Math.max(F || 0, 0); Dg = Math.min(Math.max(Dg || 0, 0), F); var cmp = incTax(B0) + F*LAW.finWh; if(F <= s0) return cmp*(1 + LAW.localR); var ex = F - s0, G = Math.min(Dg, ex)*divGross(y), gen = incTax(B0 + ex + G) + s0*LAW.finWh; return Math.max(gen - G, cmp)*(1 + LAW.localR); }
+function earnCred(Tw, W){ if(!(Tw > 0) || !(W > 0)) return 0; var c = Tw <= 130*M ? Tw*.55 : 71.5*M + (Tw - 130*M)*.30;
+  var cap = W <= 3300*M ? 74*M : W <= 7000*M ? Math.max(74*M - (W - 3300*M)*.008, 66*M) : W <= 12000*M ? Math.max(66*M - (W - 7000*M)*.5, 50*M) : Math.max(50*M - (W - 12000*M)*.5, 20*M); return Math.min(c, cap); }
+/* 자산 종합 진단 rules_inc.js 에서 그대로 가져온 것 · K_YEAR, K_EARN_DED_CAP, K_LOCAL, earnDed, retTax, retLim3 */
+var K_YEAR = new Date().getFullYear();
+var K_EARN_DED_CAP = 2000*M;
+var K_LOCAL = 0.10;
+function earnDed(g){ // 소득세법 §47①
+  if(!(g > 0)) return 0;
+  var d = g <= 500*M ? g*0.70 : g <= 1500*M ? 350*M + (g - 500*M)*0.40 : g <= 4500*M ? 750*M + (g - 1500*M)*0.15 : g <= 1*E ? 1200*M + (g - 4500*M)*0.05 : 1475*M + (g - 1*E)*0.02;
+  return Math.min(d, K_EARN_DED_CAP, g);
+}
+function retTax(A, yrs){ // 소득세법 §48①·§55② 퇴직소득세, 지방소득세 포함
+  if(!(A > 0) || !(yrs > 0)) return 0;
+  var y = Math.max(Math.ceil(yrs), 1);
+  var yd = y <= 5 ? 100*M*y : y <= 10 ? 500*M + 200*M*(y - 5) : y <= 20 ? 1500*M + 250*M*(y - 10) : 4000*M + 300*M*(y - 20);
+  var conv = Math.max(A - Math.min(yd, A), 0)*12/y;
+  var cd = conv <= 800*M ? conv : conv <= 7000*M ? 800*M + (conv - 800*M)*0.60 : conv <= 1*E ? 4520*M + (conv - 7000*M)*0.55 : conv <= 3*E ? 6170*M + (conv - 1*E)*0.45 : 15170*M + (conv - 3*E)*0.35;
+  return incTax(Math.max(conv - cd, 0))/12*y*(1 + K_LOCAL);
+}
+function retLim3(W, y){
+  var Y = K_YEAR, st = Y - y, m0 = Math.max(Math.min(2012, Y) - st, 0), m1 = Math.max(Math.min(2020, Y) - Math.max(st, 2012), 0), m2 = Math.max(Y - Math.max(st, 2020), 0);
+  m0 = Math.min(m0, y); var lim = W*.1*(m1*3 + m2*2);
+  return {m0:m0, m1:m1, m2:m2, lim:lim, pmax:(m1 + m2) > 0 ? lim*y/(m1 + m2) : 0, c0:W*.1*y};
+}
 /* 자산 종합 진단 rules_re.js 에서 그대로 가져온 것 · NOWY, K_JB_FMV, K_JB_DED1, K_JB_T2, K_JB_T3, K_JB_AGE, K_JB_HOLD, K_JB_CRCAP, K_JB_NT, K_PT_FMV, K_PT_FMV1, K_PT, K_PT1, tbl, tblRate, fmvOf, ptax, jbCalc, jbHouse */
 var NOWY = new Date().getFullYear();
 var K_JB_FMV = 0.60;
@@ -474,7 +732,8 @@ function jbHouse(m, hs){
 var KEY = 'taxcheck-v1';
 var V = {i_sp:'1', i_spmode:'legal', i_grandminor:'0', dis:[],
   g_rel:'kid', g_minor:'0', g_wed:'0', g_type:'cash', g_kind:'home', g_heavy:'0', g_one:'0', g_adjbuy:'0', g_sur:'0',
-  c_kind:'home', c_joint:'0', c_one:'1', c_adjbuy:'0', c_sur:'0', c_vacant:'0', hs:[{owner:'self'}]};
+  c_kind:'home', c_joint:'0', c_one:'1', c_adjbuy:'0', c_sur:'0', c_vacant:'0', hs:[{owner:'self'}],
+  c_size:'1', c_rer:'lt50', c_rule:'n', r_mult:'2', c_listed:'n', c_heir:'y', z_sp:'1'};
 try{ var s0 = JSON.parse(localStorage.getItem(KEY) || 'null'); if(s0 && typeof s0 === 'object') V = Object.assign(V, s0); }catch(_){}
 function $(id){ return document.getElementById(id); }
 function f(k){ var x = parseFloat(V[k]); return isFinite(x) && x > 0 ? x : 0; }
@@ -622,6 +881,94 @@ function showJb(){
   el.innerHTML = h;
 }
 
+/* ---------- 비상장주식 평가 · 진단 도구 corpCalc 그대로 — 화면의 c_ 입력 이름이 진단 도구 입력 이름과 같다 ---------- */
+function corpV(){ var v = {}; Object.keys(V).forEach(function(k){ if(/^c_/.test(k) && given(k)) v[k] = String(V[k]); }); if(given('b_age')) v.b_age = String(V.b_age); if(given('z_prior')) v.h_prior = String(V.z_prior); return v; }
+function calcStock(){ if(!given('c_nav') && !given('c_p1')) return null; S.v = corpV(); return corpCalc(); }
+var RER_NM = {lt50:'순손익가치 3 : 순자산가치 2, 순자산가치의 80%가 하한', '50':'순손익가치 2 : 순자산가치 3, 순자산가치의 80%가 하한', '80':'순자산가치 (가중평균이 더 높으면 가중평균)'};
+function showStock(){
+  var c = calcStock(), el = $('r-stock');
+  if(!c){ el.innerHTML = '<p class="empty">자본총계나 순이익을 넣으시면 여기에 바로 나옵니다.</p>'; return; }
+  var u = c.cur, sh = f('c_shares'), B = [['회사 주식 전체 가치', won(u.val), !(c.share > 0)]];
+  if(c.share > 0) B.push(['대표님 지분 ' + pct(c.share) + ' 가치', won(c.S), 1]);
+  if(sh > 0) B.push(['1주당', Math.round(u.val/sh).toLocaleString() + '원']);
+  var h = big(B), prem = V.c_size === '0';
+  var L = [['순손익가치', '최근 3년 순이익 가중평균 ÷ 10%', won(u.earn)], ['순자산가치', '자본총계 + 시가 차이 + 조정' + (u.gw > 0 ? ' + 영업권' : ''), won(u.nav)]];
+  if(u.gw > 0) L.push(['그중 영업권', '초과이익을 5년 할인한 금액', won(u.gw)]);
+  L.push(['평가 방식', c.young ? '사업 3년 미만이라 순자산가치로만' : RER_NM[V.c_rer] || RER_NM.lt50, '']);
+  if(prem) L.push(['최대주주 할증', '중소 · 중견기업이 아니면 20%를 더합니다', '+ 20%']);
+  L.push(['주식 전체 가치', '', won(u.val), 1]);
+  h += '<details open><summary>평가 계산 보기</summary>' + rows(L) + '</details>';
+  if(c.share > 0 && c.gen > 0) h += '<p class="due">지금 대표님 지분 전부를 성년 자녀 한 명에게 일반 증여하면 증여세는 ' + won(c.gen) + '입니다. 가업승계 특례를 쓰면 어떻게 달라지는지는 <a href="#biz">가업승계제도 검토</a>에서 보실 수 있습니다.</p>';
+  h += '<div class="note"><p>평가 기준일 직전 결산 숫자로 계산합니다. 회사가 가진 부동산은 시세(감정가)로 다시 봅니다. 3년 연속 손실이거나 사업 3년 미만이면 계산 방식이 달라지고, 특정 업종이나 휴업 · 청산 중인 회사는 따로 봅니다.</p></div>';
+  el.innerHTML = h;
+}
+
+/* ---------- 급여 및 배당 ----------
+   대표님 세금 = 진단 도구 finTaxY(금융소득 종합과세 비교 · 배당 가산) − 근로소득세액공제 earnCred, 근로소득공제 earnDed. 회사 세금 = corpTax(급여를 뺀 이익) × 1.1.
+   같은 돈(급여 + 배당)을 급여 비율만 바꿔 꺼낼 때를 나란히 둔다 */
+function calcPay(){
+  var P = f('p_profit')*E, W = f('p_sal')*M, D = f('p_div')*M, F0 = f('p_fin')*M, nP = Math.max(Math.round(f('p_n')) || 1, 1), st = (given('p_step') ? f('p_step') : 10)/100;
+  if(!(W + D > 0)) return null;
+  function personal(w, d){ var base = Math.max(w - earnDed(w) - 150*M*nP, 0), t = finTaxY(base, d + F0, d, K_YEAR); return Math.max(t - earnCred(incTax(base), w)*1.1, 0); }
+  function corp(w){ return P > 0 ? corpTax(Math.max(P - w, 0))*1.1 : 0; }
+  function sc(w, d){ var ct = corp(w), pt = personal(w, d); return {w:w, d:d, ct:ct, pt:pt, tot:ct + pt, ok:!(P > 0) || d <= Math.max(P - w - ct, 0) + 1}; }
+  var cur = sc(W, D), X = W + D, list = [], seen = {};
+  [-2, -1, 0, 1, 2].forEach(function(k){ var w = Math.min(Math.max(Math.round(W*(1 + k*st)/M)*M, 0), X); if(seen[w]) return; seen[w] = 1; list.push(sc(w, X - w)); });
+  var best = list.filter(function(s){ return s.ok; }).sort(function(a, b){ return a.tot - b.tot; })[0];
+  return {P:P, W:W, D:D, cur:cur, list:list, best:best};
+}
+function showPay(){
+  var c = calcPay(), el = $('r-pay');
+  if(!c){ el.innerHTML = '<p class="empty">연봉이나 배당을 넣으시면 여기에 바로 나옵니다.</p>'; return; }
+  var u = c.cur, h = big([['회사 법인세<small>지방소득세 포함</small>', c.P > 0 ? won(u.ct) : '회사 이익을 넣어 주세요'], ['대표님 소득세<small>지방소득세 포함</small>', won(u.pt)], ['합계', won(u.tot), 1]]);
+  if(!u.ok) h += '<p class="due">배당이 법인세를 낸 뒤 남는 이익보다 큽니다. 지난해까지 쌓인 이익잉여금이 있어야 이만큼 배당할 수 있습니다.</p>';
+  h += '<details open><summary>같은 돈을 다르게 꺼낼 때</summary><table>' + c.list.map(function(s){ return '<tr' + (c.best && s.w === c.best.w ? ' class="best"' : '') + '><td>급여 ' + won(s.w) + ' · 배당 ' + won(s.d) + '<small>법인세 ' + won(s.ct) + ' · 소득세 ' + won(s.pt) + (s.ok ? '' : ' · 배당 재원 부족') + (s.w === c.W ? ' · 지금' : '') + '</small></td><td>' + won(s.tot) + '</td></tr>'; }).join('') + '</table></details>';
+  if(c.best && c.best.w !== c.W) h += '<p class="due">4대보험과 건강보험료를 빼고 보면, 이 다섯 가운데서는 급여 ' + won(c.best.w) + ' · 배당 ' + won(c.best.d) + '일 때 합계가 ' + won(u.tot - c.best.tot) + ' 적습니다.</p>';
+  h += '<div class="note"><p>4대보험과 건강보험료는 넣지 않았습니다. 급여를 올리면 회사와 대표님이 내는 4대보험이 같이 늘고, 배당 같은 급여 밖 소득이 한 해 2천만원을 넘으면 건강보험료가 따로 붙습니다. 실제 판단에는 이 몫까지 같이 봐야 합니다.</p><p>대표님 소득세는 근로소득공제 · 기본공제 · 근로소득세액공제만 넣었습니다. 연금 · 보험료 · 신용카드 같은 다른 공제는 넣지 않았습니다.</p></div>';
+  el.innerHTML = h;
+}
+
+/* ---------- 임원퇴직금 · 진단 도구 retLim3(한도) · retTax(퇴직소득세) 그대로. 한도 넘는 몫은 퇴직하는 해 급여에 더해 근로소득세 차이로 계산 ---------- */
+function calcRet(){
+  var W = f('r_sal')*M, y = Math.round(f('r_years')); if(!(W > 0) || !(y > 0)) return null;
+  var mult = parseFloat(V.r_mult) || 2, A = given('r_amt') ? f('r_amt')*E : W*.1*y*mult, L = retLim3(W, y);
+  var within = L.pmax > 0 ? Math.min(A, L.pmax) : A, ex = Math.max(A - within, 0), rt = retTax(within, y);
+  var Y = f('r_yrsal')*M, b0 = Math.max(Y - earnDed(Y) - 150*M, 0), b1 = Math.max(Y + ex - earnDed(Y + ex) - 150*M, 0), et = ex > 0 ? (incTax(b1) - incTax(b0))*1.1 : 0;
+  return {W:W, y:y, mult:mult, A:A, L:L, within:within, ex:ex, rt:rt, et:et, net:A - rt - et};
+}
+function showRet(){
+  var c = calcRet(), el = $('r-ret');
+  if(!c){ el.innerHTML = '<p class="empty">평균 연봉과 근속 기간을 넣으시면 여기에 바로 나옵니다.</p>'; return; }
+  var h = big([['퇴직금', won(c.A)], ['세금<small>퇴직소득세 + 한도 넘는 몫의 근로소득세 · 지방소득세 포함</small>', won(c.rt + c.et)], ['손에 남는 돈', won(c.net), 1]]);
+  var L = [['정관 기준 퇴직금', given('r_amt') ? '정해 두신 금액' : '연평균 급여 × 10% × ' + c.y + '년 × ' + c.mult + '배', won(c.A)],
+    ['퇴직소득으로 인정되는 한도', '2012~2019년 근속 ' + c.L.m1 + '년 × 3배 · 2020년 이후 ' + c.L.m2 + '년 × 2배' + (c.L.m0 ? ' · 2011년까지 ' + c.L.m0 + '년은 한도 없이 인정' : ''), won(c.L.pmax || c.A)],
+    ['한도 안 퇴직소득세', '근속연수공제 · 환산급여공제 뒤 세율', won(c.rt)]];
+  if(c.ex > 0) L.push(['한도를 넘는 ' + won(c.ex), '퇴직하는 해 급여와 합쳐 근로소득세', won(c.et)]);
+  L.push(['실효세율', '', c.A > 0 ? pct((c.rt + c.et)/c.A) : '−', 1]);
+  h += '<details open><summary>퇴직금 계산 보기</summary>' + rows(L) + '</details>';
+  h += '<div class="note"><p>2019년까지 근속분 한도는 원래 2019년 말 기준 3년 평균 급여로 계산합니다. 여기서는 넣으신 평균 연봉 하나로 계산했습니다.</p><p>정관에 임원퇴직금 규정이 없거나 규정보다 많이 주면, 그 몫은 회사 비용으로 인정받지 못할 수 있습니다. 규정을 미리 정비해 두는 것이 먼저입니다.</p></div>';
+  el.innerHTML = h;
+}
+
+/* ---------- 가업승계 · 진단 도구 corpCalc 의 증여특례(sp) · 일반 증여(gen) · 가업상속공제 한도(lim) · 요건(eligible · inhOk)과 inherit 의 bizDed 를 그대로 쓴다 ---------- */
+function calcBiz(){
+  var c = calcStock(); if(!c || !(c.S > 0)) return null;
+  var k = given('c_k') ? Math.min(f('c_k'), 100)/100 : 0, sp = V.z_sp === '1', kids = Math.max(Math.round(f('z_kids')), 0), other = f('z_other')*E;
+  var base = {sp:sp, n:kids, re:0, fin:0, finNet:0, etc:other + c.Sdeath, debt:0, prior:0, priorTax:0, priorBase:0, priorSp:0, minorY:0, old:0, disY:0, house:0, spGet:null};
+  var t0 = inherit(base).t, bd = c.inhOk ? Math.min(c.Sdeath*(1 - k), c.lim) : 0, t1 = bd > 0 ? inherit(Object.assign({}, base, {bizDed:bd})).t : t0;
+  var shMin = V.c_listed === 'y' ? .2 : .4;
+  var req = [['대표님 60세 이상', f('b_age') >= 60, '증여특례만'], ['10년 이상 경영', f('c_years') >= 10, '둘 다'], ['중소기업 · 중견기업', V.c_size !== '0', '둘 다'], ['대표님과 가족 지분 ' + Math.round(shMin*100) + '% 이상', f('c_share')/100 >= shMin, '둘 다'], ['회사를 이을 자녀', V.c_heir !== 'n', '둘 다']];
+  return {c:c, k:k, t0:t0, t1:t1, bd:bd, req:req};
+}
+function showBiz(){
+  var b = calcBiz(), el = $('r-biz'); $('bizNeed').hidden = !!b;
+  if(!b){ el.innerHTML = '<p class="empty">비상장주식 평가에서 자본총계 · 순이익 · 대표님 지분을 넣으시면 여기에 바로 나옵니다.</p>'; return; }
+  var c = b.c, h = big([['지금 일반 증여로 넘기면<small>대표님 지분 ' + won(c.S) + ' · 성년 자녀 한 명</small>', won(c.gen)], ['증여세 과세특례로 넘기면<small>10억원 공제 뒤 10% · 120억원 넘는 몫 20%' + (b.k > 0 ? ' · 사업과 무관한 자산 몫은 일반 증여' : '') + '</small>', c.eligible ? won(c.sp) : '요건 미충족'], ['상속 때 가업상속공제 없이<small>회사 말고 남기실 재산 포함</small>', won(b.t0)], ['가업상속공제를 받으면<small>공제 ' + won(b.bd) + ' · 한도 ' + won(c.lim) + '</small>', c.inhOk ? won(b.t1) : '요건 미충족', 1]]);
+  h += '<details open><summary>요건 보기</summary>' + rows(b.req.map(function(r){ return [r[0], r[2], r[1] ? '<span class="ok">충족</span>' : '<span class="no">미충족</span>']; })) + '</details>';
+  h += '<div class="note"><p>회사 업종이 가업상속공제 대상 업종인지도 봐야 합니다. 특례나 공제를 받은 뒤에는 정해진 기간 동안 업종 · 지분 · 고용을 유지해야 하고, 어기면 줄었던 세금을 이자와 함께 다시 냅니다.</p><p>증여특례로 넘긴 주식은 기간과 관계없이 나중 상속 때 상속재산에 다시 더해지고, 그때 낸 증여세를 상속세에서 뺍니다. 상속 계산은 본인 상속만 보고 배우자분 상속은 넣지 않았습니다.</p></div>';
+  el.innerHTML = h;
+}
+
 /* ---------- 줄 입력 (장애인 가족 · 주택) ---------- */
 function renderRows(){
   $('disRows').innerHTML = (V.dis || []).map(function(d, i){ var y = disYears(d);
@@ -656,6 +1003,18 @@ function bundle(){
     memo.push('[양도세 계산] ' + won(c.price) + '에 팔 때 양도세 ' + won(c.r.tax) + (c.r.note ? ' (' + c.r.note + ')' : '')); }
   if(j){ L.push(['종부세', '주택 ' + j.hs.length + '채 · 연 ' + won(j.t)]);
     memo.push('[종부세 계산] 공시가격 ' + j.hs.map(function(p){ return won(p.pub) + '(' + {self:'본인', spouse:'배우자', joint:'공동'}[p.owner] + ')'; }).join(', ') + ' → 연 ' + won(j.t) + ' (공시가격만 있어 진단 도구 부동산 칸에 넣지 않았습니다)'); }
+  var st = calcStock(), py = calcPay(), rt = calcRet(), bz = calcBiz();
+  if(st){ var cv = corpV(); Object.keys(cv).forEach(function(k){ if(k !== 'c_shares' && k !== 'h_prior') put(k, cv[k]); }); put('b_type', 'corp');   /* c_ 입력 이름은 진단 도구 입력 이름과 같다 */
+    L.push(['비상장주식', '회사 전체 ' + won(st.cur.val) + (st.share > 0 ? ' · 대표님 지분 ' + won(st.S) : '')]);
+    memo.push('[비상장주식 평가] 회사 전체 ' + won(st.cur.val) + ' · 순손익가치 ' + won(st.cur.earn) + ' · 순자산가치 ' + won(st.cur.nav) + (st.share > 0 ? ' · 대표님 지분 ' + pct(st.share) + ' ' + won(st.S) : '') + (f('c_shares') > 0 ? ' · 1주당 ' + Math.round(st.cur.val/f('c_shares')).toLocaleString() + '원' : '')); }
+  if(py){ if(!st) put('b_type', 'corp'); put('c_sal', V.p_sal); put('c_divy', V.p_div); if(f('p_fin')) put('i_fin', V.p_fin);
+    L.push(['급여 및 배당', '급여 ' + won(py.W) + ' · 배당 ' + won(py.D) + ' · 세금 합계 ' + won(py.cur.tot)]);
+    memo.push('[급여 및 배당] 회사 이익 ' + won(py.P) + ' · 급여 ' + won(py.W) + ' · 배당 ' + won(py.D) + ' → 법인세 ' + won(py.cur.ct) + ' · 소득세 ' + won(py.cur.pt) + (py.best && py.best.w !== py.W ? ' · 비교 중 가장 적은 것: 급여 ' + won(py.best.w) + ' · 배당 ' + won(py.best.d) + ' 합계 ' + won(py.best.tot) : '')); }
+  if(rt){ L.push(['임원퇴직금', won(rt.A) + ' · 세금 ' + won(rt.rt + rt.et)]);
+    memo.push('[임원퇴직금] 평균 연봉 ' + won(rt.W) + ' · 근속 ' + rt.y + '년 · 퇴직금 ' + won(rt.A) + ' · 한도 ' + won(rt.L.pmax || rt.A) + ' → 퇴직소득세 ' + won(rt.rt) + (rt.ex > 0 ? ' · 한도 초과 ' + won(rt.ex) + ' 근로소득세 ' + won(rt.et) : '')); }
+  if(bz){ if(given('b_age')) put('b_age', V.b_age); if(V.z_sp) put('b_sp', V.z_sp); if(given('z_kids')) put('b_kids', V.z_kids);
+    L.push(['가업승계', '일반 증여 ' + won(bz.c.gen) + ' · 특례 ' + (bz.c.eligible ? won(bz.c.sp) : '요건 미충족') + ' · 상속 공제 후 ' + (bz.c.inhOk ? won(bz.t1) : '요건 미충족')]);
+    memo.push('[가업승계] 지분 ' + won(bz.c.S) + ' · 일반 증여세 ' + won(bz.c.gen) + ' · 증여특례 ' + (bz.c.eligible ? won(bz.c.sp) : '요건 미충족') + ' · 상속세 공제 없이 ' + won(bz.t0) + ' / 가업상속공제 후 ' + (bz.c.inhOk ? won(bz.t1) : '요건 미충족') + ' · 회사 밖 재산 ' + won(f('z_other')*E)); }
   if(String(V.memo || '').trim()) memo.unshift('고민: ' + String(V.memo).trim());
   put('memo', memo.join('\n')); if(String(V.name || '').trim()) put('r_name', String(V.name).trim() + ' 님');
   return {L:L, data:{v:v, props:props, tags:{}, from:'taxcheck', at:new Date().toISOString()}, memo:memo};
@@ -684,12 +1043,16 @@ function render(){
   document.querySelectorAll('[data-seg]').forEach(function(sg){ var k = sg.dataset.seg; sg.querySelectorAll('button').forEach(function(b){ b.classList.toggle('on', String(V[k]) === b.dataset.v); }); });
   document.querySelectorAll('[data-show]').forEach(function(el){ el.hidden = !cond(el.dataset.show); });
   document.querySelectorAll('.card').forEach(function(cd){ var qs = [].filter.call(cd.children, function(x){ return x.classList.contains('q'); }), vis = qs.filter(function(x){ return !x.hidden; }); qs.forEach(function(x){ x.classList.toggle('lastq', x === vis[vis.length - 1]); }); });   /* 숨긴 질문이 끝에 있으면 남는 밑줄을 지운다 */
-  showInh(); showGift(); showCgt(); showJb(); showSend();
+  showInh(); showGift(); showCgt(); showJb(); showStock(); showPay(); showRet(); showBiz(); showSend(); badges();
 }
-var TABS = ['inherit', 'gift', 'cgt', 'jb', 'send'];
-function route(){ var t = (location.hash || '').slice(1); if(TABS.indexOf(t) < 0) t = 'inherit';
+/* 메인 화면 — 계산한 항목에 결과 한 줄 */
+function badges(){ var a = calcInh(), g = calcGift(), c = calcCgt(), j = calcJb(), s = calcStock(), p = calcPay(), r = calcRet(), b = calcBiz();
+  var B = {inherit:a && won(a.t1 + a.t2), gift:g && won(g.gift + g.acq + (g.cg ? g.cg.tax : 0)), cgt:c && won(c.r.tax), jb:j && '연 ' + won(j.t), stock:s && won(s.share > 0 ? s.S : s.cur.val), pay:p && won(p.cur.tot), ret:r && '세금 ' + won(r.rt + r.et), biz:b && (b.c.inhOk ? '공제 후 ' + won(b.t1) : '요건 확인')};
+  Object.keys(B).forEach(function(k){ var el = $('m-' + k); if(el) el.textContent = B[k] ? '계산함 · ' + B[k] : ''; }); }
+var TABS = ['home', 'inherit', 'gift', 'cgt', 'jb', 'stock', 'pay', 'ret', 'biz', 'send'];
+function route(){ var t = (location.hash || '').slice(1); if(TABS.indexOf(t) < 0) t = 'home';
   TABS.forEach(function(x){ $('p-' + x).classList.toggle('on', x === t); });
-  document.querySelectorAll('[data-tab]').forEach(function(a){ a.classList.toggle('on', a.dataset.tab === t); });
+  $('homeLink').hidden = t === 'home';
   if(t === 'send') showSend(); window.scrollTo(0, 0); }
 function fill(){ document.querySelectorAll('[data-k]').forEach(function(el){ var k = el.dataset.k; if(V[k] == null) return; if(el.type === 'checkbox') el.checked = !!V[k]; else el.value = V[k]; }); }
 function save(){ try{ var o = Object.assign({}, V); delete o.ag1; localStorage.setItem(KEY, JSON.stringify(o)); }catch(_){} }
@@ -705,7 +1068,7 @@ document.addEventListener('click', function(ev){ var b = ev.target.closest('butt
   var sg = b.closest('[data-seg]'); if(sg){ V[sg.dataset.seg] = b.dataset.v; save(); render(); } });
 window.addEventListener('hashchange', route);
 fill(); renderRows(); render(); route();
-window.__tax = {V:V, calcInh:calcInh, calcGift:calcGift, calcCgt:calcCgt, calcJb:calcJb, bundle:bundle, render:render, renderRows:renderRows};
+window.__tax = {V:V, calcStock:calcStock, calcPay:calcPay, calcRet:calcRet, calcBiz:calcBiz, calcInh:calcInh, calcGift:calcGift, calcCgt:calcCgt, calcJb:calcJb, bundle:bundle, render:render, renderRows:renderRows};
 })();
 </script>
 </body>
