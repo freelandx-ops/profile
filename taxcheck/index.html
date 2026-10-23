@@ -388,6 +388,7 @@ tr.t td{border-top:1.5px solid var(--ink);font-weight:800}
   <div class="q"><label for="p_sal">연봉</label><div class="amt"><input id="p_sal" data-k="p_sal" type="number" inputmode="numeric" min="0" step="100" placeholder="예: 12000"><span>만원</span></div></div>
   <div class="q"><label for="p_div">한 해 배당</label><div class="amt"><input id="p_div" data-k="p_div" type="number" inputmode="numeric" min="0" step="100" placeholder="예: 5000"><span>만원</span></div></div>
   <div class="q"><label for="p_fin">그 밖의 이자 · 배당<span class="h">예금 이자 · 다른 주식 배당. 배당과 합쳐 2천만원이 넘으면 종합과세입니다.</span></label><div class="amt"><input id="p_fin" data-k="p_fin" type="number" inputmode="numeric" min="0" step="100" placeholder="없으면 비워 두세요"><span>만원</span></div></div>
+  <div class="q"><label for="p_age">대표님 나이<span class="h">60세가 넘으면 국민연금 보험료를 내지 않습니다</span></label><div class="amt"><input id="p_age" data-k="p_age" type="number" inputmode="numeric" min="0" step="1" placeholder="예: 55"><span>세</span></div></div>
   <div class="q"><label for="p_n">기본공제 받는 사람 수<span class="h">본인 포함. 소득이 없는 배우자 · 20세 이하 자녀 · 60세 이상 부모님</span></label><div class="amt"><input id="p_n" data-k="p_n" type="number" inputmode="numeric" min="1" step="1" placeholder="예: 3"><span>명</span></div></div>
   <div class="q"><label for="p_step">비교할 급여 폭<span class="h">급여를 이 비율씩 올리고 내리며, 줄인 만큼 배당으로 받는 경우를 같이 봅니다</span></label><div class="amt"><input id="p_step" data-k="p_step" type="number" inputmode="numeric" min="5" max="50" step="5" placeholder="10"><span>%</span></div></div>
 </div>
@@ -501,7 +502,7 @@ function has(id){ var x = S.v[id]; return x !== undefined && x !== null && Strin
 function n(id){ var x = parseFloat(S.v[id]); return isFinite(x) ? x : 0; }
 function nn(id){ return has(id) ? n(id) : null; }
 function sv(id){ return S.v[id]; }
-/* 자산 종합 진단 index.html 에서 그대로 가져온 것 · LAW, incTax, giftTax, finDed, inherit, secondTax, K_NONBIZ_B, cgt, cgtOwn, K_ACQ, pIsH, acqBuyRate, LIFE, lifeLeft, corpTax, K_GW, corpCalc, divGross, finTaxY, earnCred */
+/* 자산 종합 진단 index.html 에서 그대로 가져온 것 · LAW, incTax, giftTax, finDed, inherit, secondTax, K_NONBIZ_B, cgt, cgtOwn, K_ACQ, pIsH, acqBuyRate, LIFE, lifeLeft, corpTax, K_GW, corpCalc, divGross, finTaxY, earnCred, K_HICAP_W, hiWage, hiCapO, hiDivG, K_NP, npWage */
 var LAW = window.LAW = {
   inc: [[14e6,.06,0],[50e6,.15,1.26e6],[88e6,.24,5.76e6],[150e6,.35,15.44e6],[300e6,.38,19.94e6],[500e6,.40,25.94e6],[1e9,.42,35.94e6],[Infinity,.45,65.94e6]],   /* 소득세법 §55① · 2026-09-28 원문 확인 */
   divG: .10, divG27: .11, divGFrom: 2027, finWh: .14, localR: .10,   /* 소득세법 §17③ 단서 배당 가산율 — 2026-12-31 이전에 지급받는 배당은 100분의 10, 2027-01-01 이후 지급받는 배당부터 100분의 11 (법률 제21221호 2025.12.23 부칙 제1조 제2호 · 제14조 경과조치) · §129①2호 원천징수 14% · 지방소득세 10% · 2026-10-05 원문 확인 */
@@ -652,6 +653,12 @@ function divGross(y){ return (y != null ? y : new Date().getFullYear()) >= LAW.d
 function finTaxY(B0, F, Dg, y){ var s0 = LAW.finSep*M; B0 = Math.max(B0 || 0, 0); F = Math.max(F || 0, 0); Dg = Math.min(Math.max(Dg || 0, 0), F); var cmp = incTax(B0) + F*LAW.finWh; if(F <= s0) return cmp*(1 + LAW.localR); var ex = F - s0, G = Math.min(Dg, ex)*divGross(y), gen = incTax(B0 + ex + G) + s0*LAW.finWh; return Math.max(gen - G, cmp)*(1 + LAW.localR); }
 function earnCred(Tw, W){ if(!(Tw > 0) || !(W > 0)) return 0; var c = Tw <= 130*M ? Tw*.55 : 71.5*M + (Tw - 130*M)*.30;
   var cap = W <= 3300*M ? 74*M : W <= 7000*M ? Math.max(74*M - (W - 3300*M)*.008, 66*M) : W <= 12000*M ? Math.max(66*M - (W - 7000*M)*.5, 50*M) : Math.max(50*M - (W - 12000*M)*.5, 20*M); return Math.min(c, cap); }
+var K_HICAP_W = 9183480, K_HICAP_O = 4591740;
+function hiWage(W){ return Math.min(W/12*LAW.hiRate, K_HICAP_W)*12*(1 + LAW.ltcOfHi); }
+function hiCapO(x){ return Math.min(x, K_HICAP_O*12*(1 + LAW.ltcOfHi)); }
+function hiDivG(fin, div, y){ return div > 0 && fin > LAW.finSep*M ? Math.min(div, fin - LAW.finSep*M)*divGross(y) : 0; }
+var K_NP = .0475, K_NPCAP = 6590000;
+function npWage(W){ return Math.min(W/12, K_NPCAP)*12*K_NP*2; }
 /* 자산 종합 진단 rules_inc.js 에서 그대로 가져온 것 · K_YEAR, K_EARN_DED_CAP, K_LOCAL, earnDed, retTax, retLim3 */
 var K_YEAR = new Date().getFullYear();
 var K_EARN_DED_CAP = 2000*M;
@@ -904,14 +911,17 @@ function showStock(){
 }
 
 /* ---------- 급여 및 배당 ----------
-   대표님 세금 = 진단 도구 finTaxY(금융소득 종합과세 비교 · 배당 가산) − 근로소득세액공제 earnCred, 근로소득공제 earnDed. 회사 세금 = corpTax(급여를 뺀 이익) × 1.1.
-   같은 돈(급여 + 배당)을 급여 비율만 바꿔 꺼낼 때를 나란히 둔다 */
+   진단 도구 corpStruct 의 한 해 계산(ev1)과 같은 식 — 회사 과세표준 = 이익 − 급여 − 건강보험료 · 국민연금 회사 몫, 대표님 과세표준에서 본인 몫 보험료를 뺀다(소득세법 §51의3 · §52①).
+   건강보험료 hiWage(보수, 상한 포함 · 회사와 본인 합계) · 보수 외 소득 건강보험료 hiCapO · hiDivG(2천만원 초과분, 배당 가산 포함) · 국민연금 npWage(60세 미만 · 상한 포함 · 회사와 본인 합계).
+   대표님 세금 = finTaxY(금융소득 종합과세 비교 · 배당 가산) − 근로소득세액공제 earnCred. 같은 돈(급여 + 배당)을 급여 비율만 바꿔 꺼낼 때를 나란히 둔다 */
 function calcPay(){
-  var P = f('p_profit')*E, W = f('p_sal')*M, D = f('p_div')*M, F0 = f('p_fin')*M, nP = Math.max(Math.round(f('p_n')) || 1, 1), st = (given('p_step') ? f('p_step') : 10)/100;
+  var P = f('p_profit')*E, W = f('p_sal')*M, D = f('p_div')*M, F0 = f('p_fin')*M, nP = Math.max(Math.round(f('p_n')) || 1, 1), st = (given('p_step') ? f('p_step') : 10)/100, old = given('p_age') && f('p_age') >= 60;
   if(!(W + D > 0)) return null;
-  function personal(w, d){ var base = Math.max(w - earnDed(w) - 150*M*nP, 0), t = finTaxY(base, d + F0, d, K_YEAR); return Math.max(t - earnCred(incTax(base), w)*1.1, 0); }
-  function corp(w){ return P > 0 ? corpTax(Math.max(P - w, 0))*1.1 : 0; }
-  function sc(w, d){ var ct = corp(w), pt = personal(w, d); return {w:w, d:d, ct:ct, pt:pt, tot:ct + pt, ok:!(P > 0) || d <= Math.max(P - w - ct, 0) + 1}; }
+  var h = LAW.hiRate*(1 + LAW.ltcOfHi);
+  function hiX(d){ var fs = F0 + d, o = fs > 1000*M ? fs + hiDivG(fs, d, K_YEAR) : 0; return o > LAW.hiOther*M ? hiCapO((o - LAW.hiOther*M)*h) : 0; }
+  function sc(w, d){ var hw = hiWage(w), np = old ? 0 : npWage(w), cb = Math.max(P - w - hw/2 - np/2, 0), ct = P > 0 ? corpTax(cb)*1.1 : 0;
+    var base = Math.max(w - earnDed(w) - hw/2 - np/2 - 150*M*nP, 0), pt = Math.max(finTaxY(base, d + F0, d, K_YEAR) - earnCred(incTax(base), w)*1.1, 0), hx = hiX(d);
+    return {w:w, d:d, ct:ct, pt:pt, hi:hw + hx, np:np, tot:ct + pt + hw + hx + np, ok:!(P > 0) || d <= Math.max(cb - ct, 0) + 1}; }
   var cur = sc(W, D), X = W + D, list = [], seen = {};
   [-2, -1, 0, 1, 2].forEach(function(k){ var w = Math.min(Math.max(Math.round(W*(1 + k*st)/M)*M, 0), X); if(seen[w]) return; seen[w] = 1; list.push(sc(w, X - w)); });
   var best = list.filter(function(s){ return s.ok; }).sort(function(a, b){ return a.tot - b.tot; })[0];
@@ -920,11 +930,11 @@ function calcPay(){
 function showPay(){
   var c = calcPay(), el = $('r-pay');
   if(!c){ el.innerHTML = '<p class="empty">연봉이나 배당을 넣으시면 여기에 바로 나옵니다.</p>'; return; }
-  var u = c.cur, h = big([['회사 법인세<small>지방소득세 포함</small>', c.P > 0 ? won(u.ct) : '회사 이익을 넣어 주세요'], ['대표님 소득세<small>지방소득세 포함</small>', won(u.pt)], ['합계', won(u.tot), 1]]);
+  var u = c.cur, h = big([['회사 법인세<small>지방소득세 포함</small>', c.P > 0 ? won(u.ct) : '회사 이익을 넣어 주세요'], ['대표님 소득세<small>지방소득세 포함</small>', won(u.pt)], ['건강보험료<small>장기요양 포함 · 회사와 대표님 몫 합계 · 배당에 붙는 몫 포함</small>', won(u.hi)], ['국민연금<small>회사와 대표님 몫 합계' + (u.np > 0 ? '' : ' · 60세 이상이라 없음') + '</small>', won(u.np)], ['한 해 세금과 보험료 합계', won(u.tot), 1]]);
   if(!u.ok) h += '<p class="due">배당이 법인세를 낸 뒤 남는 이익보다 큽니다. 지난해까지 쌓인 이익잉여금이 있어야 이만큼 배당할 수 있습니다.</p>';
-  h += '<details open><summary>같은 돈을 다르게 꺼낼 때</summary><table>' + c.list.map(function(s){ return '<tr' + (c.best && s.w === c.best.w ? ' class="best"' : '') + '><td>급여 ' + won(s.w) + ' · 배당 ' + won(s.d) + '<small>법인세 ' + won(s.ct) + ' · 소득세 ' + won(s.pt) + (s.ok ? '' : ' · 배당 재원 부족') + (s.w === c.W ? ' · 지금' : '') + '</small></td><td>' + won(s.tot) + '</td></tr>'; }).join('') + '</table></details>';
-  if(c.best && c.best.w !== c.W) h += '<p class="due">4대보험과 건강보험료를 빼고 보면, 이 다섯 가운데서는 급여 ' + won(c.best.w) + ' · 배당 ' + won(c.best.d) + '일 때 합계가 ' + won(u.tot - c.best.tot) + ' 적습니다.</p>';
-  h += '<div class="note"><p>4대보험과 건강보험료는 넣지 않았습니다. 급여를 올리면 회사와 대표님이 내는 4대보험이 같이 늘고, 배당 같은 급여 밖 소득이 한 해 2천만원을 넘으면 건강보험료가 따로 붙습니다. 실제 판단에는 이 몫까지 같이 봐야 합니다.</p><p>대표님 소득세는 근로소득공제 · 기본공제 · 근로소득세액공제만 넣었습니다. 연금 · 보험료 · 신용카드 같은 다른 공제는 넣지 않았습니다.</p></div>';
+  h += '<details open><summary>같은 돈을 다르게 꺼낼 때</summary><table>' + c.list.map(function(s){ return '<tr' + (c.best && s.w === c.best.w ? ' class="best"' : '') + '><td>급여 ' + won(s.w) + ' · 배당 ' + won(s.d) + '<small>법인세 ' + won(s.ct) + ' · 소득세 ' + won(s.pt) + ' · 건강보험료 ' + won(s.hi) + ' · 국민연금 ' + won(s.np) + (s.ok ? '' : ' · 배당 재원 부족') + (s.w === c.W ? ' · 지금' : '') + '</small></td><td>' + won(s.tot) + '</td></tr>'; }).join('') + '</table></details>';
+  if(c.best && c.best.w !== c.W) h += '<p class="due">이 다섯 가운데서는 급여 ' + won(c.best.w) + ' · 배당 ' + won(c.best.d) + '일 때 합계가 ' + won(u.tot - c.best.tot) + ' 적습니다.</p>';
+  h += '<div class="note"><p>급여에는 건강보험료(장기요양 포함)와 국민연금이 회사와 대표님 양쪽에 붙고, 회사 몫은 회사 비용이 되어 법인세가 줄어듭니다. 둘 다 월 상한이 있어 급여가 아주 높으면 더 늘지 않습니다. 배당 같은 급여 밖 소득이 한 해 2천만원을 넘으면 그 넘는 몫에 건강보험료가 따로 붙습니다. 국민연금은 나중에 연금으로 돌려받는 돈이라 순수한 비용과는 성격이 다릅니다.</p><p>법인 대표님은 보통 고용보험 · 산재보험 대상이 아니라 넣지 않았습니다. 대표님 소득세는 근로소득공제 · 기본공제 · 보험료 공제 · 근로소득세액공제까지 넣었고 신용카드 같은 다른 공제는 넣지 않았습니다.</p></div>';
   el.innerHTML = h;
 }
 
