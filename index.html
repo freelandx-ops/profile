@@ -250,6 +250,12 @@ button{font-family:inherit}
 .card2 b{font-size:15.5px;line-height:1.45}
 .card2 em{font-style:normal;font-size:13px;color:var(--mut)}
 .card2:hover{border-color:var(--blue-l)}
+.taxbox{display:flex;flex-direction:column;gap:6px;margin:0 0 16px;padding:18px;border-radius:14px;background:var(--blue-s);border:1px solid var(--blue-l);text-decoration:none;color:var(--ink)}
+.taxbox .tg{font-size:12px;font-weight:700;color:var(--blue)}
+.taxbox b{font-size:17px;line-height:1.4}
+.taxbox em{font-style:normal;font-size:13.5px;color:var(--ink2);line-height:1.6}
+.taxbox i{font-style:normal;font-weight:700;font-size:14.5px;color:var(--blue);margin-top:4px}
+.taxbox:hover{background:#fff;border-color:var(--blue)}
 
 /* 1년 */
 .subh2{font-size:clamp(20px,4.8vw,26px);line-height:1.4;font-weight:800;letter-spacing:-.03em;margin:56px 0 8px}
@@ -743,6 +749,7 @@ footer .sns a{text-decoration:none;color:var(--ink2);font-weight:600}
 <section class="sec gray" id="reads"><div class="wrap">
   <h2>바로 쓰실 수 있는 자료</h2>
   <p class="sub">신청 없이 바로 열립니다.</p>
+  <a class="taxbox" href="https://freelandx-ops.github.io/profile/taxcheck/" target="_blank" rel="noopener"><span class="tg">세금 계산</span><b>세금 여덟 가지를 한 곳에서 계산해 보세요</b><em>상속세 · 증여세 · 양도세 · 종부세 · 비상장주식 평가 · 급여 및 배당 · 임원퇴직금 · 가업승계</em><i>계산하러 가기 <span aria-hidden="true">→</span></i></a>
   <div class="rail" id="toolRail"><div class="track">
     <a class="card2" href="https://freelandx-ops.github.io/profile/taxcheck/" target="_blank" rel="noopener"><span class="tg">세금 계산</span><b>세금 여덟 가지를 한 곳에서</b><em>상속 · 증여 · 양도 · 종부세부터 회사 주식 · 퇴직금까지</em></a>
     <a class="card2" href="https://freelandx-ops.github.io/profile/inherit/" target="_blank" rel="noopener"><span class="tg">상속세</span><b>상속세 계산기</b><em>낼 현금이 얼마나 모자라는지</em></a>
