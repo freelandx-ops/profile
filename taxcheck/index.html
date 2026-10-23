@@ -889,7 +889,9 @@ function showJb(){
 }
 
 /* ---------- 비상장주식 평가 · 진단 도구 corpCalc 그대로 — 화면의 c_ 입력 이름이 진단 도구 입력 이름과 같다 ---------- */
-function corpV(){ var v = {}; Object.keys(V).forEach(function(k){ if(/^c_/.test(k) && given(k)) v[k] = String(V[k]); }); if(given('b_age')) v.b_age = String(V.b_age); if(given('z_prior')) v.h_prior = String(V.z_prior); return v; }
+/* 진단 도구 회사 입력 이름만 — 양도세 화면 입력(c_kind · c_price …)도 c_ 로 시작해 섞이던 것을 2026-10-23 시험 전송에서 찾았다 */
+var CORP_IDS = ['c_size','c_rer','c_bizyrs','c_years','c_share','c_p1','c_p2','c_p3','c_eadj','c_nav','c_reup','c_invup','c_prov','c_prepaid','c_baddebt','c_taxdue','c_retprov','c_retemp','c_rule','c_sal','c_ret','c_div','c_listed','c_heir','c_k'];
+function corpV(){ var v = {}; CORP_IDS.forEach(function(k){ if(given(k)) v[k] = String(V[k]); }); if(given('b_age')) v.b_age = String(V.b_age); if(given('z_prior')) v.h_prior = String(V.z_prior); return v; }
 function calcStock(){ if(!given('c_nav') && !given('c_p1')) return null; S.v = corpV(); return corpCalc(); }
 var RER_NM = {lt50:'순손익가치 3 : 순자산가치 2, 순자산가치의 80%가 하한', '50':'순손익가치 2 : 순자산가치 3, 순자산가치의 80%가 하한', '80':'순자산가치 (가중평균이 더 높으면 가중평균)'};
 function showStock(){
