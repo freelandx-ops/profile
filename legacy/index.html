@@ -596,6 +596,7 @@ br.dk{display:none}
 .role ul{margin:0 0 6px;padding:0;list-style:none;display:grid;gap:6px}
 .role li{font-size:15.5px;color:var(--ink2);padding-left:13px;position:relative;line-height:1.55}
 .role li::before{content:"";position:absolute;left:0;top:.7em;width:5px;height:5px;border-radius:50%;background:var(--blue-m)}
+.stps .stp{align-content:start}
 </style>
 </head>
 <body>
@@ -726,11 +727,11 @@ br.dk{display:none}
   <h2>법인 대표</h2>
   <p class="ps">비상장주식이 상속재산의 대부분을 차지하는 경우</p>
   <ol class="pl4">
-    <li><i>1</i>기본 설계</li>
-    <li><i>2</i>비상장주식 평가</li>
-    <li><i>3</i>법인자금 유동화</li>
-    <li><i>4</i>지분 사전증여</li>
-    <li><i>5</i>상속세 납부재원</li>
+    <li><i>0</i>기본 설계</li>
+    <li><i>1</i>비상장주식 평가</li>
+    <li><i>2</i>법인자금 유동화</li>
+    <li><i>3</i>지분 증여</li>
+    <li><i>4</i>상속과 납부재원</li>
   </ol>
 </div></section>
 
@@ -739,11 +740,12 @@ br.dk{display:none}
   <h2><span class="nb">급여·배당·퇴직금을 설계하면 주식가치가 낮아지고,</span> <span class="nb">낮아진 주식가치가 <em>상속·증여세</em>를 낮춥니다.</span></h2>
   <p class="lead"><span class="nb">회사 이익을 대표 개인에게 옮기는 방식이 곧 주식 평가액을 정합니다.</span> <br class="dk"><span class="nb">이익을 어떻게 꺼내느냐, 언제 지분을 넘기느냐가</span> <span class="nb">한 계산 안에서 이어집니다.</span></p>
   <div class="plan">
-    <div class="phead"><span class="ptag">FLOW</span><b>세 단계가 한 계산으로 이어집니다</b><em>임원 퇴직금 20억원 예시</em></div>
-    <div class="stps s3">
-      <div class="stp"><span class="cir"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h18v11H3zM3 11h18M15 15h3"/></svg></span><b>1 법인자금 유동화</b><span>퇴직금 20억원을 퇴직소득으로 수령</span><span class="big">세금 4억 1,500만원</span><span>상여로 받을 때보다 4억 7,000만원 적습니다</span></div>
-      <div class="stp"><span class="cir"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V11M10 20V5M16 20v-7M22 20H2"/></svg></span><b>2 주식가치 하락</b><span>퇴직금이 손금으로 처리되어 순손익과 순자산이 감소</span><span class="big">180억원 → 112억원</span><span>주식 평가액 68억원 감소</span></div>
-      <div class="stp"><span class="cir"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h14l-3-3M20 16H6l3 3"/></svg></span><b>3 지분 이전</b><span>평가액이 낮아진 사업연도에 지분 증여</span><span class="big">세액 34억원 감소</span><span>증여 후 10년이 지나면 상속재산 합산에서도 제외</span></div>
+    <div class="phead"><span class="ptag">FLOW</span><b>네 단계가 한 계산으로 이어집니다</b><em>임원 퇴직금 20억원 예시</em></div>
+    <div class="stps s4">
+      <div class="stp"><span class="cir"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h8l4 4v14H7zM15 3v4h4M10 12h6M10 16h6"/></svg></span><b>1 평가</b><span>최근 3년 순손익 각 20억원 회사</span><span class="big">주식 180억원</span><span>순손익가치 3 : 순자산가치 2로 평가</span></div>
+      <div class="stp"><span class="cir"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h18v11H3zM3 11h18M15 15h3"/></svg></span><b>2 유동화</b><span>퇴직금 20억원을 퇴직소득으로 수령</span><span class="big">세금 4억 1,500만원</span><span>상여로 받을 때보다 4억 7,000만원 적습니다</span></div>
+      <div class="stp"><span class="cir"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V11M10 20V5M16 20v-7M22 20H2"/></svg></span><b>3 증여</b><span>퇴직금이 손금으로 처리되어 평가액 180억원 → 112억원</span><span class="big">과세가액 68억원 감소</span><span>그해에 지분을 증여, 최고세율 기준 세액 34억원 감소</span></div>
+      <div class="stp"><span class="cir"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h14l-3-3M20 16H6l3 3"/></svg></span><b>4 상속</b><span>증여 후 10년이 지나면 상속재산 합산에서 제외</span><span class="big">납부재원 확보</span><span>남는 상속세는 법인 계약 종신보험으로 준비</span></div>
     </div>
   </div>
   <div class="roles">
@@ -773,9 +775,9 @@ br.dk{display:none}
   <p class="fn2">가정: 최근 3년 평균 급여 5억원, 근속 25년, 2012년 이후 근무분 12억원이 소득세법상 임원 퇴직소득 한도 이내, 최근 3년 순손익 각 20억원, 퇴직금 지급 사업연도 순손익 0원, 최고세율 50% 구간 기준. 근거: 소득세법 제14조, 제22조, 제48조, 제55조, 상속세 및 증여세법 제13조, 시행령 제54조, 국민건강보험법 시행령 제41조. 각 단계의 상세는 다음 장부터 이어집니다.</p>
 </div></section>
 
-<section class="pg" id="c1" data-part="c" data-n="비상장주식 평가"><div class="wrap">
-  <p class="kick"><span class="no"></span>법인 대표 <em>비상장주식 평가</em></p>
-  <h2><span class="nb">순이익 20억원인 회사의 주식은 세법상 <em>180억원</em>입니다.</span> <br class="dk"><span class="nb">상속세는 이 금액에서 계산을 시작합니다.</span></h2>
+<section class="pg" id="c1" data-part="c" data-n="1 비상장주식 평가"><div class="wrap">
+  <p class="kick"><span class="no"></span>법인 대표 <em>1단계 · 비상장주식 평가</em></p>
+  <h2><span class="nb">순이익 20억원인 회사의 주식은 세법상 <em>180억원</em>입니다.</span> <br class="dk"><span class="nb">이익이 쌓이는 만큼 평가액도 올라갑니다.</span></h2>
   <p class="lead"><span class="nb">비상장주식은 상속세 및 증여세법의 보충적 평가방법으로 평가하며,</span> <span class="nb">이 평가액이 증여세와 상속세의 과세가액이 됩니다.</span> <br class="dk"><span class="nb">평가액은 사업연도별 손익과 자산 구성에 따라 달라집니다.</span></p>
   <div class="two">
     <div class="eq"><b>보충적 평가방법</b><span class="f">(1주당 순손익가치 × 3 + 1주당 순자산가치 × 2) ÷ 5</span>순손익가치는 최근 3년 순손익을 3:2:1로 가중평균한 금액을 10%로 환원한 값입니다. 평가액은 순자산가치의 80%를 하한으로 합니다.</div>
@@ -791,8 +793,8 @@ br.dk{display:none}
   <p class="fn2">가정: 최근 3년 순손익 각 20억원, 자산 중 부동산 비율 50% 미만. 근거: 상속세 및 증여세법 제63조, 시행령 제54조.</p>
 </div></section>
 
-<section class="pg" id="c2" data-part="c" data-n="법인자금 유동화와 평가액 관리"><div class="wrap">
-  <p class="kick"><span class="no"></span>법인 대표 <em>법인자금 유동화와 평가액 관리</em></p>
+<section class="pg" id="c2" data-part="c" data-n="2 법인자금 유동화"><div class="wrap">
+  <p class="kick"><span class="no"></span>법인 대표 <em>2단계 · 법인자금 유동화</em></p>
   <h2><span class="nb">퇴직금 20억원, 상여로 받으면 세금 8억 8,500만원,</span> <span class="nb">퇴직소득이면 4억 1,500만원.</span> <br class="dk"><span class="nb">정관 규정 하나가 <em>4억 7,000만원</em>을 가릅니다.</span></h2>
   <p class="lead"><span class="nb">법인 이익을 대표 개인에게 이전하는 경로는 급여, 배당, 퇴직금입니다.</span> <br class="dk"><span class="nb">소득 구분에 따라 세후 수령액이 달라지고,</span> <span class="nb">퇴직금은 손금으로 처리되어 주식 평가액도 함께 낮춥니다.</span></p>
   <div class="two">
@@ -812,9 +814,9 @@ br.dk{display:none}
   <p class="fn2">가정: 최근 3년 평균 급여 5억원, 근속 25년, 2012년 이후 근무분 12억원이 소득세법상 임원 퇴직소득 한도 이내, 퇴직금 지급 사업연도 순손익 0원, 지방소득세 제외. 근거: 소득세법 제22조, 제55조, 상속세 및 증여세법 시행령 제54조.</p>
 </div></section>
 
-<section class="pg" id="c3" data-part="c" data-n="지분 사전증여와 가업승계"><div class="wrap">
-  <p class="kick"><span class="no"></span>법인 대표 <em>지분 사전증여와 가업승계</em></p>
-  <h2><span class="nb">평가액이 낮아진 해를 놓치면</span> <br class="dk"><span class="nb">상속세 <em>34억원</em>을 더 냅니다.</span></h2>
+<section class="pg" id="c3" data-part="c" data-n="3 지분 증여"><div class="wrap">
+  <p class="kick"><span class="no"></span>법인 대표 <em>3단계 · 지분 증여</em></p>
+  <h2><span class="nb">주식가치가 낮아진 해에 증여하면 과세가액이 <em>68억원</em> 줄어듭니다.</span> <br class="dk"><span class="nb">가업승계 특례를 받으면 10억원 공제 후 세율 10%입니다.</span></h2>
   <p class="lead"><span class="nb">같은 지분이라도 증여 시점의 평가액에 따라 세액이 달라집니다.</span> <br class="dk"><span class="nb">증여 후 10년이 지나면 상속재산 합산에서도 제외됩니다.</span></p>
   <div class="two">
     <div class="tline" style="margin:0">
@@ -838,8 +840,8 @@ br.dk{display:none}
   <p class="fn2">가정: 법인자금 유동화 장의 평가액 감소분 68억원, 최고세율 50% 구간 기준. 근거: 상속세 및 증여세법 제13조, 제18조의2, 조세특례제한법 제30조의6.</p>
 </div></section>
 
-<section class="pg" id="c4" data-part="c" data-n="상속세 납부재원(법인)"><div class="wrap">
-  <p class="kick"><span class="no"></span>법인 대표 <em>상속세 납부재원</em></p>
+<section class="pg" id="c4" data-part="c" data-n="4 상속과 납부재원"><div class="wrap">
+  <p class="kick"><span class="no"></span>법인 대표 <em>4단계 · 상속과 납부재원</em></p>
   <h2><span class="nb">상속세를 낼 현금이 없으면 지분을 넘겨야 합니다.</span> <br class="dk"><span class="nb">넥슨 유족은 지주회사 지분 <em>29.3%</em>를 국가에 물납했습니다.</span></h2>
   <p class="lead"><span class="nb">계약자와 수익자를 법인, 피보험자를 대표로 하는 계약입니다.</span> <br class="dk"><span class="nb">재직 중에는 유고 대비 재원으로,</span> <span class="nb">퇴직 시에는 퇴직금으로 지급됩니다.</span></p>
   <div class="cmp3">
