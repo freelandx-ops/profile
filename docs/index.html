@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>자료실 | 유영곤</title>
+<meta property="og:type" content="website">
+<meta property="og:title" content="자료실 | 유영곤">
+<meta property="og:image" content="https://freelandx-ops.github.io/profile/og-logo-260916c.jpg">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<!-- 프로필 하단 「자료실」 한 곳으로 묶은 내부용 목록. 원본: 004. marketing/개인프로필/자료실/index.html (2026-10-26).
+     새 문서를 배포하면 아래 DOCS 배열에 한 줄 더한다. 프로필 푸터는 이 페이지 링크 하나만 둔다. -->
+<style>
+:root{--bg:#FFFFFF;--bg2:#F4F6F9;--ink:#111827;--ink2:#374151;--mut:#6B7280;--line:#E3E6EB;--blue:#1428A0;--blue-d:#0D1B6E;--blue-l:#A9B6EE;--blue-s:#EEF1FB}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg2);color:var(--ink);font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:16px;line-height:1.6;word-break:keep-all;letter-spacing:-.01em}
+.wrap{max-width:860px;margin:0 auto;padding:0 16px}
+header{background:linear-gradient(180deg,#0D1B6E 0%,#1428A0 100%);color:#fff;padding:36px 0 30px}
+header h1{margin:0 0 6px;font-size:28px;font-weight:800;letter-spacing:-.03em}
+header p{margin:0;font-size:15px;opacity:.85}
+header a{color:#fff;font-size:14px;opacity:.8;text-decoration:none;display:inline-block;margin-bottom:18px}
+main{padding:22px 0 60px}
+.grp{margin-top:22px}
+.grp h2{font-size:14px;font-weight:700;color:var(--blue);letter-spacing:.04em;margin:0 0 10px}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-bottom:10px;display:grid;gap:10px}
+@media(min-width:680px){.card{grid-template-columns:1fr auto;align-items:center}}
+.card b{display:block;font-size:17.5px;font-weight:700}
+.card span{display:block;font-size:14.5px;color:var(--ink2)}
+.card code{display:block;font-size:12.5px;color:var(--mut);margin-top:4px;word-break:break-all;font-family:inherit}
+.act{display:flex;gap:8px}
+.act a,.act button{font:inherit;font-size:14px;font-weight:600;padding:8px 14px;border-radius:8px;cursor:pointer;text-decoration:none;white-space:nowrap}
+.act a{background:var(--blue);color:#fff;border:1px solid var(--blue)}
+.act button{background:#fff;color:var(--blue);border:1px solid var(--blue-l)}
+.act button.ok{background:var(--blue-s);border-color:var(--blue)}
+.tag{display:inline-block;font-size:12px;font-weight:700;color:var(--blue-d);background:var(--blue-s);border-radius:5px;padding:1px 7px;margin-left:6px;vertical-align:2px}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a href="../">&larr; 프로필로</a>
+  <h1>자료실</h1>
+  <p>상황에 맞는 자료를 골라 링크를 복사해 보내실 수 있습니다.</p>
+</div></header>
+<main><div class="wrap" id="list"></div></main>
+<script>
+var BASE='https://freelandx-ops.github.io/profile/';
+var DOCS=[
+  {g:'법인 대표에게 보내는 자료',items:[
+    {t:'법인컨설팅 제안서',d:'급여·배당·퇴직금, 주식 가치, 상속·승계, 노무까지 영역 열한 개',p:'corp/'},
+    {t:'법인 제안서 영역 골라 보내기',d:'보낼 영역만 체크해 주소를 만듭니다',p:'corp/link.html',tag:'내부용'},
+    {t:'기업재해보장보험 소개서',d:'산재 현황, 중대재해처벌법, 배상 재원, 계약 설계와 산재보험료 점검',p:'group/'},
+    {t:'비즈니스 컨설팅',d:'매출과 조직의 병목을 다루는 경영 컨설팅 소개',p:'business/'}
+  ]},
+  {g:'상담 전에 보내는 자료',items:[
+    {t:'첫 상담 전 질문지',d:'상담 전에 받아 두는 기본 정보',p:'intake/'},
+    {t:'비밀유지확약서',d:'자료를 받기 전에 먼저 드리는 확약서',p:'intake/nda.html'}
+  ]}
+];
+var host=document.getElementById('list');
+DOCS.forEach(function(g){
+  var sec=document.createElement('section');sec.className='grp';
+  var h=document.createElement('h2');h.textContent=g.g;sec.appendChild(h);
+  g.items.forEach(function(it){
+    var url=BASE+it.p,c=document.createElement('div');c.className='card';
+    c.innerHTML='<div><b></b><span></span><code></code></div><div class="act"><button type="button">링크 복사</button><a target="_blank" rel="noopener">열기</a></div>';
+    var b=c.querySelector('b');b.textContent=it.t;
+    if(it.tag){var s=document.createElement('em');s.className='tag';s.textContent=it.tag;s.style.fontStyle='normal';b.appendChild(s)}
+    c.querySelector('span').textContent=it.d;c.querySelector('code').textContent=url;c.querySelector('a').href=url;
+    var btn=c.querySelector('button');
+    btn.addEventListener('click',function(){
+      var done=function(){btn.textContent='복사됨';btn.classList.add('ok');setTimeout(function(){btn.textContent='링크 복사';btn.classList.remove('ok')},1600)};
+      if(navigator.clipboard){navigator.clipboard.writeText(url).then(done,function(){prompt('링크',url)})}else{prompt('링크',url)}
+    });
+    sec.appendChild(c);
+  });
+  host.appendChild(sec);
+});
+</script>
+</body>
+</html>

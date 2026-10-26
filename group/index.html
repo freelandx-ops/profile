@@ -1,0 +1,696 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>기업 재해 리스크 관리 소개서 | 유영곤</title>
+<meta name="description" content="직원의 사고가 회사의 비용이 되기 전에. 산업재해 현황, 중대재해처벌법, 배상 재원, 기업재해보장보험 계약 설계와 산재보험료 점검을 정리했습니다.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="기업 재해 리스크 관리 소개서">
+<meta property="og:description" content="직원의 사고가 회사의 비용이 되기 전에, 대표님이 미리 정해 두실 것을 정리했습니다.">
+<meta property="og:image" content="https://freelandx-ops.github.io/profile/og-logo-260916c.jpg">
+<meta property="og:locale" content="ko_KR">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<!-- 설계: 004. marketing/고객배포/단체보험/_설계.md (2026-10-26). 디자인은 법인컨설팅/index.html 스타일을 그대로 쓴다. -->
+<style>
+:root{
+  --bg:#FFFFFF; --bg2:#F4F6F9;
+  --ink:#111827; --ink2:#374151; --mut:#6B7280;
+  --line:#E3E6EB; --line2:#EDEFF3;
+  --blue:#1428A0; --blue-d:#0D1B6E; --blue-m:#4B63D8; --blue-l:#A9B6EE; --blue-s:#EEF1FB;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:60px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif;font-size:18px;line-height:1.7;word-break:keep-all;-webkit-font-smoothing:antialiased;letter-spacing:-.01em}
+img{max-width:100%;display:block}
+.nb{white-space:nowrap}
+@media(max-width:900px){.nb{white-space:normal}}
+p,li{text-wrap:pretty}
+h1,h3{text-wrap:balance}
+a{color:inherit}
+button,input,textarea{font-family:inherit}
+.wrap{max-width:1140px;margin:0 auto;padding-inline:20px}
+
+.bar{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;height:52px;gap:16px}
+.bar .bl{display:flex;align-items:center;gap:14px}
+.bar .sfn{height:26px}
+.bar b{font-size:16px;font-weight:700}
+.bar small{color:var(--mut);font-size:13px;margin-left:8px}
+.bar a.go{font-size:14px;font-weight:600;color:var(--blue);text-decoration:none;white-space:nowrap}
+
+.pg{padding-block:36px;border-bottom:1px solid var(--line)}
+.pg.gray{background:var(--bg2)}
+@media(min-width:900px){.pg{padding-block:44px;min-height:calc(100vh - 52px);display:flex;align-items:center}.pg>.wrap{width:100%}}
+.kick{display:flex;align-items:center;gap:10px;font-size:16.5px;font-weight:700;color:var(--blue);margin:0 0 14px;letter-spacing:.01em}
+.kick .no{display:inline-grid;place-items:center;min-width:30px;height:24px;padding:0 7px;border-radius:6px;background:var(--blue);color:#fff;font-size:12.5px}
+.kick em{font-style:normal;font-weight:500;color:var(--mut)}
+.pg h2{font-size:clamp(27px,5.2vw,42px);line-height:1.34;font-weight:800;letter-spacing:-.03em;margin:0 0 16px}
+.pg h2 em{font-style:normal;color:var(--blue)}
+.lead{font-size:20px;color:var(--ink2);margin:0 0 22px;max-width:46em}
+@media(max-width:1180px){.pg h2 .nb{white-space:normal}}
+
+.cover{background:linear-gradient(180deg,#0D1B6E 0%,#1428A0 100%);color:#fff;border-bottom:0}
+.cover .org{height:54px;width:auto;margin:0 0 30px}
+.sfn{display:inline-block;aspect-ratio:577/216;height:30px;background:var(--blue);-webkit-mask:url(https://freelandx-ops.github.io/profile/samsung-financial-networks.png) center/contain no-repeat;mask:url(https://freelandx-ops.github.io/profile/samsung-financial-networks.png) center/contain no-repeat;vertical-align:middle}
+.cover h1{font-size:clamp(38px,9.5vw,72px);line-height:1.2;font-weight:800;letter-spacing:-.04em;margin:0 0 22px}
+.cover .line{font-size:clamp(17px,3.6vw,22px);font-weight:500;margin:0 0 36px;opacity:.95;max-width:30em}
+.cover .who{display:flex;align-items:center;gap:14px;margin-bottom:40px}
+.cover .who img{width:64px;height:64px;border-radius:50%;object-fit:cover;object-position:center 18%;border:2px solid rgba(255,255,255,.5)}
+.cover .who b{display:block;font-size:19px}
+.cover .who span{font-size:14px;opacity:.85}
+.toc{list-style:none;margin:0;padding:22px 0 0;border-top:1px solid rgba(255,255,255,.28);font-size:17px}
+.toc li{break-inside:avoid;padding:4px 0}
+@media(min-width:700px){.toc{columns:2;column-gap:40px}}
+.toc a{text-decoration:none;display:flex;gap:10px;opacity:.92}
+.toc a:hover{opacity:1;text-decoration:underline}
+.toc i{font-style:normal;font-weight:700;opacity:.7;min-width:22px}
+
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:0 0 14px}
+.stat{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.stat .v{font-size:clamp(22px,5vw,30px);font-weight:800;color:var(--blue);letter-spacing:-.02em;line-height:1.3}
+.stat .k{font-size:15.5px;color:var(--ink2)}
+.two{display:grid;gap:14px}
+@media(min-width:900px){.two{grid-template-columns:1.2fr .8fr;align-items:start}}
+.hist{display:grid;gap:8px}
+.hi{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 16px;display:grid;gap:2px}
+@media(min-width:700px){.hi{grid-template-columns:230px 1fr;gap:16px;align-items:baseline}}
+.hi .co{font-weight:700}
+.hi .co small{display:block;font-weight:500;font-size:14.5px;color:var(--mut)}
+.hi .x{display:inline-block;margin-left:6px;font-size:11px;font-weight:700;color:var(--blue);border:1px solid var(--blue-l);border-radius:5px;padding:0 6px;vertical-align:2px}
+.hi p{margin:0;color:var(--ink2);font-size:16.5px}
+.team{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.team h3{margin:0 0 4px;font-size:18px}
+.team .sub2{font-size:15px;color:var(--mut);margin:0 0 12px}
+.team dl{margin:0;display:grid;gap:10px}
+.team dt{font-weight:700;font-size:17px}
+.team dd{margin:0;font-size:16px;color:var(--ink2)}
+.affs{display:grid;gap:8px;margin-top:14px}
+@media(min-width:700px){.affs{grid-template-columns:repeat(3,1fr)}}
+.affs div{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 16px;font-size:16px;color:var(--ink2)}
+.affs b{display:block;font-size:17.5px;color:var(--blue-d)}
+.aff{margin:10px 0 0;font-size:15px;color:var(--mut)}
+
+.stages{display:grid;gap:10px}
+@media(min-width:980px){.stages{grid-template-columns:repeat(5,1fr);gap:0}}
+.sg{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 16px 18px}
+@media(min-width:980px){.sg{border-radius:0;border-right:0}.sg:first-child{border-radius:12px 0 0 12px}.sg:last-child{border-radius:0 12px 12px 0;border-right:1px solid var(--line)}}
+.sg .w{font-size:13px;font-weight:700;color:var(--blue);letter-spacing:.05em}
+.sg b{display:block;font-size:20px;margin:2px 0 10px;padding-bottom:10px;border-bottom:2px solid var(--blue)}
+.sg ul{margin:0;padding:0;list-style:none;display:grid;gap:8px;font-size:16.5px;color:var(--ink2)}
+.sg li a{color:var(--blue-d);font-weight:600;text-decoration:none;border-bottom:1px solid var(--blue-l)}
+
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:#fff;margin-bottom:16px}
+table{border-collapse:collapse;width:100%;min-width:540px;font-size:17.5px}
+th,td{padding:13px 18px;text-align:left;border-bottom:1px solid var(--line2);vertical-align:top}
+thead th{font-size:15.5px;color:var(--mut);font-weight:700;background:var(--bg2)}
+thead th.me{color:var(--blue)}
+tbody th{font-weight:700;color:var(--ink);white-space:nowrap;width:150px}
+tbody td{color:var(--ink2)}
+td.me{color:var(--ink);font-weight:600;background:#FAFBFE}
+td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+tbody tr:last-child th,tbody tr:last-child td{border-bottom:0}
+
+.ex{background:var(--blue-s);border-radius:14px;padding:18px 20px;margin-bottom:16px}
+.ex .tg{display:inline-block;font-size:13.5px;font-weight:700;color:#fff;background:var(--blue);border-radius:6px;padding:2px 8px;margin-bottom:8px}
+.ex p{margin:0 0 6px;font-size:17.5px;color:var(--ink2)}
+.ex p b{color:var(--ink)}
+.ex .fn{font-size:14px;color:var(--mut);margin:8px 0 0}
+.bars{display:grid;gap:10px;margin:12px 0 4px}
+.bar2{display:grid;grid-template-columns:92px 1fr;gap:10px;align-items:center;font-size:16.5px}
+.bar2 .tr{background:#fff;border-radius:8px;overflow:hidden}
+.bar2 .fl{display:block;height:40px;line-height:40px;padding:0 12px;color:#fff;font-weight:700;white-space:nowrap;background:var(--blue-m);border-radius:8px}
+.bar2 .fl.hi2{background:var(--blue-d)}
+.eq{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin-bottom:16px;font-size:17.5px;color:var(--ink2)}
+.eq b{color:var(--ink)}
+.eq .f{display:block;font-weight:700;color:var(--blue-d);font-size:20px;margin:6px 0}
+
+.foot2{display:grid;gap:12px}
+@media(min-width:820px){.foot2{grid-template-columns:1.5fr .5fr}}
+.ba{display:grid;gap:10px;margin-bottom:12px}
+@media(min-width:860px){.ba{grid-template-columns:1fr 44px 1.15fr;align-items:stretch}}
+.bx{border-radius:16px;padding:22px 24px}
+.bx .lb2{display:inline-block;font-size:14.5px;font-weight:700;border-radius:6px;padding:2px 10px;margin-bottom:10px}
+.bx strong{display:block;font-size:clamp(26px,4.6vw,40px);font-weight:800;letter-spacing:-.03em;line-height:1.3;margin-bottom:12px}
+.bx ul{margin:0;padding:0;list-style:none;display:grid;gap:6px}
+.bx li{font-size:17px;line-height:1.55;padding-left:14px;position:relative}
+.bx li::before{content:"";position:absolute;left:0;top:.72em;width:6px;height:6px;border-radius:50%}
+.bx.b{background:#fff;border:1px solid var(--line);color:var(--ink2)}
+.bx.b .lb2{background:var(--bg2);color:var(--mut)}
+.bx.b strong{color:var(--ink2)}
+.bx.b li::before{background:#C5CAD3}
+.bx.a{background:var(--blue);color:#fff;box-shadow:0 18px 40px -22px rgba(13,27,110,.55)}
+.bx.a .lb2{background:#fff;color:var(--blue)}
+.bx.a li::before{background:var(--blue-l)}
+.arrow{display:grid;place-items:center;font-size:30px;font-weight:800;color:var(--blue)}
+@media(max-width:859px){.arrow{transform:rotate(90deg);height:26px}}
+.diff{margin:0 0 14px;background:var(--blue-s);border-radius:14px;padding:16px 22px;font-size:clamp(19px,3vw,25px);font-weight:700;color:var(--blue-d);text-align:center;line-height:1.5}
+.diff b{font-weight:800;color:var(--blue)}
+.sol{background:#fff;color:var(--ink);border:1px solid var(--line);border-radius:14px;padding:18px 22px}
+.pg.gray .sol{background:#fff}
+.sol h3{margin:0 0 10px;font-size:15.5px;font-weight:700;color:var(--blue);letter-spacing:.04em}
+.sol ol{margin:0;padding:0;list-style:none;display:grid;gap:8px;counter-reset:s}
+.sol li{counter-increment:s;position:relative;padding-left:38px;font-size:17.5px;line-height:1.6;color:var(--ink2)}
+.sol li::before{content:counter(s);position:absolute;left:0;top:2px;width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;display:grid;place-items:center;font-size:14.5px;font-weight:800}
+.fn2{margin:12px 0 0;font-size:14px;color:var(--mut);line-height:1.6}
+.fn2 a{color:var(--blue);font-weight:600}
+details.sup{margin-top:12px}
+details.sup summary{cursor:pointer;font-size:15.5px;font-weight:700;color:var(--blue);padding:6px 0}
+details.sup[open] summary{margin-bottom:10px}
+.viz{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px 24px 18px;margin-bottom:12px}
+.vhead{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 16px;padding-bottom:14px;margin-bottom:6px;border-bottom:1px solid var(--line2)}
+.vhead b{font-size:16px;color:var(--blue)}
+.vhead .f{font-size:clamp(17px,2.4vw,21px);font-weight:700;color:var(--blue-d)}
+.cols{display:flex;align-items:flex-end;gap:clamp(8px,2vw,22px);height:300px;padding-top:8px}
+.col{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;text-align:center}
+.col .v{font-size:clamp(17px,2.6vw,24px);font-weight:800;color:var(--ink);margin-bottom:6px;white-space:nowrap}
+.col .bar{display:block;width:100%;max-width:120px;border-radius:8px 8px 0 0;background:var(--blue-l)}
+.col .x{display:block;min-height:3.2em;margin-top:8px;font-size:15px;line-height:1.45;color:var(--ink2)}
+.col .bdg{display:inline-grid;place-items:center;min-width:44px;height:28px;padding:0 9px;border-radius:14px;background:var(--ink);color:#fff;font-size:14px;font-weight:700;margin-bottom:4px}
+.cols.wf{height:330px}
+.wf .col.now .bar{background:var(--ink2)}
+.wf .col.drop .bar{background:repeating-linear-gradient(135deg,var(--blue-l) 0 6px,#fff 6px 12px);border:1.5px solid var(--blue-m);border-radius:8px}
+.wf .col.drop .v{color:var(--blue-m)}
+.wf .col.after .bar{background:var(--blue)}
+.wf .col.after .v{color:var(--blue);font-size:clamp(20px,3.2vw,30px)}
+.viz.two{display:grid;gap:16px}
+@media(min-width:860px){.viz.two{grid-template-columns:1fr 190px 1fr;align-items:center}}
+.viz.two .cols{height:290px}
+.viz.two .col .x{display:none}
+.vcap{display:inline-block;font-size:15px;font-weight:700;color:#fff;background:var(--blue-m);border-radius:6px;padding:2px 12px}
+.vcap.dk{background:var(--blue-d)}
+.cols.tax .bar{background:var(--blue-d)}
+.cols.tax .bdg{background:var(--blue)}
+.mid{display:grid;gap:4px;justify-items:center;text-align:center;font-size:18px;font-weight:600;color:var(--ink2)}
+.mid .arr{font-size:34px;font-weight:800;color:var(--blue);line-height:1}
+.mid strong{font-size:clamp(28px,4vw,40px);font-weight:800;color:var(--blue);line-height:1.2}
+@media(max-width:859px){.mid .arr{transform:rotate(90deg)}}
+.tline{display:grid;gap:10px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 22px;margin-bottom:12px}
+@media(min-width:860px){.tline{grid-template-columns:auto 1fr auto;align-items:center;gap:18px}}
+.tl{display:grid;grid-template-columns:auto 1fr;column-gap:10px;align-items:center}
+.tl .dot{grid-row:1 / 3;width:16px;height:16px;border-radius:50%;border:3px solid var(--blue);background:#fff}
+.tl .dot.on{background:var(--blue)}
+.tl b{font-size:18px}
+.tl em{font-style:normal;font-size:15px;color:var(--ink2)}
+.tbar{position:relative;height:4px;background:var(--blue-l);border-radius:2px;min-width:120px}
+.tbar span{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:var(--blue);color:#fff;font-size:15px;font-weight:700;border-radius:14px;padding:3px 14px;white-space:nowrap}
+@media(max-width:859px){.tbar{height:34px;background:none}.tbar span{position:static;transform:none;display:inline-block}}
+.icards{display:grid;gap:12px}
+@media(min-width:760px){.icards{grid-template-columns:repeat(3,1fr)}}
+.icard{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px 22px}
+.icard .cir{display:grid;place-items:center;width:60px;height:60px;border-radius:50%;background:var(--blue);margin-bottom:12px}
+.icard svg{width:30px;height:30px;fill:none;stroke:#fff;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.icard h4{margin:0 0 8px;font-size:20px;font-weight:800;padding-bottom:8px;border-bottom:2px solid var(--blue)}
+.icard ul{margin:0;padding:0;list-style:none;display:grid;gap:5px}
+.icard li{font-size:16.5px;color:var(--ink2);padding-left:13px;position:relative}
+.icard li::before{content:"";position:absolute;left:0;top:.72em;width:5px;height:5px;border-radius:50%;background:var(--blue-m)}
+.news{background:#fff;border:1px solid var(--line);border-top:5px solid var(--ink);border-radius:4px 4px 16px 16px;padding:20px 24px 22px;margin-bottom:12px;box-shadow:0 14px 34px -24px rgba(17,24,39,.5)}
+.np{display:flex;align-items:baseline;gap:12px;padding-bottom:10px;border-bottom:1px solid var(--ink);margin-bottom:12px}
+.np .paper{font-family:'Noto Serif KR','Nanum Myeongjo',serif;font-size:22px;font-weight:800;letter-spacing:-.02em}
+.np .date{font-size:14.5px;color:var(--mut)}
+.news h3{font-family:'Noto Serif KR','Nanum Myeongjo',serif;font-size:clamp(23px,3.6vw,34px);font-weight:800;line-height:1.35;letter-spacing:-.03em;margin:0 0 16px}
+.cases3{display:grid;gap:10px}
+@media(min-width:800px){.cases3{grid-template-columns:repeat(3,1fr)}}
+.cs3{background:var(--bg2);border-radius:12px;padding:14px 16px}
+.cs3 em{display:block;font-style:normal;font-size:14.5px;color:var(--mut)}
+.cs3 strong{display:block;font-size:clamp(21px,2.8vw,26px);font-weight:800;color:#B42318;margin:2px 0 6px}
+.cs3 span{font-size:16px;color:var(--ink2);line-height:1.55;display:block}
+.stack{display:flex;height:56px;border-radius:10px;overflow:hidden;margin:10px 0 14px;font-size:clamp(14px,2vw,18px);font-weight:700;color:#fff}
+.stack span{display:grid;place-items:center;padding:0 8px;text-align:center;line-height:1.25}
+.stack .s1{background:var(--blue-l);color:var(--blue-d)}
+.stack .s2{background:var(--blue-d)}
+.pen{display:grid;gap:8px;font-size:16px;color:var(--ink2)}
+@media(min-width:800px){.pen{grid-template-columns:repeat(3,1fr)}}
+.pen b{display:block;color:var(--ink);font-size:15px}
+.plan{background:#fff;border:1px solid var(--blue-l);border-radius:16px;padding:20px 24px;margin-bottom:12px}
+.phead{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 12px;margin-bottom:16px}
+.phead .ptag{font-size:12.5px;font-weight:800;letter-spacing:.08em;color:#fff;background:var(--blue);border-radius:6px;padding:2px 9px}
+.phead b{font-size:clamp(21px,3vw,26px);font-weight:800;color:var(--blue-d)}
+.phead em{font-style:normal;font-size:17px;color:var(--ink2)}
+.stps{display:grid;gap:10px}
+@media(min-width:900px){.stps{grid-template-columns:repeat(5,1fr);gap:0}}
+.stp{position:relative;display:grid;justify-items:start;gap:4px;padding:4px 14px 4px 0}
+.stp .cir{display:grid;place-items:center;width:52px;height:52px;border-radius:50%;background:var(--blue);margin-bottom:6px}
+.stp svg{width:26px;height:26px;fill:none;stroke:#fff;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.stp b{font-size:17.5px;line-height:1.4}
+.stp span{font-size:15.5px;color:var(--ink2);line-height:1.5}
+@media(min-width:900px){.stps .stp:not(:last-child)::after{content:"";position:absolute;left:60px;right:10px;top:26px;height:2px;background:var(--blue-l)}}
+.pnote{margin:16px 0 0;padding-top:14px;border-top:1px dashed var(--line);font-size:16px;color:var(--ink2);line-height:1.6}
+.pnote b{color:var(--blue-d)}
+.fork{display:grid;gap:14px}
+@media(min-width:900px){.fork{grid-template-columns:260px 1fr;align-items:center;gap:26px}}
+.branches{display:grid;gap:10px}
+.br2{background:var(--blue-s);border-radius:12px;padding:14px 18px;display:grid;gap:2px}
+.br2 .when{justify-self:start;font-size:13.5px;font-weight:700;color:#fff;background:var(--blue-m);border-radius:6px;padding:1px 9px;margin-bottom:4px}
+.br2 b{font-size:18.5px}
+.br2 span:last-child{font-size:16px;color:var(--ink2)}
+.hb{margin:14px 0 0}
+.hb .cap{display:block;font-size:17px;font-weight:700;color:var(--ink2);margin-bottom:6px}
+.hb .tr{display:flex;align-items:center;gap:14px;background:var(--bg2);border-radius:10px}
+.hb .fl{display:flex;align-items:center;justify-content:flex-end;height:62px;padding:0 20px;border-radius:10px;color:#fff;font-size:clamp(22px,3.4vw,32px);font-weight:800;white-space:nowrap}
+.hb .fl.now{background:var(--ink2)}
+.hb .fl.aft{background:var(--blue)}
+.hb .cut{font-size:clamp(17px,2.4vw,22px);font-weight:800;color:var(--blue)}
+.why{margin-top:18px;padding-top:16px;border-top:1px solid var(--line2)}
+.why>b{display:block;font-size:16px;color:var(--blue);margin-bottom:8px}
+.whys{display:grid;gap:8px}
+@media(min-width:800px){.whys{grid-template-columns:1fr 1fr}}
+.whys div{background:var(--blue-s);border-radius:12px;padding:12px 16px;display:grid;gap:4px}
+.whys span{font-size:16.5px;color:var(--ink2);line-height:1.5}
+.whys em{font-style:normal;font-size:19px;font-weight:800;color:var(--blue-d)}
+.fork2{margin-bottom:12px}
+.root2{width:fit-content;margin:0 auto;background:var(--ink);color:#fff;border-radius:999px;padding:12px 30px;font-size:20px;font-weight:800;text-align:center;position:relative}
+.root2 small{display:block;font-size:15px;font-weight:500;opacity:.85}
+.root2::after{content:"";position:absolute;left:calc(50% - 1px);top:100%;width:2px;height:23px;background:var(--ink)}
+@media(max-width:799px){.root2::after{display:none}}
+.paths{display:grid;gap:12px;margin-top:22px;position:relative}
+@media(min-width:800px){.paths{grid-template-columns:1fr 1fr;gap:18px}.paths::before{content:"";position:absolute;left:calc((100% - 18px)/4 - 1px);right:calc((100% - 18px)/4 - 1px);top:0;height:2px;background:var(--ink)}.path::before{content:"";position:absolute;left:calc(50% - 1px);top:-16px;width:2px;height:17px;background:var(--ink)}}
+.path{position:relative;border-radius:16px;padding:20px 24px;display:grid;gap:4px;align-content:start;margin-top:16px}
+.path .cond{justify-self:start;font-size:15px;font-weight:700;border-radius:6px;padding:2px 10px;margin-bottom:6px}
+.path strong{font-size:clamp(27px,4.4vw,40px);font-weight:800;letter-spacing:-.03em;line-height:1.25}
+.path .how{font-size:16.5px;font-weight:600;margin-bottom:8px}
+.path ul{margin:0;padding:0;list-style:none;display:grid;gap:5px}
+.path li{font-size:16.5px;line-height:1.5;padding-left:14px;position:relative}
+.path li::before{content:"";position:absolute;left:0;top:.72em;width:6px;height:6px;border-radius:50%}
+.path.no{background:#fff;border:1px solid var(--line);color:var(--ink2)}
+.path.no .cond{background:var(--bg2);color:var(--mut)}
+.path.no li::before{background:#C5CAD3}
+.path.yes{background:var(--blue);color:#fff;box-shadow:0 18px 40px -22px rgba(13,27,110,.55)}
+.path.yes .cond{background:#fff;color:var(--blue)}
+.path.yes li::before{background:var(--blue-l)}
+.checks{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px 24px}
+.ct{display:block;font-size:18px;font-weight:800;color:var(--blue-d);margin-bottom:12px}
+.cgrid2{display:grid;gap:10px 22px}
+@media(min-width:800px){.cgrid2{grid-template-columns:repeat(3,1fr)}}
+.cgrid2>div{display:flex;gap:10px;align-items:flex-start}
+.ck{flex:0 0 auto;width:26px;height:26px;border-radius:7px;background:var(--blue);padding:4px;fill:none;stroke:#fff;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;margin-top:2px}
+.cgrid2 span{font-size:15.5px;color:var(--ink2);line-height:1.5}
+.cgrid2 span b{display:block;font-size:17.5px;color:var(--ink)}
+.cols.acc{height:260px}
+.cols.acc .bar{background:var(--blue-l)}
+.cols.acc .col.last .bar{background:var(--blue-d)}
+.cols.acc .col.last .v{color:var(--blue-d);font-size:clamp(20px,3vw,28px)}
+.cols.acc .col .x{min-height:0}
+.vs{margin-bottom:12px}
+.vsg{display:grid;gap:12px}
+@media(min-width:800px){.vsg{grid-template-columns:1fr 1fr}}
+.vd{position:relative;background:#fff;border:2px solid var(--line);border-radius:16px;padding:20px 24px}
+.vd .stamp{position:absolute;right:18px;top:16px;font-size:16px;font-weight:800;border:2.5px solid;border-radius:8px;padding:2px 12px;transform:rotate(-5deg)}
+.vd em{font-style:normal;font-size:18px;font-weight:800}
+.vd ol{margin:12px 0 10px;padding:0;list-style:none;display:grid;gap:6px;counter-reset:v}
+.vd li{counter-increment:v;position:relative;padding-left:32px;font-size:16.5px;color:var(--ink2);line-height:1.5}
+.vd li::before{content:counter(v);position:absolute;left:0;top:1px;width:22px;height:22px;border-radius:50%;background:var(--bg2);color:var(--ink2);display:grid;place-items:center;font-size:13px;font-weight:700}
+.vd li b{color:var(--ink)}
+.vd p{margin:0;font-size:17px;font-weight:700}
+.vd.win{border-color:var(--blue)}
+.vd.win .stamp,.vd.win p{color:var(--blue)}
+.vd.lose{border-color:#E4B4AE}
+.vd.lose .stamp,.vd.lose p{color:#B42318}
+.statrow{display:grid;gap:16px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 24px;margin-bottom:12px}
+@media(min-width:700px){.statrow{grid-template-columns:auto 1fr}}
+.donut{width:118px;height:118px;border-radius:50%;background:conic-gradient(var(--blue-d) 0 68.8%,var(--line) 68.8% 100%);display:grid;place-items:center;position:relative}
+.donut::before{content:"";position:absolute;inset:16px;border-radius:50%;background:#fff}
+.donut span{position:relative;font-size:28px;font-weight:800;color:var(--blue-d)}
+.donut small{font-size:15px}
+.statrow b{display:block;font-size:clamp(18px,2.6vw,22px);line-height:1.45}
+.statrow div>span{font-size:15px;color:var(--mut)}
+.gets{display:grid;gap:12px;margin-bottom:12px}
+@media(min-width:700px){.gets{grid-template-columns:1fr 1fr}}
+@media(min-width:1000px){.gets{grid-template-columns:1.25fr 1fr 1fr 1fr}}
+.get{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px 22px;display:grid;gap:6px;align-content:start}
+.get em{font-style:normal;font-size:15.5px;font-weight:700;color:var(--blue)}
+.get strong{font-size:clamp(20px,2.4vw,24px);font-weight:800;line-height:1.35;letter-spacing:-.02em}
+.get span{font-size:15.5px;color:var(--ink2);line-height:1.5}
+.get.hl{background:var(--blue);border-color:var(--blue);color:#fff;box-shadow:0 18px 40px -22px rgba(13,27,110,.55)}
+.get.hl em{color:var(--blue-l)}
+.get.hl strong{font-size:clamp(26px,3.4vw,34px)}
+.get.hl span{color:#fff;opacity:.92}
+@media(min-width:900px){.stps.s4{grid-template-columns:repeat(4,1fr)}.stps.s3{grid-template-columns:repeat(3,1fr)}}
+.cmp3{display:grid;gap:12px;margin-bottom:12px}
+@media(min-width:800px){.cmp3{grid-template-columns:repeat(3,1fr)}}
+.cm{background:#fff;border:2px solid var(--blue-l);border-radius:16px;padding:20px 22px;display:grid;gap:6px;align-content:start}
+.cm em{font-style:normal;font-size:16.5px;font-weight:700;color:var(--blue-d)}
+.cm strong{font-size:clamp(24px,3.2vw,32px);font-weight:800;letter-spacing:-.03em;line-height:1.3;color:var(--blue);padding-bottom:10px;margin-bottom:4px;border-bottom:1px solid var(--line2)}
+.cm ul{margin:0;padding:0;list-style:none;display:grid;gap:5px}
+.cm li{font-size:16.5px;color:var(--ink2);padding-left:14px;position:relative}
+.cm li::before{content:"";position:absolute;left:0;top:.72em;width:6px;height:6px;border-radius:50%;background:var(--blue-m)}
+.cm.no{border:1px solid var(--line)}
+.cm.no em{color:var(--mut)}
+.cm.no strong{color:var(--ink2)}
+.cm.no li::before{background:#C5CAD3}
+.cm.yes{background:var(--blue);border-color:var(--blue);box-shadow:0 18px 40px -22px rgba(13,27,110,.55)}
+.cm.yes em{color:var(--blue-l)}
+.cm.yes strong{color:#fff;border-bottom-color:rgba(255,255,255,.25)}
+.cm.yes li{color:#fff}
+.cm.yes li::before{background:var(--blue-l)}
+.era{display:grid;gap:10px;margin-bottom:12px;position:relative}
+@media(min-width:800px){.era{grid-template-columns:repeat(3,1fr);gap:0}.era::before{content:"";position:absolute;left:0;right:0;top:11px;height:2px;background:var(--blue-l)}}
+.e{position:relative;padding:34px 18px 0 0;display:grid;gap:2px}
+.e::before{content:"";position:absolute;left:0;top:2px;width:20px;height:20px;border-radius:50%;background:var(--blue);border:4px solid #fff;box-shadow:0 0 0 2px var(--blue)}
+.e em{font-style:normal;font-size:16px;color:var(--ink2)}
+.e strong{font-size:clamp(21px,3vw,28px);font-weight:800;color:var(--blue-d)}
+.e.now::before{background:#fff}
+.e.now strong{color:var(--mut)}
+@media(max-width:799px){.e{padding:0 0 0 32px}}
+.box h3{margin:0 0 8px;font-size:15.5px;color:var(--blue);font-weight:700}
+.box ul{margin:0;padding:0;list-style:none;display:grid;gap:6px}
+.box li{font-size:15px;color:var(--ink2);padding-left:14px;position:relative}
+.box li::before{content:"";position:absolute;left:0;top:.72em;width:6px;height:6px;border-radius:50%;background:var(--blue-m)}
+.box p{margin:0;font-size:17.5px;font-weight:600;color:var(--ink2)}
+.box .law{margin-top:10px;font-size:14px;font-weight:400;color:var(--mut)}
+.box a{color:var(--blue);font-weight:600}
+
+#more{padding-block:40px;background:var(--bg2);border-bottom:1px solid var(--line)}
+#more h3{margin:0 0 14px;font-size:21px}
+#more details{background:#fff;border:1px solid var(--line);border-radius:12px;margin-bottom:8px}
+#more summary{list-style:none;cursor:pointer;padding:14px 18px;display:flex;gap:12px;align-items:center;font-weight:700}
+#more summary::-webkit-details-marker{display:none}
+#more summary .t{flex:1;display:grid;gap:2px}
+#more summary b{font-size:19px}
+#more summary em{font-style:normal;font-weight:500;font-size:16.5px;color:var(--ink2)}
+#more details .pg h2{display:none}
+#more .hint{margin:-6px 0 16px;font-size:16px;color:var(--mut)}
+#more summary .pl{color:var(--blue);font-weight:700}
+#more details[open] summary .pl{transform:rotate(45deg)}
+#more details .pg{padding-block:8px 28px;border:0;min-height:0;display:block;background:#fff}
+#more details .pg .kick{display:none}
+#more details .pg h2{font-size:clamp(22px,4.4vw,32px)}
+
+.flow{display:grid;gap:10px;margin-bottom:18px}
+@media(min-width:900px){.flow{grid-template-columns:repeat(5,1fr);gap:0}}
+.fl5{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+@media(min-width:900px){.fl5{border-radius:0;border-right:0}.fl5:first-child{border-radius:12px 0 0 12px}.fl5:last-child{border-radius:0 12px 12px 0;border-right:1px solid var(--line)}}
+.fl5 .w{font-size:13px;font-weight:700;color:var(--blue);letter-spacing:.05em}
+.fl5 b{display:block;font-size:20px;margin-top:2px}
+.fl5 span{font-size:15.5px;color:var(--mut)}
+.cards4{display:grid;gap:10px}
+@media(min-width:700px){.cards4{grid-template-columns:repeat(4,1fr)}}
+.c4{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.c4 b{display:block;font-size:18px}
+.c4 span{font-size:15.5px;color:var(--mut)}
+.note{font-size:16.5px;color:var(--ink2);background:var(--blue-s);border-radius:12px;padding:14px 18px;margin:16px 0 0}
+.note a{color:var(--blue);font-weight:600}
+
+.close h2{font-size:clamp(24px,5.4vw,38px)}
+.close .body{font-size:20px;color:var(--ink2);margin:0 0 10px;max-width:40em}
+.close .sign{margin:22px 0 30px;font-size:19px;font-weight:700;color:var(--blue-d)}
+.close .sign small{display:block;font-weight:500;color:var(--mut);font-size:16px}
+.cgrid{display:grid;gap:28px}
+@media(min-width:940px){.cgrid{grid-template-columns:1fr 1fr;align-items:start;gap:48px}}
+.form{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px}
+.fgrid{display:grid;gap:14px}
+.two2{display:grid;gap:14px}
+@media(min-width:520px){.two2{grid-template-columns:1fr 1fr}}
+.lb{display:block;font-size:14px;font-weight:600;margin-bottom:6px}
+.lb i{color:#C2410C;font-style:normal}
+.lb em{font-style:normal;color:var(--mut);font-weight:500;font-size:13px;margin-left:4px}
+input[type=text],input[type=tel],textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-size:16px;background:#fff;color:var(--ink)}
+input:focus,textarea:focus{outline:2px solid var(--blue-l);border-color:var(--blue-m)}
+textarea{min-height:84px;resize:vertical}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips label{cursor:pointer}
+.chips input{position:absolute;opacity:0;pointer-events:none}
+.chips span{display:inline-block;font-size:13.5px;border:1px solid var(--line);border-radius:999px;padding:5px 12px;color:var(--ink2);background:#fff}
+.chips input:checked+span{background:var(--blue);border-color:var(--blue);color:#fff;font-weight:600}
+.consent{font-size:14px;color:var(--ink2)}
+.consent label{display:flex;gap:8px;align-items:flex-start}
+.consent details{margin-top:6px}
+.consent summary{cursor:pointer;color:var(--mut);font-size:13px}
+.consent .cb{font-size:13px;color:var(--mut)}
+.consent .cb p{margin:4px 0}
+.btn{display:inline-flex;align-items:center;justify-content:center;width:100%;padding:14px 22px;border-radius:10px;font-weight:700;font-size:16px;border:0;cursor:pointer;background:var(--blue);color:#fff}
+.btn:hover{background:var(--blue-d)}
+.alts{display:grid;gap:8px;margin-top:14px;grid-template-columns:1fr 1fr}
+.alts a{display:block;background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;text-decoration:none;font-weight:700;font-size:14.5px}
+.alts small{display:block;font-weight:500;color:var(--ink2);font-size:13px}
+.slogan{margin:0;padding:40px 20px;text-align:center;font-size:clamp(18px,4vw,24px);font-weight:700;color:var(--blue-d);line-height:1.6}
+footer{padding:24px 0 36px;font-size:12.5px;color:var(--mut);border-top:1px solid var(--line)}
+footer p{margin:4px 0}
+
+@media print{
+  details.sup>summary{display:none}
+  .bar{display:none}
+  .pg{min-height:0;display:block;page-break-after:always;padding-block:28px}
+  #more details{border:0}
+  #more details .pg{display:block}
+}
+</style>
+</head>
+<body>
+
+<div class="bar"><div class="wrap">
+  <div class="bl"><span class="sfn" role="img" aria-label="Samsung Financial Networks"></span><b>기업재해보장보험 소개서</b></div>
+  <a class="go" href="#ask">상담 신청</a>
+</div></div>
+
+<section class="pg cover" id="top"><div class="wrap">
+  <img class="org" src="https://freelandx-ops.github.io/profile/samsung-financial-networks.png" alt="Samsung Financial Networks">
+  <h1>기업 재해 리스크<br>관리 소개서</h1>
+  <p class="line">직원의 사고가 회사의 비용이 되기 전에, 대표님이 미리 정해 두실 것을 정리했습니다.</p>
+  <div class="who">
+    <img src="https://freelandx-ops.github.io/profile/%EA%B0%9C%EC%9D%B8%ED%94%84%EB%A1%9C%ED%95%84%20%EC%82%AC%EC%A7%84/%EA%B0%9C%EC%9D%B8%ED%94%84%EB%A1%9C%ED%95%84_%EC%82%AC%EC%A7%84_%EB%A1%9C%EA%B3%A0%EC%A0%9C%EA%B1%B0.jpg" alt="유영곤 사진">
+    <div><b>유영곤</b><span>삼성생명 법인사업부 강남법인지점 · 2026년 10월</span></div>
+  </div>
+  <ol class="toc" id="toc"></ol>
+</div></section>
+
+<section class="pg" id="s-now" data-n="산업재해 현황"><div class="wrap">
+  <p class="kick"><span class="no"></span>산업재해 현황</p>
+  <h2><span class="nb">2024년 재해자 <em>142,771명.</em></span> <span class="nb">10명 중 7명은 50인 미만 사업장에서 나왔습니다.</span></h2>
+  <p class="lead"><span class="nb">규모가 작을수록 안전관리를 맡을 사람이 따로 없고,</span> <span class="nb">사고 한 번이 회사 전체의 일이 됩니다.</span></p>
+  <div class="statrow">
+    <div class="donut" role="img" aria-label="재해자의 68.8%가 50인 미만 사업장"><span>68.8<small>%</small></span></div>
+    <div><b>재해자 142,771명 중 사망자 2,098명.</b><span>5인 미만 28.7%, 5~49인 40.1%를 더하면 50인 미만 사업장이 68.8%입니다.</span></div>
+  </div>
+  <div class="viz">
+    <div class="vhead"><b>종업원 규모별 재해자 비중</b><span class="f">50인 미만 68.8%</span></div>
+    <div class="bars">
+      <div class="bar2"><span>5~49인</span><span class="tr"><span class="fl hi2" style="width:100%">40.1%</span></span></div>
+      <div class="bar2"><span>5인 미만</span><span class="tr"><span class="fl hi2" style="width:72%">28.7%</span></span></div>
+      <div class="bar2"><span>300인 이상</span><span class="tr"><span class="fl" style="width:34%">13.4%</span></span></div>
+      <div class="bar2"><span>100~299인</span><span class="tr"><span class="fl" style="width:25%">9.9%</span></span></div>
+      <div class="bar2"><span>50~99인</span><span class="tr"><span class="fl" style="width:20%">8.0%</span></span></div>
+    </div>
+  </div>
+  <p class="diff"><span class="nb">재해자의 절반 이상은</span> <span class="nb"><b>제조·건설이 아닌 업종</b>에서 나왔습니다</span></p>
+  <div class="icards">
+    <div class="icard"><span class="cir"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M5 21V9l7-5 7 5v12M9 21v-6h6v6"/></svg></span><h4>업무 중 사고</h4><ul><li>작업장, 외근, 출장 중 사고</li><li>행사, 휴게 시간 중 사고</li></ul></div>
+    <div class="icard"><span class="cir"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 17h14M6 17l1.5-6h9L18 17M8 17v2M16 17v2M9 7h6"/></svg></span><h4>출퇴근 중 사고</h4><ul><li>2018년부터 통상의 출퇴근 재해 인정</li><li>2023년 승인 1만 건을 넘었습니다</li></ul></div>
+    <div class="icard"><span class="cir"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/></svg></span><h4>업무상 질병</h4><ul><li>유해 요인 노출로 생긴 질병</li><li>업무와 관련되어 생긴 질병</li></ul></div>
+  </div>
+  <p class="fn2">출처: 고용노동부 2024년 산업재해현황(조선일보 2025년 7월 30일 A05면 보도). 규모별·업종별 비중(제조업 24.07%, 건설업 22.95%, 운수·창고·통신업 11.88%, 광업·어업·농업 3.13%, 그 외 37.85%)은 삼성생명 「기업 Risk 관리를 위한 가치 제안서」 재인용. 출퇴근 재해는 2018년 산업재해보상보험법 개정으로 도입됐습니다(중앙일보 2024년 7월 10일 보도).</p>
+</div></section>
+
+<section class="pg gray" id="s-law" data-n="중대재해처벌법"><div class="wrap">
+  <p class="kick"><span class="no"></span>중대재해처벌법</p>
+  <h2><span class="nb">유족과 합의했습니다.</span> <span class="nb">그래도 대표는 <em>징역 2년 실형</em>을 받았습니다.</span></h2>
+  <p class="lead"><span class="nb">중대재해처벌법은 2024년 1월 27일부터</span> <span class="nb">상시 근로자 5명 이상 50명 미만 사업장에도 적용됩니다.</span> <span class="nb">처벌 대상은 회사가 아니라</span> <span class="nb">사업주와 경영책임자 개인입니다.</span></p>
+  <div class="news">
+    <div class="np"><span class="paper">한국경제</span><span class="date">2024년 4월 25일 A03면</span></div>
+    <h3>중대재해법 처벌도 강화... 기업인 실형 선고 잇따라</h3>
+    <div class="cases3">
+      <div class="cs3"><em>울산지방법원 · 2024년 4월</em><strong>징역 2년 실형</strong><span>자동차 부품 제조업체 대표. 유족과 합의했지만 실형이 선고됐습니다.</span></div>
+      <div class="cs3"><em>대법원 · 2023년 12월</em><strong>징역 1년 확정</strong><span>제강업체 대표. 중대재해처벌법 위반으로 실형이 확정된 첫 사례입니다.</span></div>
+      <div class="cs3"><em>대구지법 서부지원 · 2024년 2월</em><strong>징역 1년, 집행유예 2년</strong><span>하청 근로자 사망 사고에서 원청업체 대표에게 처음으로 유죄가 선고됐습니다.</span></div>
+    </div>
+  </div>
+  <div class="tbl"><table>
+    <thead><tr><th></th><th class="me">사망자 발생</th><th>부상·질병 발생</th></tr></thead>
+    <tbody>
+      <tr><th>사업주·경영책임자</th><td class="me">1년 이상 징역 또는 10억원 이하 벌금<br>(징역과 벌금 병과 가능)</td><td>7년 이하 징역 또는 1억원 이하 벌금</td></tr>
+      <tr><th>법인</th><td class="me">50억원 이하 벌금</td><td>10억원 이하 벌금</td></tr>
+      <tr><th>5년 내 재범</th><td colspan="2">각 형의 2분의 1까지 가중</td></tr>
+    </tbody>
+  </table></div>
+  <p class="diff"><span class="nb">대법원 양형기준은</span> <span class="nb"><b>피해 회복과 보험 가입</b>을 감경요소로 정하고 있습니다</span></p>
+  <p class="fn2">근거: 중대재해 처벌 등에 관한 법률 제6조, 제7조(2026년 10월 26일 법제처 원문 확인). 판결 사례는 한국경제 2024년 4월 25일자 보도 기준입니다. 양형기준은 대법원 양형위원회 「과실치사상·산업안전보건범죄」 양형기준의 산업안전보건범죄 일반 감경인자이며, 여기서 보험 가입은 사고로 인한 손해배상금 전액 또는 상당 금액을 보상하는 보험을 말합니다. 감경 여부는 사건마다 법원이 판단합니다.</p>
+</div></section>
+
+<section class="pg" id="s-money" data-n="배상 재원"><div class="wrap">
+  <p class="kick"><span class="no"></span>배상 재원</p>
+  <h2><span class="nb">산재보험금 1억 4천만원, 민사배상금 4억 7천만원.</span> <span class="nb">차액 <em>3억 3천만원</em>은 회사가 냅니다.</span></h2>
+  <p class="lead"><span class="nb">산재보험은 법이 정한 범위까지만 보상합니다.</span> <span class="nb">사업주의 안전배려의무 위반이 인정되면</span> <span class="nb">유족은 그 나머지를 회사에 민사로 청구합니다.</span></p>
+  <div class="viz">
+    <div class="vhead"><b>사망사고 1건의 배상</b><span class="f">필요자금 4억 7천만원 − 준비자금 1억 4천만원 = 부족자금 3억 3천만원</span></div>
+    <div class="stack"><span class="s1" style="width:30%">산재보험금 1억 4천만원</span><span class="s2" style="width:70%">회사 부담 3억 3천만원</span></div>
+  </div>
+  <div class="tbl"><table>
+    <thead><tr><th>구분</th><th>항목</th><th>금액</th></tr></thead>
+    <tbody>
+      <tr><th rowspan="2">산재보험금</th><td>유족급여</td><td class="num">1억 3,000만원</td></tr>
+      <tr><td>장의비</td><td class="num">1,208만원</td></tr>
+      <tr><th rowspan="3">민사배상금</th><td>일실수익</td><td class="num">3억 5,883만원</td></tr>
+      <tr><td>일실퇴직금</td><td class="num">1,928만원</td></tr>
+      <tr><td>위자료</td><td class="num">8,800만원</td></tr>
+    </tbody>
+  </table></div>
+  <div class="ex">
+    <span class="tg">대표님이 정하실 것</span>
+    <p><b>3억 3천만원을 사고가 난 뒤에 마련할지, 지금 매달 나누어 준비할지입니다.</b> 합의가 늦어지면 형사 절차에서도 피해 회복을 증명하기 어렵습니다.</p>
+  </div>
+  <p class="fn2">예시 기준: 30세 남성, 월 급여 300만원, 정년 60세, 가동연한 65세, 본인 과실 20%. 삼성생명 「기업 Risk 관리를 위한 가치 제안서」가 대법원 2018다248909 판결 등을 참고해 산정한 단순 예시이며, 실제 금액과 산출식은 사건에 따라 달라집니다. 사업주 과실(안전배려의무 위반)로 인한 업무상 재해인 경우 민사상 손해배상책임을 면하기 위한 추가 비용이 생길 수 있습니다.</p>
+</div></section>
+
+<section class="pg gray" id="s-product" data-n="기업재해보장보험"><div class="wrap">
+  <p class="kick"><span class="no"></span>기업재해보장보험</p>
+  <h2><span class="nb">산재보험이 멈추는 곳에서</span> <span class="nb"><em>보험금이</em> 배상 재원이 됩니다.</span></h2>
+  <p class="lead"><span class="nb">계약자는 회사, 피보험자는 직원입니다.</span> <span class="nb">보험료를 회사가 내고,</span> <span class="nb">직원에게 재해가 생기면 보험금이 지급됩니다.</span></p>
+  <div class="ba">
+    <div class="bx b"><span class="lb2">산재보험만 있을 때</span><strong>3억 3천만원을 회사 현금으로</strong><ul><li>사고 뒤에 합의 재원을 따로 마련해야 합니다</li><li>그해 이익과 운영자금에서 빠져나갑니다</li><li>합의가 늦어지면 피해 회복 증명도 늦어집니다</li></ul></div>
+    <div class="arrow">→</div>
+    <div class="bx a"><span class="lb2">기업재해보장보험이 있을 때</span><strong>보험금으로 배상·합의</strong><ul><li>재해사망·장해 보험금이 유족 보상 재원이 됩니다</li><li>보험료는 매달 정해진 금액으로 나갑니다</li><li>만기 환급형이면 만기에 환급금이 회사로 돌아옵니다</li></ul></div>
+  </div>
+  <div class="icards">
+    <div class="icard"><span class="cir"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><h4>365일 24시간</h4><ul><li>업무 중과 업무 외 재해 모두</li><li>교통재해 보장 선택 가능</li></ul></div>
+    <div class="icard"><span class="cir"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 3l4 4-4 4M21 7H9M7 21l-4-4 4-4M3 17h12"/></svg></span><h4>피보험자 교체</h4><ul><li>직원이 퇴사하면 해지 없이</li><li>새 직원으로 바꿔 만기까지 유지</li></ul></div>
+    <div class="icard"><span class="cir"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h18v11H3zM3 11h18M15 15h3"/></svg></span><h4>변동 없는 보험료</h4><ul><li>보험금을 받아도 보험료 그대로</li><li>만기 시 주보험료 90·60·40% 환급형 선택</li></ul></div>
+  </div>
+  <p class="fn2">삼성 기업재해보장보험(무배당) 2026년 9월 상품요약 기준. 5인 이상 가입, 주보험 가입금액 1억원 한도, 업종 위험등급에 따라 재해사망보험금 한도가 정해집니다. 만기 환급은 환급형 가입 시 기납입 주보험료 기준이며 선택특약은 환급금이 없습니다. 중도 해지 시 해지환급금은 납입보험료보다 적거나 없을 수 있습니다. 가입 전 약관과 상품설명서를 확인하시기 바랍니다.</p>
+</div></section>
+
+<section class="pg" id="s-design" data-n="계약 설계"><div class="wrap">
+  <p class="kick"><span class="no"></span>계약 설계</p>
+  <h2><span class="nb">같은 보험이라도</span> <span class="nb"><em>수익자를 누구로 두느냐</em>에 따라</span> <span class="nb">세금 처리가 달라집니다.</span></h2>
+  <p class="lead"><span class="nb">회사가 배상 재원을 직접 쥘지,</span> <span class="nb">직원 복리후생으로 처리할지를 먼저 정합니다.</span></p>
+  <div class="tbl"><table>
+    <thead><tr><th></th><th class="me">수익자 = 회사</th><th>수익자 = 직원(유족)</th></tr></thead>
+    <tbody>
+      <tr><th>보험금</th><td class="me">회사가 받아 유족 배상·합의에 씁니다</td><td>유족이 직접 받습니다</td></tr>
+      <tr><th>보험료 처리</th><td class="me">만기환급금 상당액은 자산, 나머지는 보험기간에 따라 손금</td><td>복리후생비로 손금</td></tr>
+      <tr><th>직원 소득</th><td class="me">근로소득으로 보지 않습니다</td><td>1인당 연 70만원까지 비과세, 넘는 부분은 근로소득</td></tr>
+      <tr><th>맞는 회사</th><td class="me">배상 재원을 회사가 관리해야 하는 경우</td><td>직원이 체감하는 복리후생이 필요한 경우</td></tr>
+    </tbody>
+  </table></div>
+  <div class="whys">
+    <div><span>업무 중 사망</span><em>계약자(회사) 또는 상속인 중 선택</em></div>
+    <div><span>업무 외 사망</span><em>상속인</em></div>
+  </div>
+  <div class="ex" style="margin-top:14px">
+    <span class="tg">가입 전에 확인합니다</span>
+    <p><b>취업규칙 등에 단체보험 규약이 있는지</b> 봅니다. 규약이 있으면 직원 개개인의 서면동의 없이 단체로 가입할 수 있고, 없으면 직원마다 서면동의를 받습니다.</p>
+  </div>
+  <p class="fn2">근거: 소득세법 시행령 제17조의4 제3호 가목(단체순수보장성보험·단체환급부보장성보험 연 70만원, 2026년 10월 26일 법제처 원문 확인) · 국세청 서면2팀-1631(2006.8.28) · 상법 제735조의3(단체보험). 수익자 구분은 삼성 기업재해보장보험 상품요약 기준입니다. 세무 처리는 회사 담당 세무사와 확인 후 진행하시기 바랍니다.</p>
+</div></section>
+
+<section class="pg gray" id="s-rate" data-n="산재보험료 점검"><div class="wrap">
+  <p class="kick"><span class="no"></span>산재보험료 점검</p>
+  <h2><span class="nb">사업주 교육 이수로 <em>10%</em>,</span> <span class="nb">위험성평가 인정으로 <em>20%</em></span> <span class="nb">산재보험료율이 내려갑니다.</span></h2>
+  <p class="lead"><span class="nb">산재예방요율제는 안전보건 활동을 인정받은 사업장의</span> <span class="nb">산재보험요율을 낮춰 주는 제도입니다.</span> <span class="nb">상시 근로자 50명 미만 제조업, 임업,</span> <span class="nb">위생 및 유사서비스업이 대상입니다.</span></p>
+  <div class="ba">
+    <div class="bx b"><span class="lb2">사업주 교육</span><strong>10% 인하 · 인정 1년</strong><ul><li>고용노동부 사업주 교육 이수</li><li>산재예방활동계획서 제출·승인</li></ul></div>
+    <div class="arrow">+</div>
+    <div class="bx a"><span class="lb2">위험성평가</span><strong>20% 인하 · 인정 3년</strong><ul><li>위험성평가 실시 후 인정 심사</li><li>인정일이 속한 연도의 다음 보험연도부터 적용</li></ul></div>
+  </div>
+  <div class="cards4">
+    <div class="c4"><b>업태·종목</b><span>사업자등록증에 몇 개로 등록돼 있습니까</span></div>
+    <div class="c4"><b>적용 업종</b><span>지금 산재보험 업종이 무엇인지 확인하셨습니까</span></div>
+    <div class="c4"><b>실제 업종</b><span>적용 업종과 실제 영위 업종이 같습니까</span></div>
+    <div class="c4"><b>요율 인하</b><span>산재예방요율제를 신청한 적이 있습니까</span></div>
+  </div>
+  <p class="fn2">산재예방요율제 지원 대상과 인하율은 삼성생명 「기업 Risk 관리를 위한 가치 제안서」 부록 기준이며, 신청 요건과 일정은 근로복지공단·안전보건공단 공고로 확인합니다.</p>
+</div></section>
+
+<section class="pg" id="how" data-n="진행 절차"><div class="wrap">
+  <p class="kick"><span class="no"></span>진행 절차</p>
+  <h2><span class="nb">직원 수와 업종을 알려주시면</span> <span class="nb">회사 기준 보험료와 환급액을 정리해 드립니다.</span></h2>
+  <p class="lead"><span class="nb">설계는 직원 수, 성별, 업종 위험등급으로 정해집니다.</span> <span class="nb">설계안을 보신 뒤 진행 여부를 정하십니다.</span></p>
+  <div class="flow">
+    <div class="fl5"><div class="w">STEP 1</div><b>현황 확인</b><span>직원 수, 업종, 기존 보험</span></div>
+    <div class="fl5"><div class="w">STEP 2</div><b>설계안</b><span>보험료, 보장, 만기 환급 비교</span></div>
+    <div class="fl5"><div class="w">STEP 3</div><b>규약 정비</b><span>수익자와 단체보험 규약 확정</span></div>
+    <div class="fl5"><div class="w">STEP 4</div><b>청약</b><span>서류 한 번에 접수</span></div>
+    <div class="fl5"><div class="w">STEP 5</div><b>사후 관리</b><span>입퇴사 때 피보험자 교체</span></div>
+  </div>
+  <div class="cards4">
+    <div class="c4"><b>사업자등록증</b><span>사본</span></div>
+    <div class="c4"><b>직원 명부</b><span>성명, 주민등록번호</span></div>
+    <div class="c4"><b>4대보험 가입자 명부</b><span>4대사회보험정보연계센터 발급</span></div>
+    <div class="c4"><b>법인 서류</b><span>등기사항증명서, 인감증명서(3개월 이내)</span></div>
+  </div>
+  <p class="note">설계안 단계까지는 직원 수와 성별, 업종만 있으면 됩니다. 청약 서류는 진행을 정하신 뒤에 받습니다.</p>
+</div></section>
+
+<section class="pg close gray" id="ask" data-n="상담 신청"><div class="wrap cgrid">
+  <div>
+    <p class="kick"><span class="no"></span>상담 신청</p>
+    <h2><span class="nb">사고 뒤에 마련하는 돈은</span> <span class="nb">회사 현금에서 나가고,</span> <span class="nb">미리 준비한 돈은 <em>보험금</em>에서 나갑니다.</span></h2>
+    <p class="body"><span class="nb">배상 재원, 형사 절차의 피해 회복,</span> <span class="nb">산재보험료 점검까지</span> <span class="nb">한 번에 정리해 드립니다.</span></p>
+    <p class="body"><span class="nb">직원 수와 업종을 남겨 주시면</span> <span class="nb">대표님 회사 기준 설계안을 들고</span> <span class="nb">찾아뵙겠습니다.</span></p>
+    <p class="sign"><span class="nb">창업부터 매각까지 세 번 경험해 본</span> <span class="nb">기업 전문가가 함께합니다.</span><small>유영곤 · 삼성생명 법인사업부 강남법인지점</small><span class="sfn" role="img" aria-label="Samsung Financial Networks" style="height:40px;margin-top:14px;display:block"></span></p>
+  </div>
+  <div>
+    <form class="form" id="askForm" action="https://api.web3forms.com/submit" method="POST">
+      <input type="hidden" name="access_key" value="56ba5ceb-1e23-4de6-b6ca-7016a3e1e8d7">
+      <input type="hidden" name="subject" value="[상담신청] 기업재해보장보험">
+      <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+      <div class="fgrid">
+        <div class="two2">
+          <div><label class="lb" for="fName">이름 <i>*</i></label><input id="fName" name="이름" type="text" required placeholder="성함"></div>
+          <div><label class="lb" for="fTel">연락처 <i>*</i></label><input id="fTel" name="연락처" type="tel" required placeholder="010-0000-0000"></div>
+        </div>
+        <div class="two2">
+          <div><label class="lb" for="fCo">회사명 <em>선택</em></label><input id="fCo" name="회사명" type="text"></div>
+          <div><label class="lb" for="fN">직원 수 <em>선택</em></label><input id="fN" name="직원수" type="text" placeholder="예: 12명"></div>
+        </div>
+        <div><label class="lb" for="fMsg">업종이나 전하실 내용 <em>선택</em></label><textarea id="fMsg" name="문의내용"></textarea></div>
+        <div class="consent">
+          <label><input type="checkbox" name="개인정보수집이용동의" value="동의함" required><span>[필수] 개인정보 수집·이용에 동의합니다.</span></label>
+          <details><summary>수집 항목 · 목적 · 보유기간</summary><div class="cb">
+            <p>수집 항목: 이름, 연락처, 회사명, 직원 수, 문의 내용</p>
+            <p>이용 목적: 상담 신청 접수와 연락</p>
+            <p>보유 기간: 상담 완료 후 1년이 지나면 지체 없이 파기</p>
+            <p>동의를 거부하실 수 있으며, 거부하시면 신청이 제한됩니다. 신청 내용은 Web3Forms를 거쳐 담당자 이메일로 전달됩니다.</p>
+          </div></details>
+        </div>
+        <button class="btn" type="submit">상담 신청</button>
+      </div>
+    </form>
+    <div class="alts">
+      <a href="tel:01037325234">전화<small>010-3732-5234</small></a>
+      <a href="mailto:freelandx@gmail.com">이메일<small>freelandx@gmail.com</small></a>
+    </div>
+  </div>
+</div></section>
+
+<p class="slogan">버는 건 시장이 정하고,<br>지키는 건 구조가 정합니다.</p>
+
+<footer><div class="wrap">
+  <span class="sfn" role="img" aria-label="Samsung Financial Networks" style="height:30px;background:var(--mut);margin-bottom:8px"></span>
+  <p>유영곤 · 삼성생명 법인사업부 강남법인지점</p>
+  <p>서울 강남구 테헤란로 424 (대치동) 11층</p>
+  <p>본 자료는 상품의 요약 안내이며, 가입 전 약관과 상품설명서의 주요 내용을 확인하시기 바랍니다. 2026년 10월 기준 법령과 상품 조건으로 작성했습니다. 법률·세무 관련 설명은 참고용 의견이며, 실행 전에 해당 분야 전문가의 검토가 필요합니다.</p>
+</div></footer>
+
+
+<script>
+(function(){
+  var pages=[].slice.call(document.querySelectorAll('section.pg[data-n]'));
+  var toc=document.getElementById('toc');
+  pages.forEach(function(s,i){
+    var n=('0'+(i+1)).slice(-2),no=s.querySelector('.kick .no');if(no)no.textContent=n;
+    var li=document.createElement('li'),a=document.createElement('a');a.href='#'+s.id;
+    a.innerHTML='<i>'+n+'</i>';a.appendChild(document.createTextNode(s.dataset.n));li.appendChild(a);toc.appendChild(li);
+  });
+  var all=[document.getElementById('top')].concat(pages);
+  document.addEventListener('keydown',function(e){
+    if(/INPUT|TEXTAREA/.test(document.activeElement.tagName))return;
+    var dir=(e.key==='ArrowRight'||e.key==='PageDown')?1:(e.key==='ArrowLeft'||e.key==='PageUp')?-1:0;
+    if(!dir)return;e.preventDefault();
+    var y=window.scrollY+80,cur=0;
+    all.forEach(function(s,i){if(s.offsetTop<=y)cur=i});
+    var nx=all[Math.max(0,Math.min(all.length-1,cur+dir))];
+    window.scrollTo({top:nx.offsetTop-52,behavior:'smooth'});
+  });
+  var f=document.getElementById('askForm');
+  f.addEventListener('submit',function(e){
+    e.preventDefault();var b=f.querySelector('.btn');b.disabled=true;b.textContent='보내는 중입니다';
+    fetch(f.action,{method:'POST',body:new FormData(f),headers:{Accept:'application/json'}})
+      .then(function(r){return r.json()})
+      .then(function(j){b.textContent=j.success?'신청이 접수되었습니다. 곧 연락드리겠습니다.':'전송에 실패했습니다. 전화로 연락 부탁드립니다.';if(!j.success)b.disabled=false})
+      .catch(function(){b.textContent='전송에 실패했습니다. 전화로 연락 부탁드립니다.';b.disabled=false});
+  });
+})();
+</script>
+</body>
+</html>
