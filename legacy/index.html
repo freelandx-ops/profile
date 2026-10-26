@@ -583,6 +583,19 @@ br.dk{display:none}
 
 .stp .big{font-size:clamp(19px,2.2vw,23px);font-weight:800;color:var(--blue);margin-top:4px}
 @media(min-width:800px){.pl4{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}}
+
+.roles{display:grid;gap:12px;margin-bottom:12px}
+@media(min-width:900px){.roles{grid-template-columns:repeat(3,1fr)}}
+.role{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px 22px}
+.rh2{display:grid;grid-template-columns:auto 1fr;column-gap:12px;align-items:center;padding-bottom:12px;margin-bottom:12px;border-bottom:2px solid var(--blue)}
+.rh2 .cir{grid-row:1 / 3;display:grid;place-items:center;width:48px;height:48px;border-radius:50%;background:var(--blue)}
+.rh2 svg{width:24px;height:24px;fill:none;stroke:#fff;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.rh2 b{font-size:21px}
+.rh2 em{font-style:normal;font-size:14.5px;color:var(--mut)}
+.rk{display:inline-block;font-size:13px;font-weight:800;color:var(--blue-d);background:var(--blue-s);border-radius:6px;padding:2px 9px;margin:6px 0 8px}
+.role ul{margin:0 0 6px;padding:0;list-style:none;display:grid;gap:6px}
+.role li{font-size:15.5px;color:var(--ink2);padding-left:13px;position:relative;line-height:1.55}
+.role li::before{content:"";position:absolute;left:0;top:.7em;width:5px;height:5px;border-radius:50%;background:var(--blue-m)}
 </style>
 </head>
 <body>
@@ -733,13 +746,31 @@ br.dk{display:none}
       <div class="stp"><span class="cir"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h14l-3-3M20 16H6l3 3"/></svg></span><b>3 지분 이전</b><span>평가액이 낮아진 사업연도에 지분 증여</span><span class="big">세액 34억원 감소</span><span>증여 후 10년이 지나면 상속재산 합산에서도 제외</span></div>
     </div>
   </div>
-  <div class="icards">
-    <div class="icard"><span class="cir"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg></span><h4>급여</h4><ul><li>법인세와 소득세 합계가 가장 낮은 수준으로 정합니다</li><li>임원 퇴직금 한도의 기준이 되는 평균 급여를 만듭니다</li></ul></div>
-    <div class="icard"><span class="cir"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h18v11H3zM3 11h18M15 15h3"/></svg></span><h4>배당</h4><ul><li>쌓인 이익잉여금을 정기적으로 줄입니다</li><li>순자산가치를 낮추고 가족 주주에게 현금을 만듭니다</li></ul></div>
-    <div class="icard"><span class="cir"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h8l4 4v14H7zM15 3v4h4M10 12h6M10 16h6"/></svg></span><h4>퇴직금</h4><ul><li>정관 규정을 정비한 뒤 퇴직소득으로 지급합니다</li><li>지급한 해의 평가액 하락에 맞춰 증여 시점을 잡습니다</li></ul></div>
+  <div class="roles">
+    <div class="role">
+      <div class="rh2"><span class="cir"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg></span><b>급여</b><em>매달 받는 생활 자금</em></div>
+      <div class="rk">자금 유동화</div>
+      <ul><li>법인에서는 손금으로 처리되어 법인세가 줄어듭니다</li><li>법인세와 소득세를 합한 부담이 가장 낮은 수준으로 정합니다</li><li>대표 개인의 소득 증빙이 되어 개인 명의 자산 취득의 자금출처가 됩니다</li></ul>
+      <div class="rk">승계 효과</div>
+      <ul><li>임원 퇴직금 한도를 정하는 평균 급여의 기준이 됩니다</li><li>이익이 법인에 덜 쌓여 주식가치 상승 속도가 줄어듭니다</li></ul>
+    </div>
+    <div class="role">
+      <div class="rh2"><span class="cir"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h18v11H3zM3 11h18M15 15h3"/></svg></span><b>배당</b><em>쌓인 이익을 가족이 나눠 받는 자금</em></div>
+      <div class="rk">자금 유동화</div>
+      <ul><li>이자·배당 합계 연 2천만원 이하는 원천징수로 과세가 끝납니다</li><li>보수 외 소득 연 2천만원 이하면 건강보험료가 추가로 붙지 않습니다</li><li>배우자·자녀가 주주면 각자 기준금액 안에서 나눠 받습니다</li></ul>
+      <div class="rk">승계 효과</div>
+      <ul><li>이익잉여금이 줄어 순자산가치가 낮아집니다</li><li>자녀 주주에게 배당이 쌓여 상속세 납부 자금이 됩니다</li></ul>
+    </div>
+    <div class="role">
+      <div class="rh2"><span class="cir"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h8l4 4v14H7zM15 3v4h4M10 12h6M10 16h6"/></svg></span><b>퇴직금</b><em>한 번에 가장 크게 받는 자금</em></div>
+      <div class="rk">자금 유동화</div>
+      <ul><li>다른 소득과 합산하지 않고 따로 과세합니다(분류과세)</li><li>근속연수공제와 환산급여공제로 실효세율이 낮습니다. 20억원 예시에서 상여 대비 4억 7,000만원 절감</li><li>건강보험료를 매기는 소득에 포함되지 않습니다</li></ul>
+      <div class="rk">승계 효과</div>
+      <ul><li>지급한 사업연도의 순손익과 순자산이 줄어 주식가치가 크게 낮아집니다</li><li>그 해에 지분을 증여하면 세액이 함께 줄어듭니다</li></ul>
+    </div>
   </div>
   <p class="meet"><b>1차 미팅 검토 사항</b>현재 급여·배당 수준, 정관 규정, 퇴직 예정 시점과 지분 이전 계획</p>
-  <p class="fn2">가정: 최근 3년 평균 급여 5억원, 근속 25년, 2012년 이후 근무분 12억원이 소득세법상 임원 퇴직소득 한도 이내, 최근 3년 순손익 각 20억원, 퇴직금 지급 사업연도 순손익 0원, 최고세율 50% 구간 기준. 근거: 소득세법 제22조, 제55조, 상속세 및 증여세법 제13조, 시행령 제54조. 각 단계의 상세는 다음 장부터 이어집니다.</p>
+  <p class="fn2">가정: 최근 3년 평균 급여 5억원, 근속 25년, 2012년 이후 근무분 12억원이 소득세법상 임원 퇴직소득 한도 이내, 최근 3년 순손익 각 20억원, 퇴직금 지급 사업연도 순손익 0원, 최고세율 50% 구간 기준. 근거: 소득세법 제14조, 제22조, 제48조, 제55조, 상속세 및 증여세법 제13조, 시행령 제54조, 국민건강보험법 시행령 제41조. 각 단계의 상세는 다음 장부터 이어집니다.</p>
 </div></section>
 
 <section class="pg" id="c1" data-part="c" data-n="비상장주식 평가"><div class="wrap">
