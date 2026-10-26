@@ -597,6 +597,9 @@ br.dk{display:none}
 .role li{font-size:15.5px;color:var(--ink2);padding-left:13px;position:relative;line-height:1.55}
 .role li::before{content:"";position:absolute;left:0;top:.7em;width:5px;height:5px;border-radius:50%;background:var(--blue-m)}
 .stps .stp{align-content:start}
+/* 구조도 화살표: 칸 안쪽 끝에 두어 옆 박스에 가려지지 않게 */
+.farr div{display:flex;align-items:center;gap:6px}
+@media(min-width:1000px){.farr div::after{position:static;transform:none;margin-left:auto;padding-left:6px}}
 </style>
 </head>
 <body>
@@ -966,7 +969,7 @@ br.dk{display:none}
   <ol class="pl4">
     <li><i>1</i>통합 설계</li>
     <li><i>2</i>증여 설계 · 가족법인</li>
-    <li><i>3</i>상속 시 설계 · 유상감자</li>
+    <li><i>3</i>상속 시 설계 · 이익소각</li>
   </ol>
 </div></section>
 
@@ -1032,32 +1035,32 @@ br.dk{display:none}
   <p class="fn2">가정: 적정이자율 4.6%, 현금 증여는 신설 법인·다른 소득 없음·2026년 법인세율. 부동산임대업이 주된 사업인 법인은 법인세율 구간이 다릅니다. 과세당국은 거래의 실질을 보므로 1억원 기준 안에서도 계약과 자금 흐름을 갖춰 실행합니다. 근거: 상속세 및 증여세법 제41조의4, 제45조의5, 시행령 제31조의4, 제34조의5, 법인세법 제18조의2, 제55조. <a href="https://freelandx-ops.github.io/profile/family/" target="_blank" rel="noopener">가족법인, 무엇부터 챙기면 되나</a></p>
 </div></section>
 
-<section class="pg" id="t3" data-n="상속 시 설계 · 유상감자"><div class="wrap">
-  <p class="kick"><span class="no"></span>종합 컨설팅 <em>상속 시 설계 · 상속주식 유상감자</em></p>
-  <h2><span class="nb">같은 회사 돈 12억원, 배당으로 꺼내면 약 7억원.</span> <br class="dk"><span class="nb">상속받은 주식을 회사가 사 주면</span> <span class="nb"><em>12억원</em>이 그대로 상속세 재원이 됩니다.</span></h2>
-  <p class="lead"><span class="nb">법인이 대표를 피보험자로 종신보험에 가입해 두면 상속이 개시될 때 법인에 보험금이 들어옵니다.</span> <br class="dk"><span class="nb">상속인이 물려받은 주식을 법인이 상속 평가액으로 사들이면(유상감자)</span> <span class="nb">의제배당이 거의 생기지 않아 감자 대가가 그대로 상속세 납부에 쓰입니다.</span></p>
+<section class="pg" id="t3" data-n="상속 시 설계 · 이익소각"><div class="wrap">
+  <p class="kick"><span class="no"></span>종합 컨설팅 <em>상속 시 설계 · 상속주식 이익소각</em></p>
+  <h2><span class="nb">같은 회사 돈 12억원, 배당으로 꺼내면 약 7억원.</span> <br class="dk"><span class="nb">상속받은 주식을 회사가 사서 소각하면</span> <span class="nb"><em>12억원</em>이 거의 그대로 상속세 재원이 됩니다.</span></h2>
+  <p class="lead"><span class="nb">법인이 대표를 피보험자로 종신보험에 가입해 두면 상속이 개시될 때 법인에 보험금이 들어옵니다.</span> <br class="dk"><span class="nb">회사가 그 돈으로 상속인의 주식을 상속 평가액에 사들여 소각하면(이익소각),</span> <span class="nb">상속인의 취득가액이 상속 평가액이라 양도차익이 거의 생기지 않습니다.</span></p>
   <div class="plan">
-    <div class="phead"><span class="ptag">PLAN</span><b>상속주식 유상감자</b><em>지분을 외부에 팔지 않고 회사 돈으로 상속세를 냅니다.</em></div>
+    <div class="phead"><span class="ptag">PLAN</span><b>상속주식 이익소각</b><em>지분을 외부에 팔지 않고 회사 돈으로 상속세를 냅니다.</em></div>
     <div class="stps">
       <div class="stp"><span class="cir"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21V5l8-2v18M12 9h8v12M7 9h2M7 13h2M7 17h2M15 13h2M15 17h2M2 21h20"/></svg></span><b>법인이 종신보험 가입</b><span>계약자와 수익자는 법인, 피보험자는 대표</span></div>
-      <div class="stp"><span class="cir"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h18v11H3zM3 11h18M15 15h3"/></svg></span><b>법인이 보험금 수령</b><span>상속개시 시 사망보험금이 법인에 들어옵니다</span></div>
+      <div class="stp"><span class="cir"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h18v11H3zM3 11h18M15 15h3"/></svg></span><b>법인이 보험금 수령</b><span>상속개시 시 사망보험금이 법인에 들어와 배당가능이익이 늘어납니다</span></div>
       <div class="stp"><span class="cir"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg></span><b>상속인이 주식 상속</b><span>배우자와 자녀가 대표의 지분을 상속</span></div>
-      <div class="stp"><span class="cir"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h14l-3-3M20 16H6l3 3"/></svg></span><b>상속 주식 유상감자</b><span>법인이 상속 평가액으로 주식을 사들여 소각</span></div>
+      <div class="stp"><span class="cir"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h14l-3-3M20 16H6l3 3"/></svg></span><b>회사가 자기주식 취득</b><span>배당가능이익 한도 안에서 상속 평가액으로 매입한 뒤 소각</span></div>
       <div class="stp"><span class="cir"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h8l4 4v14H7zM15 3v4h4M10 12h6M10 16h6"/></svg></span><b>상속세 납부</b><span>신고기한 안에 현금으로 납부, 경영권 유지</span></div>
     </div>
   </div>
   <div class="ba">
     <div class="bx b"><span class="lb2">배당으로 12억원을 꺼내면</span><strong>약 6.9억~7.6억원</strong><ul><li>배당소득으로 종합과세됩니다</li><li>12억원을 마련하려면 그보다 훨씬 많이 배당해야 합니다</li></ul></div>
     <div class="arrow" aria-hidden="true">→</div>
-    <div class="bx a"><span class="lb2">상속 주식을 회사가 사 주면</span><strong>12억원 전액</strong><ul><li>감자 대가와 상속 평가액이 같아 의제배당이 거의 없습니다</li><li>지분을 외부에 팔거나 물납하지 않고 경영권을 지킵니다</li></ul></div>
+    <div class="bx a"><span class="lb2">상속 주식을 회사가 사서 소각하면</span><strong>약 12억원</strong><ul><li>상속 평가액이 취득가액이 되어 양도차익이 거의 없습니다</li><li>지분을 외부에 팔거나 물납하지 않고 경영권을 지킵니다</li></ul></div>
   </div>
   <div class="cmp3">
     <div class="cm"><em>맞는 경우</em><strong>가업상속공제 대상 밖</strong><ul><li>업종, 사업무관자산 비중, 개정 요건 때문에 공제를 받기 어려운 법인</li><li>상속재산 대부분이 회사 주식인 상속인</li></ul></div>
-    <div class="cm"><em>실행 순서</em><strong>상속 이후에 실행</strong><ul><li>상속개시 뒤 신고기한 안에 감자 절차를 마칩니다</li><li>상속 전에 지분을 옮겨 같은 효과를 내려는 설계는 과세당국이 부인할 수 있습니다</li></ul></div>
-    <div class="cm"><em>설계할 때</em><strong>보험금 규모 역산</strong><ul><li>법인이 받는 보험금도 주식 평가액에 반영됩니다</li><li>늘어나는 상속세까지 넣어 필요한 보험금을 계산합니다</li></ul></div>
+    <div class="cm"><em>실행 조건</em><strong>배당가능이익 한도</strong><ul><li>회사가 자기주식을 살 수 있는 금액은 배당가능이익 안입니다</li><li>한도가 부족하면 유상감자로 진행합니다</li></ul></div>
+    <div class="cm"><em>설계할 때</em><strong>보험금 규모 역산</strong><ul><li>법인이 받는 보험금도 주식 평가액에 반영됩니다</li><li>늘어나는 상속세까지 넣어 필요한 보험금을 계산하고, 상속 이후에 실행합니다</li></ul></div>
   </div>
-  <p class="meet"><b>1차 미팅 검토 사항</b>예상 상속세, 가업상속공제 가능 여부, 법인 보험 규모와 감자 재원</p>
-  <p class="fn2">배당 비교 가정: 상속인이 12억원을 배당받고 다른 금융소득 없음, 종합소득공제와 다른 세액공제 미반영, 배당세액공제 반영, 2026년 세율. 감자 대가는 상속 평가액과 같은 금액. 가업상속공제를 받은 주식은 지분 감소로 공제액이 추징될 수 있어 이 설계와 함께 쓰지 않습니다. 상속받은 주식의 취득가액 인정 여부는 실행 전에 세무 검토를 거칩니다. 근거: 소득세법 제17조, 제56조, 상속세 및 증여세법 제8조, 제18조의2, 시행규칙 제17조의2, 상법 제438조.</p>
+  <p class="meet"><b>1차 미팅 검토 사항</b>예상 상속세, 가업상속공제 가능 여부, 배당가능이익, 법인 보험 규모</p>
+  <p class="fn2">배당 비교 가정: 상속인이 12억원을 배당받고 다른 금융소득 없음, 종합소득공제와 다른 세액공제 미반영, 배당세액공제 반영, 2026년 세율. 자기주식 매입가는 상속 평가액과 같은 금액. 가업상속공제를 받은 주식은 지분 감소로 공제액이 추징될 수 있어 이 설계와 함께 쓰지 않습니다. 2026년 세제개편안(정부안)에는 자기주식 취득 방식의 과세를 바꾸는 내용이 있어 실행 시점의 세법을 확인합니다. 근거: 상법 제341조, 소득세법 제56조, 시행령 제163조 제9항, 상속세 및 증여세법 제8조, 제18조의2, 시행규칙 제17조의2.</p>
 </div></section>
 
 <!-- 선결 과제 -->
