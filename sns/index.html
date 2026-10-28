@@ -1182,7 +1182,7 @@ input[type=email]{width:100%;border:1px solid var(--line);border-radius:10px;pad
 
 <script>
 (function(){
-  var ENDPOINT='';   // _받기.gs 를 웹 앱으로 배포한 주소(…/exec). 비어 있으면 Web3Forms 로 대표님 메일에만 간다
+  var ENDPOINT='https://script.google.com/macros/s/AKfycbw9I2xq7mFtTywPNqerBYN7h88mCheZwfwUp44XruU8RZjxlsFiULZBzixNz5docmwjAQ/exec';   // _받기.gs 를 웹 앱으로 배포한 주소(…/exec). 비어 있으면 Web3Forms 로 대표님 메일에만 간다
   var pages=[].slice.call(document.querySelectorAll('section.pg[data-n]'));
   var toc=document.getElementById('toc'),grp=null,ul=null;
   pages.forEach(function(s,i){
