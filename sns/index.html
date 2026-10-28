@@ -718,6 +718,29 @@ input[type=email]{width:100%;border:1px solid var(--line);border-radius:10px;pad
 .gate3 i{font-style:normal;display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--blue);color:#fff;font-weight:800}
 .gate3 b{font-size:clamp(20px,2.2vw,26px)}
 .gate3 span{font-size:16px;color:var(--ink2)}
+
+/* 2026-10-28 5차 — 화면 전체로 키우기 (zoom 은 스크립트가 화면 폭에 맞춰 정한다) */
+.deck .pg>.wrap{zoom:var(--z,1);max-width:1280px;padding-inline:24px}
+.deck .bar .wrap,.deck footer .wrap{max-width:none;padding-inline:3vw}
+.deck .bar{zoom:var(--zb,1)}
+.deck .dnav{zoom:var(--zb,1)}
+.deck .pg{top:calc(53px*var(--zb,1));bottom:calc(58px*var(--zb,1))}
+.pg h2{font-size:42px}
+.pg h2.big{font-size:54px}
+.lead{font-size:21px}
+.cover h1{font-size:76px}
+@media(max-width:900px){.pg h2{font-size:clamp(26px,6vw,36px)}.pg h2.big{font-size:clamp(30px,7vw,42px)}.cover h1{font-size:clamp(40px,10vw,60px)}}
+/* 줄바꿈 — 카드 제목은 고르게, 설명은 단어 단위 */
+.pg h2 .nb{white-space:nowrap}
+@media(max-width:900px){.pg h2 .nb{white-space:normal}}
+.cm strong,.cc .q,.ff .q,.kw strong,.cto strong,.mk b,.fs b,.gate3 b,.bd strong,.ck1 b,.get strong,.concl strong,.origin strong,.steps5 b,.sy b,.icard h4{text-wrap:balance}
+.cc li,.ff p,.mk span,.fs span,.cto p,.kw p,.kw li,.sy span,.get span,.sol li,.cm li,.cfrom span,.lead,.body{text-wrap:pretty;word-break:keep-all}
+.mk strong{font-size:30px;white-space:nowrap}
+.cover h1{font-size:64px;margin-bottom:12px}
+.cover .line{margin-bottom:22px}
+.cover .who{margin-bottom:22px}
+.toc{font-size:14.5px;gap:10px 24px}
+.toc .tp li{padding:1px 0}
 </style>
 </head>
 <body>
@@ -1219,6 +1242,12 @@ input[type=email]{width:100%;border:1px solid var(--line);border-radius:10px;pad
 
   var all=[document.getElementById('top')].concat(pages),cur=0;
   document.body.classList.add('deck');
+  function fit(){
+    var w=innerWidth,h=innerHeight,z=Math.min((w-96)/1280,(h-130)/680);
+    z=w<=900?1:Math.max(1,Math.min(2.2,z));
+    var r=document.documentElement.style;r.setProperty('--z',z.toFixed(3));r.setProperty('--zb',Math.min(z,1.35).toFixed(3));
+  }
+  fit();addEventListener('resize',fit);
   var cnt=document.getElementById('cnt'),prog=document.getElementById('prog');
   function go(i,push){
     i=Math.max(0,Math.min(all.length-1,i));
