@@ -510,269 +510,394 @@ body.deck{overflow:hidden}
 .fb.keep{background:var(--blue-s);color:var(--blue-d);border:1.5px dashed var(--blue-m)}
 .fr .rt{font-size:15px;font-weight:600;color:var(--ink2)}
 @media(max-width:699px){.fr .rt{grid-column:2}}
+
+/* 2026-10-28 개편 — 넓게 */
+.wrap{max-width:1320px;padding-inline:clamp(16px,4vw,48px)}
+.pg h2{font-size:clamp(28px,4vw,48px)}
+.pg h2.big{font-size:clamp(32px,5vw,60px)}
+.lead{font-size:clamp(18px,1.6vw,22px);max-width:none}
+.eyebrow{margin:0 0 14px;font-size:16px;font-weight:600;opacity:.85;letter-spacing:.02em}
+.cover h1{font-size:clamp(40px,7vw,84px);margin-bottom:18px}
+.cover .line{max-width:none;font-size:clamp(17px,1.8vw,23px)}
+.toc .part{column-span:all;font-size:13px;font-weight:700;letter-spacing:.06em;opacity:.7;padding-top:10px}
+.toc{columns:1}
+@media(min-width:900px){.toc{columns:3;column-gap:36px}.toc .part{column-span:none;break-after:avoid}}
+.stats.s2{grid-template-columns:1fr 1fr}
+.stat.todo2{border:1px dashed #D9A400;background:#FFF7E0}
+.stat.todo2 .v{color:#7A5A00}
+.nowg{display:grid;gap:18px}
+@media(min-width:1000px){.nowg{grid-template-columns:1fr 1.15fr;align-items:start}}
+.phones{display:grid;gap:12px}
+@media(min-width:640px){.phones{grid-template-columns:1fr 1fr}}
+.ph{background:#fff;border:1px solid var(--line);border-radius:22px;padding:18px 18px 16px;box-shadow:0 18px 40px -28px rgba(17,24,39,.45)}
+.phh{display:flex;gap:12px;align-items:center;margin-bottom:12px}
+.phh img{width:54px;height:54px;border-radius:50%;object-fit:cover;object-position:center 18%}
+.phh small{display:block;font-size:12px;font-weight:700;color:var(--blue);letter-spacing:.04em}
+.phh b{display:block;font-size:17px}
+.phh i{font-style:normal;font-size:14px;color:var(--mut)}
+.ph pre{margin:0;font-family:inherit;white-space:pre-wrap;font-size:15px;line-height:1.65;color:var(--ink)}
+.ph .fol{margin:10px 0 0;font-size:14px;color:var(--mut)}
+.cmap{display:grid;gap:10px}
+@media(min-width:1100px){.cmap{grid-template-columns:1fr 1fr;gap:12px}}
+.cr{display:grid;grid-template-columns:1fr;gap:6px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 18px}
+@media(min-width:700px){.cr{grid-template-columns:1fr 30px 1.25fr;align-items:center;gap:12px}}
+.cr .from b{display:block;font-size:17px}
+.cr .from span{font-size:14.5px;color:var(--mut)}
+.cr .ar{font-size:24px;font-weight:800;color:var(--blue);text-align:center}
+.cr .to b{display:block;font-size:17.5px;color:var(--blue-d)}
+.cr .to span{font-size:15.5px;color:var(--ink2)}
+@media(max-width:699px){.cr .ar{display:none}}
+.loop{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:8px 0 22px}
+.loop div{flex:1 1 200px;background:#fff;border:2px solid var(--blue);border-radius:18px;padding:20px 22px}
+.loop b{display:block;font-size:clamp(22px,2.4vw,30px);color:var(--blue-d)}
+.loop span{font-size:16px;color:var(--ink2)}
+.loop i{font-style:normal;font-size:30px;font-weight:800;color:var(--blue)}
+.ws-pg{background:#FFFDF6}
+.fill3,.fill4{display:grid;gap:14px}
+@media(min-width:900px){.fill3{grid-template-columns:repeat(3,1fr)}.fill4{grid-template-columns:repeat(4,1fr)}}
+.fl{display:grid;gap:6px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 20px}
+.fl b{font-size:20px;color:var(--blue-d)}
+.fl span{font-size:15.5px;color:var(--ink2);line-height:1.55;min-height:3.1em}
+.fl textarea{min-height:120px;font-size:16.5px;border:1.5px solid var(--blue-l);background:#FBFCFF}
+.fl.one{margin-top:14px}
+.fl.one textarea{min-height:64px}
+.saved{margin:12px 0 0;font-size:14.5px;color:var(--mut)}
+.pos{font-size:28px!important;color:var(--blue)}
+.brand{display:grid;gap:12px;margin-bottom:14px}
+@media(min-width:1000px){.brand{grid-template-columns:1fr 1fr 1.4fr}}
+.bd{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px 22px;display:grid;gap:8px;align-content:start}
+.bd em{font-style:normal;font-size:14.5px;font-weight:700;color:var(--blue)}
+.bd strong{font-size:clamp(20px,2.2vw,26px);line-height:1.35;letter-spacing:-.02em}
+.bd span{font-size:15.5px;color:var(--ink2)}
+.bd ol{margin:0;padding-left:20px;display:grid;gap:6px;font-size:16px;color:var(--ink2)}
+.bd ol b{color:var(--ink)}
+@media(min-width:1000px){.two.wide{grid-template-columns:1fr 1.1fr;gap:18px}}
+.gets5{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 16px}
+.gets5 div{background:var(--blue);color:#fff;border-radius:999px;padding:8px 16px;font-size:16px;font-weight:700}
+.filled p{margin:0;font-size:14px;color:var(--blue-d);background:var(--blue-s);border-radius:10px;padding:10px 12px}
+input[type=email]{width:100%;border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-size:16px;background:#fff;color:var(--ink)}
+.icard li{font-size:17px}
+.sg ul{font-size:17px}
+.toc{columns:auto!important;display:grid;gap:18px 28px;font-size:16px}
+@media(min-width:900px){.toc{grid-template-columns:repeat(4,1fr)}}
+.toc .tp{padding:0}
+.toc .tp>p{margin:0 0 6px;font-size:13px;font-weight:700;letter-spacing:.04em;opacity:.7;padding-bottom:6px;border-bottom:1px solid rgba(255,255,255,.25)}
+.toc .tp ul{list-style:none;margin:0;padding:0}
+.toc .tp li{padding:3px 0}
+.close h2 .nb{white-space:normal}
+.close h2{font-size:clamp(26px,3.2vw,40px)}
 </style>
 </head>
 <body>
 <div class="bar"><div class="wrap">
   <div class="bl"><span class="sfn" role="img" aria-label="Samsung Financial Networks"></span><b>SNS 콘텐츠 교육</b><small>인스타 · 스레드</small></div>
-  <a class="go" href="#sheet">실습 워크시트</a>
+  <a class="go" href="#s-send">내 브랜딩 받기</a>
 </div></div>
 
 <!-- 표지 -->
 <section class="pg cover" id="top"><div class="wrap">
-  <h1>SNS 콘텐츠<br>교육</h1>
-  <p class="line"><span class="nb">레퍼런스를 찾고, 자기 자리를 정하고,</span> <span class="nb">한 편을 혼자 만드는 순서입니다.</span></p>
+  <p class="eyebrow">신인 GFC 교육 · 2026년 10월 29일</p>
+  <h1>SNS 콘텐츠 교육</h1>
+  <p class="line"><span class="nb">제가 왜 SNS를 하고, 어떤 생각으로 운영하고 있는지</span> <span class="nb">그대로 보여 드리고,</span> <span class="nb">여러분의 퍼스널 브랜딩을 같이 잡는 시간입니다.</span></p>
   <div class="who">
     <img src="https://freelandx-ops.github.io/profile/%EA%B0%9C%EC%9D%B8%ED%94%84%EB%A1%9C%ED%95%84%20%EC%82%AC%EC%A7%84/%EA%B0%9C%EC%9D%B8%ED%94%84%EB%A1%9C%ED%95%84_%EC%82%AC%EC%A7%84_%EB%A1%9C%EA%B3%A0%EC%A0%9C%EA%B1%B0.jpg" alt="유영곤 사진">
-    <div><b>유영곤</b><span>삼성생명 법인사업부 강남법인지점 · 2026년 10월 29일</span></div>
+    <div><b>유영곤</b><span>삼성생명 법인사업부 강남법인지점</span></div>
   </div>
   <ol class="toc" id="toc"></ol>
 </div></section>
 
-<!-- 01 왜 시작했나 -->
-<section class="pg" id="s-why" data-n="왜 시작했나"><div class="wrap">
-  <p class="kick"><span class="no"></span>왜 시작했나</p>
-  <h2><span class="nb">SNS는 홍보가 아니라</span> <span class="nb"><em>영업 전략</em>입니다.</span></h2>
-  <p class="lead"><span class="nb">지인 시장 다음을 지금 준비하는</span> <span class="nb">네 가지 이유입니다.</span></p>
+<!-- PART 1 -->
+<section class="pg" id="s-why" data-n="왜 SNS를 하나" data-p="PART 1 · 저는 이렇게 하고 있습니다"><div class="wrap">
+  <p class="kick"><span class="no"></span>왜 SNS를 하나</p>
+  <h2><span class="nb">저에게 SNS는 홍보가 아니라</span> <span class="nb"><em>영업 전략</em>입니다.</span></h2>
+  <p class="lead"><span class="nb">지인 시장 다음을 지금부터 준비하려고 시작했습니다.</span> <span class="nb">이유는 네 가지입니다.</span></p>
   <div class="gets why4">
-    <div class="get hl"><em>01 · 시장</em><strong>시간이 지나면 개척 영업을 해야 합니다</strong><span>지인 시장이 끝나기 전에, 모르는 사람이 먼저 찾아오는 경로를 만들어 둡니다.</span></div>
-    <div class="get"><em>02 · 시간</em><strong>AI로 시스템화하면 다른 영업과 병행할 수 있습니다</strong><span>기획, 작성, 숫자 확인을 AI가 줄이면 대면 영업 시간을 빼앗지 않습니다.</span></div>
-    <div class="get"><em>03 · 관계</em><strong>퍼스널 브랜딩으로 관계에서 우위를 점합니다</strong><span>제 글을 먼저 읽은 분은 첫 만남부터 질문하는 자리에서 시작합니다.</span></div>
-    <div class="get"><em>04 · 확장</em><strong>규모 있는 채널은 세미나와 강연으로 확장됩니다</strong><span>팔로워 한 명이 아니라 채널 자체가 영업 기회를 만드는 자산이 됩니다.</span></div>
+    <div class="get hl"><em>01 · 시장</em><strong>시간이 지나면 개척 영업을 해야 합니다</strong><span>지인 시장이 끝나기 전에, 모르는 분이 먼저 찾아오는 경로를 만들어 두고 싶었습니다.</span></div>
+    <div class="get"><em>02 · 시간</em><strong>AI로 시스템화하면 다른 영업과 병행할 수 있습니다</strong><span>기획, 작성, 숫자 확인을 AI로 줄여서 대면 영업 시간을 지키고 있습니다.</span></div>
+    <div class="get"><em>03 · 관계</em><strong>퍼스널 브랜딩으로 관계에서 우위를 갖고 싶었습니다</strong><span>제 글을 먼저 읽은 분은 첫 만남부터 질문을 들고 오십니다.</span></div>
+    <div class="get"><em>04 · 확장</em><strong>규모 있는 채널은 세미나와 강연으로 이어집니다</strong><span>채널 자체가 한 명이 아니라 여러 명을 만나는 자리를 만들어 줍니다.</span></div>
   </div>
 </div></section>
 
-<!-- 02 커리어 -->
-<section class="pg gray" id="s-career" data-n="커리어에서 가져온 것"><div class="wrap">
-  <p class="kick"><span class="no"></span>커리어에서 가져온 것</p>
-  <h2><span class="nb">경력에서 가져온 것은 다섯 가지입니다.</span> <span class="nb"><em>SNS는 처음</em>이었습니다.</span></h2>
-  <div class="hist">
-    <div class="hi"><div class="co">창업과 EXIT 세 번<small>GE엔터테인먼트 · 팩앤폴드 · WATT</small></div><p><b>고객의 문제를 팝니다.</b></p></div>
-    <div class="hi"><div class="co">누적 투자 유치 500억원</div><p><b>숫자와 근거로 설득합니다.</b></p></div>
-    <div class="hi"><div class="co">주식 10년<small>45,793명 대회 4위</small></div><p><b>버티고 복기합니다.</b></p></div>
-    <div class="hi"><div class="co">강의</div><p><b>쉬운 말과 순서로 전합니다.</b></p></div>
-    <div class="hi"><div class="co">삼성생명 · 삼성화재 · 삼성증권<small>GFC · 손해보험 · 투자권유대행</small></div><p><b>세무, 부동산, 투자, 보험을 같이 봅니다.</b> 고객의 자산은 하나입니다.</p></div>
+<section class="pg gray" id="s-career" data-n="커리어가 SNS에 붙는 방식"><div class="wrap">
+  <p class="kick"><span class="no"></span>커리어가 SNS에 붙는 방식</p>
+  <h2><span class="nb">해 온 일이 그대로</span> <span class="nb"><em>글 쓰고 관리하는 방식</em>이 됐습니다.</span></h2>
+  <p class="lead"><span class="nb">새로 배운 것보다</span> <span class="nb">이미 해 본 일을 SNS에 옮긴 것이 더 많습니다.</span></p>
+  <div class="cmap">
+    <div class="cr"><div class="from"><b>MCN 공동대표 · 엔씨소프트 마케팅</b><span>GE엔터테인먼트 MCN 사업 구축과 운영 · 대규모 서비스 마케팅</span></div><div class="ar">→</div><div class="to"><b>채널을 키우는 방식을 사업으로 해 봤습니다</b><span>크리에이터가 어떻게 조회와 팔로워를 만드는지 알고 시작했습니다.</span></div></div>
+    <div class="cr"><div class="from"><b>창업과 EXIT 세 번</b><span>GE엔터테인먼트 · 팩앤폴드 · WATT</span></div><div class="ar">→</div><div class="to"><b>상품이 아니라 문제를 팝니다</b><span>그래서 글을 상품 소개가 아니라 고객이 막힌 순간에서 엽니다.</span></div></div>
+    <div class="cr"><div class="from"><b>누적 투자 유치 500억원</b><span>숫자로 투자자를 설득해 온 일</span></div><div class="ar">→</div><div class="to"><b>숫자와 근거로 설득합니다</b><span>그래서 글에 쓰는 숫자마다 기사와 조문 출처를 붙입니다.</span></div></div>
+    <div class="cr"><div class="from"><b>주식 10년 · 45,793명 대회 4위</b><span>결과보다 기록과 복기</span></div><div class="ar">→</div><div class="to"><b>올리고, 숫자를 보고, 고칩니다</b><span>그래서 글마다 조회, 공유, 문의를 따로 기록하고 다음 글을 고칩니다.</span></div></div>
+    <div class="cr"><div class="from"><b>강의</b><span>어려운 내용을 순서대로 풀어 온 일</span></div><div class="ar">→</div><div class="to"><b>고객이 아는 말로 엽니다</b><span>그래서 세금 용어 대신 「부모님」, 「집값」, 「입원」으로 시작합니다.</span></div></div>
+    <div class="cr"><div class="from"><b>삼성생명 · 삼성화재 · 삼성증권</b><span>보험, 손해보험, 투자권유대행</span></div><div class="ar">→</div><div class="to"><b>세무, 부동산, 투자, 보험을 같이 봅니다</b><span>그래서 한 영역만 다루는 계정과 다른 자리에 서 있습니다.</span></div></div>
   </div>
-  <p class="diff">지금 쓰는 규칙은 경력에서 나오지 않았습니다.<br><b>레퍼런스를 따라 해 보고, 반응 없는 글을 기록하며</b> 만들었습니다.</p>
 </div></section>
 
-<!-- 03 성과 숫자 -->
-<section class="pg" id="s-result" data-n="성과 숫자"><div class="wrap">
-  <p class="kick"><span class="no"></span>성과 숫자 <em>스레드 · 인스타, 2026년 8월 26일 첫 발행</em></p>
-  <h2><span class="nb">조회 21만에 문의 2건,</span> <span class="nb">조회 5천에 <em>문의 3건과 미팅 2건</em>.</span></h2>
-  <p class="lead"><span class="nb">많이 퍼지는 글과 문의를 받는 글은 다릅니다.</span> <span class="nb">조회수만 보면 어떤 글이 영업이 되는지 놓칩니다.</span></p>
-  <div class="stats">
-    <div class="stat"><div class="v">302,731</div><div class="k">최고 조회 · 「가족이 암 진단을 받으면」 · 공유 1,298</div></div>
-    <div class="stat"><div class="v">10건 중 9건</div><div class="k">글별로 기록한 문의 중 스레드에서 시작한 것</div></div>
-    <div class="stat"><div class="v">0건</div><div class="k">인스타에서 시작한 문의</div></div>
+<section class="pg" id="s-now" data-n="지금 채널"><div class="wrap">
+  <p class="kick"><span class="no"></span>지금 채널 <em>2026년 10월 28일 기준</em></p>
+  <h2><span class="nb">스레드 팔로워 1,940명,</span> <span class="nb">최근 100편 조회 <em>120만</em>입니다.</span></h2>
+  <div class="nowg">
+    <div class="stats s2">
+      <div class="stat"><div class="v">1,940</div><div class="k">스레드 팔로워</div></div>
+      <div class="stat"><div class="v">1,206,649</div><div class="k">스레드 최근 100편 조회 합계</div></div>
+      <div class="stat"><div class="v">303,627</div><div class="k">한 편 최고 조회 · 「가족이 암 진단을 받으면」 · 공유 1,299</div></div>
+      <div class="stat todo2"><div class="v">⬜</div><div class="k">인스타 팔로워 · 집계 연결이 끊겨 대표님 확인 필요</div></div>
+    </div>
+    <div class="phones">
+      <div class="ph"><div class="phh"><img src="https://freelandx-ops.github.io/profile/%EA%B0%9C%EC%9D%B8%ED%94%84%EB%A1%9C%ED%95%84%20%EC%82%AC%EC%A7%84/%EA%B0%9C%EC%9D%B8%ED%94%84%EB%A1%9C%ED%95%84_%EC%82%AC%EC%A7%84_%EB%A1%9C%EA%B3%A0%EC%A0%9C%EA%B1%B0.jpg" alt=""><div><small>Threads</small><b>유영곤 | 당신의 CFO</b><i>wealthstructure.kr</i></div></div>
+        <pre>■ 자산은 하나입니다
+■ 세금·투자·부동산·상속증여·보험
+■ 한 번에 봐야 서로 어긋나지 않습니다
+■ 삼성생명·삼성증권·삼성화재 소속
+■ 자산 점검·컨설팅·세미나 문의는👇</pre><p class="fol">팔로워 1,940명</p></div>
+      <div class="ph"><div class="phh"><img src="https://freelandx-ops.github.io/profile/%EA%B0%9C%EC%9D%B8%ED%94%84%EB%A1%9C%ED%95%84%20%EC%82%AC%EC%A7%84/%EA%B0%9C%EC%9D%B8%ED%94%84%EB%A1%9C%ED%95%84_%EC%82%AC%EC%A7%84_%EB%A1%9C%EA%B3%A0%EC%A0%9C%EA%B1%B0.jpg" alt=""><div><small>Instagram</small><b>유영곤 | 당신의 CFO</b><i>wealthstructure.kr</i></div></div>
+        <pre>🏢 삼성생명, 삼성화재, 삼성증권 소속 자산 컨설턴트
+📊 세금, 투자, 부동산, 보험, 상속증여
+💡 내 자산을 늘리고 지키는 정보만 올립니다
+👇 돈이 되는 1:1 상담 (생애 자산 리포트 제공, 월 10명 한정)</pre></div>
+    </div>
   </div>
-  <div class="ba">
-    <div class="bx b"><span class="lb2">많이 퍼진 글</span><strong>조회 219,365 · 문의 2</strong><ul><li>「강남 부모들은 자녀 집값을 그냥 주지 않는다.」</li><li>공유 526, 리포스트 240</li></ul></div>
-    <div class="arrow" aria-hidden="true">↔</div>
-    <div class="bx a"><span class="lb2">문의를 받은 글</span><strong>조회 5,666 · 문의 3 · 미팅 2</strong><ul><li>「치매에 걸린 부모님의 상속과 증여 준비」</li><li>스레드 메시지 2건, 리멤버 1건</li></ul></div>
-  </div>
-  <p class="fn2">조회는 2026-10-25 측정(threads_stats.py), 문의와 미팅은 대표님 기록입니다. 고객 이름은 싣지 않습니다.</p>
+  <p class="fn2">스레드 숫자는 threads_stats.py로 2026-10-28에 받은 값입니다. 바이오는 2026-10-27 확정판입니다.</p>
 </div></section>
 
-<!-- 03-2 영업 현황 -->
 <section class="pg gray" id="s-status" data-n="내 영업 현황"><div class="wrap">
   <p class="kick"><span class="no"></span>내 영업 현황 <em>계약 기준</em></p>
-  <h2><span class="nb">계약의 98%가 개척 영업,</span> <span class="nb">그중 <em>72%가 온라인</em>에서 왔습니다.</span></h2>
-  <p class="lead"><span class="nb">메시지 약 200건이 상담 약 20건,</span> <span class="nb">계약 5건이 됐습니다.</span> <span class="nb">계약하지 않은 15명과는 관계를 이어 가고 있습니다.</span></p>
+  <h2><span class="nb">계약의 98%가 개척 영업이고,</span> <span class="nb">그중 <em>72%가 온라인</em>에서 왔습니다.</span></h2>
+  <p class="lead"><span class="nb">메시지 212건이 상담 23건, 계약 5건이 됐습니다.</span> <span class="nb">계약하지 않은 18명과는 지금도 관계를 이어 가고 있습니다.</span></p>
   <div class="mix">
     <div class="mx"><b>계약은 어디서 왔나</b>
-      <div class="stack"><span class="s1" style="width:2%" title="지인 2%"></span><span class="s2" style="width:98%">개척 영업 98%</span></div>
+      <div class="stack"><span class="s1" style="width:2%"></span><span class="s2" style="width:98%">개척 영업 98%</span></div>
       <p>지인 2%</p></div>
     <div class="mx"><b>개척 영업 매출 중 채널</b>
       <div class="stack"><span class="s2" style="width:72%">온라인 72%</span><span class="s1" style="width:28%"></span></div>
       <p>오프라인 28%</p></div>
   </div>
   <div class="fun">
-    <div class="fr"><span class="st">유입</span><div class="fb" style="width:100%"><b>메시지 약 200건</b></div><span class="rt"></span></div>
-    <div class="fr"><span class="st">전환</span><div class="fb" style="width:62%"><b>상담 약 20건</b></div><span class="rt">메시지의 약 10%</span></div>
-    <div class="fr"><span class="st">클로징</span><div class="fb split" style="width:40%"><b>계약 5건</b></div><span class="rt">상담의 25%</span></div>
-    <div class="fr"><span class="st">관리</span><div class="fb keep" style="width:52%"><b>관계 유지 15명</b></div><span class="rt">다음 계약의 후보</span></div>
+    <div class="fr"><span class="st">유입</span><div class="fb" style="width:100%"><b>메시지 212건</b></div><span class="rt"></span></div>
+    <div class="fr"><span class="st">전환</span><div class="fb" style="width:62%"><b>상담 23건</b></div><span class="rt">메시지의 10.8%</span></div>
+    <div class="fr"><span class="st">클로징</span><div class="fb" style="width:40%"><b>계약 5건</b></div><span class="rt">상담의 21.7%</span></div>
+    <div class="fr"><span class="st">관리</span><div class="fb keep" style="width:52%"><b>관계 유지 18명</b></div><span class="rt">다음 계약을 기다리는 분들</span></div>
   </div>
   <p class="fn2">대표님 집계(2026-10-28 기준). 막대 길이는 단계 구분용이며 비율대로 그리지 않았습니다.</p>
 </div></section>
 
-<!-- 04 JUST DO IT -->
 <section class="pg" id="s-just" data-n="JUST DO IT"><div class="wrap">
-  <p class="kick"><span class="no"></span>JUST DO IT <em>PDCA</em></p>
-  <h2><span class="nb">두 달 동안 116편.</span> <span class="nb">조회 중앙값이 <em>65에서 719</em>로 올랐습니다.</span></h2>
-  <p class="lead"><span class="nb">첫 글 조회는 71이었습니다.</span> <span class="nb">하루 두 편 꼴로 올리고 나서 반응이 왔습니다.</span> <span class="nb">알고리즘을 알아도 꾸준히 올리지 않으면 숫자가 쌓이지 않습니다.</span></p>
-  <div class="viz">
-    <div class="vhead"><b>스레드 월별 조회 중앙값</b><span class="f">8월 → 9월 → 10월</span></div>
-    <div class="cols acc">
-      <div class="col"><span class="v">65</span><span class="bar" style="height:20px"></span><span class="x">8월 · 4편</span></div>
-      <div class="col"><span class="v">385</span><span class="bar" style="height:118px"></span><span class="x">9월 · 61편</span></div>
-      <div class="col last"><span class="v">719</span><span class="bar" style="height:220px"></span><span class="x">10월 · 51편</span></div>
-    </div>
+  <p class="kick"><span class="no"></span>JUST DO IT</p>
+  <h2 class="big"><span class="nb">제가 아는 가장 확실한 방법은</span> <span class="nb"><em>꾸준히 올리는 것</em>입니다.</span></h2>
+  <p class="lead"><span class="nb">첫 글 조회는 71이었습니다.</span> <span class="nb">반응이 오기 시작한 건 두 달쯤 지나서였습니다.</span> <span class="nb">그 사이에 한 일은 꾸준히 올리고, 숫자를 보고, 고친 것뿐입니다.</span></p>
+  <div class="loop">
+    <div><b>올린다</b><span>완벽한 한 편보다 오늘 한 편</span></div>
+    <i>→</i>
+    <div><b>숫자를 본다</b><span>무엇이 퍼지고 무엇이 문의로 왔나</span></div>
+    <i>→</i>
+    <div><b>고친다</b><span>첫 줄과 마지막 문장부터</span></div>
+    <i>↺</i>
   </div>
-  <div class="plan">
-    <div class="phead"><span class="ptag">PDCA</span><b>올린다 → 숫자를 본다 → 고친다</b><em>한 편이 다음 편의 재료가 됩니다.</em></div>
-    <div class="stps s4">
-      <div class="stp"><span class="cir">P</span><b>한 편 기획</b><span>누구에게, 왜 지금</span></div>
-      <div class="stp"><span class="cir">D</span><b>올린다</b><span>완벽보다 오늘</span></div>
-      <div class="stp"><span class="cir">C</span><b>숫자를 본다</b><span>조회, 공유, 문의를 따로</span></div>
-      <div class="stp"><span class="cir">A</span><b>고친다</b><span>첫 줄과 마지막 문장부터</span></div>
-    </div>
-  </div>
-  <p class="fn2">8월은 26일 첫 발행 뒤 4편. 측정 2026-10-25.</p>
+  <p class="diff">알고리즘을 아는 것보다 <b>멈추지 않는 것</b>이 먼저였습니다.</p>
 </div></section>
 
-<!-- 05 레퍼런스 -->
-<section class="pg" id="s-ref" data-n="레퍼런스부터 찾아라"><div class="wrap">
-  <p class="kick"><span class="no"></span>레퍼런스부터 찾아라</p>
-  <h2><span class="nb">프레임워크보다 먼저,</span> <span class="nb">내 고객이 보는 <em>반응 큰 계정 셋</em>을 찾습니다.</span></h2>
-  <p class="lead"><span class="nb">보고 적어 가면 시작이 쉬워집니다.</span> <span class="nb">조회와 공유가 높은 글의 표지와 첫 줄부터 봅니다.</span></p>
-  <div class="gets">
-    <div class="get hl"><em>적어 갈 것 1</em><strong>제목 문형</strong><span>숫자 목록인가, 방법인가, 경고인가</span></div>
-    <div class="get"><em>적어 갈 것 2</em><strong>첫 줄</strong><span>누가 주어이고 무엇을 약속하나</span></div>
-    <div class="get"><em>적어 갈 것 3</em><strong>장 구성</strong><span>몇 장에 무엇을 어떤 순서로</span></div>
-    <div class="get"><em>적어 갈 것 4</em><strong>마지막 문장</strong><span>읽은 사람에게 무엇을 하게 하나</span></div>
-  </div>
-  <div class="viz">
-    <div class="vhead"><b>실물 · 법인 컨설팅 계정 두 줄 제목</b><span class="f">윗줄이 아는 명사면 퍼지고, 세금 용어면 멈춥니다</span></div>
-    <div class="tbl" style="margin:0;border:0"><table>
-      <thead><tr><th>조회</th><th>제목</th><th>윗줄</th></tr></thead>
-      <tbody>
-        <tr><th class="num">17.9만</th><td>로또 1등 되면 / 가족에게 얼마 가능?</td><td class="me">로또</td></tr>
-        <tr><th class="num">16.2만</th><td>강남 부자들의 / 아파트 증여방법</td><td class="me">강남 부자</td></tr>
-        <tr><th class="num">10.6만</th><td>개인사업자가 / 절대 부자가 될수 없는 이유</td><td class="me">개인사업자</td></tr>
-        <tr><th class="num">3,122</th><td>성실신고 대상자 / 꼭 알아야할 것!</td><td>성실신고 대상자</td></tr>
-        <tr><th class="num">887</th><td>1억 벌었는데 / 종소세 얼마 내요?</td><td>종소세</td></tr>
-      </tbody>
-    </table></div>
-  </div>
-  <div class="two">
-    <div class="sol"><h3>주의 두 가지</h3><ol><li>문구가 아니라 장치를 가져옵니다. 남의 문장은 그 계정의 말투입니다.</li><li>문장 모양이 아니라 독자 심리를 가져옵니다. 「강남 부자들의 아파트 증여」는 동경하는 사람이 하는 일을 보여 줍니다.</li></ol></div>
-    <div class="task"><b>실습 · 10분</b>각자 한 계정을 골라 위 네 가지를 적습니다.</div>
-  </div>
-</div></section>
-
-<!-- 06 3C -->
-<section class="pg gray" id="s-3c" data-n="3C"><div class="wrap">
-  <p class="kick"><span class="no"></span>3C <em>Customer · Competitor · Company</em></p>
-  <h2><span class="nb">고객, 경쟁, 자사.</span> <span class="nb">세 줄을 적어야 <em>쓸 글</em>이 정해집니다.</span></h2>
-  <p class="lead"><span class="nb">5장에서 적은 레퍼런스가 경쟁 줄의 재료입니다.</span> <span class="nb">아래는 제 3C입니다.</span></p>
+<!-- PART 2 -->
+<section class="pg gray" id="s-3c" data-n="제 3C" data-p="PART 2 · 프레임워크로 세운 퍼스널 브랜딩"><div class="wrap">
+  <p class="kick"><span class="no"></span>제 3C <em>Customer · Competitor · Company</em></p>
+  <h2><span class="nb">고객, 경쟁, 자사를 먼저 적고 나서</span> <span class="nb"><em>무엇을 쓸지</em> 정했습니다.</span></h2>
   <div class="icards">
-    <div class="icard"><span class="cir"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg></span><h4>고객</h4><ul><li>순자산 20억원 이상 개인</li><li>법인 대표</li><li>세무사가 기장만 해 주는 고소득 1인 사업자</li></ul></div>
-    <div class="icard"><span class="cir"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M5 21V10l7-6 7 6v11M9 21v-6h6v6"/></svg></span><h4>경쟁</h4><ul><li>상품을 소개하는 설계사 계정</li><li>한 영역만 다루는 세무사 계정</li></ul></div>
-    <div class="icard"><span class="cir"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.4 6.8 19.1l1-5.8L3.5 9.2l5.9-.9z"/></svg></span><h4>자사</h4><ul><li>세무, 부동산, 투자, 보험을 같이 본다</li><li>창업과 매각을 직접 해 봤다</li></ul></div>
+    <div class="icard"><span class="cir"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg></span><h4>고객</h4><ul><li>순자산 20억원 이상 개인</li><li>법인 대표</li><li>세무사가 기장만 해 주는 고소득 1인 사업자</li><li>공통 질문 · 「어떻게 지키고 넘기나」</li></ul></div>
+    <div class="icard"><span class="cir"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M5 21V10l7-6 7 6v11M9 21v-6h6v6"/></svg></span><h4>경쟁</h4><ul><li>상품을 소개하는 설계사 계정</li><li>한 영역만 다루는 세무사, 회계사 계정</li><li>제가 본 공백 · 자산 전체를 한 번에 보는 계정이 드뭅니다</li></ul></div>
+    <div class="icard"><span class="cir"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.4 6.8 19.1l1-5.8L3.5 9.2l5.9-.9z"/></svg></span><h4>자사</h4><ul><li>세무, 부동산, 투자, 보험을 같이 봅니다</li><li>창업과 매각, 투자 유치를 직접 했습니다</li><li>삼성 3사 소속과 FP센터 전문가</li></ul></div>
   </div>
-  <div class="task" style="margin-top:14px"><b>실습 · 10분</b>내 고객, 내 경쟁, 내가 다른 점을 한 줄씩 적습니다.</div>
+  <p class="diff">그래서 저는 <b>상품이 아니라 자산 전체의 구조</b>를 다루는 글을 씁니다.</p>
 </div></section>
 
-<!-- 07 STP -->
-<section class="pg" id="s-stp" data-n="STP"><div class="wrap">
-  <p class="kick"><span class="no"></span>STP <em>Segmentation · Targeting · Positioning</em></p>
-  <h2><span class="nb">「당신의 CFO」는 제 자리입니다.</span> <span class="nb"><em>따라 쓰지 마십시오.</em></span></h2>
-  <p class="lead"><span class="nb">자사가 다르면 자리도 다릅니다.</span> <span class="nb">3C의 자사 줄에서 포지셔닝이 나옵니다.</span></p>
+<section class="pg ws-pg" id="s-3c-me" data-n="직접 적어 보기 · 3C"><div class="wrap">
+  <p class="kick"><span class="no"></span>직접 적어 보기 · 3C <em>10분</em></p>
+  <h2><span class="nb">이제 여러분의 3C를</span> <span class="nb">한 줄씩 적어 보시겠어요?</span></h2>
+  <div class="fill3">
+    <label class="fl"><b>고객</b><span>내가 가장 도와 드리고 싶은 분은 누구이고, 그분은 지금 무엇을 묻고 있나요?</span><textarea data-k="3C 고객" rows="4"></textarea></label>
+    <label class="fl"><b>경쟁</b><span>그분이 지금 보고 있는 계정은 어떤 곳이고, 무엇이 빠져 있나요?</span><textarea data-k="3C 경쟁" rows="4"></textarea></label>
+    <label class="fl"><b>자사</b><span>내 경력, 자격, 경험 중 그분이 믿을 만한 근거는 무엇인가요?</span><textarea data-k="3C 자사" rows="4"></textarea></label>
+  </div>
+  <p class="saved">적은 내용은 이 브라우저에 저장되고, 마지막 장에서 한 번에 보내실 수 있습니다.</p>
+</div></section>
+
+<section class="pg gray" id="s-stp" data-n="제 STP"><div class="wrap">
+  <p class="kick"><span class="no"></span>제 STP <em>Segmentation · Targeting · Positioning</em></p>
+  <h2><span class="nb">저는 고객을 금액이 아니라</span> <span class="nb"><em>묻는 질문</em>으로 나눴습니다.</span></h2>
   <div class="stages s3c">
-    <div class="sg"><div class="w">S</div><b>시장을 나눈다</b><ul><li>법인</li><li>개인 자산가</li><li>개인사업자 · 프리랜서</li></ul></div>
-    <div class="sg"><div class="w">T</div><b>타겟을 고른다</b><ul><li><strong>축 A</strong> 순자산 20억원 이상. 이미 쌓은 사람</li><li><strong>축 B</strong> 세무사가 기장만 해 주는 고소득 1인 사업자. 지금 쌓는 사람</li><li>하나만 맞아도 고객입니다</li></ul></div>
-    <div class="sg"><div class="w">P</div><b>자리를 정한다</b><ul><li><strong style="font-size:22px;color:var(--blue)">당신의 CFO</strong></li><li>버는 건 시장이 정하고, 지키는 건 구조가 정합니다</li></ul></div>
+    <div class="sg"><div class="w">S · 시장 구분</div><b>세 갈래로 봅니다</b><ul><li>법인</li><li>개인 자산가</li><li>개인사업자 · 프리랜서</li></ul></div>
+    <div class="sg"><div class="w">T · 타겟</div><b>둘 중 하나만 맞으면 됩니다</b><ul><li><strong>순자산 20억원 이상</strong> · 이미 쌓은 분</li><li><strong>세무사가 기장만 해 주는 고소득 1인 사업자</strong> · 지금 쌓는 분</li></ul></div>
+    <div class="sg"><div class="w">P · 포지셔닝</div><b class="pos">당신의 CFO</b><ul><li>버는 건 시장이 정하고, 지키는 건 구조가 정합니다</li></ul></div>
   </div>
-  <p class="diff">가르는 기준은 금액이 아니라 질문입니다.<br>「어떻게 더 버나」를 묻는 사람과 <b>「어떻게 지키고 넘기나」</b>를 묻는 사람은 다른 글을 읽습니다.</p>
-  <div class="task"><b>실습 · 15분</b>내 타겟 한 줄, 내 포지셔닝 한 줄을 적습니다.</div>
+  <p class="diff">「어떻게 더 버나」를 묻는 분과 <b>「어떻게 지키고 넘기나」</b>를 묻는 분은 다른 글을 읽습니다.<br>저는 뒤쪽을 고객으로 잡았습니다.</p>
 </div></section>
 
-<!-- 08 퍼널 -->
-<section class="pg gray" id="s-funnel" data-n="퍼널 단계별 방법"><div class="wrap">
-  <p class="kick"><span class="no"></span>퍼널 단계별 방법 <em>노출 · 유입 · 전환 · 클로징</em></p>
-  <h2><span class="nb">같은 글이 스레드에서 30만,</span> <span class="nb">인스타에서 <em>도달 372</em>였습니다.</span></h2>
-  <p class="lead"><span class="nb">「가족이 암 진단을 받으면」 한 편의 숫자입니다.</span> <span class="nb">채널마다 맡는 단계가 다르고, 단계마다 쓰는 방법이 다릅니다.</span></p>
+<section class="pg ws-pg" id="s-stp-me" data-n="직접 적어 보기 · STP"><div class="wrap">
+  <p class="kick"><span class="no"></span>직접 적어 보기 · STP <em>15분</em></p>
+  <h2><span class="nb">「당신의 CFO」는 제 경력에서 나온 자리입니다.</span> <span class="nb">여러분의 자리는 어디일까요?</span></h2>
+  <div class="fill3">
+    <label class="fl"><b>시장 구분</b><span>내가 만나는 분들을 어떤 기준으로 나눠 볼 수 있을까요?</span><textarea data-k="STP 시장 구분" rows="4"></textarea></label>
+    <label class="fl"><b>타겟</b><span>그중 한 갈래만 고른다면 누구이고, 그분은 어떤 질문을 하나요?</span><textarea data-k="STP 타겟" rows="4"></textarea></label>
+    <label class="fl"><b>포지셔닝</b><span>그분에게 나는 어떤 사람으로 기억되고 싶나요? 한 줄로 적어 주세요.</span><textarea data-k="STP 포지셔닝" rows="4"></textarea></label>
+  </div>
+</div></section>
+
+<section class="pg gray" id="s-funnel" data-n="제 퍼널 전략"><div class="wrap">
+  <p class="kick"><span class="no"></span>제 퍼널 전략 <em>노출 · 유입 · 전환 · 클로징</em></p>
+  <h2><span class="nb">단계마다 하는 일을 나눠 두고,</span> <span class="nb">채널마다 <em>맡는 단계</em>를 다르게 씁니다.</span></h2>
   <div class="stages s4c">
-    <div class="sg"><div class="w">노출</div><b>보게 만든다</b><ul><li>레퍼런스의 제목 문형</li><li>곧 닥칠 순간을 첫 줄에</li><li>기사를 계기로</li><li>스레드에 먼저, 짧은 문장으로</li></ul></div>
-    <div class="sg"><div class="w">유입</div><b>프로필로 오게 한다</b><ul><li>바이오 한 줄</li><li>마지막 카드</li><li>공유할 대상을 지정</li><li>프로필 링크</li></ul></div>
+    <div class="sg"><div class="w">노출</div><b>보게 만든다</b><ul><li>레퍼런스에서 가져온 제목 문형</li><li>곧 닥칠 순간을 첫 줄에</li><li>기사를 계기로</li><li>스레드에 먼저, 짧은 문장으로</li></ul></div>
+    <div class="sg"><div class="w">유입</div><b>프로필로 오게 한다</b><ul><li>바이오 한 줄마다 역할</li><li>마지막 카드</li><li>공유할 대상을 지정</li><li>프로필 링크</li></ul></div>
     <div class="sg"><div class="w">전환</div><b>연락하게 한다</b><ul><li>마지막 문장에 조건 둘과 질문 하나</li><li>팔로우한 분께 메시지</li><li>상담 전 질문지</li></ul></div>
-    <div class="sg"><div class="w">클로징</div><b>만나서 제안한다</b><ul><li>소개서 링크</li><li>미팅</li><li>자산 종합 진단</li><li>제안</li></ul></div>
+    <div class="sg"><div class="w">클로징</div><b>만나서 제안한다</b><ul><li>소개서 링크</li><li>미팅</li><li>자산 종합 진단</li><li>제안, 그리고 관계 유지</li></ul></div>
   </div>
-  <div class="m22">
-    <div class="h"></div><div class="h">스레드</div><div class="h">인스타</div>
-    <div class="r">많이 퍼지는 글</div>
-    <div class="c on"><b>조회 302,731</b>가족이 암 진단을 받으면<br>공유 1,298</div>
-    <div class="c"><b>도달 1,476</b>국민연금은 취업하면 드는 걸로 알지만<br>인스타 최고 도달</div>
-    <div class="r">문의를 받는 글</div>
-    <div class="c on"><b>문의 9건</b>답글과 메시지 7건<br>스레드를 보고 온 폼 2건</div>
-    <div class="c"><b>문의 0건</b>저장과 공유는 쌓이지만<br>연락은 아직 없습니다</div>
-  </div>
-  <p class="fn2">문의 10건 중 나머지 1건은 리멤버. 조회와 도달은 2026-10-25 측정.</p>
+  <p class="diff">글별로 기록한 문의 10건 중 <b>9건이 스레드</b>에서 시작했습니다. 인스타에서 시작한 문의는 아직 0건입니다.</p>
 </div></section>
 
-<!-- 09 한 편 기획 -->
-<section class="pg" id="s-plan" data-n="한 편을 만드는 순서"><div class="wrap">
-  <p class="kick"><span class="no"></span>한 편을 만드는 순서 <em>5W1H · 다섯 단계</em></p>
-  <h2><span class="nb">질문 다섯으로 기획하고,</span> <span class="nb"><em>단계 다섯</em>으로 씁니다.</span></h2>
-  <div class="flow">
-    <div class="fl5"><div class="w">WHO</div><b>누구에게</b><span>그 사람이 지금 무슨 생각을 하나</span></div>
-    <div class="fl5"><div class="w">WHY</div><b>왜 지금</b><span>무엇이 바뀌었나, 근거는</span></div>
-    <div class="fl5"><div class="w">WHAT</div><b>무엇을</b><span>그 사람에게 필요한 답</span></div>
-    <div class="fl5"><div class="w">HOW</div><b>어떻게</b><span>어느 채널, 어떤 문형</span></div>
-    <div class="fl5"><div class="w">IF</div><b>그러면</b><span>어떤 반응이 늘어나나</span></div>
+<section class="pg ws-pg" id="s-funnel-me" data-n="직접 적어 보기 · 퍼널"><div class="wrap">
+  <p class="kick"><span class="no"></span>직접 적어 보기 · 퍼널 <em>10분</em></p>
+  <h2><span class="nb">여러분은 단계마다</span> <span class="nb">무엇을 해 볼 수 있을까요?</span></h2>
+  <div class="fill4">
+    <label class="fl"><b>노출</b><span>어떤 순간, 어떤 주제로 처음 보이고 싶나요?</span><textarea data-k="퍼널 노출" rows="4"></textarea></label>
+    <label class="fl"><b>유입</b><span>프로필에 와서 무엇을 보게 하고 싶나요?</span><textarea data-k="퍼널 유입" rows="4"></textarea></label>
+    <label class="fl"><b>전환</b><span>어떤 방법으로 연락을 받고 싶나요?</span><textarea data-k="퍼널 전환" rows="4"></textarea></label>
+    <label class="fl"><b>클로징</b><span>만났을 때 무엇을 보여 드리나요?</span><textarea data-k="퍼널 클로징" rows="4"></textarea></label>
   </div>
+</div></section>
+
+<section class="pg gray" id="s-brand" data-n="그래서 만든 브랜딩"><div class="wrap">
+  <p class="kick"><span class="no"></span>그래서 만든 브랜딩</p>
+  <h2><span class="nb">3C, STP, 퍼널을 거쳐</span> <span class="nb">이름, 문장, 바이오를 정했습니다.</span></h2>
+  <div class="brand">
+    <div class="bd"><em>이름 필드</em><strong>유영곤 | 당신의 CFO</strong><span>직함 대신 고객에게 무엇이 되어 드리는지를 적었습니다.</span></div>
+    <div class="bd"><em>슬로건</em><strong>버는 건 시장이 정하고, 지키는 건 구조가 정합니다</strong><span>제가 다루는 쪽이 「지키는 구조」라는 걸 한 문장으로 말합니다.</span></div>
+    <div class="bd"><em>스레드 바이오 다섯 줄</em><ol><li><b>누구인가</b> · 자산은 하나입니다</li><li><b>무엇을 다루나</b> · 세금, 투자, 부동산, 상속증여, 보험</li><li><b>왜 한 사람이 보나</b> · 한 번에 봐야 서로 어긋나지 않습니다</li><li><b>근거</b> · 삼성생명, 삼성증권, 삼성화재 소속</li><li><b>누르면 무엇이 나오나</b> · 자산 점검, 컨설팅, 세미나 문의</li></ol></div>
+  </div>
+  <p class="diff">마지막 장에서 여러분이 적은 내용을 보내 주시면 <b>이 장과 같은 형태</b>로 정리해 드리겠습니다.</p>
+</div></section>
+
+<!-- PART 3 -->
+<section class="pg" id="s-ref" data-n="레퍼런스를 고르는 기준" data-p="PART 3 · 운영"><div class="wrap">
+  <p class="kick"><span class="no"></span>레퍼런스를 고르는 기준</p>
+  <h2><span class="nb">저는 프레임워크보다 먼저</span> <span class="nb"><em>반응이 큰 계정</em>을 찾아 적었습니다.</span></h2>
+  <div class="two wide">
+    <div>
+      <div class="sol"><h3>제가 고르는 기준</h3><ol><li>내 고객이 실제로 보는 계정</li><li>조회와 공유가 높은 글이 있는 계정</li><li>표지와 첫 줄에 문형이 반복되는 계정</li></ol></div>
+      <div class="sol" style="margin-top:12px"><h3>적어 가는 것 넷</h3><ol><li>제목 문형 · 숫자 목록인가, 방법인가, 경고인가</li><li>첫 줄 · 누가 주어이고 무엇을 약속하나</li><li>장 구성 · 몇 장에 무엇을 어떤 순서로</li><li>마지막 문장 · 읽은 사람에게 무엇을 하게 하나</li></ol></div>
+    </div>
+    <div class="viz" style="margin:0">
+      <div class="vhead"><b>실물 · 법인 컨설팅 계정의 두 줄 제목</b><span class="f">윗줄이 아는 명사일 때 퍼졌습니다</span></div>
+      <div class="tbl" style="margin:0;border:0"><table>
+        <thead><tr><th>조회</th><th>제목</th></tr></thead>
+        <tbody>
+          <tr><th class="num">17.9만</th><td><b>로또 1등 되면</b> / 가족에게 얼마 가능?</td></tr>
+          <tr><th class="num">16.2만</th><td><b>강남 부자들의</b> / 아파트 증여방법</td></tr>
+          <tr><th class="num">10.6만</th><td><b>개인사업자가</b> / 절대 부자가 될수 없는 이유</td></tr>
+          <tr><th class="num">3,122</th><td>성실신고 대상자 / 꼭 알아야할 것!</td></tr>
+          <tr><th class="num">887</th><td>1억 벌었는데 / 종소세 얼마 내요?</td></tr>
+        </tbody>
+      </table></div>
+      <p class="fn2" style="margin:10px 0 0">가져오는 것은 문구가 아니라 장치와 독자 심리입니다.</p>
+    </div>
+  </div>
+  <label class="fl one"><b>직접 적어 보기 · 내가 볼 레퍼런스 계정 셋</b><textarea data-k="레퍼런스 계정" rows="2" placeholder="계정 이름과 눈에 띈 제목 문형"></textarea></label>
+</div></section>
+
+<section class="pg gray" id="s-write" data-n="어떤 글을 어떻게 쓰나"><div class="wrap">
+  <p class="kick"><span class="no"></span>어떤 글을 어떻게 쓰나</p>
+  <h2><span class="nb">저는 한 편을</span> <span class="nb"><em>다섯 단계</em>로 씁니다.</span></h2>
   <div class="plan">
-    <div class="phead"><span class="ptag">5 STEPS</span><b>쓰는 순서</b></div>
     <div class="stps">
       <div class="stp"><span class="cir">1</span><b>문형 가져오기</b><span>레퍼런스에서 제목 틀</span></div>
       <div class="stp"><span class="cir">2</span><b>고민하는 순간</b><span>고객이 막히는 장면</span></div>
-      <div class="stp"><span class="cir">3</span><b>첫 줄</b><span>자기 일로 느끼게, 또는 필요한 정보로 느끼게</span></div>
+      <div class="stp"><span class="cir">3</span><b>첫 줄</b><span>내 얘기로 느끼거나, 꼭 필요한 정보로 느끼게</span></div>
       <div class="stp"><span class="cir">4</span><b>숫자 출처</b><span>기사, 조문, 공단 자료</span></div>
       <div class="stp"><span class="cir">5</span><b>마지막 문장</b><span>읽고 나서 할 일 하나</span></div>
     </div>
   </div>
+  <div class="cmp3">
+    <div class="cm"><em>조회 303,627</em><strong>가족이 암 진단을 받으면</strong><ul><li>곧 겪을 수 있는 순간</li></ul></div>
+    <div class="cm"><em>조회 75,273</em><strong>요즘 월 100만원짜리 종신보험을 드는 집이 늘었다.</strong><ul><li>남들이 하는 것과 숫자 하나</li></ul></div>
+    <div class="cm"><em>조회 67,441</em><strong>60세 이상 부모님이 입원하시면</strong><ul><li>대상과 순간을 같이</li></ul></div>
+  </div>
   <div class="viz">
-    <div class="vhead"><b>실물 · 건보료 정산 세트 제목이 바뀐 과정</b><span class="f">한국경제 2026.10.20 · 394만 세대 · 평균 84만원</span></div>
+    <div class="vhead"><b>제목이 바뀐 과정 · 건보료 정산 편</b><span class="f">한국경제 2026.10.20 · 394만 세대 · 평균 84만원</span></div>
     <div class="era">
-      <div class="e now"><em>1안 · 버림</em><strong>84만원 상승</strong><em>매달 보험료가 오르는 것으로 읽힘</em></div>
-      <div class="e now"><em>2안 · 버림</em><strong>아는 사람만 줄이는 건보료</strong><em>84만원을 줄이는 금액으로 읽힘</em></div>
+      <div class="e now"><em>1안 · 버림</em><strong>84만원 상승</strong><em>매달 보험료가 오르는 것으로 읽혔습니다</em></div>
+      <div class="e now"><em>2안 · 버림</em><strong>아는 사람만 줄이는 건보료</strong><em>84만원을 줄여 준다는 뜻으로 읽혔습니다</em></div>
       <div class="e"><em>확정</em><strong>추가 정산에 대비하는 방법</strong><em>지역가입자 394만 세대 / 건보료 평균 84만원</em></div>
     </div>
   </div>
+  <label class="fl one"><b>직접 적어 보기 · 내 첫 줄 셋</b><textarea data-k="첫 줄 셋" rows="3" placeholder="1.&#10;2.&#10;3."></textarea></label>
 </div></section>
 
-<!-- 10 첫 줄 실습 -->
-<section class="pg gray" id="s-first" data-n="첫 줄 실습"><div class="wrap">
-  <p class="kick"><span class="no"></span>첫 줄 실습</p>
-  <h2><span class="nb">첫 줄 셋을 쓰고,</span> <span class="nb"><em>그 자리에서</em> 고칩니다.</span></h2>
-  <p class="lead"><span class="nb">퍼진 글의 첫 줄은 주어가 사람이고,</span> <span class="nb">읽는 사람이 곧 겪을 순간입니다.</span></p>
-  <div class="cmp3">
-    <div class="cm"><em>조회 302,731</em><strong>가족이 암 진단을 받으면</strong><ul><li>곧 겪을 수 있는 순간</li><li>가족이 주어</li></ul></div>
-    <div class="cm"><em>조회 75,237</em><strong>요즘 월 100만원짜리 종신보험을 드는 집이 늘었다.</strong><ul><li>남들이 하는 것</li><li>숫자 하나</li></ul></div>
-    <div class="cm"><em>조회 67,380</em><strong>60세 이상 부모님이 입원하시면</strong><ul><li>대상과 순간을 같이</li><li>읽는 사람이 자녀</li></ul></div>
+<section class="pg" id="s-data" data-n="데이터로 관리하는 법"><div class="wrap">
+  <p class="kick"><span class="no"></span>데이터로 관리하는 법</p>
+  <h2><span class="nb">조회 21만 글에서 문의 2건,</span> <span class="nb">조회 5천 글에서 <em>문의 3건, 미팅 2건</em>이 나왔습니다.</span></h2>
+  <p class="lead"><span class="nb">그래서 저는 조회, 공유, 문의를 한 숫자로 묶지 않고</span> <span class="nb">따로 기록합니다.</span></p>
+  <div class="ba">
+    <div class="bx b"><span class="lb2">많이 퍼진 글</span><strong>조회 219,414 · 문의 2</strong><ul><li>「강남 부모들은 자녀 집값을 그냥 주지 않는다.」</li><li>공유 527</li></ul></div>
+    <div class="arrow" aria-hidden="true">↔</div>
+    <div class="bx a"><span class="lb2">문의를 받은 글</span><strong>조회 5,671 · 문의 3 · 미팅 2</strong><ul><li>「치매에 걸린 부모님의 상속과 증여 준비」</li><li>지금 그 일을 겪는 분이 읽었습니다</li></ul></div>
   </div>
-  <div class="checks">
-    <span class="ct">고칠 때 보는 것</span>
-    <div class="cgrid2">
-      <div><svg class="ck" viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></svg><span><b>윗줄이 아는 명사인가</b>세금 용어로 열면 멈춥니다</span></div>
-      <div><svg class="ck" viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></svg><span><b>내 얘기로 읽히나</b>읽고 「이거 내 얘긴데」가 나오나</span></div>
-      <div><svg class="ck" viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></svg><span><b>숫자에 출처가 있나</b>기사, 조문, 공단 자료</span></div>
-    </div>
+  <div class="m22">
+    <div class="h"></div><div class="h">스레드</div><div class="h">인스타</div>
+    <div class="r">같은 글</div>
+    <div class="c on"><b>조회 303,627</b>가족이 암 진단을 받으면</div>
+    <div class="c"><b>도달 372</b>같은 소재 카드</div>
+    <div class="r">기록하는 것</div>
+    <div class="c on"><b>조회 · 공유 · 문의</b>글마다 자동 집계 후 표로</div>
+    <div class="c"><b>공유 · 팔로우 · 저장</b>퍼지는 힘은 공유가 가릅니다</div>
   </div>
-  <div class="task" style="margin-top:14px"><b>실습 · 15분</b>내 포지셔닝으로 첫 줄 셋을 쓰고 한 줄씩 같이 고칩니다.</div>
+  <p class="fn2">조회는 2026-10-28 측정(threads_stats.py). 문의와 미팅은 대표님 기록.</p>
 </div></section>
 
-<!-- 11 넘으면 안 되는 선 -->
-<section class="pg" id="s-line" data-n="넘으면 안 되는 선 · 2차 예고"><div class="wrap">
-  <p class="kick"><span class="no"></span>넘으면 안 되는 선 · 2차 예고</p>
-  <h2><span class="nb">넘으면 안 되는 선은 셋입니다.</span> <span class="nb">그 안에서는 <em>무엇이든</em> 씁니다.</span></h2>
+<section class="pg gray" id="s-line" data-n="넘지 않는 선"><div class="wrap">
+  <p class="kick"><span class="no"></span>넘지 않는 선</p>
+  <h2><span class="nb">제가 지키는 선은 셋이고,</span> <span class="nb">그 안에서는 <em>무엇이든</em> 씁니다.</span></h2>
   <div class="vsg">
-    <div class="vd lose"><span class="stamp">금지</span><em>쓰지 않는 것</em><ol><li><b>종목 추천, 수익률 공개</b> · 자본시장법상 미등록 투자자문, 금융소비자보호법 광고 규제</li><li><b>고객 상담 내용</b></li><li><b>보험 상품 광고</b> · 회사 준법감시 심의를 거칩니다</li></ol><p>상품이 아니라 고객의 상황을 씁니다.</p></div>
-    <div class="vd win"><span class="stamp">2차</span><em>AI와 연결해 쓰는 방법</em><ol><li>오늘 손으로 한 레퍼런스 정리, 3C, STP, 첫 줄을</li><li>AI가 어떻게 줄여 주는지 보여 드립니다</li></ol><p>오늘 순서를 한 번 해 본 분이 2차에서 바로 씁니다.</p></div>
+    <div class="vd lose"><span class="stamp">쓰지 않는 것</span><em>세 가지</em><ol><li><b>종목 추천, 수익률 공개</b> · 자본시장법상 미등록 투자자문, 금융소비자보호법 광고 규제</li><li><b>고객 상담 내용</b></li><li><b>보험 상품 광고</b> · 회사 준법감시 심의를 거칩니다</li></ol></div>
+    <div class="vd win"><span class="stamp">쓰는 것</span><em>고객의 상황</em><ol><li>세금, 부동산, 투자, 상속증여에서 생기는 순간</li><li>제도가 바뀐 것과 그 뜻</li><li>시장과 금리, 경기를 보는 관점</li></ol></div>
   </div>
-  <p class="diff">교육 뒤 1주 안에 <b>스레드 한 편</b>을 올리고 링크를 공유해 주세요.</p>
 </div></section>
 
-<!-- 워크시트 -->
-<section class="pg gray sheet" id="sheet" data-n="실습 워크시트"><div class="wrap">
-  <p class="kick"><span class="no"></span>실습 워크시트 <em>인쇄해서 쓰셔도 됩니다</em></p>
-  <h2><span class="nb">레퍼런스, 3C, STP, 첫 줄.</span> <span class="nb">한 장에 적습니다.</span></h2>
-  <div class="ws">
-    <div class="wb"><b>① 레퍼런스</b><span>계정 이름</span><i></i><span>제목 문형</span><i></i><span>첫 줄</span><i></i><span>장 구성</span><i></i><span>마지막 문장</span><i></i></div>
-    <div class="wb"><b>② 3C</b><span>고객</span><i></i><i></i><span>경쟁</span><i></i><i></i><span>자사</span><i></i><i></i></div>
-    <div class="wb"><b>③ STP</b><span>시장 구분</span><i></i><span>타겟</span><i></i><i></i><span>포지셔닝</span><i></i><i></i></div>
-    <div class="wb"><b>④ 첫 줄 셋</b><span>1</span><i></i><i></i><span>2</span><i></i><i></i><span>3</span><i></i><i></i></div>
+<!-- PART 4 -->
+<section class="pg close" id="s-send" data-n="내 브랜딩 받기" data-p="PART 4 · 여러분 차례"><div class="wrap cgrid">
+  <div>
+    <p class="kick"><span class="no"></span>내 브랜딩 받기</p>
+    <h2><span class="nb">적어 주신 내용으로</span> <span class="nb"><em>여러분의 브랜딩</em>을 정리해 보내 드립니다.</span></h2>
+    <p class="body">3C, STP, 퍼널, 레퍼런스, 첫 줄까지 이 페이지에 적으신 내용이 함께 전송됩니다.</p>
+    <div class="gets5">
+      <div>퍼스널 브랜딩 방향</div><div>컨셉</div><div>채널명</div><div>추천 바이오</div><div>올릴 콘텐츠 유형</div>
+    </div>
+    <p class="body">2차 교육에서는 이 내용을 AI와 연결해 쓰는 방법을 다룹니다.</p>
+  </div>
+  <div>
+    <form class="form" id="sendForm" action="https://api.web3forms.com/submit" method="POST">
+      <input type="hidden" name="access_key" value="56ba5ceb-1e23-4de6-b6ca-7016a3e1e8d7">
+      <input type="hidden" name="subject" value="[SNS교육] 퍼스널 브랜딩 정리 요청">
+      <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+      <div class="fgrid">
+        <div class="two2">
+          <div><label class="lb" for="fName">이름 <i>*</i></label><input id="fName" name="이름" type="text" required></div>
+          <div><label class="lb" for="fMail">이메일 <i>*</i></label><input id="fMail" name="email" type="email" required placeholder="받으실 주소"></div>
+        </div>
+        <div class="two2">
+          <div><label class="lb" for="fCh">지금 쓰는 채널 아이디 <em>선택</em></label><input id="fCh" name="채널 아이디" type="text" placeholder="@아이디 또는 없음"></div>
+          <div><label class="lb" for="fYr">차월 <em>선택</em></label><input id="fYr" name="차월" type="text" placeholder="예: 8차월"></div>
+        </div>
+        <div><label class="lb" for="fMsg">더 하고 싶은 말 <em>선택</em></label><textarea id="fMsg" name="더 하고 싶은 말"></textarea></div>
+        <div class="filled" id="filled"></div>
+        <div class="consent">
+          <label><input type="checkbox" name="개인정보수집이용동의" value="동의함" required><span>[필수] 개인정보 수집·이용에 동의합니다.</span></label>
+          <details><summary>수집 항목 · 목적 · 보유기간</summary><div class="cb">
+            <p>수집 항목: 이름, 이메일, 채널 아이디, 차월, 교육 중 작성 내용</p>
+            <p>이용 목적: 퍼스널 브랜딩 정리 자료 작성과 이메일 발송</p>
+            <p>보유 기간: 발송 후 1년이 지나면 지체 없이 파기</p>
+            <p>동의를 거부하실 수 있으며, 거부하시면 신청이 제한됩니다. 내용은 Web3Forms를 거쳐 담당자 이메일로 전달됩니다.</p>
+          </div></details>
+        </div>
+        <button class="btn" type="submit">내 브랜딩 정리 받기</button>
+      </div>
+    </form>
   </div>
 </div></section>
 
@@ -780,20 +905,38 @@ body.deck{overflow:hidden}
 <p class="slogan">버는 건 시장이 정하고,<br>지키는 건 구조가 정합니다.</p>
 
 <footer><div class="wrap">
-  <span class="sfn" role="img" aria-label="Samsung Financial Networks" style="height:30px;background:var(--mut);margin-bottom:8px"></span>
   <p>유영곤 · 삼성생명 법인사업부 강남법인지점</p>
-  <p>사내 교육 자료입니다. 숫자는 2026년 10월 25일 측정한 대표님 계정 기록이며, 다른 계정의 결과를 보장하지 않습니다.</p>
+  <p>사내 교육 자료입니다. 숫자는 대표님 계정 기록이며, 다른 계정의 결과를 보장하지 않습니다.</p>
 </div></footer>
 
 <script>
 (function(){
   var pages=[].slice.call(document.querySelectorAll('section.pg[data-n]'));
-  var toc=document.getElementById('toc');
+  var toc=document.getElementById('toc'),grp=null,ul=null;
   pages.forEach(function(s,i){
     var n=('0'+(i+1)).slice(-2),no=s.querySelector('.kick .no');if(no)no.textContent=n;
+    if(s.dataset.p||!grp){grp=document.createElement('li');grp.className='tp';var h=document.createElement('p');h.textContent=s.dataset.p||'';grp.appendChild(h);ul=document.createElement('ul');grp.appendChild(ul);toc.appendChild(grp)}
     var li=document.createElement('li'),a=document.createElement('a');a.href='#'+s.id;
-    a.innerHTML='<i>'+n+'</i>';a.appendChild(document.createTextNode(s.dataset.n));li.appendChild(a);toc.appendChild(li);
+    a.innerHTML='<i>'+n+'</i>';a.appendChild(document.createTextNode(s.dataset.n));li.appendChild(a);ul.appendChild(li);
   });
+
+  // 적은 내용 저장
+  var KEY='sns-edu-261029';
+  var store={};try{store=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){}
+  var tas=[].slice.call(document.querySelectorAll('textarea[data-k]'));
+  tas.forEach(function(t){
+    if(store[t.dataset.k])t.value=store[t.dataset.k];
+    t.addEventListener('input',function(){store[t.dataset.k]=t.value;try{localStorage.setItem(KEY,JSON.stringify(store))}catch(e){}});
+  });
+  function fillSummary(){
+    var box=document.getElementById('filled'),n=0;box.innerHTML='';
+    tas.forEach(function(t){
+      var v=t.value.trim();if(v)n++;
+      var inp=document.createElement('input');inp.type='hidden';inp.name=t.dataset.k;inp.value=v||'(비어 있음)';box.appendChild(inp);
+    });
+    var p=document.createElement('p');p.textContent='교육 중 적은 항목 '+n+'개 / '+tas.length+'개가 함께 전송됩니다.'+(n<tas.length?' 비어 있는 항목은 앞 장으로 돌아가 채우실 수 있습니다.':'');box.appendChild(p);
+  }
+
   var all=[document.getElementById('top')].concat(pages),cur=0;
   document.body.classList.add('deck');
   var cnt=document.getElementById('cnt'),prog=document.getElementById('prog');
@@ -803,6 +946,7 @@ body.deck{overflow:hidden}
     cnt.textContent=('0'+(cur+1)).slice(-2)+' / '+('0'+all.length).slice(-2);
     prog.style.width=(cur/(all.length-1)*100)+'%';
     document.getElementById('prev').disabled=cur===0;document.getElementById('next').disabled=cur===all.length-1;
+    if(all[cur].id==='s-send')fillSummary();
     if(push!==false)history.replaceState(null,'','#'+all[cur].id);
   }
   function idx(id){for(var i=0;i<all.length;i++)if(all[i].id===id)return i;return -1}
@@ -813,7 +957,8 @@ body.deck{overflow:hidden}
     var i=idx(a.getAttribute('href').slice(1));if(i<0)return;e.preventDefault();go(i);
   });
   document.addEventListener('keydown',function(e){
-    var k=e.key,d=(k==='ArrowRight'||k==='PageDown'||k===' '||k==='ArrowDown'&&e.altKey)?1:(k==='ArrowLeft'||k==='PageUp')?-1:0;
+    if(/INPUT|TEXTAREA/.test(document.activeElement.tagName))return;
+    var k=e.key,d=(k==='ArrowRight'||k==='PageDown'||k===' ')?1:(k==='ArrowLeft'||k==='PageUp')?-1:0;
     if(k==='Home'){e.preventDefault();go(0);return}
     if(k==='End'){e.preventDefault();go(all.length-1);return}
     if(!d)return;e.preventDefault();go(cur+d);
@@ -821,10 +966,20 @@ body.deck{overflow:hidden}
   var tx=0,ty=0;
   document.addEventListener('touchstart',function(e){tx=e.touches[0].clientX;ty=e.touches[0].clientY},{passive:true});
   document.addEventListener('touchend',function(e){
+    if(/INPUT|TEXTAREA/.test(e.target.tagName))return;
     var dx=e.changedTouches[0].clientX-tx,dy=e.changedTouches[0].clientY-ty;
     if(Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy)*1.5)go(cur+(dx<0?1:-1));
   },{passive:true});
   var h=idx(location.hash.slice(1));go(h<0?0:h,false);
+
+  var f=document.getElementById('sendForm');
+  f.addEventListener('submit',function(e){
+    e.preventDefault();fillSummary();var b=f.querySelector('.btn');b.disabled=true;b.textContent='보내는 중입니다';
+    fetch(f.action,{method:'POST',body:new FormData(f),headers:{Accept:'application/json'}})
+      .then(function(r){return r.json()})
+      .then(function(j){b.textContent=j.success?'받았습니다. 정리해서 메일로 보내 드리겠습니다.':'전송에 실패했습니다. 다시 눌러 주세요.';if(!j.success)b.disabled=false})
+      .catch(function(){b.textContent='전송에 실패했습니다. 다시 눌러 주세요.';b.disabled=false});
+  });
 })();
 </script>
 
