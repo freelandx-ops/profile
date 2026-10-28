@@ -733,8 +733,8 @@ input[type=email]{width:100%;border:1px solid var(--line);border-radius:10px;pad
 /* 줄바꿈 — 카드 제목은 고르게, 설명은 단어 단위 */
 .pg h2 .nb{white-space:nowrap}
 @media(max-width:900px){.pg h2 .nb{white-space:normal}}
-.cm strong,.cc .q,.ff .q,.kw strong,.cto strong,.mk b,.fs b,.gate3 b,.bd strong,.ck1 b,.get strong,.concl strong,.origin strong,.steps5 b,.sy b,.icard h4{text-wrap:balance}
-.cc li,.ff p,.mk span,.fs span,.cto p,.kw p,.kw li,.sy span,.get span,.sol li,.cm li,.cfrom span,.lead,.body{text-wrap:pretty;word-break:keep-all}
+.cm strong,.cc .q,.ff .q,.kw strong,.cto strong,.mk b,.fs b,.gate3 b,.bd strong,.ck1 b,.get strong,.concl strong,.origin strong,.steps5 b,.sy b,.icard h4{text-wrap-style:balance}
+.cc li,.ff p,.mk span,.fs span,.cto p,.kw p,.kw li,.sy span,.get span,.sol li,.cm li,.cfrom span,.lead,.body{text-wrap-style:pretty;word-break:keep-all}
 .mk strong{font-size:30px;white-space:nowrap}
 .cover h1{font-size:64px;margin-bottom:12px}
 .cover .line{margin-bottom:22px}
@@ -744,8 +744,8 @@ input[type=email]{width:100%;border:1px solid var(--line);border-radius:10px;pad
 /* 줄바꿈 6차 — 구절 묶음 + 고르게 */
 w-p{display:inline;white-space:nowrap}
 @media(max-width:600px){w-p{white-space:normal}}
-.deck .pg :is(li,p,span,strong,b,em,td,div.k,div.v){text-wrap:balance}
-.deck .pg :is(textarea,pre,input){text-wrap:wrap}
+.deck .pg :is(li,p,span,strong,b,em,td,div.k,div.v){text-wrap-style:balance}
+
 .btn{font-size:18px;padding:16px 22px}
 .btn:disabled{cursor:default}
 .btn.done{background:#15803D}
@@ -753,6 +753,9 @@ w-p{display:inline;white-space:nowrap}
 .once{margin:6px 0 0;font-size:15.5px;color:var(--ink2);text-align:center;line-height:1.5}
 .once b{color:#B42318}
 .btn.done+.once b{color:#15803D}
+
+/* 구절 묶음은 다른 줄바꿈 규칙보다 앞선다 (2026-10-28 · text-wrap 단축 속성이 nowrap 을 덮어 묶음이 전부 풀렸던 원인) */
+@media(min-width:901px){.nb,w-p{white-space:nowrap!important}}
 </style>
 </head>
 <body>
@@ -790,13 +793,13 @@ w-p{display:inline;white-space:nowrap}
   <p class="kick"><span class="no"></span>시장에서 본 기회</p>
   <h2><span class="nb">고객이 보험을 사는 방식과</span> <span class="nb"><em>정보를 얻는 곳</em>이 바뀌고 있었습니다.</span></h2>
   <div class="mk4">
-    <div class="mk"><em>보험을 사는 방식</em><strong>31.6%</strong><b>자동차보험 온라인(CM) 판매 비중</b><span>처음으로 30%를 넘었습니다. 대면과 TM 채널은 줄었습니다.</span><i>금융감독원 2022년 자동차보험 사업실적 · 2023.4 발표</i></div>
-    <div class="mk"><em>보험을 고르는 방식</em><strong>185만 건</strong><b>플랫폼 보험 비교·추천 이용</b><span>2024년 1월 출시 뒤 약 1년 동안 이용 185만 건, 계약 28만 건이 나왔습니다.</span><i>금융당국 집계 · 2024.1~2025.2</i></div>
-    <div class="mk"><em>정보를 얻는 곳</em><strong>79.2% → 66.5%</strong><b>포털로 뉴스를 보는 비율</b><span>2021년 정점에서 내려왔고, 동영상 플랫폼 이용은 1년 새 11.6%p 올랐습니다. 숏폼 뉴스 이용은 11.1%에서 22.9%로 두 배가 됐습니다.</span><i>한국언론진흥재단 2025 언론수용자 조사</i></div>
-    <div class="mk"><em>새로 커지는 채널</em><strong>798만 명</strong><b>스레드 국내 사용자</b><span>1년 새 29.6% 늘어 SNS 앱 가운데 성장률 1위입니다. 인스타그램 사용자는 2,870만 명입니다.</span><i>와이즈앱·리테일 · 2026년 7월 기준</i></div>
+    <div class="mk"><em>보험을 사는 방식</em><strong>31.6%</strong><b>자동차보험 온라인(CM) 판매 비중</b><span><span class="nb">처음으로 30%를 넘었습니다.</span> <span class="nb">대면과 TM 채널은 줄었습니다.</span></span><i>금융감독원 2022년 자동차보험 사업실적 · 2023.4 발표</i></div>
+    <div class="mk"><em>보험을 고르는 방식</em><strong>185만 건</strong><b>플랫폼 보험 비교·추천 이용</b><span><span class="nb">2024년 1월 출시 뒤</span> <span class="nb">약 1년 동안</span> <span class="nb">이용 185만 건,</span> <span class="nb">계약 28만 건이 나왔습니다.</span></span><i>금융당국 집계 · 2024.1~2025.2</i></div>
+    <div class="mk"><em>정보를 얻는 곳</em><strong>79.2% → 66.5%</strong><b>포털로 뉴스를 보는 비율</b><span><span class="nb">2021년 정점에서 내려왔고,</span> <span class="nb">동영상 플랫폼 이용은</span> <span class="nb">1년 새 11.6%p 올랐습니다.</span> <span class="nb">숏폼 뉴스 이용은</span> <span class="nb">11.1%에서 22.9%로</span> <span class="nb">두 배가 됐습니다.</span></span><i>한국언론진흥재단 2025 언론수용자 조사</i></div>
+    <div class="mk"><em>새로 커지는 채널</em><strong>798만 명</strong><b>스레드 국내 사용자</b><span><span class="nb">1년 새 29.6% 늘어</span> <span class="nb">SNS 앱 가운데</span> <span class="nb">성장률 1위입니다.</span> <span class="nb">인스타그램 사용자는</span> <span class="nb">2,870만 명입니다.</span></span><i>와이즈앱·리테일 · 2026년 7월 기준</i></div>
   </div>
   <div class="two wide">
-    <div class="sol"><h3>보험사도 움직이고 있습니다</h3><ol><li>삼성생명 유튜브 구독자 19.3만 → 32.5만 명(+68.3%), 한화생명은 두 배 이상</li><li>정보를 찾을 때 유튜브 등을 쓰는 비중 · MZ세대 23%, 기성세대 12%</li></ol><p class="sub3">CEO스코어데일리 2026.7.4 · 보험연구원 리포트 인용</p></div>
+    <div class="sol"><h3>보험사도 움직이고 있습니다</h3><ol><li><span class="nb">삼성생명 유튜브 구독자</span> <span class="nb">19.3만 → 32.5만 명(+68.3%),</span> <span class="nb">한화생명은 두 배 이상</span></li><li><span class="nb">정보를 찾을 때 유튜브 등을 쓰는 비중 ·</span> <span class="nb">MZ세대 23%, 기성세대 12%</span></li></ol><p class="sub3">CEO스코어데일리 2026.7.4 · 보험연구원 리포트 인용</p></div>
     <div class="concl"><em>제가 본 기회</em><strong>고객은 설계사를 만나기 전에 이미 온라인에서 찾고 비교합니다. 그 자리에 먼저 있는 설계사는 아직 많지 않습니다.</strong></div>
   </div>
 </div></section>
