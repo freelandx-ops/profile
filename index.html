@@ -646,7 +646,7 @@ footer .lk a{color:inherit;text-decoration:none;margin:0 6px}
     fetch(form.action, { method:'POST', body:new FormData(form), headers:{ 'Accept':'application/json' } })
       .then(function(r){ return r.json(); })
       .then(function(d){
-        if(d && d.success){ form.innerHTML = '<div class="done"><b>신청을 받았습니다.</b>편하신 시간에 유영곤이 직접 연락드립니다.</div>'; }
+        if(d && d.success){ form.innerHTML = '<div class="done"><b>신청을 받았습니다.</b>유영곤이 직접 먼저 연락드립니다.</div>'; }
         else { throw new Error('fail'); }
       })
       .catch(function(){
