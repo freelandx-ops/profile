@@ -196,6 +196,7 @@ tr.t td{border-top:1.5px solid var(--ink);font-weight:800}
   <div class="q"><span class="lb">배우자분이 받으실 금액</span><div class="seg" data-seg="i_spmode"><button type="button" data-v="legal">법정상속분대로</button><button type="button" data-v="custom">금액을 정해 두었습니다</button></div></div>
   <div class="q" data-show="i_spmode:custom"><label for="i_spget">배우자분이 실제로 받으실 금액<span class="h">본인 상속 때 배우자 공제와 배우자분 상속 재산이 이 금액으로 함께 바뀝니다.</span></label><div class="amt"><input id="i_spget" data-k="i_spget" type="number" inputmode="decimal" min="0" step="0.1" placeholder="예: 8"><span>억원</span></div></div>
   <div class="q"><label for="i_spown">배우자분 명의 재산<span class="h">배우자분 상속 때 함께 계산됩니다.</span></label><div class="amt"><input id="i_spown" data-k="i_spown" type="number" inputmode="decimal" min="0" step="0.1" placeholder="모르시면 비워 두세요"><span>억원</span></div></div>
+  <div class="q"><label for="i_spfin">그중 예금, 주식 같은 금융재산<span class="h">배우자분 상속 때 금융재산 공제(20%, 최대 2억원)에 들어갑니다.</span></label><div class="amt"><input id="i_spfin" data-k="i_spfin" type="number" inputmode="decimal" min="0" step="0.1" placeholder="모르시면 비워 두세요"><span>억원</span></div></div>
   <div class="q"><label for="i_gap">본인 상속 뒤 배우자분 상속까지 예상 기간<span class="h">10년 안이면 본인 상속 때 낸 세금 일부를 배우자분 상속세에서 빼 줍니다. 비우면 10년이 넘는 것으로 봅니다.</span></label><div class="amt"><input id="i_gap" data-k="i_gap" type="number" inputmode="numeric" min="0" step="1" placeholder="모르시면 비워 두세요"><span>년</span></div></div>
 </div>
 
@@ -771,12 +772,12 @@ function calcInh(){
   var fun = given('i_fun') ? Math.min(Math.max(f('i_fun')*M, 500*M), 1000*M) : 500*M, bong = Math.min(f('i_bong')*M, 500*M);
   var prior = f('i_prior')*E, prior5 = f('i_prior5')*E, sp = V.i_sp === '1', k = Math.max(Math.round(f('i_kids')), 0);
   var minorY = minorYears(), old = Math.round(f('i_old')), disY = (V.dis || []).reduce(function(s, d){ return s + disYears(d); }, 0);
-  var spGet = sp && V.i_spmode === 'custom' && given('i_spget') ? f('i_spget')*E : null, spOwn = sp ? f('i_spown')*E : 0;
+  var spGet = sp && V.i_spmode === 'custom' && given('i_spget') ? f('i_spget')*E : null, spOwn = sp ? f('i_spown')*E : 0, spFin = sp ? Math.min(f('i_spfin')*E, spOwn) : 0;
   var r = inherit({sp:sp, n:k, re:re, fin:fin, finNet:Math.max(fin - findebt, 0), etc:etc, debt:debt + fun + bong, prior:prior + prior5, priorHeir:prior, priorTax:f('i_priortax')*E, priorBase:Math.max(prior + prior5 - .5*E*Math.max(k, 1), 0), priorSp:0, minorY:minorY, old:old, disY:disY, house:Math.min(f('i_house'), 6)*E, spGet:spGet});
   var grand = Math.min(f('i_grand')*E, r.estAll), rate = grand > 0 ? (V.i_grandminor === '1' && grand > 20*E ? .40 : .30) : 0, surc = r.estAll > 0 ? r.raw*grand/r.estAll*rate : 0;
   var credit = Math.max(r.raw - r.t/.97, 0), t1 = Math.max(r.raw + surc - credit, 0)*.97, t2 = 0;
-  if(sp){ S.v = {b_kids:String(k), p_gap2:given('i_gap') ? String(f('i_gap')) : ''}; t2 = secondTax(r.spGet || 0, spOwn, fin/(re + fin + etc), r); }
-  return {r:r, t1:t1, t2:t2, sp:sp, k:k, re:re, fin:fin, etc:etc, debt:debt, findebt:findebt, fun:fun, bong:bong, prior:prior, prior5:prior5, minorY:minorY, old:old, disY:disY, spOwn:spOwn, grand:grand, rate:rate, surc:surc, credit:credit};
+  if(sp){ S.v = {b_kids:String(k), p_gap2:given('i_gap') ? String(f('i_gap')) : ''}; var fs0 = fin/(re + fin + etc), sg = r.spGet || 0, fs2 = sg > 0 ? (sg*fs0 + spFin)/sg : fs0; t2 = secondTax(sg, spOwn, fs2, r); }   /* 2026-11-25 배우자분 명의 금융재산도 배우자분 상속 때 금융재산 공제에 넣는다(상증법 §22 · 순금융재산 전체). secondTax 는 진단 도구와 같은 식이라 손대지 않고, 금융 비율을 바꿔 넘긴다(대표님 11-25 재상속 세트 카드와 숫자 맞춤) */
+  return {spFin:spFin, r:r, t1:t1, t2:t2, sp:sp, k:k, re:re, fin:fin, etc:etc, debt:debt, findebt:findebt, fun:fun, bong:bong, prior:prior, prior5:prior5, minorY:minorY, old:old, disY:disY, spOwn:spOwn, grand:grand, rate:rate, surc:surc, credit:credit};
 }
 function showInh(){
   var c = calcInh(), el = $('r-inherit');
@@ -796,7 +797,7 @@ function showInh(){
   if(c.credit > 0) L.push(['이미 낸 증여세 공제', '', '− ' + won(c.credit)]);
   L.push(['상속세', '기한 안에 신고하면 3% 공제', won(c.t1), 1]);
   h += '<details open><summary>본인 상속 계산 보기</summary>' + rows(L) + '</details>';
-  if(c.sp){ var fs = c.fin/(c.re + c.fin + c.etc), d2 = Math.max(5*E, 2*E + .5*E*c.k) + finDed((r.spGet || 0)*fs);
+  if(c.sp){ var fs = c.fin/(c.re + c.fin + c.etc), d2 = Math.max(5*E, 2*E + .5*E*c.k) + finDed((r.spGet || 0)*fs + (c.spFin || 0));
     h += '<details><summary>배우자분 상속 계산 보기</summary>' + rows([['본인 상속 때 받으신 재산', '', won(r.spGet)], ['배우자분 명의 재산', '', won(c.spOwn)], ['공제', '배우자 공제가 없어 일괄공제 5억원과 금융재산 공제만 됩니다', '− ' + won(d2)], ['상속세', given('i_gap') && f('i_gap') <= 10 ? '본인 상속 뒤 ' + f('i_gap') + '년이라 단기 재상속 공제 반영' : '', won(c.t2), 1]]) + '</details>'; }
   h += '<div class="note"><p>넣지 않은 것 · 상속인이 아닌 분께 유언으로 주는 재산, 가업상속공제와 영농상속공제, 상속 재산의 평가(시세 · 감정가 · 공시가격 중 무엇으로 볼지)는 이 계산에 없습니다.</p>' +
     (c.sp ? '<p>배우자분 상속 재산은 본인 상속 때 받으신 금액 그대로 봅니다. 본인 상속세를 배우자분이 내시면 그만큼 줄어 실제 세금은 이보다 적을 수 있습니다. 배우자분이 많이 받으실수록 본인 상속 때 세금은 줄고 배우자분 상속 때 세금은 늘어, 두 번을 합쳐 가장 적게 내는 몫은 사람마다 다릅니다.</p>' : '') +
