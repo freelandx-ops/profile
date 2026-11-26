@@ -152,6 +152,7 @@ tr.t td{border-top:1.5px solid var(--ink);font-weight:800}
   <a href="#pay"><b>급여 및 배당</b><span>회사 돈을 급여로 받을지 배당으로 받을지</span><i id="m-pay"></i></a>
   <a href="#ret"><b>임원퇴직금</b><span>퇴직금으로 인정되는 한도와 세금</span><i id="m-ret"></i></a>
   <a href="#biz"><b>가업승계제도 검토</b><span>증여특례와 가업상속공제로 줄어드는 세금</span><i id="m-biz"></i></a>
+  <a href="#rp"><b>퇴직금 계산기</b><span>한 번에 받을 때와 연금으로 받을 때 달라지는 세금</span><i id="m-rp"></i></a>
 </div>
 <a class="togo" href="#send">계산한 숫자로 종합 자산 진단 받기 →</a>
 </section>
@@ -455,6 +456,38 @@ tr.t td{border-top:1.5px solid var(--ink);font-weight:800}
 <a class="togo" href="#send">이 숫자로 종합 자산 진단 받기 →</a>
 </section>
 
+<!-- ===================== 퇴직금 계산기 ===================== -->
+<section class="pane" id="p-rp">
+<div class="hero">
+  <p class="eyebrow">퇴직금 계산기</p>
+  <h1>퇴직금은 <em>받는 방식</em>에 따라 세금이 달라집니다</h1>
+  <p class="lead">한 번에 받으시면 퇴직소득세를 그 자리에서 모두 내십니다. 연금계좌에 넣어 연금으로 받으시면 받는 해마다 나눠 내고 세금도 30%에서 50%까지 줄어듭니다. 퇴직금과 근속 연수를 넣으시면 두 경우를 나란히 계산합니다.</p>
+</div>
+
+<div class="sh"><p class="k">점검</p><h2>지금 내 퇴직연금 상태</h2><p>계산과 상관없이 먼저 확인해 보실 세 가지입니다.</p></div>
+<div class="card">
+  <div class="q"><label class="chk"><input type="checkbox" id="rp_c1" data-k="rp_c1">내 퇴직연금은 DC형이나 IRP입니다</label><span class="h">이 두 가지는 돈을 어디에 넣을지 본인이 고릅니다. DB형은 회사가 정합니다.</span></div>
+  <div class="q"><label class="chk"><input type="checkbox" id="rp_c2" data-k="rp_c2">운용 상품을 제가 직접 골랐습니다</label><span class="h">고르지 않으면 디폴트옵션에 맡겨집니다. 디폴트옵션 적립금 53.3조원 가운데 85.4%가 안정형에 있습니다(고용노동부, 2026년 5월 20일).</span></div>
+  <div class="q"><label class="chk"><input type="checkbox" id="rp_c3" data-k="rp_c3">적립금 가운데 실적배당형 비중을 알고 있습니다</label><span class="h">전체 가입자 평균은 24.6%입니다. 수익률 상위 10% 가입자는 84%를 실적배당형에 두고 있습니다.</span></div>
+</div>
+
+<div class="sh"><p class="k">입력</p><h2>퇴직금과 받을 방식</h2></div>
+<div class="card">
+  <div class="q"><span class="lb">임원(대표, 이사)이십니까?<span class="h">임원 퇴직금은 퇴직소득으로 인정되는 한도가 있어 그 안의 금액만 연금으로 나눠 계산합니다</span></span><div class="seg" data-seg="rp_exec"><button type="button" data-v="y">예</button><button type="button" data-v="n">아니오</button></div></div>
+  <div class="q" data-show="rp_exec:y"><label for="rp_rsal">퇴직 전 3년 평균 연봉<span class="h">임원퇴직금 항목과 같은 칸입니다. 한쪽에 넣으시면 다른 쪽에도 들어갑니다</span></label><div class="amt"><input id="rp_rsal" data-k="r_sal" type="number" inputmode="numeric" min="0" step="100" placeholder="예: 12000"><span>만원</span></div></div>
+  <div class="q" data-show="rp_exec:y"><label for="rp_ryears">임원으로 근속한 기간<span class="h">올해 퇴직한다고 보고 계산합니다</span></label><div class="amt"><input id="rp_ryears" data-k="r_years" type="number" inputmode="numeric" min="1" step="1" placeholder="예: 11"><span>년</span></div></div>
+  <div class="q"><label for="rp_amt">퇴직금<span class="h">회사 퇴직금 산정서나 퇴직연금 잔고에 있는 금액</span></label><div class="amt"><input id="rp_amt" data-k="rp_amt" type="number" inputmode="numeric" min="0" step="100" placeholder="예: 30000"><span>만원</span></div></div>
+  <div class="q"><label for="rp_years">근속 연수<span class="h">입사일부터 퇴직일까지, 1년이 안 되는 기간은 1년으로 봅니다</span></label><div class="amt"><input id="rp_years" data-k="rp_years" type="number" inputmode="numeric" min="1" step="1" placeholder="예: 20"><span>년</span></div></div>
+  <div class="q"><span class="lb">받을 방식</span><div class="seg" data-seg="rp_way"><button type="button" data-v="once">한 번에</button><button type="button" data-v="pen">연금으로</button></div></div>
+  <div class="q" data-show="rp_way:pen"><label for="rp_n">연금으로 받을 기간<span class="h">해마다 같은 금액을 받는다고 보고 계산합니다</span></label><div class="amt"><input id="rp_n" data-k="rp_n" type="number" inputmode="numeric" min="1" step="1" placeholder="예: 10"><span>년</span></div></div>
+</div>
+
+<div class="sh"><p class="k">결과</p><h2>한 번에 받을 때와 연금으로 받을 때</h2></div>
+<div class="res" id="r-rp"></div>
+<div class="sub-note">국민연금, 퇴직연금, 개인연금을 해마다 더했을 때 0원이 되는 해는 세 연금을 같이 넣어야 나옵니다.</div>
+<a class="togo" href="#send">이 숫자로 종합 자산 진단 받기 →</a>
+</section>
+
 <!-- ===================== 종합 진단 연결 ===================== -->
 <section class="pane" id="p-send">
 <div class="hero">
@@ -735,13 +768,15 @@ function jbHouse(m, hs){
   });
   return t;
 }
+/* 자산 종합 진단 rules_fin.js 에서 그대로 가져온 것 · K_CL38 */
+var K_CL38 = {cut: 1500e4, sep: .15, yrs: 10, out: .15, wait: 5, lim: 1.2};
 
 /* ---------- 입력 ---------- */
 var KEY = 'taxcheck-v1';
 var V = {i_sp:'1', i_spmode:'legal', i_grandminor:'0', dis:[],
   g_rel:'kid', g_minor:'0', g_wed:'0', g_type:'cash', g_kind:'home', g_heavy:'0', g_one:'0', g_adjbuy:'0', g_sur:'0',
   c_kind:'home', c_joint:'0', c_one:'1', c_adjbuy:'0', c_sur:'0', c_vacant:'0', hs:[{owner:'self'}],
-  c_size:'1', c_rer:'lt50', c_rule:'n', r_mult:'2', c_listed:'n', c_heir:'y', z_sp:'1'};
+  c_size:'1', c_rer:'lt50', c_rule:'n', r_mult:'2', c_listed:'n', c_heir:'y', z_sp:'1', rp_way:'pen', rp_exec:'n'};
 try{ var s0 = JSON.parse(localStorage.getItem(KEY) || 'null'); if(s0 && typeof s0 === 'object') V = Object.assign(V, s0); }catch(_){}
 function $(id){ return document.getElementById(id); }
 function f(k){ var x = parseFloat(V[k]); return isFinite(x) && x > 0 ? x : 0; }
@@ -963,6 +998,51 @@ function showRet(){
   el.innerHTML = h;
 }
 
+/* ---------- 퇴직금 계산기 · 퇴직소득세는 진단 도구 retTax 그대로, 연금수령한도 120%와 10년차까지는 진단 도구 K_CL38 그대로 ---------- */
+/* 소득세법 제129조 제1항 제5호의3 — 연금외수령 원천징수세율에 실제 수령연차 10년 이하 70% · 10년 초과 20년 이하 60% · 20년 초과 50% · 2026-11-27 원문 확인
+   소득세법 시행령 제40조의2 제3항 제3호 연금수령한도 = 평가액 ÷ (11 − 연금수령연차) × 120% · 11년차부터 계산식 적용 없음 · 같은 조 제5항 한도를 넘는 인출은 연금외수령 · 2026-11-27 원문 확인 */
+var K_RP_CUT = [[10, .7], [20, .6], [Infinity, .5]];
+function rpCut(j){ for(var i = 0; i < K_RP_CUT.length; i++) if(j <= K_RP_CUT[i][0]) return K_RP_CUT[i][1]; return 1; }
+function rpPlan(A, eff, N){
+  var P = A/N, bal = A, list = [], tot = 0, over = 0;
+  for(var j = 1; j <= N; j++){
+    var lim = j <= K_CL38.yrs ? bal/(11 - j)*K_CL38.lim : Infinity, inn = Math.min(P, lim), out = P - inn, cut = rpCut(j), t = inn*eff*cut + out*eff;
+    list.push({j:j, get:P, lim:lim, inn:inn, out:out, cut:cut, t:t}); tot += t; over += out; bal -= P;
+  }
+  return {N:N, P:P, list:list, tot:tot, over:over, lim1:A/10*K_CL38.lim};
+}
+/* 임원이면 임원퇴직금 항목과 같은 입력(r_sal · r_years)으로 진단 도구 retLim3 한도를 내고, 한도 안 퇴직소득만 비교한다(소득세법 제22조 제3항 · 한도 넘는 몫은 근로소득) */
+function calcRp(){
+  var A0 = f('rp_amt')*M, y = Math.round(f('rp_years')); if(!(A0 > 0) || !(y > 0)) return null;
+  var ex = V.rp_exec === 'y', L = null, A = A0;
+  if(ex){ var W = f('r_sal')*M, ry = Math.round(f('r_years')); if(!(W > 0) || !(ry > 0)) return null; L = retLim3(W, ry); if(L.pmax > 0) A = Math.min(A0, L.pmax); }
+  var lump = retTax(A, y), eff = A > 0 ? lump/A : 0, N = V.rp_way === 'pen' ? Math.round(f('rp_n')) : 0;
+  return {A0:A0, A:A, over:A0 - A, ex:ex, L:L, y:y, lump:lump, eff:eff, pen:N > 0 && A > 0 ? rpPlan(A, eff, N) : null};
+}
+function showRp(){
+  var c = calcRp(), el = $('r-rp');
+  if(!c){ el.innerHTML = '<p class="empty">' + (V.rp_exec === 'y' ? '퇴직금, 근속 연수, 평균 연봉, 임원으로 근속한 기간을 넣으시면 여기에 바로 나옵니다.' : '퇴직금과 근속 연수를 넣으시면 여기에 바로 나옵니다.') + '</p>'; return; }
+  var h, L = c.ex ? [['퇴직금', '', won(c.A0)], ['임원 퇴직소득 한도', '2012~2019년 근속 ' + c.L.m1 + '년 × 3배, 2020년 이후 ' + c.L.m2 + '년 × 2배' + (c.L.m0 ? ', 2011년까지 ' + c.L.m0 + '년은 한도 없이 인정' : ''), won(c.L.pmax || c.A0)], ['이 계산에 쓰는 퇴직소득', '퇴직금 가운데 한도 안 금액', won(c.A)]] : [['퇴직금', '', won(c.A)]];
+  L = L.concat([['한 번에 받을 때 퇴직소득세', '근속연수공제와 환산급여공제 뒤 세율, 지방소득세 포함', won(c.lump)], ['실효세율', '퇴직소득 대비 세금', pct(c.eff)]]);
+  if(c.pen){
+    var p = c.pen;
+    h = big([['한 번에 받을 때 세금<small>퇴직소득세, 지방소득세 포함</small>', won(c.lump)], ['연금으로 ' + p.N + '년 받을 때 세금 합계<small>해마다 ' + won(p.P) + '씩 받을 때</small>', won(p.tot)], ['줄어드는 세금', won(c.lump - p.tot), 1]]);
+    L.push(['한 해 받는 금액', p.N + '년에 나눠서', won(p.P)]);
+    L.push(['첫해 연금수령한도', '평가액 ÷ (11 − 1) × 120%', won(p.lim1)]);
+    if(p.over > 0) L.push(['한도를 넘어 감면 없이 세금을 내는 몫', '한도를 넘긴 돈은 연금이 아닌 인출로 봅니다', won(p.over)]);
+    L.push(['연금으로 받을 때 세금 합계', '', won(p.tot), 1]);
+    h += '<details open><summary>퇴직금 세금 계산 보기</summary>' + rows(L) + '</details>';
+    h += '<details><summary>해마다 내는 세금 보기</summary>' + rows(p.list.map(function(r){ return [r.j + '년차', '받는 돈 ' + won(r.get) + ', 한도 ' + (isFinite(r.lim) ? won(r.lim) : '없음') + ', 퇴직소득세의 ' + Math.round(r.cut*100) + '%' + (r.out > 0 ? ', 한도 넘는 ' + won(r.out) + '은 감면 없음' : ''), won(r.t)]; })) + '</details>';
+  } else {
+    h = big([['한 번에 받을 때 세금<small>퇴직소득세, 지방소득세 포함</small>', won(c.lump)], ['손에 남는 돈' + (c.over > 0 ? '<small>한도 안 퇴직소득 기준</small>' : ''), won(c.A - c.lump), 1]]);
+    h += '<details open><summary>퇴직금 세금 계산 보기</summary>' + rows(L) + '</details>';
+    h += '<details open><summary>같은 퇴직금을 연금으로 받으시면</summary>' + rows([10, 20, 30].map(function(N){ var q = rpPlan(c.A, c.eff, N); return [N + '년에 나눠 받을 때', '해마다 ' + won(q.P), won(q.tot)]; })) + '</details>';
+  }
+  if(c.over > 0) h += '<div class="due">한도를 넘는 ' + won(c.over) + '은 근로소득으로 과세되어 이 계산에서 뺐습니다.<br><a href="#ret">한도를 넘는 몫의 세금은 임원퇴직금에서 보기 →</a></div>';
+  h += '<div class="note"><p>단, 연금계좌에 넣은 퇴직금이 그대로 있다고 보고 운용수익과 그 세금은 넣지 않았습니다.</p><p>연금은 55세가 넘어 연금 개시를 신청하신 뒤부터 받으실 수 있습니다. 연금수령한도는 연금을 받기 시작한 해를 1년차로 보고 계산했으며 11년차부터는 한도가 없습니다.</p></div>';
+  el.innerHTML = h;
+}
+
 /* ---------- 가업승계 · 진단 도구 corpCalc 의 증여특례(sp) · 일반 증여(gen) · 가업상속공제 한도(lim) · 요건(eligible · inhOk)과 inherit 의 bizDed 를 그대로 쓴다 ---------- */
 function calcBiz(){
   var c = calcStock(); if(!c || !(c.S > 0)) return null;
@@ -1016,7 +1096,7 @@ function bundle(){
     memo.push('[양도세 계산] ' + won(c.price) + '에 팔 때 양도세 ' + won(c.r.tax) + (c.r.note ? ' (' + c.r.note + ')' : '')); }
   if(j){ L.push(['종부세', '주택 ' + j.hs.length + '채 · 연 ' + won(j.t)]);
     memo.push('[종부세 계산] 공시가격 ' + j.hs.map(function(p){ return won(p.pub) + '(' + {self:'본인', spouse:'배우자', joint:'공동'}[p.owner] + ')'; }).join(', ') + ' → 연 ' + won(j.t) + ' (공시가격만 있어 진단 도구 부동산 칸에 넣지 않았습니다)'); }
-  var st = calcStock(), py = calcPay(), rt = calcRet(), bz = calcBiz();
+  var st = calcStock(), py = calcPay(), rt = calcRet(), bz = calcBiz(), rp = calcRp();
   if(st){ var cv = corpV(); Object.keys(cv).forEach(function(k){ if(k !== 'c_shares' && k !== 'h_prior') put(k, cv[k]); }); put('b_type', 'corp');   /* c_ 입력 이름은 진단 도구 입력 이름과 같다 */
     L.push(['비상장주식', '회사 전체 ' + won(st.cur.val) + (st.share > 0 ? ' · 대표님 지분 ' + won(st.S) : '')]);
     memo.push('[비상장주식 평가] 회사 전체 ' + won(st.cur.val) + ' · 순손익가치 ' + won(st.cur.earn) + ' · 순자산가치 ' + won(st.cur.nav) + (st.share > 0 ? ' · 대표님 지분 ' + pct(st.share) + ' ' + won(st.S) : '') + (f('c_shares') > 0 ? ' · 1주당 ' + Math.round(st.cur.val/f('c_shares')).toLocaleString() + '원' : '')); }
@@ -1028,6 +1108,9 @@ function bundle(){
   if(bz){ if(given('b_age')) put('b_age', V.b_age); if(V.z_sp) put('b_sp', V.z_sp); if(given('z_kids')) put('b_kids', V.z_kids);
     L.push(['가업승계', '일반 증여 ' + won(bz.c.gen) + ' · 특례 ' + (bz.c.eligible ? won(bz.c.sp) : '요건 미충족') + ' · 상속 공제 후 ' + (bz.c.inhOk ? won(bz.t1) : '요건 미충족')]);
     memo.push('[가업승계] 지분 ' + won(bz.c.S) + ' · 일반 증여세 ' + won(bz.c.gen) + ' · 증여특례 ' + (bz.c.eligible ? won(bz.c.sp) : '요건 미충족') + ' · 상속세 공제 없이 ' + won(bz.t0) + ' / 가업상속공제 후 ' + (bz.c.inhOk ? won(bz.t1) : '요건 미충족') + ' · 회사 밖 재산 ' + won(f('z_other')*E)); }
+  if(rp){ put('i_retpay', eokS(rp.A0)); put('i_retyrs', rp.y);   /* 진단 도구 근로자 퇴직금 칸(억원) · 근속 연수 */
+    L.push(['퇴직금 계산기', won(rp.A0) + (rp.over > 0 ? ' · 한도 안 ' + won(rp.A) : '') + ' · 한 번에 ' + won(rp.lump) + (rp.pen ? ' · 연금 ' + rp.pen.N + '년 ' + won(rp.pen.tot) : '')]);
+    memo.push('[퇴직금 계산기] 퇴직금 ' + won(rp.A0) + (rp.ex ? ' · 임원 한도 ' + won(rp.L.pmax || rp.A0) + (rp.over > 0 ? ' · 한도 초과 근로소득 ' + won(rp.over) : '') : '') + ' · 근속 ' + rp.y + '년 → 한 번에 퇴직소득세 ' + won(rp.lump) + (rp.pen ? ' · 연금 ' + rp.pen.N + '년 세금 합계 ' + won(rp.pen.tot) + (rp.pen.over > 0 ? ' (한도 초과 ' + won(rp.pen.over) + ')' : '') : '') + ' · 점검: DC형이나 IRP ' + (V.rp_c1 ? '예' : '아니요나 모름') + ' · 직접 고름 ' + (V.rp_c2 ? '예' : '아니요나 모름') + ' · 실적배당형 비중 앎 ' + (V.rp_c3 ? '예' : '아니요나 모름')); }
   if(String(V.memo || '').trim()) memo.unshift('고민: ' + String(V.memo).trim());
   put('memo', memo.join('\n')); if(String(V.name || '').trim()) put('r_name', String(V.name).trim() + ' 님');
   return {L:L, data:{v:v, props:props, tags:{}, from:'taxcheck', at:new Date().toISOString()}, memo:memo};
@@ -1056,14 +1139,14 @@ function render(){
   document.querySelectorAll('[data-seg]').forEach(function(sg){ var k = sg.dataset.seg; sg.querySelectorAll('button').forEach(function(b){ b.classList.toggle('on', String(V[k]) === b.dataset.v); }); });
   document.querySelectorAll('[data-show]').forEach(function(el){ el.hidden = !cond(el.dataset.show); });
   document.querySelectorAll('.card').forEach(function(cd){ var qs = [].filter.call(cd.children, function(x){ return x.classList.contains('q'); }), vis = qs.filter(function(x){ return !x.hidden; }); qs.forEach(function(x){ x.classList.toggle('lastq', x === vis[vis.length - 1]); }); });   /* 숨긴 질문이 끝에 있으면 남는 밑줄을 지운다 */
-  showInh(); showGift(); showCgt(); showJb(); showStock(); showPay(); showRet(); showBiz(); showSend(); badges();
+  showInh(); showGift(); showCgt(); showJb(); showStock(); showPay(); showRet(); showBiz(); showRp(); showSend(); badges();
 }
 /* 메인 화면 — 계산한 항목에 결과 한 줄 */
-function badges(){ var a = calcInh(), g = calcGift(), c = calcCgt(), j = calcJb(), s = calcStock(), p = calcPay(), r = calcRet(), b = calcBiz();
-  var B = {inherit:a && won(a.t1 + a.t2), gift:g && won(g.gift + g.acq + (g.cg ? g.cg.tax : 0)), cgt:c && won(c.r.tax), jb:j && '연 ' + won(j.t), stock:s && won(s.share > 0 ? s.S : s.cur.val), pay:p && won(p.cur.tot), ret:r && '세금 ' + won(r.rt + r.et), biz:b && (b.c.inhOk ? '공제 후 ' + won(b.t1) : '요건 확인')};
+function badges(){ var a = calcInh(), g = calcGift(), c = calcCgt(), j = calcJb(), s = calcStock(), p = calcPay(), r = calcRet(), b = calcBiz(), q = calcRp();
+  var B = {inherit:a && won(a.t1 + a.t2), gift:g && won(g.gift + g.acq + (g.cg ? g.cg.tax : 0)), cgt:c && won(c.r.tax), jb:j && '연 ' + won(j.t), stock:s && won(s.share > 0 ? s.S : s.cur.val), pay:p && won(p.cur.tot), ret:r && '세금 ' + won(r.rt + r.et), biz:b && (b.c.inhOk ? '공제 후 ' + won(b.t1) : '요건 확인'), rp:q && (q.pen ? '연금 ' + q.pen.N + '년 세금 ' + won(q.pen.tot) : '세금 ' + won(q.lump))};
   Object.keys(B).forEach(function(k){ var el = $('m-' + k); if(el) el.textContent = B[k] ? '계산함 · ' + B[k] : ''; }); }
-var TABS = ['home', 'inherit', 'gift', 'cgt', 'jb', 'stock', 'pay', 'ret', 'biz', 'send'];
-function route(){ var t = (location.hash || '').slice(1); if(TABS.indexOf(t) < 0) t = 'home';
+var TABS = ['home', 'inherit', 'gift', 'cgt', 'jb', 'stock', 'pay', 'ret', 'biz', 'rp', 'send'];
+function route(){ var t = (location.hash || '').slice(1); if(TABS.indexOf(t) < 0) t = 'home'; fill();
   TABS.forEach(function(x){ $('p-' + x).classList.toggle('on', x === t); });
   $('homeLink').hidden = t === 'home';
   if(t === 'send') showSend(); window.scrollTo(0, 0); }
@@ -1081,7 +1164,7 @@ document.addEventListener('click', function(ev){ var b = ev.target.closest('butt
   var sg = b.closest('[data-seg]'); if(sg){ V[sg.dataset.seg] = b.dataset.v; save(); render(); } });
 window.addEventListener('hashchange', route);
 fill(); renderRows(); render(); route();
-window.__tax = {V:V, calcStock:calcStock, calcPay:calcPay, calcRet:calcRet, calcBiz:calcBiz, calcInh:calcInh, calcGift:calcGift, calcCgt:calcCgt, calcJb:calcJb, bundle:bundle, render:render, renderRows:renderRows};
+window.__tax = {V:V, calcStock:calcStock, calcPay:calcPay, calcRet:calcRet, calcBiz:calcBiz, calcInh:calcInh, calcGift:calcGift, calcCgt:calcCgt, calcJb:calcJb, calcRp:calcRp, bundle:bundle, render:render, renderRows:renderRows};
 })();
 </script>
 </body>
